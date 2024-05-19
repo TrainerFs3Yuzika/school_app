@@ -25,7 +25,7 @@
                     <div class="card-body">
                         <div class="db-widgets d-flex justify-content-between align-items-center">
                             <div class="db-info">
-                                <h6>Students</h6>
+                                <h6>Totoal Murid</h6>
                                 <h3>{{ \App\Models\Student::count() }}</h3>
                             </div>
                             <div class="db-icon">
