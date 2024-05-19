@@ -1,7 +1,6 @@
-
 @extends('layouts.master')
 @section('content')
-    {{-- message --}}
+    {{-- pesan --}}
     {!! Toastr::message() !!}
     <div class="page-wrapper">
         <div class="content container-fluid">
@@ -9,10 +8,10 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="page-sub-header">
-                            <h3 class="page-title">Welcome {{ Auth::user()->name }}, {{ Auth::user()->role_name }} </h3>
+                            <h3 class="page-title">Selamat Datang {{ Auth::user()->name }}, {{ Auth::user()->role_name }} </h3>
                             <ul class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                                <li class="breadcrumb-item active">Student</li>
+                                <li class="breadcrumb-item"><a href="{{ route('home') }}">Beranda</a></li>
+                                <li class="breadcrumb-item active">Siswa</li>
                             </ul>
                         </div>
                     </div>
@@ -25,11 +24,11 @@
                         <div class="card-body">
                             <div class="db-widgets d-flex justify-content-between align-items-center">
                                 <div class="db-info">
-                                    <h6>All Courses</h6>
+                                    <h6>Semua Mata Pelajaran</h6>
                                     <h3>04/06</h3>
                                 </div>
                                 <div class="db-icon">
-                                    <img src="{{ URL::to('assets/img/icons/teacher-icon-01.svg') }}" alt="Dashboard Icon">
+                                    <img src="{{ URL::to('assets/img/icons/teacher-icon-01.svg') }}" alt="Ikon Dasbor">
                                 </div>
                             </div>
                         </div>
@@ -40,11 +39,11 @@
                         <div class="card-body">
                             <div class="db-widgets d-flex justify-content-between align-items-center">
                                 <div class="db-info">
-                                    <h6>All Projects</h6>
+                                    <h6>Semua Proyek</h6>
                                     <h3>40/60</h3>
                                 </div>
                                 <div class="db-icon">
-                                    <img src="{{URL::to('assets/img/icons/teacher-icon-02.svg')}}" alt="Dashboard Icon">
+                                    <img src="{{URL::to('assets/img/icons/teacher-icon-02.svg')}}" alt="Ikon Dasbor">
                                 </div>
                             </div>
                         </div>
@@ -55,11 +54,11 @@
                         <div class="card-body">
                             <div class="db-widgets d-flex justify-content-between align-items-center">
                                 <div class="db-info">
-                                    <h6>Test Attended</h6>
+                                    <h6>Ujian yang Diikuti</h6>
                                     <h3>30/50</h3>
                                 </div>
                                 <div class="db-icon">
-                                    <img src="{{URL::to('assets/img/icons/student-icon-01.svg')}}" alt="Dashboard Icon">
+                                    <img src="{{URL::to('assets/img/icons/student-icon-01.svg')}}" alt="Ikon Dasbor">
                                 </div>
                             </div>
                         </div>
@@ -70,11 +69,11 @@
                         <div class="card-body">
                             <div class="db-widgets d-flex justify-content-between align-items-center">
                                 <div class="db-info">
-                                    <h6>Test Passed</h6>
+                                    <h6>Ujian yang Lulus</h6>
                                     <h3>15/20</h3>
                                 </div>
                                 <div class="db-icon">
-                                    <img src="{{URL::to('assets/img/icons/student-icon-02.svg')}}" alt="Dashboard Icon">
+                                    <img src="{{URL::to('assets/img/icons/student-icon-02.svg')}}" alt="Ikon Dasbor">
                                 </div>
                             </div>
                         </div>
@@ -88,7 +87,7 @@
                         <div class="card-header">
                             <div class="row align-items-center">
                                 <div class="col-6">
-                                    <h5 class="card-title">Today’s Lesson</h5>
+                                    <h5 class="card-title">Pelajaran Hari Ini</h5>
                                 </div>
                                 <div class="col-6">
                                     <ul class="chart-list-out">
@@ -97,7 +96,7 @@
                                             <span class="circle-gray"></span>
                                             <span class="circle-gray"></span>
                                         </li>
-                                        <li class="lesson-view-all"><a href="#">View All</a></li>
+                                        <li class="lesson-view-all"><a href="#">Lihat Semua</a></li>
                                         <li class="star-menus"><a href="javascript:;"><i class="fas fa-ellipsis-v"></i></a></li>
                                     </ul>
                                 </div>
@@ -119,8 +118,8 @@
                                                 <img src="{{URL::to('assets/img/icons/lesson-icon-01.svg')}}" alt="">
                                             </div>
                                             <div class="views-lesson">
-                                                <h5>Class</h5>
-                                                <h4>Electrical Engg</h4>
+                                                <h5>Kelas</h5>
+                                                <h4>Teknik Elektro</h4>
                                             </div>
                                         </div>
                                         <div class="lesson-activity">
@@ -128,8 +127,8 @@
                                                 <img src="{{URL::to('assets/img/icons/lesson-icon-02.svg')}}" alt="">
                                             </div>
                                             <div class="views-lesson">
-                                                <h5>Lessons</h5>
-                                                <h4>5 Lessons</h4>
+                                                <h5>Pelajaran</h5>
+                                                <h4>5 Pelajaran</h4>
                                             </div>
                                         </div>
                                         <div class="lesson-activity">
@@ -137,8 +136,8 @@
                                                 <img src="{{URL::to('assets/img/icons/lesson-icon-03.svg')}}" alt="">
                                             </div>
                                             <div class="views-lesson">
-                                                <h5>Time</h5>
-                                                <h4>Lessons</h4>
+                                                <h5>Waktu</h5>
+                                                <h4>Pelajaran</h4>
                                             </div>
                                         </div>
                                     </div>
@@ -150,8 +149,8 @@
                                                 <img src="{{URL::to('assets/img/icons/lesson-icon-04.svg')}}" alt="">
                                             </div>
                                             <div class="views-lesson">
-                                                <h5>Asignment</h5>
-                                                <h4>5 Asignment</h4>
+                                                <h5>Tugas</h5>
+                                                <h4>5 Tugas</h4>
                                             </div>
                                         </div>
                                         <div class="lesson-activity">
@@ -159,7 +158,7 @@
                                                 <img src="{{URL::to('assets/img/icons/lesson-icon-05.svg')}}" alt="">
                                             </div>
                                             <div class="views-lesson">
-                                                <h5>Staff</h5>
+                                                <h5>Staf</h5>
                                                 <h4>John Doe</h4>
                                             </div>
                                         </div>
@@ -168,7 +167,7 @@
                                                 <img src="{{URL::to('assets/img/icons/lesson-icon-06.svg')}}" alt="">
                                             </div>
                                             <div class="views-lesson">
-                                                <h5>Lesson Learned</h5>
+                                                <h5>Pelajaran yang Dipelajari</h5>
                                                 <h4>10/50</h4>
                                             </div>
                                         </div>
@@ -176,8 +175,8 @@
                                 </div>
                                 <div class="col-lg-3 col-md-3 d-flex align-items-center justify-content-center">
                                     <div class="skip-group">
-                                        <button type="submit" class="btn btn-info skip-btn">skip</button>
-                                        <button type="submit" class="btn btn-info continue-btn">Continue</button>
+                                        <button type="submit" class="btn btn-info skip-btn">lewat</button>
+                                        <button type="submit" class="btn btn-info continue-btn">Lanjutkan</button>
                                     </div>
                                 </div>
                             </div>
@@ -189,12 +188,12 @@
                                 <div class="card-header">
                                     <div class="row align-items-center">
                                         <div class="col-6">
-                                            <h5 class="card-title">Learning Activity</h5>
+                                            <h5 class="card-title">Aktivitas Pembelajaran</h5>
                                         </div>
                                         <div class="col-6">
                                             <ul class="chart-list-out">
-                                                <li><span class="circle-blue"></span>Teacher</li>
-                                                <li><span class="circle-green"></span>Student</li>
+                                                <li><span class="circle-blue"></span>Guru</li>
+                                                <li><span class="circle-green"></span>Siswa</li>
                                                 <li class="star-menus"><a href="javascript:;"><i
                                                             class="fas fa-ellipsis-v"></i></a></li>
                                             </ul>
@@ -209,7 +208,7 @@
                         <div class="col-12 col-lg-12 col-xl-12 d-flex">
                             <div class="card flex-fill comman-shadow">
                                 <div class="card-header d-flex align-items-center">
-                                    <h5 class="card-title">Teaching History</h5>
+                                    <h5 class="card-title">Riwayat Pengajaran</h5>
                                     <ul class="chart-list-out student-ellips">
                                         <li class="star-menus"><a href="javascript:;"><i
                                                     class="fas fa-ellipsis-v"></i></a></li>
@@ -225,47 +224,47 @@
                                         <ul class="activity-feed">
                                             <li class="feed-item d-flex align-items-center">
                                                 <div class="dolor-activity">
-                                                    <span class="feed-text1"><a>Mathematics</a></span>
+                                                    <span class="feed-text1"><a>Matematika</a></span>
                                                     <ul class="teacher-date-list">
-                                                        <li><i class="fas fa-calendar-alt me-2"></i>September 5,
+                                                        <li><i class="fas fa-calendar-alt me-2"></i>5 September,
                                                             2022</li>
                                                         <li>|</li>
-                                                        <li><i class="fas fa-clock me-2"></i>09:00 am - 10:00 am (60
-                                                            Minutes)</li>
+                                                        <li><i class="fas fa-clock me-2"></i>09:00 pagi - 10:00 pagi (60
+                                                            Menit)</li>
                                                     </ul>
                                                 </div>
                                                 <div class="activity-btns ms-auto">
-                                                    <button type="submit" class="btn btn-info">In Progress</button>
+                                                    <button type="submit" class="btn btn-info">Sedang Berlangsung</button>
                                                 </div>
                                             </li>
                                             <li class="feed-item d-flex align-items-center">
                                                 <div class="dolor-activity">
-                                                    <span class="feed-text1"><a>Geography </a></span>
+                                                    <span class="feed-text1"><a>Geografi </a></span>
                                                     <ul class="teacher-date-list">
-                                                        <li><i class="fas fa-calendar-alt me-2"></i>September 5,
+                                                        <li><i class="fas fa-calendar-alt me-2"></i>5 September,
                                                             2022</li>
                                                         <li>|</li>
-                                                        <li><i class="fas fa-clock me-2"></i>09:00 am - 10:00 am (60
-                                                            Minutes)</li>
+                                                        <li><i class="fas fa-clock me-2"></i>09:00 pagi - 10:00 pagi (60
+                                                            Menit)</li>
                                                     </ul>
                                                 </div>
                                                 <div class="activity-btns complete ms-auto">
-                                                    <button type="submit" class="btn btn-info">Completed</button>
+                                                    <button type="submit" class="btn btn-info">Selesai</button>
                                                 </div>
                                             </li>
                                             <li class="feed-item d-flex align-items-center">
                                                 <div class="dolor-activity">
-                                                    <span class="feed-text1"><a>Botony</a></span>
+                                                    <span class="feed-text1"><a>Botani</a></span>
                                                     <ul class="teacher-date-list">
-                                                        <li><i class="fas fa-calendar-alt me-2"></i>September 5,
+                                                        <li><i class="fas fa-calendar-alt me-2"></i>5 September,
                                                             2022</li>
                                                         <li>|</li>
-                                                        <li><i class="fas fa-clock me-2"></i>09:00 am - 10:00 am (60
-                                                            Minutes)</li>
+                                                        <li><i class="fas fa-clock me-2"></i>09:00 pagi - 10:00 pagi (60
+                                                            Menit)</li>
                                                     </ul>
                                                 </div>
                                                 <div class="activity-btns ms-auto">
-                                                    <button type="submit" class="btn btn-info">In Progress</button>
+                                                    <button type="submit" class="btn btn-info">Sedang Berlangsung</button>
                                                 </div>
                                             </li>
                                         </ul>
@@ -281,7 +280,7 @@
                             <div id="calendar-doctor" class="calendar-container"></div>
                             <div class="calendar-info calendar-info1">
                                 <div class="up-come-header">
-                                    <h2>Upcoming Events</h2>
+                                    <h2>Acara Mendatang</h2>
                                     <span><a href="javascript:;"><i class="feather-plus"></i></a></span>
                                 </div>
                                 <div class="upcome-event-date">
@@ -289,33 +288,33 @@
                                     <span><i class="fas fa-ellipsis-h"></i></span>
                                 </div>
                                 <div class="calendar-details">
-                                    <p>08:00 am</p>
+                                    <p>08:00 pagi</p>
                                     <div class="calendar-box normal-bg">
                                         <div class="calandar-event-name">
-                                            <h4>Botony</h4>
+                                            <h4>Botani</h4>
                                             <h5>Lorem ipsum sit amet</h5>
                                         </div>
-                                        <span>08:00 - 09:00 am</span>
+                                        <span>08:00 - 09:00 pagi</span>
                                     </div>
                                 </div>
                                 <div class="calendar-details">
-                                    <p>09:00 am</p>
+                                    <p>09:00 pagi</p>
                                     <div class="calendar-box normal-bg">
                                         <div class="calandar-event-name">
-                                            <h4>Botony</h4>
+                                            <h4>Botani</h4>
                                             <h5>Lorem ipsum sit amet</h5>
                                         </div>
-                                        <span>09:00 - 10:00 am</span>
+                                        <span>09:00 - 10:00 pagi</span>
                                     </div>
                                 </div>
                                 <div class="calendar-details">
-                                    <p>10:00 am</p>
+                                    <p>10:00 pagi</p>
                                     <div class="calendar-box normal-bg">
                                         <div class="calandar-event-name">
-                                            <h4>Botony</h4>
+                                            <h4>Botani</h4>
                                             <h5>Lorem ipsum sit amet</h5>
                                         </div>
-                                        <span>10:00 - 11:00 am</span>
+                                        <span>10:00 - 11:00 pagi</span>
                                     </div>
                                 </div>
                                 <div class="upcome-event-date">
@@ -323,53 +322,53 @@
                                     <span><i class="fas fa-ellipsis-h"></i></span>
                                 </div>
                                 <div class="calendar-details">
-                                    <p>08:00 am</p>
+                                    <p>08:00 pagi</p>
                                     <div class="calendar-box normal-bg">
                                         <div class="calandar-event-name">
-                                            <h4>English</h4>
+                                            <h4>Bahasa Inggris</h4>
                                             <h5>Lorem ipsum sit amet</h5>
                                         </div>
-                                        <span>08:00 - 09:00 am</span>
+                                        <span>08:00 - 09:00 pagi</span>
                                     </div>
                                 </div>
                                 <div class="calendar-details">
-                                    <p>09:00 am</p>
+                                    <p>09:00 pagi</p>
                                     <div class="calendar-box normal-bg">
                                         <div class="calandar-event-name">
-                                            <h4>Mathematics </h4>
+                                            <h4>Matematika </h4>
                                             <h5>Lorem ipsum sit amet</h5>
                                         </div>
-                                        <span>09:00 - 10:00 am</span>
+                                        <span>09:00 - 10:00 pagi</span>
                                     </div>
                                 </div>
                                 <div class="calendar-details">
-                                    <p>10:00 am</p>
+                                    <p>10:00 pagi</p>
                                     <div class="calendar-box normal-bg">
                                         <div class="calandar-event-name">
-                                            <h4>History</h4>
+                                            <h4>Sejarah</h4>
                                             <h5>Lorem ipsum sit amet</h5>
                                         </div>
-                                        <span>10:00 - 11:00 am</span>
+                                        <span>10:00 - 11:00 pagi</span>
                                     </div>
                                 </div>
                                 <div class="calendar-details">
-                                    <p>11:00 am</p>
+                                    <p>11:00 pagi</p>
                                     <div class="calendar-box break-bg">
                                         <div class="calandar-event-name">
-                                            <h4>Break</h4>
+                                            <h4>Istirahat</h4>
                                             <h5>Lorem ipsum sit amet</h5>
                                         </div>
-                                        <span>11:00 - 12:00 am</span>
+                                        <span>11:00 - 12:00 pagi</span>
                                     </div>
                                 </div>
                                 <div class="calendar-details">
-                                    <p>11:30 am</p>
+                                    <p>11:30 pagi</p>
                                     <div class="calendar-box normal-bg">
                                         <div class="calandar-event-name">
-                                            <h4>History</h4>
+                                            <h4>Sejarah</h4>
                                             <h5>Lorem ipsum sit amet</h5>
                                         </div>
-                                        <span>11:30 - 12:00 am</span>
+                                        <span>11:30 - 12:00 pagi</span>
                                     </div>
                                 </div>
                             </div>
