@@ -56,7 +56,7 @@
                     <div class="card-body">
                         <div class="db-widgets d-flex justify-content-between align-items-center">
                             <div class="db-info">
-                                <h6>Department</h6>
+                                <h6>Departemen</h6>
                                 <h3>{{ \App\Models\Department::count() }}</h3>
                             </div>
                             <div class="db-icon">
@@ -71,7 +71,7 @@
                     <div class="card-body">
                         <div class="db-widgets d-flex justify-content-between align-items-center">
                             <div class="db-info">
-                                <h6>Revenue</h6>
+                                <h6>Pendapatan</h6>
                                 <h3>$505</h3>
                             </div>
                             <div class="db-icon">
@@ -89,7 +89,7 @@
                         <div class="card-header">
                             <div class="row align-items-center">
                                 <div class="col-12 text-center">
-                                    <h5 class="card-title">Gender</h5>
+                                    <h5 class="card-title">Jenis Kelamin</h5>
                                 </div>
                             </div>
                         </div>
@@ -260,7 +260,7 @@
 
                 <div class="card flex-fill student-space comman-shadow">
                     <div class="card-header d-flex align-items-center">
-                        <h5 class="card-title">Star Students</h5>
+                        <h5 class="card-title">Siswa Berprestasi</h5>
                         <ul class="chart-list-out student-ellips">
                             <li class="star-menus"><a href="javascript:;"><i class="fas fa-ellipsis-v"></i></a>
                             </li>
@@ -273,10 +273,10 @@
                                 <thead class="thead-light">
                                     <tr>
                                         <th>ID</th>
-                                        <th>Name</th>
-                                        <th class="text-center">Marks</th>
-                                        <th class="text-center">Percentage</th>
-                                        <th class="text-end">Year</th>
+                                        <th>Nama</th>
+                                        <th class="text-center">Nilai</th>
+                                        <th class="text-center">Persentase</th>
+                                        <th class="text-end">Tahun</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -366,7 +366,7 @@
 
                 <div class="card flex-fill comman-shadow">
                     <div class="card-header d-flex align-items-center">
-                        <h5 class="card-title ">Student Activity </h5>
+                        <h5 class="card-title ">Aktivitas Siswa</h5>
                         <ul class="chart-list-out student-ellips">
                             <li class="star-menus"><a href="javascript:;"><i class="fas fa-ellipsis-v"></i></a>
                             </li>
