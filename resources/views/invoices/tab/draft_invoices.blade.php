@@ -7,11 +7,11 @@
             <div class="page-header">
                 <div class="row align-items-center">
                     <div class="col">
-                        <h3 class="page-title">Invoices</h3>
+                        <h3 class="page-title">Faktur</h3>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
-                            <li class="breadcrumb-item"><a href="invoices.html">Invoice</a></li>
-                            <li class="breadcrumb-item active">Invoices Draft</li>
+                            <li class="breadcrumb-item"><a href="{{ route('home') }}">Dasbor</a></li>
+                            <li class="breadcrumb-item"><a href="invoices.html">Faktur</a></li>
+                            <li class="breadcrumb-item active">Faktur Draft</li>
                         </ul>
                     </div>
                     <div class="col-auto">
@@ -33,16 +33,16 @@
                                 <li>
                                     <div class="multipleSelection">
                                         <div class="selectBox">
-                                            <p class="mb-0"><i class="fas fa-user-plus me-1 select-icon"></i> Select
-                                                User</p>
+                                            <p class="mb-0"><i class="fas fa-user-plus me-1 select-icon"></i> Pilih
+                                                Pengguna</p>
                                             <span class="down-icon"><i class="fas fa-chevron-down"></i></span>
                                         </div>
                                         <div id="checkBoxes">
                                             <form action="#">
-                                                <p class="checkbox-title">Customer Search</p>
+                                                <p class="checkbox-title">Pencarian Pelanggan</p>
                                                 <div class="form-custom">
                                                     <input type="text" class="form-control bg-grey"
-                                                        placeholder="Enter Customer Name">
+                                                        placeholder="Masukkan Nama Pelanggan">
                                                 </div>
                                                 <div class="selectBox-cont">
                                                     <label class="custom_check w-100">
@@ -74,7 +74,7 @@
                                                         <span class="checkmark"></span> Richard Miles
                                                     </label>
                                                 </div>
-                                                <button type="submit" class="btn w-100 btn-primary">Apply</button>
+                                                <button type="submit" class="btn w-100 btn-primary">Terapkan</button>
                                                 <button type="reset" class="btn w-100 btn-grey">Reset</button>
                                             </form>
                                         </div>
@@ -83,34 +83,34 @@
                                 <li>
                                     <div class="multipleSelection">
                                         <div class="selectBox">
-                                            <p class="mb-0"><i class="fas fa-calendar me-1 select-icon"></i> Select
-                                                Date</p>
+                                            <p class="mb-0"><i class="fas fa-calendar me-1 select-icon"></i> Pilih
+                                                Tanggal</p>
                                             <span class="down-icon"><i class="fas fa-chevron-down"></i></span>
                                         </div>
                                         <div id="checkBoxes">
                                             <form action="#">
-                                                <p class="checkbox-title">Date Filter</p>
+                                                <p class="checkbox-title">Filter Tanggal</p>
                                                 <div class="selectBox-cont selectBox-cont-one h-auto">
                                                     <div class="date-picker">
                                                         <div class="form-custom cal-icon">
                                                             <input class="form-control datetimepicker" type="text"
-                                                                placeholder="Form">
+                                                                placeholder="Dari">
                                                         </div>
                                                     </div>
                                                     <div class="date-picker pe-0">
                                                         <div class="form-custom cal-icon">
                                                             <input class="form-control datetimepicker" type="text"
-                                                                placeholder="To">
+                                                                placeholder="Ke">
                                                         </div>
                                                     </div>
                                                     <div class="date-list">
                                                         <ul>
-                                                            <li><a href="#" class="btn date-btn">Today</a></li>
-                                                            <li><a href="#" class="btn date-btn">Yesterday</a></li>
-                                                            <li><a href="#" class="btn date-btn">Last 7 days</a>
+                                                            <li><a href="#" class="btn date-btn">Hari Ini</a></li>
+                                                            <li><a href="#" class="btn date-btn">Kemarin</a></li>
+                                                            <li><a href="#" class="btn date-btn">7 Hari Terakhir</a>
                                                             </li>
-                                                            <li><a href="#" class="btn date-btn">This month</a></li>
-                                                            <li><a href="#" class="btn date-btn">Last month</a></li>
+                                                            <li><a href="#" class="btn date-btn">Bulan Ini</a></li>
+                                                            <li><a href="#" class="btn date-btn">Bulan Lalu</a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -121,25 +121,25 @@
                                 <li>
                                     <div class="multipleSelection">
                                         <div class="selectBox">
-                                            <p class="mb-0"><i class="fas fa-book-open me-1 select-icon"></i> Select
+                                            <p class="mb-0"><i class="fas fa-book-open me-1 select-icon"></i> Pilih
                                                 Status</p>
                                             <span class="down-icon"><i class="fas fa-chevron-down"></i></span>
                                         </div>
                                         <div id="checkBoxes">
                                             <form action="#">
-                                                <p class="checkbox-title">By Status</p>
+                                                <p class="checkbox-title">Berdasarkan Status</p>
                                                 <div class="selectBox-cont">
                                                     <label class="custom_check w-100">
                                                         <input type="checkbox" name="name">
-                                                        <span class="checkmark"></span> All Invoices
+                                                        <span class="checkmark"></span> Semua Faktur
                                                     </label>
                                                     <label class="custom_check w-100">
                                                         <input type="checkbox" name="name">
-                                                        <span class="checkmark"></span> Paid
+                                                        <span class="checkmark"></span> Terbayar
                                                     </label>
                                                     <label class="custom_check w-100">
                                                         <input type="checkbox" name="name">
-                                                        <span class="checkmark"></span> Overdue
+                                                        <span class="checkmark"></span> Terlambat
                                                     </label>
                                                     <label class="custom_check w-100">
                                                         <input type="checkbox" name="name" checked>
@@ -147,14 +147,14 @@
                                                     </label>
                                                     <label class="custom_check w-100">
                                                         <input type="checkbox" name="name">
-                                                        <span class="checkmark"></span> Recurring
+                                                        <span class="checkmark"></span> Berkala
                                                     </label>
                                                     <label class="custom_check w-100">
                                                         <input type="checkbox" name="name">
-                                                        <span class="checkmark"></span> Cancelled
+                                                        <span class="checkmark"></span> Dibatalkan
                                                     </label>
                                                 </div>
-                                                <button type="submit" class="btn w-100 btn-primary">Apply</button>
+                                                <button type="submit" class="btn w-100 btn-primary">Terapkan</button>
                                                 <button type="reset" class="btn w-100 btn-grey">Reset</button>
                                             </form>
                                         </div>
@@ -163,48 +163,48 @@
                                 <li>
                                     <div class="multipleSelection">
                                         <div class="selectBox">
-                                            <p class="mb-0"><i class="fas fa-bookmark me-1 select-icon"></i> By
-                                                Category</p>
+                                            <p class="mb-0"><i class="fas fa-bookmark me-1 select-icon"></i> Berdasarkan
+                                                Kategori</p>
                                             <span class="down-icon"><i class="fas fa-chevron-down"></i></span>
                                         </div>
                                         <div id="checkBoxes">
                                             <form action="#">
-                                                <p class="checkbox-title">Category</p>
+                                                <p class="checkbox-title">Kategori</p>
                                                 <div class="form-custom">
                                                     <input type="text" class="form-control bg-grey"
-                                                        placeholder="Enter Category Name">
+                                                        placeholder="Masukkan Nama Kategori">
                                                 </div>
                                                 <div class="selectBox-cont">
                                                     <label class="custom_check w-100">
                                                         <input type="checkbox" name="category">
-                                                        <span class="checkmark"></span> Advertising
+                                                        <span class="checkmark"></span> Periklanan
                                                     </label>
                                                     <label class="custom_check w-100">
                                                         <input type="checkbox" name="category">
-                                                        <span class="checkmark"></span> Food
+                                                        <span class="checkmark"></span> Makanan
                                                     </label>
                                                     <label class="custom_check w-100">
                                                         <input type="checkbox" name="category">
-                                                        <span class="checkmark"></span> Marketing
+                                                        <span class="checkmark"></span> Pemasaran
                                                     </label>
                                                     <label class="custom_check w-100">
                                                         <input type="checkbox" name="category">
-                                                        <span class="checkmark"></span> Repairs
+                                                        <span class="checkmark"></span> Perbaikan
                                                     </label>
                                                     <label class="custom_check w-100">
                                                         <input type="checkbox" name="category">
-                                                        <span class="checkmark"></span> Software
+                                                        <span class="checkmark"></span> Perangkat Lunak
                                                     </label>
                                                     <label class="custom_check w-100">
                                                         <input type="checkbox" name="category">
-                                                        <span class="checkmark"></span> Stationary
+                                                        <span class="checkmark"></span> Alat Tulis
                                                     </label>
                                                     <label class="custom_check w-100">
                                                         <input type="checkbox" name="category">
-                                                        <span class="checkmark"></span> Travel
+                                                        <span class="checkmark"></span> Perjalanan
                                                     </label>
                                                 </div>
-                                                <button type="submit" class="btn w-100 btn-primary">Apply</button>
+                                                <button type="submit" class="btn w-100 btn-primary">Terapkan</button>
                                                 <button type="reset" class="btn w-100 btn-grey">Reset</button>
                                             </form>
                                         </div>
@@ -214,7 +214,7 @@
                                     <div class="report-btn">
                                         <a href="#" class="btn">
                                             <img src="assets/img/icons/invoices-icon5.png" alt="" class="me-2">
-                                            Generate report
+                                            Buat laporan
                                         </a>
                                     </div>
                                 </li>
@@ -231,12 +231,12 @@
                             <div class="col-lg-8 col-md-8">
                                 <div class="invoices-tabs">
                                     <ul>
-                                        <li><a href="{{ route('invoice/list/page') }}">All Invoice</a></li>
-                                        <li><a href="{{ route('invoice/paid/page') }}">Paid</a></li>
-                                        <li><a href="{{ route('invoice/overdue/page') }}">Overdue</a></li>
+                                        <li><a href="{{ route('invoice/list/page') }}">Semua Faktur</a></li>
+                                        <li><a href="{{ route('invoice/paid/page') }}">Terbayar</a></li>
+                                        <li><a href="{{ route('invoice/overdue/page') }}">Terlambat</a></li>
                                         <li><a class="active" href="{{ route('invoice/draft/page') }}">Draft</a></li>
-                                        <li><a href="{{ route('invoice/recurring/page') }}">Recurring</a></li>
-                                        <li><a href="{{ route('invoice/cancelled/page') }}">Cancelled</a></li>
+                                        <li><a href="{{ route('invoice/recurring/page') }}">Berkala</a></li>
+                                        <li><a href="{{ route('invoice/cancelled/page') }}">Dibatalkan</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -246,7 +246,7 @@
                                         <i class="feather feather-settings"></i>
                                     </a>
                                     <a href="{{ route('invoice/add/page') }}" class="btn">
-                                        <i class="feather feather-plus-circle"></i> New Invoice
+                                        <i class="feather feather-plus-circle"></i> Faktur Baru
                                     </a>
                                 </div>
                             </div>
@@ -267,7 +267,7 @@
                                     <div class="inovices-amount">$8,78,797</div>
                                 </div>
                             </div>
-                            <p class="inovices-all">All Invoices <span>50</span></p>
+                            <p class="inovices-all">Semua Faktur <span>50</span></p>
                         </div>
                     </div>
                 </div>
@@ -282,7 +282,7 @@
                                     <div class="inovices-amount">$4,5884</div>
                                 </div>
                             </div>
-                            <p class="inovices-all">Paid Invoices <span>60</span></p>
+                            <p class="inovices-all">Faktur Terbayar <span>60</span></p>
                         </div>
                     </div>
                 </div>
@@ -297,7 +297,7 @@
                                     <div class="inovices-amount">$2,05,545</div>
                                 </div>
                             </div>
-                            <p class="inovices-all">Unpaid Invoices <span>70</span></p>
+                            <p class="inovices-all">Faktur Belum Terbayar <span>70</span></p>
                         </div>
                     </div>
                 </div>
@@ -312,7 +312,7 @@
                                     <div class="inovices-amount">$8,8,797</div>
                                 </div>
                             </div>
-                            <p class="inovices-all">Cancelled Invoices <span>80</span></p>
+                            <p class="inovices-all">Faktur Dibatalkan <span>80</span></p>
                         </div>
                     </div>
                 </div>
@@ -326,10 +326,10 @@
                                 <table class="table table-stripped table-hover datatable">
                                     <thead class="thead-light">
                                         <tr>
-                                            <th>Invoice to</th>
-                                            <th>Amount</th>
-                                            <th>Created on</th>
-                                            <th class="text-end">Action</th>
+                                            <th>Faktur untuk</th>
+                                            <th>Jumlah</th>
+                                            <th>Dibuat pada</th>
+                                            <th class="text-end">Tindakan</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -341,7 +341,7 @@
                                                 </label>
                                                 <h2 class="table-avatar">
                                                     <a href="profile.html">
-                                                        <img class="avatar avatar-sm me-2 avatar-img rounded-circle" src="{{ URL::to('/images/photo_defaults.jpg') }}" alt="User Image"> StarCode Moore
+                                                        <img class="avatar avatar-sm me-2 avatar-img rounded-circle" src="{{ URL::to('/images/photo_defaults.jpg') }}" alt="Gambar Pengguna"> StarCode Moore
                                                     </a>
                                                 </h2>
                                             </td>
@@ -352,7 +352,7 @@
                                                     class="btn btn-sm btn-white text-success me-2">
                                                     <i class="far fa-edit me-1"></i> Edit</a>
                                                 <a class="btn btn-sm btn-white text-danger" href="#" data-bs-toggle="modal" data-bs-target="#delete_paid">
-                                                    <i class="far fa-trash-alt me-1"></i>Delete
+                                                    <i class="far fa-trash-alt me-1"></i>Hapus
                                                 </a>
                                             </td>
                                         </tr>
@@ -364,7 +364,7 @@
                                                 </label>
                                                 <h2 class="table-avatar">
                                                     <a href="profile.html">
-                                                        <img class="avatar avatar-sm me-2 avatar-img rounded-circle" src="{{ URL::to('/images/photo_defaults.jpg') }}" alt="User Image"> StarCode Moore</a>
+                                                        <img class="avatar avatar-sm me-2 avatar-img rounded-circle" src="{{ URL::to('/images/photo_defaults.jpg') }}" alt="Gambar Pengguna"> StarCode Moore</a>
                                                 </h2>
                                             </td>
                                             <td class="text-primary">$1,54,220</td>
@@ -374,7 +374,7 @@
                                                     class="btn btn-sm btn-white text-success me-2">
                                                     <i class="far fa-edit me-1"></i> Edit</a>
                                                 <a class="btn btn-sm btn-white text-danger" href="#" data-bs-toggle="modal" data-bs-target="#delete_paid">
-                                                    <i class="far fa-trash-alt me-1"></i>Delete
+                                                    <i class="far fa-trash-alt me-1"></i>Hapus
                                                 </a>
                                             </td>
                                         </tr>
@@ -394,8 +394,8 @@
             <div class="modal-content">
                 <div class="modal-body">
                     <div class="form-header">
-                        <h3>Delete Invoice Draft</h3>
-                        <p>Are you sure want to delete?</p>
+                        <h3>Hapus Faktur Draft</h3>
+                        <p>Apakah Anda yakin ingin menghapus?</p>
                     </div>
                     <div class="modal-btn delete-action">
                         <div class="row">

@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('content')
-{{-- message --}}
+{{-- pesan --}}
 {!! Toastr::message() !!}
 <div class="page-wrapper">
     <div class="content container-fluid">
@@ -8,10 +8,10 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col">
-                    <h3 class="page-title">Departments</h3>
+                    <h3 class="page-title">Departemen</h3>
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Departments</li>
+                        <li class="breadcrumb-item"><a href="index.html">Dasbor</a></li>
+                        <li class="breadcrumb-item active">Departemen</li>
                     </ul>
                 </div>
             </div>
@@ -21,22 +21,22 @@
             <div class="row">
                 <div class="col-lg-3 col-md-6">
                     <div class="form-group">
-                        <input type="text" class="form-control" id="department_id" placeholder="Search by ID ...">
+                        <input type="text" class="form-control" id="department_id" placeholder="Cari berdasarkan ID ...">
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <div class="form-group">
-                        <input type="text" class="form-control" id="department_name" placeholder="Search by Name ...">
+                        <input type="text" class="form-control" id="department_name" placeholder="Cari berdasarkan Nama ...">
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="form-group">
-                        <input type="text" class="form-control"  placeholder="Search by Year ...">
+                        <input type="text" class="form-control"  placeholder="Cari berdasarkan Tahun ...">
                     </div>
                 </div>
                 <div class="col-lg-2">
                     <div class="search-student-btn">
-                        <button type="btn" class="btn btn-primary">Search</button>
+                        <button type="btn" class="btn btn-primary">Cari</button>
                     </div>
                 </div>
             </div>
@@ -49,11 +49,11 @@
                         <div class="page-header">
                             <div class="row align-items-center">
                                 <div class="col">
-                                    <h3 class="page-title">Departments</h3>
+                                    <h3 class="page-title">Departemen</h3>
                                 </div>
                                 <div class="col-auto text-end float-end ms-auto download-grp">
                                     <a href="#" class="btn btn-outline-primary me-2">
-                                        <i class="fas fa-download"></i> Download
+                                        <i class="fas fa-download"></i> Unduh
                                     </a>
                                     <a href="{{ route('department/add/page') }}" class="btn btn-primary">
                                         <i class="fas fa-plus"></i>
@@ -66,11 +66,11 @@
                             <thead class="student-thread">
                                 <tr>
                                     <th>ID</th>
-                                    <th>Name</th>
-                                    <th>HOD</th>
-                                    <th>Started Year</th>
-                                    <th>No of Students</th>
-                                    <th class="text-end">Action</th>
+                                    <th>Nama</th>
+                                    <th>Kepala Departemen</th>
+                                    <th>Tahun Mulai</th>
+                                    <th>Jumlah Mahasiswa</th>
+                                    <th class="text-end">Aksi</th>
                                 </tr>
                             </thead>
                         </table>
@@ -81,14 +81,14 @@
     </div>
 </div>
 
-{{-- model elete --}}
+{{-- model hapus --}}
 <div class="modal custom-modal fade" id="delete" role="dialog">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-body">
                 <div class="form-header">
-                    <h3>Delete Department</h3>
-                    <p>Are you sure want to delete?</p>
+                    <h3>Hapus Departemen</h3>
+                    <p>Apakah Anda yakin ingin menghapus?</p>
                 </div>
                 <div class="modal-btn delete-action">
                     <div class="row">
@@ -97,11 +97,11 @@
                             <input type="hidden" name="department_id" class="e_department_id" value="">
                             <div class="row">
                                 <div class="col-6">
-                                    <button type="submit" class="btn btn-primary paid-continue-btn" style="width: 100%;">Delete</button>
+                                    <button type="submit" class="btn btn-primary paid-continue-btn" style="width: 100%;">Hapus</button>
                                 </div>
                                 <div class="col-6">
                                     <a data-bs-dismiss="modal"
-                                        class="btn btn-primary paid-cancel-btn">Cancel
+                                        class="btn btn-primary paid-cancel-btn">Batal
                                     </a>
                                 </div>
                             </div>
@@ -114,7 +114,7 @@
 </div>
 
 @section('script')
-    {{-- get data all js --}}
+    {{-- dapatkan semua data js --}}
     <script type="text/javascript">
         $(document).ready(function() {
         $('#dataList').DataTable({
@@ -155,7 +155,7 @@
         });
     </script>
 
-    {{-- delete js --}}
+    {{-- hapus js --}}
 <script>
     $(document).on('click','.delete',function()
     {
