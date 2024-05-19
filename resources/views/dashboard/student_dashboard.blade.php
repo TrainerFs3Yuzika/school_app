@@ -107,8 +107,8 @@
                             <div class="row">
                                 <div class="col-lg-3 col-md-3 dash-widget1">
                                     <div class="circle-bar circle-bar2">
-                                        <div class="circle-graph2" data-percent="80">
-                                            <b>80%</b>
+                                        <div class="circle-graph2" data-percent="9">
+                                            <b>9%</b>
                                         </div>
                                     </div>
                                 </div>

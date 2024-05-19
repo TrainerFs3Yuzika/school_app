@@ -41,7 +41,7 @@
                             <div class="db-widgets d-flex justify-content-between align-items-center">
                                 <div class="db-info">
                                     <h6>Total Students</h6>
-                                    <h3>40/60</h3>
+                                    <h3>{{ \App\Models\Student::count() }}</h3>
                                 </div>
                                 <div class="db-icon">
                                     <img src="{{ URL::to('assets/img/icons/dash-icon-01.svg') }}" alt="Dashboard Icon">
