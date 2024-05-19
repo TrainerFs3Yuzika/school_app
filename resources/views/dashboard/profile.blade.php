@@ -1,4 +1,3 @@
-
 @extends('layouts.master')
 @section('content')
 <div class="page-wrapper">
@@ -6,10 +5,10 @@
         <div class="page-header">
             <div class="row">
                 <div class="col">
-                    <h3 class="page-title">Profile</h3>
+                    <h3 class="page-title">Profil</h3>
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Profile</li>
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Dasbord</a></li>
+                        <li class="breadcrumb-item active">Profil</li>
                     </ul>
                 </div>
             </div>
@@ -38,10 +37,10 @@
                 <div class="profile-menu">
                     <ul class="nav nav-tabs nav-tabs-solid">
                         <li class="nav-item">
-                            <a class="nav-link active" data-bs-toggle="tab" href="#per_details_tab">About</a>
+                            <a class="nav-link active" data-bs-toggle="tab" href="#per_details_tab">Tentang</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#password_tab">Password</a>
+                            <a class="nav-link" data-bs-toggle="tab" href="#password_tab">Kata Sandi</a>
                         </li>
                     </ul>
                 </div>
@@ -53,17 +52,17 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <h5 class="card-title d-flex justify-content-between">
-                                            <span>Personal Details</span>
+                                            <span>Detail Personal</span>
                                             <a class="edit-link" data-bs-toggle="modal"
                                                 href="#edit_personal_details"><i
                                                     class="far fa-edit me-1"></i>Edit</a>
                                         </h5>
                                         <div class="row">
-                                            <p class="col-sm-3 text-muted text-sm-end mb-0 mb-sm-3">Name</p>
+                                            <p class="col-sm-3 text-muted text-sm-end mb-0 mb-sm-3">Nama</p>
                                             <p class="col-sm-9">{{ Session::get('name') }}</p>
                                         </div>
                                         <div class="row">
-                                            <p class="col-sm-3 text-muted text-sm-end mb-0 mb-sm-3">Date of Birth</p>
+                                            <p class="col-sm-3 text-muted text-sm-end mb-0 mb-sm-3">Tanggal Lahir</p>
                                             <p class="col-sm-9">24 Jul 1983</p>
                                         </div>
                                         <div class="row">
@@ -74,11 +73,11 @@
                                             </p>
                                         </div>
                                         <div class="row">
-                                            <p class="col-sm-3 text-muted text-sm-end mb-0 mb-sm-3">Mobile</p>
+                                            <p class="col-sm-3 text-muted text-sm-end mb-0 mb-sm-3">Nomor Telepon</p>
                                             <p class="col-sm-9">{{ Session::get('phone_number') }}</p>
                                         </div>
                                         <div class="row">
-                                            <p class="col-sm-3 text-muted text-sm-end mb-0">Address</p>
+                                            <p class="col-sm-3 text-muted text-sm-end mb-0">Alamat</p>
                                             <p class="col-sm-9 mb-0">Phnome Phenh</p>
                                         </div>
                                     </div>
@@ -89,7 +88,7 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <h5 class="card-title d-flex justify-content-between">
-                                            <span>Account Status</span>
+                                            <span>Status Akun</span>
                                             <a class="edit-link" href="#"><i class="far fa-edit me-1"></i>Edit</a>
                                         </h5>
                                         <button class="btn btn-success" type="button"><i class="fe fe-check-verified"></i> {{ Session::get('status') }}</button>
@@ -99,7 +98,7 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <h5 class="card-title d-flex justify-content-between">
-                                            <span>Skills </span>
+                                            <span>Kemampuan </span>
                                             <a class="edit-link" href="#"><i class="far fa-edit me-1"></i>Edit</a>
                                         </h5>
                                         <div class="skill-tags">
@@ -121,13 +120,13 @@
                     <div id="password_tab" class="tab-pane fade">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">Change Password</h5>
+                                <h5 class="card-title">Ubah Kata Sandi</h5>
                                 <div class="row">
                                     <div class="col-md-10 col-lg-6">
                                         <form action="{{ route('change/password') }}" method="POST">
                                             @csrf
                                             <div class="form-group">
-                                                <label>Old Password</label>
+                                                <label>Kata Sandi Lama</label>
                                                 <input type="password" class="form-control @error('current_password') is-invalid @enderror" name="current_password" value="{{ old('current_password') }}">
                                                 @error('current_password')
                                                     <span class="invalid-feedback" role="alert">
@@ -137,7 +136,7 @@
                                             </div>
                                            
                                             <div class="form-group">
-                                                <label>New Password</label>
+                                                <label>Kata Sandi Baru</label>
                                                 <input type="password" class="form-control @error('new_password') is-invalid @enderror" name="new_password" value="{{ old('new_password') }}">
                                                 @error('new_password')
                                                     <span class="invalid-feedback" role="alert">
@@ -146,7 +145,7 @@
                                                 @enderror
                                             </div>
                                             <div class="form-group">
-                                                <label>Confirm Password</label>
+                                                <label>Konfirmasi Kata Sandi</label>
                                                 <input type="password" class="form-control @error('new_confirm_password') is-invalid @enderror" name="new_confirm_password" value="{{ old('new_confirm_password') }}">
                                                 @error('new_confirm_password')
                                                     <span class="invalid-feedback" role="alert">
@@ -154,7 +153,7 @@
                                                     </span>
                                                 @enderror
                                             </div>
-                                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                                            <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
                                         </form>
                                     </div>
                                 </div>
