@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('content')
-    {{-- message --}}
+    {{-- pesan --}}
     {!! Toastr::message() !!}
     <div class="page-wrapper">
         <div class="content container-fluid">
@@ -11,16 +11,16 @@
                         <ul class="breadcrumb invoices-breadcrumb">
                             <li class="breadcrumb-item invoices-breadcrumb-item">
                                 <a href="{{ route('invoice/list/page') }}">
-                                    <i class="fe fe-chevron-left"></i> Back to Invoice List
+                                    <i class="fe fe-chevron-left"></i> Kembali ke Daftar Tagihan
                                 </a>
                             </li>
                         </ul>
                     </div>
                     <div class="col-auto">
                         <div class="invoices-create-btn">
-                            <a class="invoices-preview-link" href="#" data-bs-toggle="modal" data-bs-target="#invoices_preview"><i class="fe fe-eye"></i> Preview</a>
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#delete_invoices_details" class="btn delete-invoice-btn">Delete Invoice</a>
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#save_invocies_details" class="btn save-invoice-btn">Save Draft</a>
+                            <a class="invoices-preview-link" href="#" data-bs-toggle="modal" data-bs-target="#invoices_preview"><i class="fe fe-eye"></i> Pratinjau</a>
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#delete_invoices_details" class="btn delete-invoice-btn">Hapus Tagihan</a>
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#save_invocies_details" class="btn save-invoice-btn">Simpan Draf</a>
                         </div>
                     </div>
                 </div>
@@ -37,7 +37,7 @@
                                     <div class="row">
                                         <div class="col-xl-4 col-md-6 col-sm-12 col-12">
                                             <div class="form-group">
-                                                <label>Customer Name</label>
+                                                <label>Nama Pelanggan</label>
                                                 <select class="select select2s-hidden-accessible @error('full_name') is-invalid @enderror" style="width: 100%;" tabindex="-1" aria-hidden="true" id="customer_name" name="customer_name">
                                                     <option>{{ $invoiceView->customer_name }}</option>
                                                     @foreach($users as $key => $names)
@@ -46,30 +46,30 @@
                                                 </select>
                                             </div>
                                             <div class="form-group">
-                                                <label>Po Number</label>
+                                                <label>Nomor Po</label>
                                                 <input class="form-control" type="text" id="po_number" name="po_number" value="{{ $invoiceView->po_number }}">
                                             </div>
                                         </div>
                                         
                                         <div class="col-xl-5 col-md-6 col-sm-12 col-12">
-                                            <h4 class="invoice-details-title">Invoice details</h4>
+                                            <h4 class="invoice-details-title">Detail Tagihan</h4>
                                             <div class="invoice-details-box">
                                                 <div class="invoice-inner-head">
-                                                    <span>Invoice No. <a>{{ $invoiceView->invoice_id }}</a></span>
+                                                    <span>Nomor Tagihan <a>{{ $invoiceView->invoice_id }}</a></span>
                                                 </div>
                                                 <div class="invoice-inner-footer">
                                                     <div class="row align-items-center">
                                                         <div class="col-lg-6 col-md-6">
                                                             <div class="invoice-inner-date">
                                                                 <span>
-                                                                    Date <input class="form-control datetimepicker" type="text" name="date" value="{{ date('d-m-Y') }}">
+                                                                    Tanggal <input class="form-control datetimepicker" type="text" name="date" value="{{ date('d-m-Y') }}">
                                                                 </span>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-6 col-md-6">
                                                             <div class="invoice-inner-date invoice-inner-datepic">
                                                                 <span>
-                                                                    Due Date <input class="form-control datetimepicker" type="text" name="due_date" value="{{ $invoiceView->due_date }}">
+                                                                    Tanggal Jatuh Tempo <input class="form-control datetimepicker" type="text" name="due_date" value="{{ $invoiceView->due_date }}">
                                                                 </span>
                                                             </div>
                                                         </div>
@@ -83,11 +83,11 @@
                                                 <div class="form-group mb-0">
                                                     <label class="custom_check w-100">
                                                         @if(!empty($invoiceView->enable_tax))
-                                                            <input type="checkbox" checked id="enableTax" name="enable_tax" value="Enable tax">
+                                                            <input type="checkbox" checked id="enableTax" name="enable_tax" value="Aktifkan pajak">
                                                         @else
-                                                            <input type="checkbox" id="enableTax" name="enable_tax" value="Enable tax">
+                                                            <input type="checkbox" id="enableTax" name="enable_tax" value="Aktifkan pajak">
                                                         @endif
-                                                        <span class="checkmark"></span> Enable tax
+                                                        <span class="checkmark"></span> Aktifkan pajak
                                                     </label>
                                                     <label class="custom_check w-100">
                                                         @if(!empty($invoiceView->recurring_incoice))

@@ -11,16 +11,16 @@
                         <ul class="breadcrumb invoices-breadcrumb">
                             <li class="breadcrumb-item invoices-breadcrumb-item">
                                 <a href="{{ route('invoice/list/page') }}">
-                                    <i class="fe fe-chevron-left"></i> Back to Invoice List
+                                    <i class="fe fe-chevron-left"></i> Kembali ke Daftar Faktur
                                 </a>
                             </li>
                         </ul>
                     </div>
                     <div class="col-auto">
                         <div class="invoices-create-btn">
-                            <a class="invoices-preview-link" href="#" data-bs-toggle="modal" data-bs-target="#invoices_preview"><i class="fe fe-eye"></i> Preview</a>
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#delete_invoices_details" class="btn delete-invoice-btn">Delete Invoice</a>
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#save_invocies_details" class="btn save-invoice-btn">Save Draft</a>
+                            <a class="invoices-preview-link" href="#" data-bs-toggle="modal" data-bs-target="#invoices_preview"><i class="fe fe-eye"></i> Pratinjau</a>
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#delete_invoices_details" class="btn delete-invoice-btn">Hapus Faktur</a>
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#save_invocies_details" class="btn save-invoice-btn">Simpan Draft</a>
                         </div>
                     </div>
                 </div>
@@ -36,39 +36,39 @@
                                     <div class="row">
                                         <div class="col-xl-4 col-md-6 col-sm-12 col-12">
                                             <div class="form-group">
-                                                <label>Customer Name</label>
+                                                <label>Nama Pelanggan</label>
                                                 <select class="select select2s-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true" id="customer_name" name="customer_name">
-                                                    <option selected disabled>-- Select Customer --</option>
+                                                    <option selected disabled>-- Pilih Pelanggan --</option>
                                                     @foreach($users as $key => $names)
                                                         <option value="{{ $names->name }}" {{ old('full_name') == $names->name ? "selected" :""}}>{{ $names->name }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
                                             <div class="form-group">
-                                                <label>Po Number</label>
-                                                <input class="form-control @error('po_number') is-invalid @enderror" type="text" id="po_number" name="po_number" placeholder="Enter Reference Number" value="{{ old('po_number') }}">
+                                                <label>Nomor Po</label>
+                                                <input class="form-control @error('po_number') is-invalid @enderror" type="text" id="po_number" name="po_number" placeholder="Masukkan Nomor Referensi" value="{{ old('po_number') }}">
                                             </div>
                                         </div>
                                         
                                         <div class="col-xl-5 col-md-6 col-sm-12 col-12">
-                                            <h4 class="invoice-details-title">Invoice details</h4>
+                                            <h4 class="invoice-details-title">Detail Faktur</h4>
                                             <div class="invoice-details-box">
                                                 <div class="invoice-inner-head">
-                                                    <span>Invoice No. <a>IN000000#@00</a></span>
+                                                    <span>Nomor Faktur <a>IN000000#@00</a></span>
                                                 </div>
                                                 <div class="invoice-inner-footer">
                                                     <div class="row align-items-center">
                                                         <div class="col-lg-6 col-md-6">
                                                             <div class="invoice-inner-date">
                                                                 <span>
-                                                                    Date <input class="form-control datetimepicker" type="text" name="date" value="{{ date('d-m-Y') }}">
+                                                                    Tanggal <input class="form-control datetimepicker" type="text" name="date" value="{{ date('d-m-Y') }}">
                                                                 </span>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-6 col-md-6">
                                                             <div class="invoice-inner-date invoice-inner-datepic">
                                                                 <span>
-                                                                    Due Date <input class="form-control datetimepicker @error('po_number') is-invalid @enderror" type="text" name="due_date" placeholder="Select" value="{{ old('due_date') }}">
+                                                                    Tanggal Jatuh Tempo <input class="form-control datetimepicker @error('po_number') is-invalid @enderror" type="text" name="due_date" placeholder="Pilih" value="{{ old('due_date') }}">
                                                                 </span>
                                                             </div>
                                                         </div>
@@ -81,12 +81,12 @@
                                             <div class="inovices-month-info">
                                                 <div class="form-group mb-0">
                                                     <label class="custom_check w-100">
-                                                        <input type="checkbox" id="enableTax" name="enable_tax" value="Enable tax">
-                                                        <span class="checkmark"></span> Enable tax
+                                                        <input type="checkbox" id="enableTax" name="enable_tax" value="Aktifkan pajak">
+                                                        <span class="checkmark"></span> Aktifkan pajak
                                                     </label>
                                                     <label class="custom_check w-100">
-                                                        <input type="checkbox" id="chkYes" name="recurring_incoice" value="Recurring Invoice">
-                                                        <span class="checkmark"></span> Recurring Invoice
+                                                        <input type="checkbox" id="chkYes" name="recurring_incoice" value="Faktur Berulang">
+                                                        <span class="checkmark"></span> Faktur Berulang
                                                     </label>
                                                 </div>
                                                 <div id="show-invoices">
