@@ -97,11 +97,7 @@
                                         <div class="form-group local-forms">
                                             <label>Golongan Darah <span class="login-danger">*</span></label>
                                             <select class="form-control select @error('blood_group') is-invalid @enderror" name="blood_group">
-<<<<<<< HEAD
                                                 <option selected disabled>Silakan Pilih Golongan Darah</option>
-=======
-                                                <option selected disabled>Pilih Golongan Darah</option>
->>>>>>> a4e8123f3d8b820cc4334775575416e5b0eda250
                                                 <option value="A+" {{ $studentEdit->blood_group == 'A+' ? "selected" :""}}>A+</option>
                                                 <option value="B+" {{ $studentEdit->blood_group == 'B+' ? "selected" :""}}>B+</option>
                                                 <option value="O+" {{ $studentEdit->blood_group == 'O+' ? "selected" :""}}>O+</option>
@@ -117,11 +113,7 @@
                                         <div class="form-group local-forms">
                                             <label>Agama <span class="login-danger">*</span></label>
                                             <select class="form-control select @error('religion') is-invalid @enderror" name="religion">
-<<<<<<< HEAD
                                                 <option selected disabled>Silakan Pilih Agama</option>
-=======
-                                                <option selected disabled>Pilih Agama</option>
->>>>>>> a4e8123f3d8b820cc4334775575416e5b0eda250
                                                 <option value="Hindu" {{ $studentEdit->religion == 'Hindu' ? "selected" :""}}>Hindu</option>
                                                 <option value="Kristen" {{ $studentEdit->religion == 'Christian' ? "selected" :""}}>Kristen</option>
                                                 <option value="Lainnya" {{ $studentEdit->religion == 'Others' ? "selected" :""}}>Lainnya</option>
@@ -148,11 +140,7 @@
                                         <div class="form-group local-forms">
                                             <label>Kelas <span class="login-danger">*</span></label>
                                             <select class="form-control select @error('class') is-invalid @enderror" name="class">
-<<<<<<< HEAD
                                                 <option selected disabled>Silakan Pilih Kelas</option>
-=======
-                                                <option selected disabled>Pilih Kelas</option>
->>>>>>> a4e8123f3d8b820cc4334775575416e5b0eda250
                                                 <option value="12" {{ $studentEdit->class == '12' ? "selected" :""}}>12</option>
                                                 <option value="11" {{ $studentEdit->class == '11' ? "selected" :""}}>11</option>
                                                 <option value="10" {{ $studentEdit->class == '10' ? "selected" :""}}>10</option>
@@ -168,11 +156,7 @@
                                         <div class="form-group local-forms">
                                             <label>Bagian <span class="login-danger">*</span></label>
                                             <select class="form-control select @error('section') is-invalid @enderror" name="section">
-<<<<<<< HEAD
                                                 <option selected disabled>Silakan Pilih Bagian</option>
-=======
-                                                <option selected disabled>Pilih Bagian</option>
->>>>>>> a4e8123f3d8b820cc4334775575416e5b0eda250
                                                 <option value="A" {{ $studentEdit->section == 'A' ? "selected" :""}}>A</option>
                                                 <option value="B" {{ $studentEdit->section == 'B' ? "selected" :""}}>B</option>
                                                 <option value="C" {{ $studentEdit->section == 'C' ? "selected" :""}}>C</option>
@@ -207,38 +191,12 @@
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-4">
-                                        <div class="form-group local-forms">
-                                            <label>Alamat <span class="login-danger">*</span></label>
-                                            <input class="form-control @error('address') is-invalid @enderror" type="text" name="address" value="{{ $studentEdit->address }}">
-                                            @error('address')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-sm-4">
-                                        <div class="form-group local-forms">
-                                            <label>Nama Orang Tua <span class="login-danger">*</span></label>
-                                            <input class="form-control @error('parent_name') is-invalid @enderror" type="text" name="parent_name" value="{{ $studentEdit->parent_name }}">
-                                            @error('parent_name')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-sm-4">
                                         <div class="form-group students-up-files">
                                             <label>Unggah Foto Siswa (150px X 150px)</label>
                                             <div class="uplod">
                                                 <h2 class="table-avatar">
                                                     <a class="avatar avatar-sm me-2">
-<<<<<<< HEAD
                                                         <img class="avatar-img rounded-circle" src="{{ Storage::url('student-photos/'.$studentEdit->upload) }}" alt="Gambar Siswa">
-=======
-                                                        <img class="avatar-img rounded-circle" src="{{ Storage::url('student-photos/'.$studentEdit->upload) }}" alt="Gambar Pengguna">
->>>>>>> a4e8123f3d8b820cc4334775575416e5b0eda250
                                                     </a>
                                                 </h2>
                                                 <label class="file-upload image-upbtn mb-0 @error('upload') is-invalid @enderror">
@@ -267,4 +225,3 @@
         </div>
     </div>
 @endsection
-

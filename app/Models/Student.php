@@ -22,7 +22,5 @@ class Student extends Model
         'admission_id',
         'phone_number',
         'upload',
-        'parent_name', // Menambahkan nama orang tua
-        'address', // Menambahkan alamat
     ];
 }
