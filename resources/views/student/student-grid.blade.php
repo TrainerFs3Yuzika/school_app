@@ -1,4 +1,3 @@
-
 @extends('layouts.master')
 @section('content')
     <div class="page-wrapper">
@@ -7,10 +6,10 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="page-sub-header">
-                            <h3 class="page-title">Students</h3>
+                            <h3 class="page-title">Siswa</h3>
                             <ul class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{ route('student/list') }}">Student</a></li>
-                                <li class="breadcrumb-item active">All Students</li>
+                                <li class="breadcrumb-item"><a href="{{ route('student/list') }}">Siswa</a></li>
+                                <li class="breadcrumb-item active">Semua Siswa</li>
                             </ul>
                         </div>
                     </div>
@@ -24,7 +23,7 @@
                             <div class="page-header">
                                 <div class="row align-items-center">
                                     <div class="col">
-                                        <h3 class="page-title">Students</h3>
+                                        <h3 class="page-title">Siswa</h3>
                                     </div>
                                     <div class="col-auto text-end float-end ms-auto download-grp">
                                         <a href="{{ route('student/list') }}" class="btn btn-outline-gray me-2"><i class="fa fa-list"></i></a>
@@ -42,12 +41,12 @@
                                                 <div class="student-box flex-fill">
                                                     <div class="student-img">
                                                         <a href="{{ url('student/profile/'.$list->id) }}">
-                                                            <img class="img-fluid" alt="Students Info" src="{{ Storage::url('/student-photos/'.$list->upload) }}" width="20%" height="20%">
+                                                            <img class="img-fluid" alt="Info Siswa" src="{{ Storage::url('/student-photos/'.$list->upload) }}" width="20%" height="20%">
                                                         </a>
                                                     </div>
                                                     <div class="student-content pb-0">
                                                         <h5><a href="{{ url('student/profile/'.$list->id) }}">{{ $list->first_name }} {{ $list->last_name }}</a></h5>
-                                                        <h6>Student</h6>
+                                                        <h6>Siswa</h6>
                                                     </div>
                                                 </div>
                                             </div>
