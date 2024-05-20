@@ -167,4 +167,12 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Route::get('fullcalender', 'index');
         Route::post('fullcalenderAjax', 'ajax');
     });
+
+    // bagian kelas
+    Route::get('/classes', 'ClassController@index')->name('classes.index');
+    Route::get('/classes/create', 'ClassController@create')->name('classes.create');
+    Route::post('/classes', 'ClassController@store')->name('classes.store');
+    Route::get('/classes/{id}/edit', 'ClassController@edit')->name('classes.edit');
+    Route::put('/classes/{id}', 'ClassController@update')->name('classes.update');
+    Route::delete('/classes/{id}', 'ClassController@destroy')->name('classes.destroy');
 });
