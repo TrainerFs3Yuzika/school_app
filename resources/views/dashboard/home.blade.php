@@ -103,7 +103,7 @@
                                         labels: ['Perempuan', 'Laki-laki'],
                                         datasets: [{
                                             label: 'Jumlah Siswa',
-                                            data: [{{ \App\Models\Student::where('gender', 'female')->count() }}, {{ \App\Models\Student::where('gender', 'male')->count() }}],
+                                            data: [{{ \App\Models\Student::where('gender', 'Perempuan')->count() }}, {{ \App\Models\Student::where('gender', 'Laki-laki')->count() }}],
                                             backgroundColor: [
                                                 'rgba(255, 99, 132, 0.6)',
                                                 'rgba(54, 162, 235, 0.6)'
@@ -138,8 +138,8 @@
                             </script>
                             <canvas id="genderChart"></canvas>
                             <div class="text-center">
-                                <div>Total Perempuan: {{ \App\Models\Student::where('gender', 'female')->count() }}</div>
-                                <div>Total Laki-laki: {{ \App\Models\Student::where('gender', 'male')->count() }}</div>
+                                <div>Total Perempuan: {{ \App\Models\Student::where('gender', 'Perempuan')->count() }}</div>
+                                <div>Total Laki-laki: {{ \App\Models\Student::where('gender', 'Laki-laki')->count() }}</div>
                             </div>
                             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
                         </div>
