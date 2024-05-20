@@ -46,6 +46,8 @@ class StudentController extends Controller
             'admission_id'  => 'required|string',
             'phone_number'  => 'required',
             'upload'        => 'required|image',
+            'parent_name'   => 'required|string', // Tambah validasi untuk nama orang tua
+            'address'       => 'required|string', // Tambah validasi untuk alamat
         ]);
         
         DB::beginTransaction();
@@ -68,6 +70,8 @@ class StudentController extends Controller
                 $student->admission_id = $request->admission_id;
                 $student->phone_number = $request->phone_number;
                 $student->upload = $upload_file;
+                $student->parent_name = $request->parent_name; // Menyimpan nama orang tua
+                $student->address = $request->address; // Menyimpan alamat
                 $student->save();
 
                 Toastr::success('Has been add successfully :)','Success');
@@ -106,6 +110,8 @@ class StudentController extends Controller
            
             $updateRecord = [
                 'upload' => $upload_file,
+                'parent_name' => $request->parent_name, // Memperbarui nama orang tua
+                'address' => $request->address, // Memperbarui alamat
             ];
             Student::where('id',$request->id)->update($updateRecord);
             
