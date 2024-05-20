@@ -25,6 +25,7 @@
                                             <th>Nama Kelas</th>
                                             <th>Nama Guru</th>
                                             <th>Nama Siswa</th>
+                                            <th>Kelas</th> <!-- Mengubah subject_id menjadi Kelas -->
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -35,6 +36,7 @@
                                                 <td>{{ $class->class_name }}</td>
                                                 <td>{{ $class->teacher->full_name }}</td>
                                                 <td>{{ $class->student->first_name }} {{ $class->student->last_name }}</td>
+                                                <td>{{ $class->subject->class }}</td> <!-- Mengubah subject_id menjadi Kelas -->
                                                 <td>
                                                     <a href="{{ route('classes.edit', $class->id) }}" class="btn btn-sm btn-info">Edit</a>
                                                     <form action="{{ route('classes.destroy', $class->id) }}" method="POST" class="d-inline">
@@ -57,3 +59,4 @@
         <p>Tidak ada kelas yang tersedia.</p>
     @endif
 @endsection
+

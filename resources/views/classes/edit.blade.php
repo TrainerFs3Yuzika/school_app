@@ -46,6 +46,17 @@
                 </select>
             </div>
             <div class="form-group">
+                <label for="subject_id">Kelas:</label>
+                <select id="subject_id" name="subject_id" class="form-control" required>
+                    <option value="">Pilih Kelas</option>
+                    @foreach ($subjects as $subject)
+                        <option value="{{ $subject->id }}" @if($subject->id == $class->subject_id) selected @endif>
+                            {{ $subject->class }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="form-group">
                 <label for="start_time">Waktu Mulai:</label>
                 <input type="datetime-local" id="start_time" name="start_time" class="form-control" value="{{ $class->start_time }}" required>
             </div>

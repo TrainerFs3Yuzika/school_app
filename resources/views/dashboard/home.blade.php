@@ -182,7 +182,6 @@
                     </div>
                 </div>
             </div>
-
                         {{-- Data Kelas --}}
                         <div class="row">
                             <div class="col-xl-12">
@@ -199,6 +198,7 @@
                                                         <th>Nama Kelas</th>
                                                         <th>Nama Guru</th>
                                                         <th>Nama Siswa</th>
+                                                        <th>Nama Mata Pelajaran</th> <!-- Mengubah "Mata pelajaran" menjadi "Mata Pelajaran" -->
                                                         <th>Aksi</th>
                                                     </tr>
                                                 </thead>
@@ -209,6 +209,7 @@
                                                             <td>{{ $class->class_name }}</td>
                                                             <td>{{ $class->teacher->full_name }}</td>
                                                             <td>{{ $class->student->first_name }} {{ $class->student->last_name }}</td>
+                                                            <td>{{ $class->subject->class }}</td>
                                                             <td>
                                                                 <a href="{{ route('classes.edit', $class->id) }}" class="btn btn-sm btn-info">Edit</a>
                                                                 <form action="{{ route('classes.destroy', $class->id) }}" method="POST" class="d-inline">

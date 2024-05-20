@@ -6,12 +6,14 @@ use Illuminate\Http\Request;
 use App\Models\ClassModel;
 use App\Models\Student;
 use App\Models\Teacher;
+use App\Models\Subject;
 
 class ClassController extends Controller
 {
     public function index()
     {
-        $classes = ClassModel::with(['student', 'teacher'])->get();
+        // Menggunakan eager loading untuk memuat relasi student, teacher, dan subject
+        $classes = ClassModel::with(['student', 'teacher', 'subject'])->get();
         return view('classes.index', compact('classes'));
     }
 
@@ -19,7 +21,8 @@ class ClassController extends Controller
     {
         $students = Student::all();
         $teachers = Teacher::all();
-        return view('classes.create', compact('students', 'teachers'));
+        $subjects = Subject::all();
+        return view('classes.create', compact('students', 'teachers', 'subjects'));
     }
 
     public function store(Request $request)
@@ -28,6 +31,7 @@ class ClassController extends Controller
             'class_name' => 'required',
             'student_id' => 'required|exists:students,id',
             'teacher_id' => 'required|exists:teachers,id',
+            'subject_id' => 'required|exists:subjects,id',
             'start_time' => 'required|date',
             'end_time' => 'required|date|after:start_time',
         ]);
@@ -36,6 +40,7 @@ class ClassController extends Controller
             'class_name' => $request->class_name,
             'student_id' => $request->student_id,
             'teacher_id' => $request->teacher_id,
+            'subject_id' => $request->subject_id,
             'start_time' => $request->start_time,
             'end_time' => $request->end_time,
         ]);
@@ -52,7 +57,8 @@ class ClassController extends Controller
         $class = ClassModel::findOrFail($id);
         $students = Student::all();
         $teachers = Teacher::all();
-        return view('classes.edit', compact('class', 'students', 'teachers'));
+        $subjects = Subject::all();
+        return view('classes.edit', compact('class', 'students', 'teachers', 'subjects'));
     }
 
     public function update(Request $request, $id)
@@ -61,6 +67,7 @@ class ClassController extends Controller
             'class_name' => 'required',
             'student_id' => 'required|exists:students,id',
             'teacher_id' => 'required|exists:teachers,id',
+            'subject_id' => 'required|exists:subjects,id',
             'start_time' => 'required|date',
             'end_time' => 'required|date|after:start_time',
         ]);
@@ -71,6 +78,7 @@ class ClassController extends Controller
             'class_name' => $request->class_name,
             'student_id' => $request->student_id,
             'teacher_id' => $request->teacher_id,
+            'subject_id' => $request->subject_id,
             'start_time' => $request->start_time,
             'end_time' => $request->end_time,
         ]);
