@@ -7,10 +7,10 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col">
-                    <h3 class="page-title">Tambahkan Guru</h3>
+                    <h3 class="page-title">Tambahkan Data Guru</h3>
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="teachers.html">Guru</a></li>
-                        <li class="breadcrumb-item active">Tambahkan Guru</li>
+                        <li class="breadcrumb-item active">Tambahkan Data Guru</li>
                     </ul>
                 </div>
             </div>
@@ -24,7 +24,7 @@
                             @csrf
                             <div class="row">
                                 <div class="col-12">
-                                    <h5 class="form-title"><span>Detail Dasar</span></h5>
+                                    <h5 class="form-title"><span>Detail Data Guru</span></h5>
                                 </div>
                                 <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms">
