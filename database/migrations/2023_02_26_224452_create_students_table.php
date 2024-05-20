@@ -29,6 +29,8 @@ return new class extends Migration
             $table->string('admission_id')->nullable();
             $table->string('phone_number')->nullable();
             $table->string('upload')->nullable();
+            $table->string('parent_name')->nullable(); // Menambahkan kolom nama orang tua
+            $table->string('address')->nullable(); // Menambahkan kolom alamat
             $table->timestamps();
         });
     }

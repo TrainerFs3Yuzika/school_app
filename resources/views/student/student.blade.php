@@ -1,4 +1,3 @@
-
 @extends('layouts.master')
 @section('content')
     <div class="page-wrapper">
@@ -16,7 +15,7 @@
                     </div>
                 </div>
             </div>
-            {{-- message --}}
+            {{-- pesan --}}
             {!! Toastr::message() !!}
             <div class="student-group-form">
                 <div class="row">
@@ -58,7 +57,7 @@
                                         <a href="{{ route('student/grid') }}" class="btn btn-outline-gray me-2">
                                             <i class="fa fa-th" aria-hidden="true"></i>
                                         </a>
-                                        <a href="#" class="btn btn-outline-primary me-2"><i class="fas fa-download"></i> Download</a>
+                                        <a href="#" class="btn btn-outline-primary me-2"><i class="fas fa-download"></i> Unduh</a>
                                         <a href="{{ route('student/add/page') }}" class="btn btn-primary"><i class="fas fa-plus"></i></a>
                                     </div>
                                 </div>
@@ -79,9 +78,15 @@
                                             <th>Kelas</th>
                                             <th>Tanggal Lahir</th>
                                             <th>Nama Orang Tua</th>
+<<<<<<< HEAD
                                             <th>Nomor HP</th>
                                             <th>Alamat</th>
                                             <th class="text-end">Action</th>
+=======
+                                            <th>Nomor Ponsel</th>
+                                            <th>Alamat</th>
+                                            <th class="text-end">Aksi</th>
+>>>>>>> a4e8123f3d8b820cc4334775575416e5b0eda250
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -98,16 +103,16 @@
                                             <td>
                                                 <h2 class="table-avatar">
                                                     <a href="student-details.html"class="avatar avatar-sm me-2">
-                                                        <img class="avatar-img rounded-circle" src="{{ Storage::url('student-photos/'.$list->upload) }}" alt="User Image">
+                                                        <img class="avatar-img rounded-circle" src="{{ Storage::url('student-photos/'.$list->upload) }}" alt="Gambar Pengguna">
                                                     </a>
                                                     <a href="student-details.html">{{ $list->first_name }} {{ $list->last_name }}</a>
                                                 </h2>
                                             </td>
                                             <td>{{ $list->class }} {{ $list->section }}</td>
                                             <td>{{ $list->date_of_birth }}</td>
-                                            <td>zxczc</td>
+                                            <td>{{ $list->parent_name }}</td>
                                             <td>{{ $list->phone_number }}</td>
-                                            <td>weqeq</td>
+                                            <td>{{ $list->address }}</td>
                                             <td class="text-end">
                                                 <div class="actions">
                                                     <a href="{{ url('student/edit/'.$list->id) }}" class="btn btn-sm bg-danger-light">
@@ -130,14 +135,14 @@
         </div>
     </div>
 
-    {{-- model student delete --}}
+    {{-- model hapus siswa --}}
     <div class="modal custom-modal fade" id="studentUser" role="dialog">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-body">
                     <div class="form-header">
-                        <h3>Delete Student</h3>
-                        <p>Are you sure want to delete?</p>
+                        <h3>Hapus Siswa</h3>
+                        <p>Apakah Anda yakin ingin menghapus?</p>
                     </div>
                     <div class="modal-btn delete-action">
                         <form action="{{ route('student/delete') }}" method="POST">
@@ -146,10 +151,10 @@
                                 <input type="hidden" name="id" class="e_id" value="">
                                 <input type="hidden" name="avatar" class="e_avatar" value="">
                                 <div class="col-6">
-                                    <button type="submit" class="btn btn-primary continue-btn submit-btn" style="border-radius: 5px !important;">Delete</button>
+                                    <button type="submit" class="btn btn-primary continue-btn submit-btn" style="border-radius: 5px !important;">Hapus</button>
                                 </div>
                                 <div class="col-6">
-                                    <a href="#" data-bs-dismiss="modal"class="btn btn-primary paid-cancel-btn">Cancel</a>
+                                    <a href="#" data-bs-dismiss="modal"class="btn btn-primary paid-cancel-btn">Batal</a>
                                 </div>
                             </div>
                         </form>
@@ -160,7 +165,7 @@
     </div>
     @section('script')
 
-    {{-- delete js --}}
+    {{-- js hapus --}}
     <script>
         $(document).on('click','.student_delete',function()
         {
