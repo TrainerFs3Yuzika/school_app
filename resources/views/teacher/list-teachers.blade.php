@@ -1,17 +1,16 @@
-
 @extends('layouts.master')
 @section('content')
-{{-- message --}}
+{{-- pesan --}}
 {!! Toastr::message() !!}
 <div class="page-wrapper">
     <div class="content container-fluid">
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col">
-                    <h3 class="page-title">Teachers</h3>
+                    <h3 class="page-title">Daftar Guru</h3>
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Teachers</li>
+                        <li class="breadcrumb-item"><a href="index.html">Dasbor</a></li>
+                        <li class="breadcrumb-item active">Guru</li>
                     </ul>
                 </div>
             </div>
@@ -21,22 +20,22 @@
             <div class="row">
                 <div class="col-lg-3 col-md-6">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search by ID ...">
+                        <input type="text" class="form-control" placeholder="Cari berdasarkan ID ...">
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search by Name ...">
+                        <input type="text" class="form-control" placeholder="Cari berdasarkan Nama ...">
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search by Phone ...">
+                        <input type="text" class="form-control" placeholder="Cari berdasarkan Telepon ...">
                     </div>
                 </div>
                 <div class="col-lg-2">
                     <div class="search-student-btn">
-                        <button type="btn" class="btn btn-primary">Search</button>
+                        <button type="btn" class="btn btn-primary">Cari</button>
                     </div>
                 </div>
             </div>
@@ -48,7 +47,7 @@
                         <div class="page-header">
                             <div class="row align-items-center">
                                 <div class="col">
-                                    <h3 class="page-title">Teachers</h3>
+                                    <h3 class="page-title">Daftar Guru</h3>
                                 </div>
                                 <div class="col-auto text-end float-end ms-auto download-grp">
                                     <a href="teachers.html" class="btn btn-outline-gray me-2 active">
@@ -56,7 +55,7 @@
                                     <a href="{{ route('teacher/grid/page') }}" class="btn btn-outline-gray me-2">
                                         <i class="fa fa-th" aria-hidden="true"></i>
                                     <a href="#" class="btn btn-outline-primary me-2"><i
-                                            class="fas fa-download"></i> Download</a>
+                                            class="fas fa-download"></i> Unduh</a>
                                     <a href="{{ route('teacher/add/page') }}" class="btn btn-primary"><i class="fas fa-plus"></i></a>
                                 </div>
                             </div>
@@ -72,14 +71,14 @@
                                             </div>
                                         </th>
                                         <th>ID</th>
-                                        <th>Name</th>
-                                        <th>Class</th>
-                                        <th>Gender</th>
-                                        <th>Subject</th>
-                                        <th>Section</th>
-                                        <th>Mobile Number</th>
-                                        <th>Address</th>
-                                        <th class="text-end">Action</th>
+                                        <th>Nama</th>
+                                        <th>Kelas</th>
+                                        <th>Jenis Kelamin</th>
+                                        <th>Mata Pelajaran</th>
+                                        <th>Bagian</th>
+                                        <th>Nomor Ponsel</th>
+                                        <th>Alamat</th>
+                                        <th class="text-end">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -108,7 +107,7 @@
                                         </td>
                                         <td>10</td>
                                         <td>{{ $list->gender }}</td>
-                                        <td>Mathematics</td>
+                                        <td>Matematika</td>
                                         <td>A</td>
                                         <td>{{ $list->mobile }}</td>
                                         <td>{{ $list->address }}</td>
@@ -140,8 +139,8 @@
         <div class="modal-content">
             <div class="modal-body">
                 <div class="form-header">
-                    <h3>Delete Student</h3>
-                    <p>Are you sure want to delete?</p>
+                    <h3>Hapus Data Guru</h3>
+                    <p>Apakah Anda yakin ingin menghapus?</p>
                 </div>
                 <div class="modal-btn delete-action">
                     <form action="{{ route('teacher/delete') }}" method="POST">
@@ -149,10 +148,10 @@
                         <div class="row">
                             <input type="hidden" name="id" class="e_user_id" value="">
                             <div class="col-6">
-                                <button type="submit" class="btn btn-primary continue-btn submit-btn" style="border-radius: 5px !important;">Delete</button>
+                                <button type="submit" class="btn btn-primary continue-btn submit-btn" style="border-radius: 5px !important;">Hapus</button>
                             </div>
                             <div class="col-6">
-                                <a href="#" data-bs-dismiss="modal"class="btn btn-primary paid-cancel-btn">Cancel</a>
+                                <a href="#" data-bs-dismiss="modal"class="btn btn-primary paid-cancel-btn">Batal</a>
                             </div>
                         </div>
                     </form>
