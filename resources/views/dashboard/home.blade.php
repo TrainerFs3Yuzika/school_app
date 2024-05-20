@@ -9,7 +9,8 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="page-sub-header">
-                        <h3 class="page-title">Welcome {{ Session::get('name') }}!</h3>
+                        <h3 class="page-title"><span style="color: blue;">Welcome</span> {{ Session::get('name') }}!</h3>
+                        <hr style="border: none; height: 2px; background-color: blue; animation: underline 2s infinite;">
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
                             <li class="breadcrumb-item active">{{ Session::get('name') }}</li>
@@ -25,7 +26,7 @@
                     <div class="card-body">
                         <div class="db-widgets d-flex justify-content-between align-items-center">
                             <div class="db-info">
-                                <h6>Total Murid</h6>
+                                <h6><span style="color: rgb(3, 3, 3); font-weight: bold;">Total Murid</span></h6>
                                 <h3>{{ \App\Models\Student::count() }}</h3>
                             </div>
                             <div class="db-icon">
@@ -40,7 +41,7 @@
                     <div class="card-body">
                         <div class="db-widgets d-flex justify-content-between align-items-center">
                             <div class="db-info">
-                                <h6>Jumlah Guru</h6>
+                                <h6><span style="color: rgb(0, 0, 0); font-weight: bold;">Jumlah Guru</span></h6>
                                 <h3>{{ \App\Models\Teacher::count() }}</h3>
                             </div>
                             <div class="db-icon">
@@ -56,7 +57,7 @@
                     <div class="card-body">
                         <div class="db-widgets d-flex justify-content-between align-items-center">
                             <div class="db-info">
-                                <h6>Departemen</h6>
+                                <h6><span style="color: rgb(0, 0, 0); font-weight: bold;">Departemen</span></h6>
                                 <h3>{{ \App\Models\Department::count() }}</h3>
                             </div>
                             <div class="db-icon">
@@ -71,7 +72,7 @@
                     <div class="card-body">
                         <div class="db-widgets d-flex justify-content-between align-items-center">
                             <div class="db-info">
-                                <h6>Pendapatan</h6>
+                                <h6><span style="color: rgb(0, 0, 0); font-weight: bold;">Pendapatan</span></h6>
                                 <h3>Rp.</h3>
                             </div>
                             <div class="db-icon">
