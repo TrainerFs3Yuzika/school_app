@@ -7,10 +7,10 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="page-sub-header">
-                            <h3 class="page-title">Students</h3>
+                            <h3 class="page-title">Siswa</h3>
                             <ul class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{ route('student/list') }}">Student</a></li>
-                                <li class="breadcrumb-item active">All Students</li>
+                                <li class="breadcrumb-item"><a href="{{ route('student/list') }}">Siswa</a></li>
+                                <li class="breadcrumb-item active">Semua Siswa</li>
                             </ul>
                         </div>
                     </div>
@@ -22,22 +22,22 @@
                 <div class="row">
                     <div class="col-lg-3 col-md-6">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Search by ID ...">
+                            <input type="text" class="form-control" placeholder="Cari berdasarkan ID ...">
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Search by Name ...">
+                            <input type="text" class="form-control" placeholder="Cari berdasarkan Nama ...">
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Search by Phone ...">
+                            <input type="text" class="form-control" placeholder="Cari berdasarkan Telepon ...">
                         </div>
                     </div>
                     <div class="col-lg-2">
                         <div class="search-student-btn">
-                            <button type="btn" class="btn btn-primary">Search</button>
+                            <button type="btn" class="btn btn-primary">Cari</button>
                         </div>
                     </div>
                 </div>
@@ -49,7 +49,7 @@
                             <div class="page-header">
                                 <div class="row align-items-center">
                                     <div class="col">
-                                        <h3 class="page-title">Students</h3>
+                                        <h3 class="page-title">Siswa</h3>
                                     </div>
                                     <div class="col-auto text-end float-end ms-auto download-grp">
                                         <a href="{{ route('student/list') }}" class="btn btn-outline-gray me-2 active">
@@ -75,12 +75,12 @@
                                                 </div>
                                             </th>
                                             <th>ID</th>
-                                            <th>Name</th>
-                                            <th>Class</th>
-                                            <th>DOB</th>
-                                            <th>Parent Name</th>
-                                            <th>Mobile Number</th>
-                                            <th>Address</th>
+                                            <th>Nama</th>
+                                            <th>Kelas</th>
+                                            <th>Tanggal Lahir</th>
+                                            <th>Nama Orang Tua</th>
+                                            <th>Nomor HP</th>
+                                            <th>Alamat</th>
                                             <th class="text-end">Action</th>
                                         </tr>
                                     </thead>
