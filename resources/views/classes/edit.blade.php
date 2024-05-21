@@ -24,17 +24,6 @@
                 <input type="text" id="class_name" name="class_name" class="form-control" value="{{ $class->class_name }}" required>
             </div>
             <div class="form-group">
-                <label for="student_id">Siswa:</label>
-                <select id="student_id" name="student_id" class="form-control" required>
-                    <option value="">Pilih Siswa</option>
-                    @foreach ($students as $student)
-                        <option value="{{ $student->id }}" @if($student->id == $class->student_id) selected @endif>
-                            {{ $student->first_name }} {{ $student->last_name }}
-                        </option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="form-group">
                 <label for="teacher_id">Guru:</label>
                 <select id="teacher_id" name="teacher_id" class="form-control" required>
                     <option value="">Pilih Guru</option>

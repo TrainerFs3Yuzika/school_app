@@ -200,7 +200,7 @@
                                             <th>ID</th>
                                             <th>Nama Kelas</th>
                                             <th>Nama Guru</th>
-                                            <th>Nama Siswa</th>
+                                            {{-- <th>Nama Siswa</th> --}}
                                             <th>Nama Mata Pelajaran</th>
                                             <th>Aksi</th>
                                         </tr>
@@ -211,7 +211,7 @@
                                                 <td>{{ $class->id }}</td>
                                                 <td>{{ $class->class_name }}</td>
                                                 <td>{{ $class->teacher->full_name }}</td>
-                                                <td>{{ $class->student->first_name }} {{ $class->student->last_name }}</td>
+                                                {{-- <td>{{ $class->student->first_name }} {{ $class->student->last_name }}</td> --}}
                                                 <td>{{ $class->subject->class }}</td>
                                                 <td>
                                                     <a href="{{ route('classes.edit', $class->id) }}" class="btn btn-sm btn-warning edit-btn"><i class="fas fa-edit"></i> Edit</a>

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ClassModel;
-use App\Models\Student;
 use App\Models\Teacher;
 use App\Models\Subject;
 
@@ -12,24 +11,22 @@ class ClassController extends Controller
 {
     public function index()
     {
-        // Menggunakan eager loading untuk memuat relasi student, teacher, dan subject
-        $classes = ClassModel::with(['student', 'teacher', 'subject'])->get();
+        // Menggunakan eager loading untuk memuat relasi teacher dan subject
+        $classes = ClassModel::with(['teacher', 'subject'])->get();
         return view('classes.index', compact('classes'));
     }
 
     public function create()
     {
-        $students = Student::all();
         $teachers = Teacher::all();
         $subjects = Subject::all();
-        return view('classes.create', compact('students', 'teachers', 'subjects'));
+        return view('classes.create', compact('teachers', 'subjects'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
             'class_name' => 'required',
-            'student_id' => 'required|exists:students,id',
             'teacher_id' => 'required|exists:teachers,id',
             'subject_id' => 'required|exists:subjects,id',
             'start_time' => 'required|date',
@@ -38,7 +35,6 @@ class ClassController extends Controller
 
         $newClass = ClassModel::create([
             'class_name' => $request->class_name,
-            'student_id' => $request->student_id,
             'teacher_id' => $request->teacher_id,
             'subject_id' => $request->subject_id,
             'start_time' => $request->start_time,
@@ -55,17 +51,15 @@ class ClassController extends Controller
     public function edit($id)
     {
         $class = ClassModel::findOrFail($id);
-        $students = Student::all();
         $teachers = Teacher::all();
         $subjects = Subject::all();
-        return view('classes.edit', compact('class', 'students', 'teachers', 'subjects'));
+        return view('classes.edit', compact('class', 'teachers', 'subjects'));
     }
 
     public function update(Request $request, $id)
     {
         $request->validate([
             'class_name' => 'required',
-            'student_id' => 'required|exists:students,id',
             'teacher_id' => 'required|exists:teachers,id',
             'subject_id' => 'required|exists:subjects,id',
             'start_time' => 'required|date',
@@ -76,7 +70,6 @@ class ClassController extends Controller
 
         $class->update([
             'class_name' => $request->class_name,
-            'student_id' => $request->student_id,
             'teacher_id' => $request->teacher_id,
             'subject_id' => $request->subject_id,
             'start_time' => $request->start_time,

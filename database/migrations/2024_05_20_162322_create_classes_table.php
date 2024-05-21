@@ -15,19 +15,20 @@ class CreateClassesTable extends Migration
     {
         Schema::create('classes', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('class_name');
-            $table->unsignedBigInteger('student_id');
+            $table->string('class_name', 255);
             $table->unsignedBigInteger('teacher_id');
             $table->unsignedBigInteger('subject_id');
             $table->dateTime('start_time');
             $table->dateTime('end_time');
-            $table->timestamp('created_at')->useCurrent();
-            $table->timestamp('updated_at')->useCurrent();
+            $table->timestamps();
 
-            $table->foreign('student_id')->references('id')->on('students');
             $table->foreign('teacher_id')->references('id')->on('teachers');
-            // Assuming there's a subjects table, if not, you should create it
-            $table->foreign('subject_id')->references('id')->on('subjects');
+            // Jika Anda ingin menambahkan foreign key untuk 'subject_id', tambahkan baris di bawah ini:
+            // $table->foreign('subject_id')->references('id')->on('subjects');
+
+            $table->index('teacher_id');
+            // Jika Anda ingin menambahkan index untuk 'subject_id', tambahkan baris di bawah ini:
+            // $table->index('subject_id');
         });
     }
 
