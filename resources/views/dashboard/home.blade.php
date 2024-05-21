@@ -62,7 +62,7 @@
                         </div>
 
                             <div class="db-icon">
-                                <img src="{{ URL::to('assets/img/icons/dash-icon-03.svg') }}" alt="Dashboard Icon">
+                                <i class="fas fa-user-friends" style="font-size: 2em; color: #f39c12;"></i>
                             </div>
                         </div>
                     </div>
