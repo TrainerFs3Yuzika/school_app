@@ -1,9 +1,13 @@
 @extends('layouts.master')
 @section('content')
-{{-- pesan --}}
+
+{{-- Displaying toastr messages --}}
 {!! Toastr::message() !!}
+
 <div class="page-wrapper">
     <div class="content container-fluid">
+        
+        {{-- Page Header --}}
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col">
@@ -15,13 +19,16 @@
                 </div>
             </div>
         </div>
-
+        
+        {{-- Form Section --}}
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-body">
                         <form action="{{ route('classes.store') }}" method="POST">
                             @csrf
+                            
+                            {{-- First Row --}}
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -39,24 +46,32 @@
                                             @endforeach
                                         </select>
                                     </div>
+                                </div>
+                            </div>
+                            
+                            {{-- Second Row --}}
+                            <div class="row">
+                                <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="subject_id">Kelas:</label>
+                                        <label for="subject_id">Mata Pelajaran:</label>
                                         <select id="subject_id" name="subject_id" class="form-control" required>
-                                            <option value="">Pilih Kelas</option>
+                                            <option value="">Pilih Mata Pelajaran</option>
                                             @foreach ($subjects as $subject)
                                                 <option value="{{ $subject->id }}">{{ $subject->class }}</option>
                                             @endforeach
                                         </select>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="start_time">Waktu Mulai:</label>
                                         <input type="datetime-local" id="start_time" name="start_time" class="form-control" required>
                                     </div>
                                 </div>
+                            </div>
+
+                            {{-- Third Row --}}
+                            <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="end_time">Waktu Berakhir:</label>
@@ -64,8 +79,12 @@
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary">Tambah Kelas</button>
-                            <a href="{{ route('home') }}" class="btn btn-secondary">Batal</a>
+                            
+                            {{-- Buttons --}}
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">Tambah Kelas</button>
+                                <a href="{{ route('home') }}" class="btn btn-secondary">Batal</a>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -73,13 +92,15 @@
         </div>
     </div>
 </div>
+
+{{-- Custom Scripts --}}
 @section('script')
 <script>
-    // pilih otomatis id guru
-    $('#full_name').on('change',function()
-    {
+    // Auto-select teacher ID based on selected teacher name
+    $('#full_name').on('change', function() {
         $('#teacher_id').val($(this).find(':selected').data('teacher_id'));
     });
 </script>
 @endsection
+
 @endsection
