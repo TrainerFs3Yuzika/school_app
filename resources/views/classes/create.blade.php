@@ -7,10 +7,10 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col">
-                    <h3 class="page-title">Tambahkan Data Kelas</h3>
+                    <h3 class="page-title">Tambahkan Kelas</h3>
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="classes.html">Kelas</a></li>
-                        <li class="breadcrumb-item active">Tambahkan Data Kelas</li>
+                        <li class="breadcrumb-item active">Tambahkan Kelas</li>
                     </ul>
                 </div>
             </div>
