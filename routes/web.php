@@ -114,18 +114,6 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Route::post('teacher/delete', 'teacherDelete')->name('teacher/delete'); // delete record teacher
     });
 
-    // ----------------------- department -----------------------------//
-    Route::controller(DepartmentController::class)->group(function () {
-        Route::get('department/list/page', 'departmentList')->middleware('auth')->name('department/list/page'); // department/list/page
-        Route::get('department/add/page', 'indexDepartment')->middleware('auth')->name('department/add/page'); // page add department
-        Route::get('department/edit/{department_id}', 'editDepartment'); // page add department
-        Route::post('department/save', 'saveRecord')->middleware('auth')->name('department/save'); // department/save
-        Route::post('department/update', 'updateRecord')->middleware('auth')->name('department/update'); // department/update
-        Route::post('department/delete', 'deleteRecord')->middleware('auth')->name('department/delete'); // department/delete
-        Route::get('get-data-list', 'getDataList')->name('get-data-list'); // get data list
-
-    });
-
     // ----------------------- subject -----------------------------//
     Route::controller(SubjectController::class)->group(function () {
         Route::get('subject/list/page', 'subjectList')->middleware('auth')->name('subject/list/page'); // subject/list/page

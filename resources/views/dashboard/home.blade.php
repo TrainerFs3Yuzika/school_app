@@ -56,10 +56,11 @@
                 <div class="card bg-comman w-100">
                     <div class="card-body">
                         <div class="db-widgets d-flex justify-content-between align-items-center">
-                            <div class="db-info">
-                                <h6><span style="color: rgb(0, 0, 0); font-weight: bold;">Departemen</span></h6>
-                                <h3>{{ \App\Models\Department::count() }}</h3>
-                            </div>
+                        <div class="db-info">
+                            <h6><span style="color: rgb(0, 0, 0); font-weight: bold;">Orang Tua</span></h6>
+                            <h3>{{ \App\Models\Student::distinct('parent_name')->count('parent_name') }}</h3>
+                        </div>
+
                             <div class="db-icon">
                                 <img src="{{ URL::to('assets/img/icons/dash-icon-03.svg') }}" alt="Dashboard Icon">
                             </div>
@@ -340,7 +341,7 @@
                                         </td>
                                         <td class="text-nowrap">
                                             <a href="profile.html">
-                                                <img class="rounded-circle"src="{{ URL::to('assets/img/profiles/avatar-01.jpg') }}" width="25" alt="Star Students"> Soeng Souy
+                                                <img class="rounded-circle"src="{{ URL::to('assets/img/profiles/avatar-01.jpg') }}" width="25" alt="Star Students"> Raka Wiratama
                                             </a>
                                         </td>
                                         <td class="text-center">1185</td>
@@ -355,7 +356,7 @@
                                         </td>
                                         <td class="text-nowrap">
                                             <a href="profile.html">
-                                                <img class="rounded-circle"src="{{ URL::to('assets/img/profiles/avatar-01.jpg') }}" width="25" alt="Star Students"> Soeng Souy
+                                                <img class="rounded-circle"src="{{ URL::to('assets/img/profiles/avatar-01.jpg') }}" width="25" alt="Star Students"> Anisa Putri
                                             </a>
                                         </td>
                                         <td class="text-center">1195</td>
@@ -370,7 +371,7 @@
                                         </td>
                                         <td class="text-nowrap">
                                             <a href="profile.html">
-                                                <img class="rounded-circle"src="{{ URL::to('assets/img/profiles/avatar-01.jpg') }}" width="25" alt="Star Students"> Soeng Souy
+                                                <img class="rounded-circle"src="{{ URL::to('assets/img/profiles/avatar-01.jpg') }}" width="25" alt="Star Students"> Bima Arya
                                             </a>
                                         </td>
                                         <td class="text-center">1196</td>
@@ -385,7 +386,7 @@
                                         </td>
                                         <td class="text-nowrap">
                                             <a href="profile.html">
-                                                <img class="rounded-circle"src="{{ URL::to('assets/img/profiles/avatar-01.jpg') }}" width="25" alt="Star Students"> Soeng Souy
+                                                <img class="rounded-circle"src="{{ URL::to('assets/img/profiles/avatar-01.jpg') }}" width="25" alt="Star Students"> Cinta Laura
                                             </a>
                                         </td>
                                         <td class="text-center">1187</td>
@@ -400,7 +401,7 @@
                                         </td>
                                         <td class="text-nowrap">
                                             <a href="profile.html">
-                                                <img class="rounded-circle"src="{{ URL::to('assets/img/profiles/avatar-01.jpg') }}" width="25" alt="Star Students"> Soeng Souy
+                                                <img class="rounded-circle"src="{{ URL::to('assets/img/profiles/avatar-01.jpg') }}" width="25" alt="Star Students"> Dian Sastro
                                             </a>
                                         </td>
                                         <td class="text-center">1185</td>
@@ -430,50 +431,50 @@
                         <div class="activity-groups">
                             <div class="activity-awards">
                                 <div class="award-boxs">
-                                    <img src="assets/img/icons/award-icon-01.svg" alt="Award">
+                                    <img src="assets/img/icons/award-icon-01.svg" alt="Penghargaan">
                                 </div>
                                 <div class="award-list-outs">
-                                    <h4>1st place in "Chess”</h4>
-                                    <h5>John Doe won 1st place in "Chess"</h5>
+                                    <h4>Tempat pertama dalam "Catur”</h4>
+                                    <h5>John Doe memenangkan tempat pertama dalam "Catur"</h5>
                                 </div>
                                 <div class="award-time-list">
-                                    <span>1 Day ago</span>
+                                    <span>1 Hari yang lalu</span>
                                 </div>
                             </div>
                             <div class="activity-awards">
                                 <div class="award-boxs">
-                                    <img src="assets/img/icons/award-icon-02.svg" alt="Award">
+                                    <img src="assets/img/icons/award-icon-02.svg" alt="Penghargaan">
                                 </div>
                                 <div class="award-list-outs">
-                                    <h4>Participated in "Carrom"</h4>
-                                    <h5>Justin Lee participated in "Carrom"</h5>
+                                    <h4>Berpartisipasi dalam "Carrom"</h4>
+                                    <h5>Justin Lee berpartisipasi dalam "Carrom"</h5>
                                 </div>
                                 <div class="award-time-list">
-                                    <span>2 hours ago</span>
+                                    <span>2 jam yang lalu</span>
                                 </div>
                             </div>
                             <div class="activity-awards">
                                 <div class="award-boxs">
-                                    <img src="assets/img/icons/award-icon-03.svg" alt="Award">
+                                    <img src="assets/img/icons/award-icon-03.svg" alt="Penghargaan">
                                 </div>
                                 <div class="award-list-outs">
-                                    <h4>Internation conference in "St.John School"</h4>
-                                    <h5>Justin Leeattended internation conference in "St.John School"</h5>
+                                    <h4>Konferensi internasional di "Sekolah St.John"</h4>
+                                    <h5>Justin Lee menghadiri konferensi internasional di "Sekolah St.John"</h5>
                                 </div>
                                 <div class="award-time-list">
-                                    <span>2 Week ago</span>
+                                    <span>2 Minggu yang lalu</span>
                                 </div>
                             </div>
                             <div class="activity-awards mb-0">
                                 <div class="award-boxs">
-                                    <img src="assets/img/icons/award-icon-04.svg" alt="Award">
+                                    <img src="assets/img/icons/award-icon-04.svg" alt="Penghargaan">
                                 </div>
                                 <div class="award-list-outs">
-                                    <h4>Won 1st place in "Chess"</h4>
-                                    <h5>John Doe won 1st place in "Chess"</h5>
+                                    <h4>Memenangkan tempat pertama dalam "Catur"</h4>
+                                    <h5>John Doe memenangkan tempat pertama dalam "Catur"</h5>
                                 </div>
                                 <div class="award-time-list">
-                                    <span>3 Day ago</span>
+                                    <span>3 Hari yang lalu</span>
                                 </div>
                             </div>
                         </div>

@@ -129,13 +129,13 @@
                                     <div class="invoice-total-card">
                                         <div class="invoice-total-box">
                                             <div class="invoice-total-inner">
-                                                <p>Dapat Dikenakan Pajak <span>$6,660.00</span></p>
-                                                <p>Biaya Tambahan <span>$6,660.00</span></p>
-                                                <p>Diskon <span>$3,300.00</span></p>
-                                                <p class="mb-0">Sub total <span>$3,300.00</span></p>
+                                                <p>Dapat Dikenakan Pajak <span>Rp6.660.000,00</span></p>
+                                                <p>Biaya Tambahan <span>Rp6.660.000,00</span></p>
+                                                <p>Diskon <span>Rp3.300.000,00</span></p>
+                                                <p class="mb-0">Sub total <span>Rp3.300.000,00</span></p>
                                             </div>
                                             <div class="invoice-total-footer">
-                                                <h4>Jumlah Tagihan <span>${{ $invoiceView->total_amount }}</span></h4>
+                                                <h4>Jumlah Tagihan <span>Rp{{ number_format($invoiceView->total_amount, 2, ',', '.') }}</span></h4>
                                             </div>
                                         </div>
                                     </div>
