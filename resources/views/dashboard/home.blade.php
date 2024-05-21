@@ -434,11 +434,11 @@
                                     <img src="assets/img/icons/award-icon-01.svg" alt="Penghargaan">
                                 </div>
                                 <div class="award-list-outs">
-                                    <h4>Tempat pertama dalam "Catur”</h4>
-                                    <h5>John Doe memenangkan tempat pertama dalam "Catur"</h5>
+                                    <h4>Upacara Bendera</h4>
+                                    <h5>Siswa mengikuti upacara bendera mingguan</h5>
                                 </div>
                                 <div class="award-time-list">
-                                    <span>1 Hari yang lalu</span>
+                                    <span>1 Minggu yang lalu</span>
                                 </div>
                             </div>
                             <div class="activity-awards">
@@ -446,11 +446,11 @@
                                     <img src="assets/img/icons/award-icon-02.svg" alt="Penghargaan">
                                 </div>
                                 <div class="award-list-outs">
-                                    <h4>Berpartisipasi dalam "Carrom"</h4>
-                                    <h5>Justin Lee berpartisipasi dalam "Carrom"</h5>
+                                    <h4>Lomba Karya Ilmiah</h4>
+                                    <h5>Siswa berpartisipasi dalam lomba karya ilmiah tingkat nasional</h5>
                                 </div>
                                 <div class="award-time-list">
-                                    <span>2 jam yang lalu</span>
+                                    <span>2 hari yang lalu</span>
                                 </div>
                             </div>
                             <div class="activity-awards">
@@ -458,11 +458,11 @@
                                     <img src="assets/img/icons/award-icon-03.svg" alt="Penghargaan">
                                 </div>
                                 <div class="award-list-outs">
-                                    <h4>Konferensi internasional di "Sekolah St.John"</h4>
-                                    <h5>Justin Lee menghadiri konferensi internasional di "Sekolah St.John"</h5>
+                                    <h4>Pertandingan Basket</h4>
+                                    <h5>Tim basket sekolah mengikuti pertandingan antar sekolah</h5>
                                 </div>
                                 <div class="award-time-list">
-                                    <span>2 Minggu yang lalu</span>
+                                    <span>3 Minggu yang lalu</span>
                                 </div>
                             </div>
                             <div class="activity-awards mb-0">
@@ -470,11 +470,11 @@
                                     <img src="assets/img/icons/award-icon-04.svg" alt="Penghargaan">
                                 </div>
                                 <div class="award-list-outs">
-                                    <h4>Memenangkan tempat pertama dalam "Catur"</h4>
-                                    <h5>John Doe memenangkan tempat pertama dalam "Catur"</h5>
+                                    <h4>Pameran Seni</h4>
+                                    <h5>Siswa mengikuti pameran seni tahunan</h5>
                                 </div>
                                 <div class="award-time-list">
-                                    <span>3 Hari yang lalu</span>
+                                    <span>1 Bulan yang lalu</span>
                                 </div>
                             </div>
                         </div>
