@@ -69,6 +69,11 @@
                     </ul>
                 </li>
 
+                
+
+                <li class="menu-title">
+                    <span>Manajemen</span>
+                </li>
                 <li class="submenu {{set_active(['invoice/list/page','invoice/paid/page',
                     'invoice/overdue/page','invoice/draft/page','invoice/recurring/page',
                     'invoice/cancelled/page','invoice/grid/page','invoice/add/page',
@@ -84,36 +89,9 @@
                         <li><a class="{{set_active(['invoice/add/page'])}}" href="{{ route('invoice/add/page') }}">Tambah Faktur</a></li>
                     </ul>
                 </li>
-
-                <li class="menu-title">
-                    <span>Manajemen</span>
-                </li>
-
-                <li class="submenu {{set_active(['account/fees/collections/page','add/fees/collection/page'])}}">
-                    <a href="#"><i class="fas fa-file-invoice-dollar"></i>
-                        <span> Akuntansi</span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <ul>
-                        <li><a class="{{set_active(['account/fees/collections/page'])}}" href="{{ route('account/fees/collections/page') }}">Pengumpulan Biaya</a></li>
-                        <li><a href="expenses.html">Pengeluaran</a></li>
-                        <li><a href="salary.html">Gaji</a></li>
-                        <li><a class="{{set_active(['add/fees/collection/page'])}}" href="{{ route('add/fees/collection/page') }}">Tambah Biaya</a></li>
-                        <li><a href="add-expenses.html">Tambah Pengeluaran</a></li>
-                        <li><a href="add-salary.html">Tambah Gaji</a></li>
-                    </ul>
-                </li>
                 <li>
-                    <a href="{{ url('fullcalender') }}"><i class="fas fa-holly-berry"></i> <span>Kalender Pendidikan</span></a>
+                    <a href="{{ url('fullcalender') }}"><i class="fas fa-holly-berry"></i> <span>Acara</span></a>
                 </li>
-                <li>
-                    <a href="#"><i class="fas fa-comment-dollar"></i> <span>Biaya</span></a>
-                </li>
-                <li>
-                    <a href="#"><i class="fas fa-clipboard-list"></i> <span>Daftar Ujian</span></a>
-                </li>
-                <li>
-                    <a href="#"><i class="fas fa-calendar-day"></i> <span>Acara</span></a>
                 </li>
                 <li>
                     <a href="#"><i class="fas fa-book"></i> <span>Perpustakaan</span></a>
