@@ -283,7 +283,7 @@
                                                 <td>{{ \Carbon\Carbon::parse($event->end)->format('d M Y H:i') }}</td>
                                                 <td>{{ \Carbon\Carbon::parse($event->start)->diffInHours(\Carbon\Carbon::parse($event->end)) }}
                                                     jam</td>
-                                                <td><a href="{{ url('fullcalender') }}">Kunjungi</a></td>
+                                                <td><a href="{{ url('fullcalender') }}" class="btn btn-success">Kunjungi</a></td>
                                             </tr>
                                         @endforeach
                                     </tbody>
