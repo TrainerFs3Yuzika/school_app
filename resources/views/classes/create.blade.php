@@ -33,7 +33,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="class_name">Nama Kelas:</label>
-                                        <input type="text" id="class_name" name="class_name" class="form-control" required>
+                                        <input type="text" id="class_name" name="class_name" class="form-control" placeholder="Masukan Nama Kelas" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">

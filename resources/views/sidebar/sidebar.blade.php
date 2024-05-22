@@ -60,12 +60,13 @@
 
                 <li class="submenu {{set_active(['subject/list/page','subject/add/page'])}} {{ request()->is('subject/edit/*') ? 'active' : '' }}">
                     <a href="#"><i class="fas fa-book-reader"></i>
-                        <span> Mata Pelajaran</span>
+                        <span>Kelas & Pelajaran</span>
                         <span class="menu-arrow"></span>
                     </a>
                     <ul>
                         <li><a class="{{set_active(['subject/list/page'])}} {{ request()->is('subject/edit/*') ? 'active' : '' }}" href="{{ route('subject/list/page') }}">Daftar Mata Pelajaran</a></li>
                         <li><a class="{{set_active(['subject/add/page'])}}" href="{{ route('subject/add/page') }}">Tambah Mata Pelajaran</a></li>
+                        <li><a href="{{ route('classes.create') }}">Tambah Kelas Baru</a></li>
                     </ul>
                 </li>
 

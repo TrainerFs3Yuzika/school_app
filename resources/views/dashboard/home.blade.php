@@ -208,7 +208,6 @@
                             </ul>
                         </div>
                         <div class="card-body">
-                            <a href="{{ route('classes.create') }}" class="btn btn-primary mb-3">Tambah Kelas Baru</a>
                             <div class="table-responsive">
                                 <table class="table star-student table-hover table-center table-borderless table-striped">
                                     <thead class="thead-light">
