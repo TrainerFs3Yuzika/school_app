@@ -216,6 +216,7 @@
                                             <th>ID</th>
                                             <th>Nama Kelas</th>
                                             <th>Nama Guru</th>
+                                            <th>Mata Pelajaran</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
