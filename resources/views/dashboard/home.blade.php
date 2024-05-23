@@ -257,7 +257,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <table id="eventTable" class="table table-striped table-bordered table-hover table-center">
+                                    <table id="eventTable" class="table star-student table-hover table-center table-borderless table-striped">
                                         <thead class="thead-light">
                                             <tr>
                                                 <th>ID</th>
@@ -313,13 +313,13 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="card shadow-sm">
-                        <div class="card-header bg-primary text-white">
+                        <div class="card-header">
                             <h5 class="card-title mb-0">Data Pengguna</h5>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table id="userTable" class="table table-striped table-bordered table-hover table-center">
-                                    <thead class="thead-dark">
+                                <table id="userTable" class="table star-student table-hover table-center table-borderless table-striped">
+                                    <thead class="thead-light">
                                         <tr>
                                             <th>ID</th>
                                             <th>Nama</th>
