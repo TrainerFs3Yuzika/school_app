@@ -363,112 +363,60 @@
             <div class="row">
                 <div class="col-xl-6 d-flex">
 
-                    <div class="card flex-fill student-space comman-shadow">
-                        <div class="card-header d-flex align-items-center">
-                            <h5 class="card-title">Siswa Berprestasi</h5>
-                            <ul class="chart-list-out student-ellips">
-                                <li class="star-menus"><a href="javascript:;"><i class="fas fa-ellipsis-v"></i></a>
-                                </li>
+                    <div class="card flex-fill student-space common-shadow">
+                        <div class="card-header d-flex align-items-center justify-content-between">
+                            <h5 class="card-title">Daftar Buku</h5>
+                            <ul class="chart-list-out student-ellipsis">
+                                <li class="star-menus"><a href="javascript:;"><i class="fas fa-ellipsis-v"></i></a></li>
                             </ul>
                         </div>
                         <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table star-student table-hover table-center table-borderless table-striped">
-                                    <thead class="thead-light">
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Nama</th>
-                                            <th class="text-center">Nilai</th>
-                                            <th class="text-center">Persentase</th>
-                                            <th class="text-end">Tahun</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="text-nowrap">
-                                                <div>PRE2209</div>
-                                            </td>
-                                            <td class="text-nowrap">
-                                                <a href="profile.html">
-                                                    <img class="rounded-circle"src="{{ URL::to('assets/img/profiles/avatar-01.jpg') }}"
-                                                        width="25" alt="Star Students"> Raka Wiratama
-                                                </a>
-                                            </td>
-                                            <td class="text-center">1185</td>
-                                            <td class="text-center">98%</td>
-                                            <td class="text-end">
-                                                <div>2019</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-nowrap">
-                                                <div>PRE1245</div>
-                                            </td>
-                                            <td class="text-nowrap">
-                                                <a href="profile.html">
-                                                    <img class="rounded-circle"src="{{ URL::to('assets/img/profiles/avatar-01.jpg') }}"
-                                                        width="25" alt="Star Students"> Anisa Putri
-                                                </a>
-                                            </td>
-                                            <td class="text-center">1195</td>
-                                            <td class="text-center">99.5%</td>
-                                            <td class="text-end">
-                                                <div>2018</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-nowrap">
-                                                <div>PRE1625</div>
-                                            </td>
-                                            <td class="text-nowrap">
-                                                <a href="profile.html">
-                                                    <img class="rounded-circle"src="{{ URL::to('assets/img/profiles/avatar-01.jpg') }}"
-                                                        width="25" alt="Star Students"> Bima Arya
-                                                </a>
-                                            </td>
-                                            <td class="text-center">1196</td>
-                                            <td class="text-center">99.6%</td>
-                                            <td class="text-end">
-                                                <div>2017</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-nowrap">
-                                                <div>PRE2516</div>
-                                            </td>
-                                            <td class="text-nowrap">
-                                                <a href="profile.html">
-                                                    <img class="rounded-circle"src="{{ URL::to('assets/img/profiles/avatar-01.jpg') }}"
-                                                        width="25" alt="Star Students"> Cinta Laura
-                                                </a>
-                                            </td>
-                                            <td class="text-center">1187</td>
-                                            <td class="text-center">98.2%</td>
-                                            <td class="text-end">
-                                                <div>2016</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-nowrap">
-                                                <div>PRE2209</div>
-                                            </td>
-                                            <td class="text-nowrap">
-                                                <a href="profile.html">
-                                                    <img class="rounded-circle"src="{{ URL::to('assets/img/profiles/avatar-01.jpg') }}"
-                                                        width="25" alt="Star Students"> Dian Sastro
-                                                </a>
-                                            </td>
-                                            <td class="text-center">1185</td>
-                                            <td class="text-center">98%</td>
-                                            <td class="text-end">
-                                                <div>2015</div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                            <div class="container">
+                                <a href="{{ route('books.create') }}" class="btn btn-primary mb-3">Tambah Buku</a>
+                                <div class="table-responsive">
+                                    <table id="bookTable" class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Judul</th>
+                                                <th>Penulis</th>
+                                                <th>Penerbit</th>
+                                                <th>Tahun Terbit</th>
+                                                <th>Genre</th>
+                                                <th>Stok</th>
+                                                <th>Aksi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach(\App\Models\Book::all() as $book)
+                                                <tr>
+                                                    <td>{{ $book->judul }}</td>
+                                                    <td>{{ $book->penulis }}</td>
+                                                    <td>{{ $book->penerbit }}</td>
+                                                    <td>{{ $book->tahun_terbit }}</td>
+                                                    <td>{{ $book->genre }}</td>
+                                                    <td>{{ $book->stok }}</td>
+                                                    <td>
+                                                        <a href="{{ route('books.edit', $book->id) }}" class="btn btn-sm btn-primary">Edit</a>
+                                                        <form action="{{ route('books.destroy', $book->id) }}" method="POST" style="display: inline;">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <script>
+                        $(document).ready(function() {
+                            $('#bookTable').DataTable();
+                        });
+                    </script>                    
+                    
 
                 </div>
                 <div class="col-xl-6 d-flex">
