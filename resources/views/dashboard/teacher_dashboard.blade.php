@@ -8,7 +8,8 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="page-sub-header">
-                            <h3 class="page-title">Selamat Datang {{ Auth::user()->name }}, {{ Auth::user()->role_name }} </h3>
+                            <h3 class="page-title">Selamat Datang {{ Auth::user()->name }}, {{ Auth::user()->role_name }}
+                            </h3>
                             <ul class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ route('home') }}">Beranda</a></li>
                                 <li class="breadcrumb-item active">Guru</li>
@@ -25,7 +26,8 @@
                             <div class="db-widgets d-flex justify-content-between align-items-center">
                                 <div class="db-info">
                                     <h6>Total Kelas</h6>
-                                    <h3>04/06</h3>
+                                    <h3>{{ \App\Models\ClassModel::count() }}/{{ \App\Models\ClassModel::all()->count() }}
+                                    </h3>
                                 </div>
                                 <div class="db-icon">
                                     <img src="{{ URL::to('assets/img/icons/teacher-icon-01.svg') }}" alt="Ikon Dasbor">
@@ -55,7 +57,7 @@
                             <div class="db-widgets d-flex justify-content-between align-items-center">
                                 <div class="db-info">
                                     <h6>Total Pelajaran</h6>
-                                    <h3>30/50</h3>
+                                    <h3>{{ \App\Models\Subject::count() }}/{{ \App\Models\Subject::all()->count() }}</h3>
                                 </div>
                                 <div class="db-icon">
                                     <img src="{{ URL::to('assets/img/icons/teacher-icon-02.svg') }}" alt="Ikon Dasbor">
@@ -120,8 +122,7 @@
                                                         <div class="lesson-confirm">
                                                             <a href="#">Dikonfirmasi</a>
                                                         </div>
-                                                        <button type="submit"
-                                                            class="btn btn-info">Jadwal Ulang</button>
+                                                        <button type="submit" class="btn btn-info">Jadwal Ulang</button>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -142,8 +143,7 @@
                                                         <div class="lesson-confirm">
                                                             <a href="#">Dikonfirmasi</a>
                                                         </div>
-                                                        <button type="submit"
-                                                            class="btn btn-info">Jadwal Ulang</button>
+                                                        <button type="submit" class="btn btn-info">Jadwal Ulang</button>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -226,7 +226,8 @@
                                                     </ul>
                                                 </div>
                                                 <div class="activity-btns ms-auto">
-                                                    <button type="submit" class="btn btn-info">Sedang Berlangsung</button>
+                                                    <button type="submit" class="btn btn-info">Sedang
+                                                        Berlangsung</button>
                                                 </div>
                                             </li>
                                             <li class="feed-item d-flex align-items-center">
@@ -254,7 +255,8 @@
                                                     </ul>
                                                 </div>
                                                 <div class="activity-btns ms-auto">
-                                                    <button type="submit" class="btn btn-info">Sedang Berlangsung</button>
+                                                    <button type="submit" class="btn btn-info">Sedang
+                                                        Berlangsung</button>
                                                 </div>
                                             </li>
                                         </ul>
