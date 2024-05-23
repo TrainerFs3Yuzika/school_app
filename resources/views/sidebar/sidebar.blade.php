@@ -93,9 +93,12 @@
                 <li>
                     <a href="{{ url('fullcalender') }}"><i class="fas fa-holly-berry"></i> <span>Acara</span></a>
                 </li>
-                </li>
-                <li>
-                    <a href="#"><i class="fas fa-book"></i> <span>Perpustakaan</span></a>
+                <li class="submenu">
+                    <a href="#"><i class="fas fa-book"></i> <span>Perpustakaan</span> <span class="menu-arrow"></span></a>
+                    <ul>
+                        <li><a href="#">Daftar Buku</a></li>
+                        <li><a href="#">Daftar Peminjam</a></li>
+                    </ul>
                 </li>
             </ul>
         </div>
