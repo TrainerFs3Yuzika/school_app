@@ -96,7 +96,7 @@
                 <li class="submenu">
                     <a href="#"><i class="fas fa-book"></i> <span>Perpustakaan</span> <span class="menu-arrow"></span></a>
                     <ul>
-                        <li><a href="#">Daftar Buku</a></li>
+                        <li><a href="{{ route('books.index') }}">Daftar Buku</a></li>
                         <li><a href="#">Daftar Peminjam</a></li>
                     </ul>
                 </li>

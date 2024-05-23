@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Request;
+use App\Http\Controllers\BookController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\SettingController;
@@ -163,4 +164,12 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     Route::get('/classes/{id}/edit', 'ClassController@edit')->name('classes.edit');
     Route::put('/classes/{id}', 'ClassController@update')->name('classes.update');
     Route::delete('/classes/{id}', 'ClassController@destroy')->name('classes.destroy');
+
+    // books
+    Route::get('/books', [BookController::class, 'index'])->name('books.index');
+    Route::get('/books/create', [BookController::class, 'create'])->name('books.create');
+    Route::post('/books', [BookController::class, 'store'])->name('books.store');
+    Route::get('/books/{book}/edit', [BookController::class, 'edit'])->name('books.edit');
+    Route::put('/books/{book}', [BookController::class, 'update'])->name('books.update');
+    Route::delete('/books/{book}', [BookController::class, 'destroy'])->name('books.destroy');
 });
