@@ -28,7 +28,7 @@ class PeminjamanController extends Controller
             'tanggal_pinjam' => 'required|date',
             'tanggal_kembali' => 'required|date|after:tanggal_pinjam',
             'jumlah_buku' => 'required|integer|min:1',
-            'status' => 'required|in:belum_dikembalikan,sudah_dikembalikan,diterima,ditolak',
+            'status' => 'nullable|in:belum_dikembalikan,sudah_dikembalikan,diterima,ditolak',
         ]);
 
         if ($request->tanggal_pinjam == $request->tanggal_kembali) {
@@ -55,7 +55,7 @@ class PeminjamanController extends Controller
             'tanggal_pinjam' => 'required|date',
             'tanggal_kembali' => 'required|date|after:tanggal_pinjam',
             'jumlah_buku' => 'required|integer|min:1',
-            'status' => 'required|in:belum_dikembalikan,sudah_dikembalikan,diterima,ditolak',
+            'status' => 'nullable|in:belum_dikembalikan,sudah_dikembalikan,diterima,ditolak',
         ]);
 
         if ($request->tanggal_pinjam == $request->tanggal_kembali) {
