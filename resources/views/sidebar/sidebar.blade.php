@@ -5,12 +5,14 @@
                 <li class="menu-title">
                     <span>Menu Utama</span>
                 </li>
+                @if (Session::get('role_name') === 'Admin' || Session::get('role_name') === 'Super Admin')
                 <li class="{{set_active(['setting/page'])}}">
                     <a href="{{ route('setting/page') }}">
                         <i class="fas fa-cog"></i> 
                         <span>Pengaturan</span>
                     </a>
                 </li>
+                @endif
                 <li class="submenu {{set_active(['home','teacher/dashboard','student/dashboard'])}}">
                     <a>
                         <i class="fas fa-tachometer-alt"></i>
@@ -19,8 +21,11 @@
                     </a>
                     <ul>
                         <li><a href="{{ route('home') }}" class="{{set_active(['home'])}}"><i class="fas fa-home"></i> Super Admin</a></li>
+                        @if (Session::get('role_name') === 'Teachers')
                         <li><a href="{{ route('teacher/dashboard') }}" class="{{set_active(['teacher/dashboard'])}}"><i class="fas fa-chalkboard-teacher"></i> Dasbor Guru</a></li>
+                        @elseif (Session::get('role_name') === 'Student')
                         <li><a href="{{ route('student/dashboard') }}" class="{{set_active(['student/dashboard'])}}"><i class="fas fa-user-graduate"></i> Dasbor Siswa</a></li>
+                        @endif
                     </ul>
                 </li>
                 @if (Session::get('role_name') === 'Admin' || Session::get('role_name') === 'Super Admin')
@@ -47,6 +52,7 @@
                     </ul>
                 </li>
 
+                @if (Session::get('role_name') === 'Admin' || Session::get('role_name') === 'Super Admin')
                 <li class="submenu  {{set_active(['teacher/add/page','teacher/list/page','teacher/grid/page','teacher/edit'])}} {{ (request()->is('teacher/edit/*')) ? 'active' : '' }}">
                     <a href="#"><i class="fas fa-chalkboard-teacher"></i>
                         <span> Guru</span>
@@ -57,6 +63,7 @@
                         <li><a href="{{ route('teacher/add/page') }}" class="{{set_active(['teacher/add/page'])}}">Tambah Data Guru</a></li>
                     </ul>
                 </li>
+                @endif
 
                 <li class="submenu {{set_active(['subject/list/page','subject/add/page'])}} {{ request()->is('subject/edit/*') ? 'active' : '' }}">
                     <a href="#"><i class="fas fa-book-reader"></i>
@@ -94,7 +101,9 @@
                     <a href="{{ url('fullcalender') }}"><i class="fas fa-holly-berry"></i> <span>Acara</span></a>
                 </li>
                 <li class="submenu">
+                    @if (Session::get('role_name') === 'Admin' || Session::get('role_name') === 'Super Admin')
                     <a href="#"><i class="fas fa-book"></i> <span>Perpustakaan</span> <span class="menu-arrow"></span></a>
+                    @endif
                     <ul>
                         <li><a href="{{ route('books.index') }}">Daftar Buku</a></li>
                         <li><a href="{{ route('peminjaman.index') }}">Daftar Peminjam</a></li>
