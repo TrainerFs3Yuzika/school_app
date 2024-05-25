@@ -33,7 +33,7 @@
                                         <i class="fa fa-th" aria-hidden="true"></i>
                                     </a>
                                     <a href="#" class="btn btn-outline-primary me-2"><i class="fas fa-download"></i> Unduh</a>
-                                    <a href="{{ route('peminjaman.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i></a>
+                                    <a href="{{ route('peminjaman.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah Peminjaman</a> <!-- Tambah Peminjaman -->
                                 </div>
                             </div>
                         </div>

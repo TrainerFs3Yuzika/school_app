@@ -31,7 +31,7 @@
                 <label for="jumlah_buku">Jumlah Buku:</label>
                 <input type="number" name="jumlah_buku" class="form-control" min="1" required>
             </div>
-            <div class="form-group">
+            {{-- <div class="form-group">
                 <label for="status">Status:</label>
                 <select name="status" class="form-control" required>
                     <option value="belum_dikembalikan">Belum Dikembalikan</option>
@@ -39,7 +39,7 @@
                     <option value="diterima">Diterima</option>
                     <option value="ditolak">Ditolak</option>
                 </select>
-            </div>
+            </div> --}}
             <button type="submit" class="btn btn-primary">Simpan</button>
         </form>
     </div>
