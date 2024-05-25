@@ -312,7 +312,7 @@
             {{-- data user --}}
             <div class="row">
                 <div class="col-xl-12">
-                    <div class="card shadow-sm">
+                    <div class="card flex-fill student-space comman-shadow">
                         <div class="card-header">
                             <h5 class="card-title mb-0">Data Pengguna</h5>
                         </div>
@@ -363,7 +363,7 @@
             <div class="row">
                 <div class="col-xl-6 d-flex">
 
-                    <div class="card flex-fill student-space common-shadow">
+                    <div class="card flex-fill student-space comman-shadow">
                         <div class="card-header d-flex align-items-center justify-content-between">
                             <h5 class="card-title">Daftar Buku</h5>
                             <ul class="chart-list-out student-ellipsis">
@@ -371,11 +371,11 @@
                             </ul>
                         </div>
                         <div class="card-body">
-                            <div class="container">
+                            <div>
                                 <a href="{{ route('books.create') }}" class="btn btn-primary mb-3">Tambah Buku</a>
                                 <div class="table-responsive">
                                     <table id="bookTable" class="table">
-                                        <thead>
+                                        <thead class="thead-light">
                                             <tr>
                                                 <th>Judul</th>
                                                 <th>Penulis</th>
