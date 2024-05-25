@@ -372,7 +372,7 @@
                         </div>
                         <div class="card-body">
                             <div>
-                                <a href="{{ route('books.create') }}" class="btn btn-primary mb-3">Tambah Buku</a>
+                                <a href="{{ route('books.create') }}" class="btn btn-primary mb-3"><i class="fas fa-plus"></i>Tambah </a>
                                 <div class="table-responsive">
                                     <table id="bookTable" class="table">
                                         <thead class="thead-light">
@@ -415,73 +415,69 @@
                         $(document).ready(function() {
                             $('#bookTable').DataTable();
                         });
-                    </script>                    
+                    </script>   
+
                     
 
                 </div>
                 <div class="col-xl-6 d-flex">
-
-                    <div class="card flex-fill comman-shadow">
-                        <div class="card-header d-flex align-items-center">
-                            <h5 class="card-title ">Aktivitas Siswa</h5>
-                            <ul class="chart-list-out student-ellips">
-                                <li class="star-menus"><a href="javascript:;"><i class="fas fa-ellipsis-v"></i></a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="card-body">
-                            <div class="activity-groups">
-                                <div class="activity-awards">
-                                    <div class="award-boxs">
-                                        <img src="assets/img/icons/award-icon-01.svg" alt="Penghargaan">
-                                    </div>
-                                    <div class="award-list-outs">
-                                        <h4>Upacara Bendera</h4>
-                                        <h5>Siswa mengikuti upacara bendera mingguan</h5>
-                                    </div>
-                                    <div class="award-time-list">
-                                        <span>1 Minggu yang lalu</span>
-                                    </div>
-                                </div>
-                                <div class="activity-awards">
-                                    <div class="award-boxs">
-                                        <img src="assets/img/icons/award-icon-02.svg" alt="Penghargaan">
-                                    </div>
-                                    <div class="award-list-outs">
-                                        <h4>Lomba Karya Ilmiah</h4>
-                                        <h5>Siswa berpartisipasi dalam lomba karya ilmiah tingkat nasional</h5>
-                                    </div>
-                                    <div class="award-time-list">
-                                        <span>2 hari yang lalu</span>
-                                    </div>
-                                </div>
-                                <div class="activity-awards">
-                                    <div class="award-boxs">
-                                        <img src="assets/img/icons/award-icon-03.svg" alt="Penghargaan">
-                                    </div>
-                                    <div class="award-list-outs">
-                                        <h4>Pertandingan Basket</h4>
-                                        <h5>Tim basket sekolah mengikuti pertandingan antar sekolah</h5>
-                                    </div>
-                                    <div class="award-time-list">
-                                        <span>3 Minggu yang lalu</span>
-                                    </div>
-                                </div>
-                                <div class="activity-awards mb-0">
-                                    <div class="award-boxs">
-                                        <img src="assets/img/icons/award-icon-04.svg" alt="Penghargaan">
-                                    </div>
-                                    <div class="award-list-outs">
-                                        <h4>Pameran Seni</h4>
-                                        <h5>Siswa mengikuti pameran seni tahunan</h5>
-                                    </div>
-                                    <div class="award-time-list">
-                                        <span>1 Bulan yang lalu</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+{{-- menu peminjaman --}}
+<div class="card flex-fill comman-shadow">
+    <div class="card-header d-flex align-items-center">
+        <h5 class="card-title">Daftar Peminjaman Buku</h5>
+        <ul class="chart-list-out student-ellips">
+            <li class="star-menus"><a href="javascript:;"><i class="fas fa-ellipsis-v"></i></a></li>
+        </ul>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <a href="{{ route('peminjaman.create') }}" class="btn btn-primary mb-3"><i class="fas fa-plus"></i> Tambah</a>
+            <table class="table border-0 star-book table-hover table-center mb-0 datatable table-striped">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">Judul Buku</th>
+                        <th scope="col">Nama Peminjam</th>
+                        <th scope="col">Tanggal Pinjam</th>
+                        <th scope="col">Tanggal Kembali</th>
+                        <th scope="col">Jumlah Buku</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (\App\Models\Peminjaman::all() as $key => $peminjaman)
+                    <tr>
+                        <td>{{ ++$key }}</td>
+                        <td>{{ $peminjaman->id }}</td>
+                        <td>{{ $peminjaman->book->judul }}</td>
+                        <td>{{ $peminjaman->nama_peminjam }}</td>
+                        <td>{{ $peminjaman->tanggal_pinjam }}</td>
+                        <td>{{ $peminjaman->tanggal_kembali }}</td>
+                        <td>{{ $peminjaman->jumlah_buku }}</td>
+                        <td>{{ $peminjaman->status }}</td>
+                        <td>
+                            <a href="{{ route('peminjaman.edit', $peminjaman->id) }}" class="btn btn-sm btn-primary">Edit</a>
+                            <form action="{{ route('peminjaman.destroy', $peminjaman->id) }}" method="POST" style="display: inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus?')">Hapus</button>
+                            </form>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Initialize DataTables -->
+<script>
+    $(document).ready(function() {
+        $('.datatable').DataTable();
+    });
+</script>
 
                 </div>
             </div>
