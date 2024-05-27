@@ -6,7 +6,7 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="page-sub-header">
-                            <h3 class="page-title">Buku</h3>
+                            <h3 class="page-title">Daftar Buku</h3>
                             <ul class="breadcrumb">
                                 <li class="breadcrumb-item">Buku</li>
                                 <li class="breadcrumb-item active">Semua Buku</li>
@@ -29,7 +29,7 @@
                             <div class="page-header">
                                 <div class="row align-items-center">
                                     <div class="col">
-                                        <h3 class="page-title">Buku</h3>
+                                        <h3 class="page-title">Daftar Buku</h3>
                                     </div>
                                     <div class="col-auto text-end float-end ms-auto download-grp">
                                         <!-- Buttons -->
