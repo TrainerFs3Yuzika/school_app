@@ -23,38 +23,49 @@
                 <div class="col-sm-12">
                     <div class="card comman-shadow">
                         <div class="card-body">
+                            <h5 class="form-title student-info">Informasi Buku
+                                <span>
+                                    <a href="javascript:;"><i class="feather-more-vertical"></i></a>
+                                </span>
+                            </h5>
                             <form action="{{ route('books.store') }}" method="POST" class="row">
                                 @csrf
                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="judul">Judul:</label>
-                                        <input type="text" name="judul" class="form-control" required>
+                                    <div class="form-group local-forms">
+                                        <label for="judul">Judul Buku <span class="login-danger">*</span></label>
+                                        <input type="text" name="judul" class="form-control"
+                                            placeholder="Masukkan Judul Buku" required>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="penulis">Penulis:</label>
-                                        <input type="text" name="penulis" class="form-control" required>
+                                    <div class="form-group local-forms">
+                                        <label for="penulis">Penulis Buku <span class="login-danger">*</span></label>
+                                        <input type="text" name="penulis" class="form-control"
+                                            placeholder="Masukkan Penulis Buku" required>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="penerbit">Penerbit:</label>
-                                        <input type="text" name="penerbit" class="form-control" required>
+                                    <div class="form-group local-forms">
+                                        <label for="penerbit">Penerbit Buku <span class="login-danger">*</span></label>
+                                        <input type="text" name="penerbit" class="form-control"
+                                            placeholder="Masukkan Penerbit Buku" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="tahun_terbit">Tahun Terbit:</label>
-                                        <input type="number" name="tahun_terbit" class="form-control" required>
+                                    <div class="form-group local-forms">
+                                        <label for="tahun_terbit">Tahun Terbit Buku <span
+                                                class="login-danger">*</span></label>
+                                        <input type="number" name="tahun_terbit" class="form-control"
+                                            placeholder="Masukkan Tahun Terbit Buku" required>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="genre">Genre:</label>
+                                    <div class="form-group local-forms">
+                                        <label for="genre">Genre Buku <span class="login-danger">*</span></label>
                                         <select name="genre" class="form-control" required>
                                             <option value="fiksi">Fiksi</option>
                                             <option value="non-fiksi">Non-Fiksi</option>
                                             <option value="pelajaran">Pelajaran</option>
                                         </select>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="stok">Stok:</label>
-                                        <input type="number" name="stok" class="form-control" required>
+                                    <div class="form-group local-forms">
+                                        <label for="stok">Stok Buku <span class="login-danger">*</span></label>
+                                        <input type="number" name="stok" class="form-control"
+                                            placeholder="Masukkan Stok Buku" required>
                                     </div>
                                 </div>
                                 <div class="col-12">

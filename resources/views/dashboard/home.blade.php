@@ -13,7 +13,8 @@
                     <div class="col-sm-12">
                         <div class="page-sub-header">
                             <h3 class="page-title"><span style="color: blue;">Welcome</span> {{ Session::get('name') }}!</h3>
-                            <hr style="border: none; height: 2px; background-color: blue; animation: underline 2s infinite;">
+                            <hr
+                                style="border: none; height: 2px; background-color: blue; animation: underline 2s infinite;">
                             <ul class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
                                 <li class="breadcrumb-item active">{{ Session::get('name') }}</li>
@@ -199,111 +200,121 @@
 
 
 
-                <div class="row">
-                    {{-- Table Data Kelas --}}
-                    <div class="col-xl-6 d-flex">
-                        <div class="card flex-fill student-space comman-shadow">
-                            <div class="card-header d-flex align-items-center">
-                                <h5 class="card-title">Data Kelas</h5>
-                                <ul class="chart-list-out student-ellips">
-                                    <li class="star-menus"><a href="javascript:;"><i class="fas fa-ellipsis-v"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table id="classTable" class="table star-student table-hover table-center table-borderless table-striped">
-                                        <thead class="thead-light">
-                                            <tr>
-                                                <th>ID</th>
-                                                <th>Nama Kelas</th>
-                                                <th>Nama Guru</th>
-                                                <th>Mata Pelajaran</th>
-                                                <th>Aksi</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach (\App\Models\ClassModel::all() as $class)
-                                                <tr>
-                                                    <td>{{ $class->id }}</td>
-                                                    <td>{{ $class->class_name }}</td>
-                                                    <td>{{ $class->teacher->full_name }}</td>
-                                                    {{-- <td>{{ $class->student->first_name }} {{ $class->student->last_name }}</td> --}}
-                                                    <td>{{ $class->subject->class }}</td>
-                                                    <td>
-                                                        <a href="{{ route('classes.edit', $class->id) }}" class="btn btn-sm btn-warning edit-btn"><i class="fas fa-edit"></i> Edit</a>
-                                                        <form action="{{ route('classes.destroy', $class->id) }}" method="POST" class="d-inline delete-form">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit" class="btn btn-sm btn-danger delete-btn"><i class="fas fa-trash-alt"></i> Hapus</button>
-                                                        </form>
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
+            <div class="row">
+                {{-- Table Data Kelas --}}
+                <div class="col-xl-6 d-flex">
+                    <div class="card flex-fill student-space comman-shadow">
+                        <div class="card-header d-flex align-items-center">
+                            <h5 class="card-title">Data Kelas</h5>
+                            <ul class="chart-list-out student-ellips">
+                                <li class="star-menus"><a href="javascript:;"><i class="fas fa-ellipsis-v"></i></a></li>
+                            </ul>
                         </div>
-                    </div>
-
-                    {{-- Table Jadwal Event --}}
-                    <div class="col-xl-6 d-flex">
-                        <div class="card flex-fill student-space comman-shadow">
-                            <div class="card-header d-flex align-items-center">
-                                <h5 class="card-title">Jadwal Event Mendatang</h5>
-                                <ul class="chart-list-out student-ellips">
-                                    <li class="star-menus"><a href="javascript:;"><i class="fas fa-ellipsis-v"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table id="eventTable" class="table star-student table-hover table-center table-borderless table-striped">
-                                        <thead class="thead-light">
+                        <div class="card-body">
+                            <a href="{{ route('classes.create') }}" class="btn btn-primary mb-3"><i
+                                class="fas fa-plus"></i> Tambah</a>
+                            <div class="table-responsive">
+                                <table id="classTable"
+                                    class="table star-student table-hover table-center table-borderless table-striped">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Nama Kelas</th>
+                                            <th>Nama Guru</th>
+                                            <th>Mata Pelajaran</th>
+                                            <th>Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (\App\Models\ClassModel::all() as $class)
                                             <tr>
-                                                <th>ID</th>
-                                                <th>Judul Event</th>
-                                                <th>Waktu Mulai</th>
-                                                <th>Waktu Berakhir</th>
-                                                <th>Durasi</th>
-                                                <th>Aksi</th>
+                                                <td>{{ $class->id }}</td>
+                                                <td>{{ $class->class_name }}</td>
+                                                <td>{{ $class->teacher->full_name }}</td>
+                                                {{-- <td>{{ $class->student->first_name }} {{ $class->student->last_name }}</td> --}}
+                                                <td>{{ $class->subject->class }}</td>
+                                                <td>
+                                                    <a href="{{ route('classes.edit', $class->id) }}"
+                                                        class="btn btn-sm btn-warning edit-btn"><i class="fas fa-edit"></i>
+                                                        Edit</a>
+                                                    <form action="{{ route('classes.destroy', $class->id) }}"
+                                                        method="POST" class="d-inline delete-form">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-sm btn-danger delete-btn"><i
+                                                                class="fas fa-trash-alt"></i> Hapus</button>
+                                                    </form>
+                                                </td>
                                             </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach (\App\Models\Event::all() as $event)
-                                                <tr>
-                                                    <td>{{ $event->id }}</td>
-                                                    <td>{{ $event->title }}</td>
-                                                    <td>{{ \Carbon\Carbon::parse($event->start)->format('d M Y H:i') }}</td>
-                                                    <td>{{ \Carbon\Carbon::parse($event->end)->format('d M Y H:i') }}</td>
-                                                    <td>{{ \Carbon\Carbon::parse($event->start)->diffInHours(\Carbon\Carbon::parse($event->end)) }} jam</td>
-                                                    <td><a href="{{ url('fullcalender') }}" class="btn btn-success">Kunjungi</a></td>
-                                                </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
+                                        @endforeach
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Initialize DataTables -->
-                <script>
-                    $(document).ready(function() {
-                        $('#classTable').DataTable({
-                            "pageLength": 5,
-                            "language": {
-                                "url": "//cdn.datatables.net/plug-ins/1.11.3/i18n/Indonesian.json"
-                            }
-                        });
-                        $('#eventTable').DataTable({
-                            "pageLength": 5,
-                            "language": {
-                                "url": "//cdn.datatables.net/plug-ins/1.11.3/i18n/Indonesian.json"
-                            }
-                        });
+                {{-- Table Jadwal Event --}}
+                <div class="col-xl-6 d-flex">
+                    <div class="card flex-fill student-space comman-shadow">
+                        <div class="card-header d-flex align-items-center">
+                            <h5 class="card-title">Jadwal Event Mendatang</h5>
+                            <ul class="chart-list-out student-ellips">
+                                <li class="star-menus"><a href="javascript:;"><i class="fas fa-ellipsis-v"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table id="eventTable"
+                                    class="table star-student table-hover table-center table-borderless table-striped">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Judul Event</th>
+                                            <th>Waktu Mulai</th>
+                                            <th>Waktu Berakhir</th>
+                                            <th>Durasi</th>
+                                            <th>Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (\App\Models\Event::all() as $event)
+                                            <tr>
+                                                <td>{{ $event->id }}</td>
+                                                <td>{{ $event->title }}</td>
+                                                <td>{{ \Carbon\Carbon::parse($event->start)->format('d M Y H:i') }}</td>
+                                                <td>{{ \Carbon\Carbon::parse($event->end)->format('d M Y H:i') }}</td>
+                                                <td>{{ \Carbon\Carbon::parse($event->start)->diffInHours(\Carbon\Carbon::parse($event->end)) }}
+                                                    jam</td>
+                                                <td><a href="{{ url('fullcalender') }}"
+                                                        class="btn btn-success">Kunjungi</a></td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Initialize DataTables -->
+            <script>
+                $(document).ready(function() {
+                    $('#classTable').DataTable({
+                        "pageLength": 5,
+                        "language": {
+                            "url": "//cdn.datatables.net/plug-ins/1.11.3/i18n/Indonesian.json"
+                        }
                     });
-                </script>
+                    $('#eventTable').DataTable({
+                        "pageLength": 5,
+                        "language": {
+                            "url": "//cdn.datatables.net/plug-ins/1.11.3/i18n/Indonesian.json"
+                        }
+                    });
+                });
+            </script>
 
 
             <!--Tambahkan Script Font Awesome -->
@@ -318,7 +329,8 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table id="userTable" class="table star-student table-hover table-center table-borderless table-striped">
+                                <table id="userTable"
+                                    class="table star-student table-hover table-center table-borderless table-striped">
                                     <thead class="thead-light">
                                         <tr>
                                             <th>ID</th>
@@ -345,7 +357,7 @@
                     </div>
                 </div>
             </div>
-        
+
             <!-- Initialize DataTables -->
             <script>
                 $(document).ready(function() {
@@ -372,7 +384,8 @@
                         </div>
                         <div class="card-body">
                             <div>
-                                <a href="{{ route('books.create') }}" class="btn btn-primary mb-3"><i class="fas fa-plus"></i>Tambah </a>
+                                <a href="{{ route('books.create') }}" class="btn btn-primary mb-3"><i
+                                        class="fas fa-plus"></i>Tambah </a>
                                 <div class="table-responsive">
                                     <table id="bookTable" class="table">
                                         <thead class="thead-light">
@@ -387,7 +400,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach(\App\Models\Book::all() as $book)
+                                            @foreach (\App\Models\Book::all() as $book)
                                                 <tr>
                                                     <td>{{ $book->judul }}</td>
                                                     <td>{{ $book->penulis }}</td>
@@ -396,11 +409,14 @@
                                                     <td>{{ $book->genre }}</td>
                                                     <td>{{ $book->stok }}</td>
                                                     <td>
-                                                        <a href="{{ route('books.edit', $book->id) }}" class="btn btn-sm btn-primary">Edit</a>
-                                                        <form action="{{ route('books.destroy', $book->id) }}" method="POST" style="display: inline;">
+                                                        <a href="{{ route('books.edit', $book->id) }}"
+                                                            class="btn btn-sm btn-primary">Edit</a>
+                                                        <form action="{{ route('books.destroy', $book->id) }}"
+                                                            method="POST" style="display: inline;">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
+                                                            <button type="submit"
+                                                                class="btn btn-sm btn-danger">Hapus</button>
                                                         </form>
                                                     </td>
                                                 </tr>
@@ -415,69 +431,74 @@
                         $(document).ready(function() {
                             $('#bookTable').DataTable();
                         });
-                    </script>   
+                    </script>
 
-                    
+
 
                 </div>
                 <div class="col-xl-6 d-flex">
-{{-- menu peminjaman --}}
-<div class="card flex-fill comman-shadow">
-    <div class="card-header d-flex align-items-center">
-        <h5 class="card-title">Daftar Peminjaman Buku</h5>
-        <ul class="chart-list-out student-ellips">
-            <li class="star-menus"><a href="javascript:;"><i class="fas fa-ellipsis-v"></i></a></li>
-        </ul>
-    </div>
-    <div class="card-body">
-        <div class="table-responsive">
-            <a href="{{ route('peminjaman.create') }}" class="btn btn-primary mb-3"><i class="fas fa-plus"></i> Tambah</a>
-            <table class="table border-0 star-book table-hover table-center mb-0 datatable table-striped">
-                <thead class="thead-light">
-                    <tr>
-                        <th scope="col">No</th>
-                        <th scope="col">ID</th>
-                        <th scope="col">Judul Buku</th>
-                        <th scope="col">Nama Peminjam</th>
-                        <th scope="col">Tanggal Pinjam</th>
-                        <th scope="col">Tanggal Kembali</th>
-                        <th scope="col">Jumlah Buku</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (\App\Models\Peminjaman::all() as $key => $peminjaman)
-                    <tr>
-                        <td>{{ ++$key }}</td>
-                        <td>{{ $peminjaman->id }}</td>
-                        <td>{{ $peminjaman->book->judul }}</td>
-                        <td>{{ $peminjaman->nama_peminjam }}</td>
-                        <td>{{ $peminjaman->tanggal_pinjam }}</td>
-                        <td>{{ $peminjaman->tanggal_kembali }}</td>
-                        <td>{{ $peminjaman->jumlah_buku }}</td>
-                        <td>{{ $peminjaman->status }}</td>
-                        <td>
-                            <a href="{{ route('peminjaman.edit', $peminjaman->id) }}" class="btn btn-sm btn-primary">Edit</a>
-                            <form action="{{ route('peminjaman.destroy', $peminjaman->id) }}" method="POST" style="display: inline;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus?')">Hapus</button>
-                            </form>
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
-<!-- Initialize DataTables -->
-<script>
-    $(document).ready(function() {
-        $('.datatable').DataTable();
-    });
-</script>
+                    {{-- menu peminjaman --}}
+                    <div class="card flex-fill comman-shadow">
+                        <div class="card-header d-flex align-items-center">
+                            <h5 class="card-title">Daftar Peminjaman Buku</h5>
+                            <ul class="chart-list-out student-ellips">
+                                <li class="star-menus"><a href="javascript:;"><i class="fas fa-ellipsis-v"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <a href="{{ route('peminjaman.create') }}" class="btn btn-primary mb-3"><i
+                                        class="fas fa-plus"></i> Tambah</a>
+                                <table
+                                    class="table border-0 star-book table-hover table-center mb-0 datatable table-striped">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th scope="col">No</th>
+                                            <th scope="col">ID</th>
+                                            <th scope="col">Judul Buku</th>
+                                            <th scope="col">Nama Peminjam</th>
+                                            <th scope="col">Tanggal Pinjam</th>
+                                            <th scope="col">Tanggal Kembali</th>
+                                            <th scope="col">Jumlah Buku</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col">Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (\App\Models\Peminjaman::all() as $key => $peminjaman)
+                                            <tr>
+                                                <td>{{ ++$key }}</td>
+                                                <td>{{ $peminjaman->id }}</td>
+                                                <td>{{ $peminjaman->book->judul }}</td>
+                                                <td>{{ $peminjaman->nama_peminjam }}</td>
+                                                <td>{{ $peminjaman->tanggal_pinjam }}</td>
+                                                <td>{{ $peminjaman->tanggal_kembali }}</td>
+                                                <td>{{ $peminjaman->jumlah_buku }}</td>
+                                                <td>{{ $peminjaman->status }}</td>
+                                                <td>
+                                                    <a href="{{ route('peminjaman.edit', $peminjaman->id) }}"
+                                                        class="btn btn-sm btn-primary">Edit</a>
+                                                    <form action="{{ route('peminjaman.destroy', $peminjaman->id) }}"
+                                                        method="POST" style="display: inline;">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-sm btn-danger"
+                                                            onclick="return confirm('Apakah Anda yakin ingin menghapus?')">Hapus</button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Initialize DataTables -->
+                    <script>
+                        $(document).ready(function() {
+                            $('.datatable').DataTable();
+                        });
+                    </script>
 
                 </div>
             </div>

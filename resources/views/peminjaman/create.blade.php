@@ -33,7 +33,7 @@
                                     </h5>
                                     <div class="col-md-6">
                                         <div class="form-group local-forms">
-                                            <label for="book_id">Judul Buku:</label>
+                                            <label for="book_id">Judul Buku: <span class="login-danger">*</span></label>
                                             <select name="book_id" class="form-control" placeholder="Masukkan Nama Buku" required>
                                                 @foreach($books as $book)
                                                     <option value="{{ $book->id }}">{{ $book->judul }}</option>
