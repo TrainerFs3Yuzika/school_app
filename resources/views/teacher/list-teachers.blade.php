@@ -72,10 +72,9 @@
                                         </th>
                                         <th>ID</th>
                                         <th>Nama</th>
-                                        <th>Kelas</th>
                                         <th>Jenis Kelamin</th>
-                                        <th>Mata Pelajaran</th>
-                                        <th>Bagian</th>
+                                        <th>Kualifikasi</th>
+                                        <th>Pengalaman</th>
                                         <th>Nomor Ponsel</th>
                                         <th>Alamat</th>
                                         <th class="text-end">Aksi</th>
@@ -90,8 +89,7 @@
                                                     value="something">
                                             </div>
                                         </td>
-                                        <td hidden class="user_id
-                                        ">{{ $list->user_id }}</td>
+                                        <td hidden class="user_id">{{ $list->user_id }}</td>
                                         <td>{{ $list->user_id }}</td>
                                         <td>
                                             <h2 class="table-avatar">
@@ -102,14 +100,13 @@
                                                         <img class="avatar-img rounded-circle" src="{{ URL::to('images/photo_defaults.jpg') }}" alt="{{ $list->name }}">
                                                     @endif
                                                 </a>
-                                                <a href="teacher-details.html">{{ $list->name }}</a>
+                                                <a href="teacher-details.html">{{ $list-> full_name }}</a>
                                             </h2>
                                         </td>
-                                        <td>10</td>
                                         <td>{{ $list->gender }}</td>
-                                        <td>Matematika</td>
-                                        <td>A</td>
-                                        <td>{{ $list->mobile }}</td>
+                                        <td>{{ $list->qualification }}</td>
+                                        <td>{{ $list->experience }}</td>
+                                        <td>{{ $list->phone_number }}</td>
                                         <td>{{ $list->address }}</td>
                                         <td class="text-end">
                                             <div class="actions">
