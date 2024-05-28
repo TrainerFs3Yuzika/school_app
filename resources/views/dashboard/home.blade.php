@@ -382,8 +382,6 @@
                         </div>
                         <div class="card-body">
                             <div>
-                                <a href="{{ route('books.create') }}" class="btn btn-primary mb-3"><i
-                                        class="fas fa-plus"></i>Tambah </a>
                                 <div class="table-responsive">
                                     <table id="bookTable" class="table">
                                         <thead class="thead-light">
@@ -445,8 +443,6 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <a href="{{ route('peminjaman.create') }}" class="btn btn-primary mb-3"><i
-                                        class="fas fa-plus"></i> Tambah</a>
                                 <table
                                     class="table border-0 star-book table-hover table-center mb-0 datatable table-striped">
                                     <thead class="thead-light">

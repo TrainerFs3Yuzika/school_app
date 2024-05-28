@@ -40,7 +40,7 @@ input:-webkit-autofill:focus {
   height: 45px;
 }
 .form-control:focus {
-  border-color: #3d5ee1;
+  border-color: #9967CE;
   box-shadow: none;
   outline: 0;
 }
@@ -54,7 +54,7 @@ input:-webkit-autofill:focus {
   height: calc(1.5em + 1rem + 2px);
 }
 a {
-  color: #3d5ee1;
+  color: #9967CE;
   text-decoration: none;
 }
 input,
@@ -178,7 +178,7 @@ table.table td h2 a {
   color: #333;
 }
 table.table td h2 a:hover {
-  color: #3d5ee1;
+  color: #BA9CF6;
 }
 table.table td h2 span {
   color: #888;
@@ -200,7 +200,7 @@ table.table td h2 span {
   background-color: #f7f7f7;
 }
 .table-hover tbody tr:hover td {
-  color: #474648;
+  color: #BA9CF6;
 }
 .table-striped thead tr {
   border-color: transparent;
@@ -239,13 +239,13 @@ table.table td h2 span {
   white-space: nowrap;
 }
 .table .thead-light th {
-  color: #495057;
-  background-color: #f8f9fa;
+  color: #000;
+  background-color: #BA9CF6;
   border-color: #eff2f7;
 }
 .table .student-thread th {
   color: #000;
-  background-color: #f8f9fa;
+  background-color: #BA9CF6;
   border-color: #eff2f7;
 }
 .settings-form {
@@ -253,7 +253,7 @@ table.table td h2 span {
 }
 .nav-tabs.menu-tabs .nav-item.active .nav-link {
   color: #fff;
-  background: #3d5ee1;
+  background: #9967CE;
 }
 .settings-menu-links .nav-tabs.menu-tabs {
   border: none;
@@ -306,7 +306,7 @@ table.table td h2 span {
 .settings-btn .upload {
   position: absolute;
   z-index: 11;
-  background: #3d5ee1;
+  background: #9b9b9b;
   border-radius: 5px;
   right: 2px;
   top: 1.5px;
@@ -327,7 +327,7 @@ table.table td h2 span {
   width: auto;
 }
 .upload-images .btn-icon {
-  color: #18aefa;
+  color: #9967CE;
   font-size: 16px;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -385,8 +385,8 @@ table.table td h2 span {
   height: 82px;
 }
 .settings-btns .btn-orange:hover {
-  background: #18aefa;
-  border: 1px solid #18aefa;
+  background: #BA9CF6;
+  border: 1px solid #9967CE;
   color: #fff;
   opacity: 0.8;
 }
@@ -395,8 +395,8 @@ table.table td h2 span {
   font-weight: 700;
   padding: 10px 26px;
   margin-right: 15px;
-  background: #3d5ee1;
-  border: 1px solid #3d5ee1;
+  background: #9967CE;
+  border: 1px solid #9967CE;
   color: #fff;
   border-radius: 4px;
 }
@@ -410,8 +410,8 @@ table.table td h2 span {
   border-radius: 4px;
 }
 .settings-btns .btn-grey:hover {
-  background: #242424;
-  border: 1px solid #242424;
+  background: #BA9CF6;
+  border: 1px solid #9967CE;
   color: #fff;
 }
 .card .card-header .card-title {
@@ -422,8 +422,8 @@ table.table td h2 span {
   font-family: source sans pro, sans-serif;
 }
 .check:checked + .checktoggle {
-  background-color: #3d5ee1;
-  border: 1px solid #3d5ee1;
+  background-color: #9967CE;
+  border: 1px solid #9967CE;
 }
 .check:checked + .checktoggle:after {
   background-color: #fff;
@@ -443,7 +443,7 @@ table.table td h2 span {
   border-radius: 5px;
   color: #000;
   background: #fff;
-  border: 1px solid #3d5ee1;
+  border: 1px solid #9967CE;
 }
 .nav-tabs.menu-tabs .nav-item {
   padding-right: 10px;
@@ -452,7 +452,7 @@ table.table td h2 span {
 }
 .nav-tabs.menu-tabs .nav-link:hover {
   color: #fff;
-  background: #3d5ee1;
+  background: #BA9CF6;
 }
 .settings-form .social-icon {
   width: 50px;
@@ -493,14 +493,14 @@ table.table td h2 span {
   justify-content: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
-  background-color: #3d5ee1;
+  background-color: #9967CE;
   color: #fff;
   position: relative;
   right: -6px;
   font-size: 20px;
 }
 .add-links {
-  background-color: #3d5ee1;
+  background-color: #9967CE;
   color: #fff;
   font-size: 16px;
   font-weight: 700;
@@ -559,7 +559,7 @@ table.table td h2 span {
   height: 20px;
   width: 20px;
   background-color: #fff;
-  border: 1px solid #3d5ee1;
+  border: 1px solid #91c235;
   border-radius: 50%;
 }
 .settings-form .custom_radio .checkmark:after {
@@ -572,7 +572,7 @@ table.table td h2 span {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: #3d5ee1;
+  background: #91c235;
 }
 .custom_radio input {
   position: absolute;
@@ -884,7 +884,7 @@ a.bg-primary:focus,
 a.bg-primary:hover,
 button.bg-primary:focus,
 button.bg-primary:hover {
-  background-color: #18aefa !important;
+  background-color: #BA9CF6 !important;
 }
 .bg-success,
 .badge-success {
@@ -943,7 +943,7 @@ button.bg-danger:hover {
 }
 .text-primary,
 .dropdown-menu > li > a.text-primary {
-  color: #3d5ee1 !important;
+  color: #fd4c82 !important;
 }
 .text-success,
 .dropdown-menu > li > a.text-success {
@@ -969,23 +969,23 @@ button.bg-danger:hover {
   color: #757575 !important;
 }
 .btn-primary {
-  background-color: #3d5ee1;
-  border: 1px solid #3d5ee1;
+  background-color: #9967CE;
+  border: 1px solid #9967CE;
 }
 .btn-primary-save-bg {
   background-color: #18aefa;
 }
 .btn-primary-save-bg:hover {
-  background-color: #3d5ee1;
-  border: 1px solid #3d5ee1;
+  background-color: #BA9CF6;
+  border: 1px solid #9967CE;
 }
 .btn-primary:hover,
 .btn-primary:focus,
 .btn-primary.active,
 .btn-primary:active,
 .open > .dropdown-toggle.btn-primary {
-  background-color: #18aefa;
-  border: 1px solid #18aefa;
+  background-color: #BA9CF6;
+  border: 1px solid #9967CE;
 }
 .btn-primary.active.focus,
 .btn-primary.active:focus,
@@ -1202,8 +1202,8 @@ button.bg-danger:hover {
   box-shadow: unset;
 }
 .download-grp .btn-outline-primary {
-  background-color: #3d5ee1;
-  border-color: #3d5ee1;
+  background-color: #9967CE;
+  border-color: #9967CE;
   color: #fff;
 }
 .btn-outline-gray {
@@ -1220,18 +1220,18 @@ button.bg-danger:hover {
   -ms-flex-pack: center;
 }
 .btn-outline-gray.active {
-  background-color: #3d5ee1;
-  border-color: #3d5ee1;
+  background-color: #9967CE;
+  border-color: #9967CE;
   color: #fff;
 }
 .btn-outline-primary {
-  color: #3d5ee1;
-  border-color: #3d5ee1;
+  color: #9967CE;
+  border-color: #9967CE;
 }
 .btn-outline-primary:hover,
 .btn-outline-gray:hover {
-  background-color: #18aefa;
-  border-color: #18aefa;
+  background-color: #BA9CF6;
+  border-color: #9967CE;
   color: #fff;
 }
 .btn-outline-primary:focus,
@@ -1384,22 +1384,22 @@ button.bg-danger:hover {
 .pagination > .active > span,
 .pagination > .active > span:focus,
 .pagination > .active > span:hover {
-  background-color: #3d5ee1;
-  border-color: #3d5ee1;
+  background-color: #91c235;
+  border-color: #91c235;
 }
 .pagination > li > a,
 .pagination > li > span {
   color: #3d5ee1;
 }
 .page-link:hover {
-  color: #3d5ee1;
+  color: #181819;
 }
 .page-link:focus {
   box-shadow: unset;
 }
 .page-item.active .page-link {
-  background-color: #3d5ee1;
-  border-color: #3d5ee1;
+  background-color: #9b9b9b;
+  border-color: #9b9b9b;
 }
 .dropdown-menu {
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -1410,7 +1410,7 @@ button.bg-danger:hover {
 }
 .dropdown-item.active,
 .dropdown-item:active {
-  background-color: #3d5ee1;
+  background-color: #181819;
 }
 .navbar-nav .open .dropdown-menu {
   border: 0;
@@ -2334,18 +2334,18 @@ footer p {
 }
 .sidebar-menu li a:hover {
   color: #fff;
-  background: #3d5ee1;
+  background: #BA9CF6;
   border-radius: 6px;
 }
 .sidebar-menu > ul > li > a:hover {
   background-color: #fff;
-  color: #3d5ee1;
+  color: #BA9CF6;
   margin: 0 -15px;
   padding-left: 30px;
 }
 .sidebar-menu li.active > a {
   background-color: #fff;
-  color: #3d5ee1;
+  color: #9967CE;
   position: relative;
   margin: 0 -15px;
   padding-left: 30px;
@@ -2357,7 +2357,7 @@ footer p {
   position: absolute;
   left: 0;
   top: 0;
-  background: #3d5ee1;
+  background: #9967CE;
   -webkit-transition: all 0.5s;
   -ms-transition: all 0.5s;
   transition: all 0.5s;
@@ -2391,7 +2391,7 @@ footer p {
 }
 .sidebar-menu ul ul a.active {
   color: #fff;
-  background: #3d5ee1;
+  background: #9967CE;
   border-radius: 6px;
 }
 .mobile_btn {
@@ -3885,12 +3885,12 @@ table.table-inbox tbody tr.checked {
 .student-submit .btn-primary {
   min-width: 160px;
   border-radius: 10px;
-  background: #3d5ee1;
-  border: 1px solid #3d5ee1;
+  background: #91c235;
+  border: 1px solid #91c235;
 }
 .student-submit .btn-primary:hover {
-  background: #18aefa;
-  border: 1px solid #18aefa;
+  background: #9b9b9b;
+  border: 1px solid #9b9b9b;
 }
 .form-title.student-info,
 .about-info h4 {
@@ -5159,7 +5159,7 @@ table.table-inbox tbody tr.checked {
   font-weight: 500;
 }
 .selectBox p .select-icon {
-  color: #3d5ee1;
+  color: #9967CE;
   width: 20px;
   height: 20px;
 }
@@ -5168,17 +5168,17 @@ table.table-inbox tbody tr.checked {
 }
 .report-btn .btn {
   font-weight: 600;
-  color: #3d5ee1;
+  color: #9967CE;
   background: #fff;
-  border: 2px solid #3d5ee1;
+  border: 2px solid #9967CE;
   border-radius: 8px;
   width: 100%;
   padding: 11px 0;
 }
 .report-btn .btn:hover {
   color: #fff;
-  background: #18aefa;
-  border: 2px solid #18aefa;
+  background: #BA9CF6;
+  border: 2px solid #9967CE;
 }
 .report-btn .btn:hover img {
   filter: invert(0) brightness(100);
@@ -5211,11 +5211,11 @@ table.table-inbox tbody tr.checked {
   padding-bottom: 24px;
 }
 .invoices-tabs ul li a:hover {
-  color: #3d5ee1;
+  color: #BA9CF6;
 }
 .invoices-tabs ul li a.active {
-  color: #3d5ee1;
-  border-bottom: 2px solid #3d5ee1;
+  color: #9967CE;
+  border-bottom: 2px solid #9967CE;
 }
 .invoices-settings-btn {
   display: -webkit-box;
@@ -5229,11 +5229,11 @@ table.table-inbox tbody tr.checked {
   -ms-flex-pack: end;
 }
 .invoices-settings-icon {
-  color: #3d5ee1;
+  color: #9b9b9b;
   margin-right: 20px;
 }
 .invoices-settings-icon:hover {
-  color: #18aefa;
+  color: #BA9CF6;
 }
 .invoices-settings-icon .feather {
   width: 24px;
@@ -5245,8 +5245,8 @@ table.table-inbox tbody tr.checked {
   color: #fff;
   padding: 12px 0;
   min-width: 167px;
-  background: #3d5ee1;
-  border: 1px solid #3d5ee1;
+  background: #9967CE;
+  border: 1px solid #9967CE;
   border-radius: 6px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -5259,8 +5259,8 @@ table.table-inbox tbody tr.checked {
   -ms-flex-pack: center;
 }
 .invoices-settings-btn .btn:hover {
-  background: #18aefa;
-  border: 1px solid #18aefa;
+  background: #BA9CF6;
+  border: 1px solid #9967CE;
 }
 .invoices-settings-btn .btn .feather {
   margin-right: 6px;
@@ -5288,7 +5288,7 @@ table.table-inbox tbody tr.checked {
 .inovices-widget-header .inovices-amount {
   font-weight: 600;
   font-size: 24px;
-  color: #3d5ee1;
+  color: #9967CE;
 }
 .inovices-all {
   font-weight: 600;
@@ -5384,11 +5384,11 @@ table.table-inbox tbody tr.checked {
 .invoice-load-btn .btn {
   font-weight: 700;
   font-size: 16px;
-  color: #3d5ee1;
+  color: #9967CE;
   min-width: 170px;
   padding: 12px 15px;
   background: #fff;
-  border: 2px solid #3d5ee1;
+  border: 2px solid #9967CE;
   border-radius: 6px;
   display: inline-flex;
   justify-content: center;
@@ -5396,8 +5396,8 @@ table.table-inbox tbody tr.checked {
 }
 .invoice-load-btn .btn:hover {
   color: #fff;
-  background: #18aefa;
-  border: 2px solid #18aefa;
+  background: #BA9CF6;
+  border: 2px solid #BA9CF6;
 }
 .invoice-load-btn .btn span {
   display: inline-block;
@@ -5422,7 +5422,7 @@ table.table-inbox tbody tr.checked {
 }
 .invoices-page-header .invoices-breadcrumb-item a {
   font-weight: 600;
-  color: #3d5ee1;
+  color: #9967CE;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -5434,7 +5434,7 @@ table.table-inbox tbody tr.checked {
   -ms-flex-pack: center;
 }
 .invoices-page-header .invoices-breadcrumb-item a:hover {
-  color: #18aefa;
+  color: #9967CE;
 }
 .invoices-page-header .invoices-breadcrumb-item i {
   color: #fff;
@@ -5442,7 +5442,7 @@ table.table-inbox tbody tr.checked {
   width: 24px;
   height: 24px;
   margin-right: 10px;
-  background: #3d5ee1;
+  background: #9967CE;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -5455,7 +5455,7 @@ table.table-inbox tbody tr.checked {
 }
 .invoices-page-header .invoices-breadcrumb-item a:hover i {
   color: #fff;
-  background: #377dff;
+  background: #9967CE;
 }
 .invoices-create-btn .btn {
   font-weight: 600;
@@ -5467,24 +5467,24 @@ table.table-inbox tbody tr.checked {
 }
 .invoices-create-btn .invoices-preview-link {
   font-weight: 600;
-  color: #3d5ee1;
+  color: #9967CE;
   margin-right: 30px;
 }
 .invoices-create-btn .invoices-preview-link:hover {
-  color: #18aefa;
+  color: #BA9CF6;
 }
 .invoices-create-btn .delete-invoice-btn {
-  background: #3d5ee1;
+  background: #9967CE;
   margin-right: 10px;
 }
 .invoices-create-btn .delete-invoice-btn:hover {
-  background: #18aefa;
+  background: #BA9CF6;
 }
 .invoices-create-btn .save-invoice-btn {
-  background: #3d5ee1;
+  background: #9967CE;
 }
 .invoices-create-btn .save-invoice-btn:hover {
-  background: #18aefa;
+  background: #BA9CF6;
 }
 .invoices-add-card {
   background: #fff;
@@ -5594,7 +5594,7 @@ table.table-inbox tbody tr.checked {
 .invoice-add-table h4 {
   font-weight: 600;
   font-size: 20px;
-  color: #3d5ee1;
+  color: #9967CE;
   margin-bottom: 30px;
 }
 .invoice-add-table th {
@@ -5864,14 +5864,14 @@ table.table-inbox tbody tr.checked {
 }
 .invoice-total-box .add-links {
   font-weight: 500;
-  color: #7638ff;
+  color: #181819;
   margin-bottom: 20px;
   display: block;
 }
 .invoice-total-box .add-links-bg {
   background: 0 0;
   padding: 0;
-  color: #3d5ee1;
+  color: #181819;
 }
 .invoice-total-box .service-amount {
   display: -webkit-box;
@@ -5893,7 +5893,7 @@ table.table-inbox tbody tr.checked {
 }
 .invoice-total-box .add-links-one {
   font-weight: 500;
-  color: #3d5ee1;
+  color: #181819;
 }
 .invoice-total-box .service-trash-one {
   margin-top: 10px;
@@ -5909,7 +5909,7 @@ table.table-inbox tbody tr.checked {
 .invoice-total-footer h4 {
   font-size: 20px;
   margin-bottom: 0;
-  color: #3d5ee1;
+  color: #181819;
 }
 .invoice-total-footer h4 span {
   float: right;
@@ -8327,7 +8327,7 @@ body[data-layout-mode="dark"]
     font-size: 18px;
     height: 40px;
     width: 40px;
-    background: #3d5ee1;
+    background: #9967CE;
     justify-content: center;
     padding: 0 12px;
     border-radius: 10px;
@@ -8503,7 +8503,7 @@ body[data-layout-mode="dark"]
     padding: 0 50px;
   }
   .mobile_btn {
-    color: #18aefa !important;
+    color: #fd4c82 !important;
     cursor: pointer;
     display: block;
     font-size: 24px;
