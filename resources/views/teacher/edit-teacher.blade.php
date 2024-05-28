@@ -88,7 +88,7 @@
                                 </div>
                                 <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms">
-                                        <label>Pengalaman <span class="login-danger">*</span></label
+                                        <label>Pengalaman <span class="login-danger">*</span></label>
                                         <input type="text" class="form-control @error('experience') is-invalid @enderror" name="experience" placeholder="Masukkan Pengalaman" value="{{ $teacher->experience }}">
                                         @error('experience')
                                             <span class="invalid-feedback" role="alert">
@@ -139,7 +139,7 @@
                                         <input type="text" class="form-control @error('state') is-invalid @enderror" name="state" placeholder="Masukkan Provinsi" value="{{ $teacher->state }}">
                                         @error('state')
                                             <span class="invalid-feedback" role="alert">
-                                                <strong>{{ message }}</strong>
+                                                <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
                                     </div>
