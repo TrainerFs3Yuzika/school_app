@@ -74,12 +74,18 @@
                                                 <td>{{ $book->genre }}</td> <!-- Genre -->
                                                 <td>{{ $book->stok }}</td> <!-- Stok -->
                                                 <td>
-                                                    <a href="{{ route('books.edit', $book->id) }}" class="btn btn-sm btn-primary">Edit</a>
-                                                    <form action="{{ route('books.destroy', $book->id) }}" method="POST" style="display: inline;">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class="btn btn-sm btn-danger"><i class="bi bi-trash"></i> Hapus</button>
-                                                    </form>
+                                                    <div class="actions">
+                                                        <a href="{{ route('books.edit', $book->id) }}" class="btn btn-sm bg-danger-light">
+                                                            <i class="far fa-edit me-2"></i>
+                                                        </a>
+                                                        <form method="POST" action="{{ route('books.destroy', $book->id) }}" style="display: inline;">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-sm bg-danger-light" onclick="return confirm('Apakah Anda yakin ingin menghapus buku ini?')">
+                                                                <i class="far fa-trash-alt me-2"></i>
+                                                            </button>
+                                                        </form>
+                                                    </div>
                                                 </td> <!-- Aksi -->
                                             </tr>
                                         @endforeach
