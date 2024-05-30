@@ -46,14 +46,13 @@
                                         </div>
                                         <div class="form-group local-forms">
                                             <label for="tanggal_pinjam">Tanggal Peminjaman <span class="login-danger">*</span></label>
-                                            <input type="date" name="tanggal_pinjam" class="form-control datetimepicker" placeholder="DD-MM-YYYY" required>
+                                            <input type="date" name="tanggal_pinjam" class="form-control" required>
                                         </div>
-                                    </div>
-                                    <div class="col-md-6">
                                         <div class="form-group local-forms">
                                             <label for="tanggal_kembali">Tanggal Pengembalian <span class="login-danger">*</span></label>
-                                            <input type="date" name="tanggal_kembali" class="form-control datetimepicker" placeholder="DD-MM-YYYY" required>
+                                            <input type="date" name="tanggal_kembali" class="form-control" required>
                                         </div>
+                                        
                                         <div class="form-group local-forms">
                                             <label for="jumlah_buku">Jumlah Buku <span class="login-danger">*</span></label>
                                             <input type="number" name="jumlah_buku" class="form-control" min="1" placeholder="Masukkan Jumlah Buku" required>

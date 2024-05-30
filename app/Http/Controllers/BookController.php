@@ -36,19 +36,25 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'judul' => 'required|string',
-            'penulis' => 'required|string',
-            'penerbit' => 'required|string',
-            'tahun_terbit' => 'required|integer',
-            'genre' => 'required|in:Fiksi,Non-Fiksi,Pelajaran',
+        $request->validate([
+            'judul' => 'required|string|max:255',
+            'penulis' => 'required|string|max:255',
+            'penerbit' => 'required|string|max:255',
+            'tahun_terbit' => 'required|integer|min:1900|max:' . date('Y'),
+            'genre' => 'required|string',
             'stok' => 'required|integer|min:0',
         ]);
 
-        Book::create($validatedData);
+        // Log data untuk debugging
+        \Log::info($request->all());
 
-        return redirect()->route('books.index')->with('success', 'Buku berhasil ditambahkan!');
+        // Simpan data buku
+        Book::create($request->all());
+
+        // Redirect dengan pesan sukses
+        return redirect()->route('books.index')->with('success', 'Buku berhasil ditambahkan.');
     }
+
 
     /**
      * Menampilkan formulir untuk mengedit buku.
