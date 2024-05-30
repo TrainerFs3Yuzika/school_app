@@ -44,7 +44,6 @@
                                             <option selected disabled>Pilih Jenis Kelamin</option>
                                             <option value="Perempuan" {{ $teacher->gender == 'Female' ? "selected" :"Female"}}>Perempuan</option>
                                             <option value="Laki-laki" {{ $teacher->gender == 'Male' ? "selected" :""}}>Laki-laki</option>
-                                            <option value="Lainnya" {{ $teacher->gender == 'Others' ? "selected" :""}}>Lainnya</option>
                                         </select>
                                         @error('gender')
                                             <span class="invalid-feedback" role="alert">

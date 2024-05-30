@@ -61,7 +61,6 @@
                                                 <option selected disabled>Pilih Jenis Kelamin</option>
                                                 <option value="Perempuan" {{ old('gender') == 'Perempuan' ? "selected" :"Perempuan"}}>Perempuan</option>
                                                 <option value="Laki-laki" {{ old('gender') == 'Laki-laki' ? "selected" :""}}>Laki-laki</option>
-                                                <option value="Lainnya" {{ old('gender') == 'Lainnya' ? "selected" :""}}>Lainnya</option>
                                             </select>
                                             @error('gender')
                                                 <span class="invalid-feedback" role="alert">

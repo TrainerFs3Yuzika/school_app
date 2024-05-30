@@ -559,7 +559,7 @@ table.table td h2 span {
   height: 20px;
   width: 20px;
   background-color: #fff;
-  border: 1px solid #91c235;
+  border: 1px solid #9967CE;
   border-radius: 50%;
 }
 .settings-form .custom_radio .checkmark:after {
@@ -572,7 +572,7 @@ table.table td h2 span {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: #91c235;
+  background: #9967CE;
 }
 .custom_radio input {
   position: absolute;
@@ -1384,8 +1384,8 @@ button.bg-danger:hover {
 .pagination > .active > span,
 .pagination > .active > span:focus,
 .pagination > .active > span:hover {
-  background-color: #91c235;
-  border-color: #91c235;
+  background-color: #9967CE;
+  border-color: #9967CE;
 }
 .pagination > li > a,
 .pagination > li > span {
@@ -1463,7 +1463,7 @@ button.bg-danger:hover {
 }
 .bootstrap-datetimepicker-widget table td.active,
 .bootstrap-datetimepicker-widget table td.active:hover {
-  background-color: #3d5ee1;
+  background-color: #7638ff;
   text-shadow: unset;
 }
 .bootstrap-datetimepicker-widget table td.today:before {
@@ -1567,7 +1567,7 @@ div.dataTables_wrapper div.dataTables_length select {
 }
 .select2-container--default
   .select2-results__option--highlighted[aria-selected] {
-  background-color: #18aefa;
+  background-color: #9967CE;
 }
 .select2-container--default .select2-selection--multiple {
   border: 1px solid #ddd;
@@ -3885,8 +3885,8 @@ table.table-inbox tbody tr.checked {
 .student-submit .btn-primary {
   min-width: 160px;
   border-radius: 10px;
-  background: #91c235;
-  border: 1px solid #91c235;
+  background: #9967CE;
+  border: 1px solid #9967CE;
 }
 .student-submit .btn-primary:hover {
   background: #9b9b9b;
