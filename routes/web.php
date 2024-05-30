@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Request;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ScoreController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\StudentController;
@@ -13,10 +14,10 @@ use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\AccountsController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\FullCalenderController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\UserManagementController;
-use App\Http\Controllers\PeminjamanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -182,4 +183,14 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     Route::get('/peminjaman/{id}/edit', [PeminjamanController::class, 'edit'])->name('peminjaman.edit');
     Route::put('/peminjaman/{id}', [PeminjamanController::class, 'update'])->name('peminjaman.update');
     Route::delete('/peminjaman/{id}', [PeminjamanController::class, 'destroy'])->name('peminjaman.destroy');
+
+    // nilai
+
+    Route::get('/scores', [ScoreController::class, 'index'])->name('scores.index');
+    Route::get('/scores/create', [ScoreController::class, 'create'])->name('scores.create');
+    Route::post('/scores', [ScoreController::class, 'store'])->name('scores.store');
+    Route::get('/scores/{id}', [ScoreController::class, 'show'])->name('scores.show');
+    Route::get('/scores/{id}/edit', [ScoreController::class, 'edit'])->name('scores.edit');
+    Route::put('/scores/{id}', [ScoreController::class, 'update'])->name('scores.update');
+    Route::delete('/scores/{id}', [ScoreController::class, 'destroy'])->name('scores.destroy');
 });

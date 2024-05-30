@@ -109,6 +109,16 @@
                         <li><a href="{{ route('peminjaman.index') }}">Daftar Peminjam</a></li>
                     </ul>
                 </li>
+                <li class="submenu">
+                    @if (Session::get('role_name') === 'Admin' || Session::get('role_name') === 'Super Admin')
+                    <a href="#"><i class="fas fa-chart-line"></i> <span>Nilai</span> <span class="menu-arrow"></span></a>
+                    @endif
+                    <ul>
+                        <li><a href="{{ route('scores.index') }}">Daftar Nilai</a></li>
+                        <li><a href="{{ route('scores.create') }}">Tambah Nilai</a></li>
+                    </ul>
+                </li>
+                
             </ul>
         </div>
     </div>
