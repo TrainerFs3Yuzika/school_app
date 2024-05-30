@@ -23,9 +23,10 @@
                         @if (auth()->user()->role_name === 'Admin' || auth()->user()->role_name === 'Super Admin')
                         <li><a href="{{ route('home') }}" class="{{set_active(['home'])}}"><i class="fas fa-home"></i> Super Admin</a></li>
                         @endif
-                        @if (auth()->user()->role_name === 'Teacher')
+                        @if (auth()->user()->role_name === 'Teachers')
                         <li><a href="{{ route('teacher/dashboard') }}" class="{{set_active(['teacher/dashboard'])}}"><i class="fas fa-chalkboard-teacher"></i> Dasbor Guru</a></li>
-                        @elseif (auth()->user()->role_name === 'Student')
+                        @endif
+                        @if (auth()->user()->role_name === 'Student')
                         <li><a href="{{ route('student/dashboard') }}" class="{{set_active(['student/dashboard'])}}"><i class="fas fa-user-graduate"></i> Dasbor Siswa</a></li>
                         @endif
 
