@@ -5,7 +5,7 @@
                 <li class="menu-title">
                     <span>Menu Utama</span>
                 </li>
-                @if (Session::get('role_name') === 'Admin' || Session::get('role_name') === 'Super Admin')
+                @if (auth()->user()->role_name === 'Admin' || auth()->user()->role_name === 'Super Admin')
                 <li class="{{set_active(['setting/page'])}}">
                     <a href="{{ route('setting/page') }}">
                         <i class="fas fa-cog"></i> 
@@ -20,17 +20,21 @@
                         <span class="menu-arrow"></span>
                     </a>
                     <ul>
+                        @if (auth()->user()->role_name === 'Admin' || auth()->user()->role_name === 'Super Admin')
                         <li><a href="{{ route('home') }}" class="{{set_active(['home'])}}"><i class="fas fa-home"></i> Super Admin</a></li>
-                        @if (Session::get('role_name') === 'Teachers')
+                        @endif
+                        @if (auth()->user()->role_name === 'Teacher')
                         <li><a href="{{ route('teacher/dashboard') }}" class="{{set_active(['teacher/dashboard'])}}"><i class="fas fa-chalkboard-teacher"></i> Dasbor Guru</a></li>
-                        @elseif (Session::get('role_name') === 'Student')
+                        @elseif (auth()->user()->role_name === 'Student')
                         <li><a href="{{ route('student/dashboard') }}" class="{{set_active(['student/dashboard'])}}"><i class="fas fa-user-graduate"></i> Dasbor Siswa</a></li>
                         @endif
+
                     </ul>
                 </li>
-                @if (Session::get('role_name') === 'Admin' || Session::get('role_name') === 'Super Admin')
+                @if (auth()->user()->role_name === 'Super Admin')
                 <li class="submenu {{set_active(['list/users'])}} {{ (request()->is('view/user/edit/*')) ? 'active' : '' }}">
                     <a href="#">
+
                         <i class="fas fa-shield-alt"></i>
                         <span>Manajemen Pengguna</span> 
                         <span class="menu-arrow"></span>
@@ -40,7 +44,7 @@
                     </ul>
                 </li>
                 @endif
-
+                @if (auth()->user()->role_name === 'Admin' || auth()->user()->role_name === 'Super Admin' || auth()->user()->role_name === 'Teacher')
                 <li class="submenu {{set_active(['student/list','student/grid','student/add/page'])}} {{ (request()->is('student/edit/*')) ? 'active' : '' }} {{ (request()->is('student/profile/*')) ? 'active' : '' }}">
                     <a href="#"><i class="fas fa-graduation-cap"></i>
                         <span> Siswa</span>
@@ -51,10 +55,11 @@
                         <li><a href="{{ route('student/add/page') }}" class="{{set_active(['student/add/page'])}}">Tambah Siswa</a></li>
                     </ul>
                 </li>
-
-                @if (Session::get('role_name') === 'Admin' || Session::get('role_name') === 'Super Admin')
+                @endif
+                @if (auth()->user()->role_name === 'Admin' || auth()->user()->role_name === 'Super Admin')
                 <li class="submenu  {{set_active(['teacher/add/page','teacher/list/page','teacher/grid/page','teacher/edit'])}} {{ (request()->is('teacher/edit/*')) ? 'active' : '' }}">
                     <a href="#"><i class="fas fa-chalkboard-teacher"></i>
+
                         <span> Guru</span>
                         <span class="menu-arrow"></span>
                     </a>
@@ -64,7 +69,7 @@
                     </ul>
                 </li>
                 @endif
-
+                @if (auth()->user()->role_name === 'Admin' || auth()->user()->role_name === 'Super Admin')
                 <li class="submenu {{set_active(['subject/list/page','subject/add/page'])}} {{ request()->is('subject/edit/*') ? 'active' : '' }}">
                     <a href="#"><i class="fas fa-book-reader"></i>
                         <span>Kelas & Pelajaran</span>
@@ -76,12 +81,13 @@
                         <li><a href="{{ route('classes.create') }}">Tambah Kelas Baru</a></li>
                     </ul>
                 </li>
-
+                @endif
                 
 
                 <li class="menu-title">
                     <span>Manajemen</span>
                 </li>
+                @if (auth()->user()->role_name === 'Admin' || auth()->user()->role_name === 'Super Admin')
                 <li class="submenu {{set_active(['invoice/list/page','invoice/paid/page',
                     'invoice/overdue/page','invoice/draft/page','invoice/recurring/page',
                     'invoice/cancelled/page','invoice/grid/page','invoice/add/page',
@@ -97,28 +103,22 @@
                         <li><a class="{{set_active(['invoice/add/page'])}}" href="{{ route('invoice/add/page') }}">Tambah Faktur</a></li>
                     </ul>
                 </li>
+                @endif
                 <li>
                     <a href="{{ url('fullcalender') }}"><i class="fas fa-holly-berry"></i> <span>Acara</span></a>
+
                 </li>
                 <li class="submenu">
-                    @if (Session::get('role_name') === 'Admin' || Session::get('role_name') === 'Super Admin')
+                    
                     <a href="#"><i class="fas fa-book"></i> <span>Perpustakaan</span> <span class="menu-arrow"></span></a>
-                    @endif
+                    
                     <ul>
                         <li><a href="{{ route('books.index') }}">Daftar Buku</a></li>
+                        @if (auth()->user()->role_name === 'Admin' || auth()->user()->role_name === 'Super Admin')
                         <li><a href="{{ route('peminjaman.index') }}">Daftar Peminjam</a></li>
+                        @endif
                     </ul>
                 </li>
-                <li class="submenu">
-                    @if (Session::get('role_name') === 'Admin' || Session::get('role_name') === 'Super Admin')
-                    <a href="#"><i class="fas fa-chart-line"></i> <span>Nilai</span> <span class="menu-arrow"></span></a>
-                    @endif
-                    <ul>
-                        <li><a href="{{ route('scores.index') }}">Daftar Nilai</a></li>
-                        <li><a href="{{ route('scores.create') }}">Tambah Nilai</a></li>
-                    </ul>
-                </li>
-                
             </ul>
         </div>
     </div>

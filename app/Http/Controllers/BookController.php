@@ -41,7 +41,7 @@ class BookController extends Controller
             'penulis' => 'required|string',
             'penerbit' => 'required|string',
             'tahun_terbit' => 'required|integer',
-            'genre' => 'required|in:fiksi,non-fiksi,pelajaran',
+            'genre' => 'required|in:Fiksi,Non-Fiksi,Pelajaran',
             'stok' => 'required|integer|min:0',
         ]);
 
