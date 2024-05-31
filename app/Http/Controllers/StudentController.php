@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use DB;
+// use DB;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use Brian2694\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\DB;
 
 class StudentController extends Controller
 {
