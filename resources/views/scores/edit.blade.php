@@ -27,6 +27,7 @@
         <label for="score">Score:</label>
         <input type="text" name="score" id="score" value="{{ $score->score }}"><br><br>
         <button type="submit">Update</button>
+        <button type="reset" class="btn btn-secondary ms-2">Reset</button>
     </form>
 </div>
 @endsection

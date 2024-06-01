@@ -169,6 +169,7 @@
                                 <div class="col-12">
                                     <div class="student-submit">
                                         <button type="submit" class="btn btn-primary">Kirim</button>
+                                        <button type="reset" class="btn btn-warning ms-2">Reset</button>
                                     </div>
                                 </div>
                             </div>

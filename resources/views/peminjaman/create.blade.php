@@ -60,6 +60,7 @@
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Simpan</button>
+                                <button type="reset" class="btn btn-warning ms-2">Reset</button>
                             </form>
                         </div>
                     </div>

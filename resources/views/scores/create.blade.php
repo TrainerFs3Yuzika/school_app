@@ -32,6 +32,7 @@
         <label for="score">Score:</label>
         <input type="number" name="score" id="score" min="0" required><br><br>
         <button type="submit">Submit</button>
+        <button type="reset" class="btn btn-secondary ms-2">Reset</button>
     </form>
 
     <script>

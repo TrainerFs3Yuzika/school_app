@@ -101,6 +101,7 @@
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
                                 <a href="{{ route('home') }}" class="btn btn-secondary">Batal</a>
+                                <button type="reset" class="btn btn-warning ms-2">Reset</button>
                             </div>
                         </form>
                     </div>
