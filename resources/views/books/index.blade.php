@@ -48,11 +48,11 @@
                             </div>
 
                             <div class="table-responsive">
-                                <table class="table border-0 star-book table-hover table-center mb-0 datatable table-striped">
+                                <table id="bookTable" class="table border-0 star-book table-hover table-center mb-0  table-striped">
                                     <thead class="thead-light">
                                         <tr>
                                             <th scope="col">No</th>
-                                            <th scope="col">ID</th>
+                                            {{-- <th scope="col">ID</th> --}}
                                             <th scope="col">Judul Buku</th>
                                             <th scope="col">Penulis</th>
                                             <th scope="col">Penerbit</th>
@@ -66,7 +66,7 @@
                                         @foreach ($books as $key => $book)
                                             <tr>
                                                 <td>{{ ++$key }}</td> <!-- Nomor urut -->
-                                                <td>{{ $book->id }}</td> <!-- ID -->
+                                                {{-- <td>{{ $book->id }}</td> <!-- ID --> --}}
                                                 <td>{{ $book->judul }}</td> <!-- Judul -->
                                                 <td>{{ $book->penulis }}</td> <!-- Penulis -->
                                                 <td>{{ $book->penerbit }}</td> <!-- Penerbit -->
@@ -102,11 +102,29 @@
 @endsection
 
 @section('script')
-    {{-- js hapus --}}
+    {{-- DataTables JS --}}
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
     <script>
-        $(document).on('click', '.book_delete', function() {
-            var _this = $(this).parents('tr');
-            $('.e_id').val(_this.find('.id').text());
+        $(document).ready(function() {
+            $('#bookTable').DataTable({
+                "pageLength": 5,
+                "lengthMenu": [[5, 10, 25, 50, -1], ["5", "10", "25", "50", "All"]],
+                "language": {
+                    "lengthMenu": "Tampilkan _MENU_ halaman",
+                    "zeroRecords": "Data tidak ditemukan",
+                    "info": "Halaman _PAGE_ dari _PAGES_",
+                    "infoEmpty": "Tidak ada data yang tersedia",
+                    "infoFiltered": "(disaring dari _MAX_ total entri)",
+                    "search": "Cari:",
+                    "paginate": {
+                        "first": "Awal",
+                        "last": "Akhir",
+                        "next": "Selanjutnya",
+                        "previous": "Sebelumnya"
+                    }
+                }
+            });
         });
     </script>
 @endsection
