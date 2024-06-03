@@ -18,6 +18,7 @@ use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\FullCalenderController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\UserManagementController;
+use App\Http\Controllers\landing_pageConntroller;
 
 /*
 |--------------------------------------------------------------------------
@@ -192,7 +193,5 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     Route::delete('/scores/{id}', [ScoreController::class, 'destroy'])->name('scores.destroy');
 
     // landing_page
-    Route::get('/landing_page', function () {
-        return view('landing_page.index');
-    });
+    Route::get('/landing_page', [landing_pageConntroller::class, 'index']);
 });

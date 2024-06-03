@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fortune</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" />
 
   </head>
@@ -19,7 +20,8 @@
             <li><a href="#tutors">Tutors</a></li>
             <li><a href="#partners">Partners</a></li>
             <li><a href="#contact">Contact</a></li>
-            <li><a href="" class="tbl-biru">Sign Up</a></li>
+            <a href="/auth/login" class="tbl-biru">Login</a>
+
           </ul>
         </div>
       </div>
@@ -62,36 +64,47 @@
           src="https://img.freepik.com/free-vector/online-learning-isometric-concept_1284-17947.jpg?size=626&ext=jpg&ga=GA1.2.1769275626.1605867161"
         />
       </section>
-      <!-- untuk courses -->
+
+      {{-- About --}}
       <section id="courses">
-        <img
-          src="https://png.pngtree.com/background/20230604/original/pngtree-library-book-shelves-with-help-desk-education-background-illustration-picture-image_2873053.jpg"
-          style="
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-            float: left;
-            margin-right: 20px;
-          "
-        />
         <div class="kolom">
-          <p class="deskripsi">Perpustakaan</p>
-          <h2>Online Perpustakaan</h2>
+          <h2>Abouts Us</h2>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed
             deserunt voluptatibus possimus blanditiis reiciendis. Qui, facilis!
             Delectus exercitationem dolores sapiente?
-          </p>
-          <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed
             deserunt voluptatibus possimus blanditiis reiciendis. Qui, facilis!
             Delectus exercitationem dolores sapiente?
           </p>
-          <p><a href="" class="tbl-biru">Kunjungi</a></p>
+          <p><a href="" class="tbl-biru">Pelajari Lebih Lanjut</a></p>
         </div>
+
       </section>
+      <!-- untuk courses -->
+      <h2>Perpustakaan </h2>
+      <div class="row">
+        <?php $topSixBooks = $books->sortByDesc('id')->take(6); ?>
+        <?php foreach ($topSixBooks as $key => $book): ?>
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <img src="https://png.pngtree.com/background/20230604/original/pngtree-library-book-shelves-with-help-desk-education-background-illustration-picture-image_2873053.jpg" class="card-img-top" alt="Perpustakaan">
+                    <div class="card-body">
+                        <h5 class="card-title"><?= $book->judul ?></h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Penulis: <?= $book->penulis ?></h6>
+                        <p class="card-text">Penerbit: <?= $book->penerbit ?></p>
+                        <p class="card-text">Tahun Terbit: <?= $book->tahun_terbit ?></p>
+                        <p class="card-text">Genre: <?= $book->genre ?></p>
+                        <p class="card-text">Stok: <?= $book->stok ?></p>
+                        <a href="#" class="btn btn-primary">Detail</a>
+                    </div>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+    
       <!-- untuk Event -->
-      <section id="absensi">
+      <section id="evet">
         <div class="tengah">
           <div class="kolom">
             <p class="deskripsi">Event Calender</p>
@@ -142,67 +155,36 @@
         </div>
       </section>
 
-      <section id="courses">
+
+
+      <?php
+
+use App\Models\Teacher; // Menggunakan model Teacher
+
+// Ambil tiga data guru teratas berdasarkan ID paling atas
+$teachers = Teacher::orderBy('id', 'desc')->take(3)->get();
+
+?>
+
+<section id="guru">
+    <div class="tengah">
         <div class="kolom">
-          <p class="deskripsi">Sistem Manajemen Sekolah</p>
-          <h2>Manajemen Sekolah</h2>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed
-            deserunt voluptatibus possimus blanditiis reiciendis. Qui, facilis!
-            Delectus exercitationem dolores sapiente?
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed
-            deserunt voluptatibus possimus blanditiis reiciendis. Qui, facilis!
-            Delectus exercitationem dolores sapiente?
-          </p>
-          <p><a href="" class="tbl-biru">Pelajari Lebih Lanjut</a></p>
-        </div>
-        <img
-          src="https://img.freepik.com/free-vector/online-learning-isometric-concept_1284-17947.jpg?size=626&ext=jpg&ga=GA1.2.1769275626.1605867161"
-        />
-      </section>
-
-      <!-- untuk tutors -->
-      <section id="tutors">
-        <div class="tengah">
-          <div class="kolom">
-            <p class="deskripsi">Guru-Guru Terbaik</p>
-            <h2>Guru</h2>
+            <h2>Guru Terbaik</h2>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad,
-              optio!
+                Dapatkan bimbingan dari para ahli di bidangnya untuk meningkatkan hasil belajar Anda
             </p>
-          </div>
-
-          <div class="tutor-list">
-            <div class="kartu-tutor">
-              <img
-                src="https://dfu1k3y1rami2.cloudfront.net/wp-content/uploads/2014/07/26195109/2020_cb.jpg"
-              />
-              <p>Jason Lee Scott</p>
-            </div>
-            <div class="kartu-tutor">
-              <img
-                src="https://images.ctfassets.net/1wryd5vd9xez/4DxzhQY7WFsbtTkoYntq23/a4a04701649e92a929010a6a860b66bf/https___cdn-images-1.medium.com_max_2000_1_Y6l_FDhxOI1AhjL56dHh8g.jpeg"
-              />
-              <p>John Doe</p>
-            </div>
-            <div class="kartu-tutor">
-              <img
-                src="https://images.fastcompany.net/image/upload/w_596,c_limit,q_auto:best,f_auto/fc/3021752-inline-i-1-why-square-designed-its-new-offices-to-work-like-a-city.jpg"
-              />
-              <p>Michael Dell</p>
-            </div>
-            <div class="kartu-tutor">
-              <img
-                src="https://blogs-images.forbes.com/jackkelly/files/2019/06/Jack-Kelly_avatar_1559658819-400x400.jpg"
-              />
-              <p>Bruce Wills</p>
-            </div>
-          </div>
         </div>
-      </section>
+
+        <div class="tutor-list">
+            <?php foreach ($teachers as $teacher): ?>
+                <div class="kartu-tutor">
+                    <p><?= $teacher->full_name ?></p> <!-- Menggunakan field full_name dari model Teacher -->
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+</section>
+
 
       <!-- untuk partners -->
       <section id="partners">
@@ -248,41 +230,22 @@
       </section>
 
       <!-- tambahan untuk Sistem Manajemen Sekolah -->
-      <section id="sistem-manajemen-sekolah">
-        <div class="tengah">
-          <div class="kolom">
-            <p class="deskripsi">Sistem Manajemen Sekolah</p>
-            <h2>Sistem Manajemen Sekolah</h2>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad,
-              optio!
-            </p>
-          </div>
-
-          <div class="sistem-list">
-            <div class="kartu-sistem">
-              <div class="card">
-                <p>Senin - Matematika</p>
-              </div>
-            </div>
-            <div class="kartu-sistem">
-              <div class="card">
-                <p>Selasa - Bahasa Inggris</p>
-              </div>
-            </div>
-            <div class="kartu-sistem">
-              <div class="card">
-                <p>Rabu - Fisika</p>
-              </div>
-            </div>
-            <div class="kartu-sistem">
-              <div class="card">
-                <p>Kamis - Biologi</p>
-              </div>
-            </div>
-          </div>
+      <div class="container" id="nilai_siswa">
+        <h2 class="text-center">Top Students</h2>
+        <div class="card-container">
+            @foreach($topStudents as $score)
+                <div class="card">
+                    <div class="card-content">
+                        <h3> {{ $score->student->first_name }} {{ $score->student->last_name }}</h3>
+                        <p>Nilai: {{ $score->score }}</p>
+                        <p>Mata Pelajaran: {{ $score->subject->subject_name }}</p>
+                    </div>
+                </div>
+            @endforeach
         </div>
-      </section>
+    </div>
+    
+    
     </div>
     <section id="sistem-manajemen-sekolah">
       <div class="tengah">
@@ -365,5 +328,7 @@
         &copy; 2024. <b>Fortune.</b> All Rights Reserved.
       </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
   </body>
 </html>
