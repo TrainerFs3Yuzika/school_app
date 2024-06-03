@@ -220,6 +220,7 @@
                                             <th>Nama Kelas</th>
                                             <th>Nama Guru</th>
                                             <th>Mata Pelajaran</th>
+                                            <th>Kelas</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -229,6 +230,7 @@
                                                 <td>{{ $class->id }}</td>
                                                 <td>{{ $class->class_name }}</td>
                                                 <td>{{ $class->teacher->full_name }}</td>
+                                                <td>{{ $class->subject->subject_name }}</td>
                                                 <td>{{ $class->subject->class }}</td>
                                                 <td>
                                                     <div class="actions">

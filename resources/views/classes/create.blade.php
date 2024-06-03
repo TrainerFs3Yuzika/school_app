@@ -62,11 +62,29 @@
                                             <select id="subject_id" name="subject_id" class="form-control" required>
                                                 <option value="">Pilih Mata Pelajaran</option>
                                                 @foreach ($subjects as $subject)
-                                                    <option value="{{ $subject->id }}">{{ $subject->class }}</option>
+                                                    <option value="{{ $subject->id }}">{{ $subject->subject_name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
                                     </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group local-forms">
+                                            <label for="class">Kelas:</label>
+                                            <select id="class" name="class" class="form-control" required>
+                                                <option value="">Pilih Kelas</option>
+                                                @foreach ($subjects as $subject)
+                                                    <option value="{{ $subject->class }}">{{ $subject->class }}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('class')
+                                                <div class="text-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {{-- Third Row --}}
+                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group local-forms">
                                             <label for="start_time">Waktu Mulai:</label>
@@ -76,7 +94,7 @@
                                     </div>
                                 </div>
 
-                                {{-- Third Row --}}
+                                {{-- Fourth Row --}}
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group local-forms">
@@ -88,7 +106,7 @@
                                 </div>
 
                                 {{-- Buttons --}}
-                                <div class="form-group">
+                                <div class="form-group mt-3">
                                     <button type="submit" class="btn btn-primary">Tambah Kelas</button>
                                     <a href="{{ route('home') }}" class="btn btn-secondary">Batal</a>
                                     <button type="reset" class="btn btn-warning ms-2">Reset</button>
@@ -102,12 +120,12 @@
     </div>
 
     {{-- Custom Scripts --}}
-@section('script')
-    <script>
-        // Auto-select teacher ID based on selected teacher name
-        $('#full_name').on('change', function() {
-            $('#teacher_id').val($(this).find(':selected').data('teacher_id'));
-        });
-    </script>
-@endsection
+    @section('script')
+        <script>
+            // Auto-select teacher ID based on selected teacher name
+            $('#full_name').on('change', function() {
+                $('#teacher_id').val($(this).find(':selected').data('teacher_id'));
+            });
+        </script>
+    @endsection
 @endsection
