@@ -190,4 +190,9 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     Route::get('/scores/{id}/edit', [ScoreController::class, 'edit'])->name('scores.edit');
     Route::put('/scores/{id}', [ScoreController::class, 'update'])->name('scores.update');
     Route::delete('/scores/{id}', [ScoreController::class, 'destroy'])->name('scores.destroy');
+
+    // landing_page
+    Route::get('/landing_page', function () {
+        return view('landing_page.index');
+    });
 });

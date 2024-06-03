@@ -81,6 +81,6 @@ class ScoreController extends Controller
         $score = Score::findOrFail($id);
         $score->delete();
 
-        return redirect()->route('scores.index')->with('success', 'Score deleted successfully.');
+        return redirect()->route('scores.index')->with('success', 'Nilai siswa berhasil dihapus');
     }
 }

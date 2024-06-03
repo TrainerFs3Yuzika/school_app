@@ -19,26 +19,7 @@
             {!! Toastr::message() !!}
             <div class="student-group-form">
                 <div class="row">
-                    <div class="col-lg-3 col-md-6">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Cari berdasarkan ID ...">
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Cari berdasarkan Nama ...">
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Cari berdasarkan Telepon ...">
-                        </div>
-                    </div>
-                    <div class="col-lg-2">
-                        <div class="search-student-btn">
-                            <button type="btn" class="btn btn-primary">Cari</button>
-                        </div>
-                    </div>
+                    <!-- Search form -->
                 </div>
             </div>
             <div class="row">
@@ -66,44 +47,36 @@
                             </div>
 
                             <div class="table-responsive">
-                                <table
-                                    class="table border-0 star-student table-hover table-center mb-0 datatable table-striped">
+                                <table id="studentTable" class="table border-0 star-student table-hover table-center mb-0 table-striped">
                                     <thead class="student-thread">
                                         <tr>
-                                            <th>
-                                                <div class="form-check check-tables">
-                                                    <input class="form-check-input" type="checkbox" value="something">
-                                                </div>
-                                            </th>
+                                            <th>No</th>
                                             <th>Guru</th>
                                             <th>Murid</th>
                                             <th>Mata Pelajaran</th>
                                             <th>Score</th>
-                                            <th class="text-end">Aksi</th>
+                                            <th class="text-center">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($scores as $score)
+                                        @foreach ($scores as $index => $score)
                                             <tr>
+                                                <td>{{ $index + 1 }}</td>
                                                 <td>{{ $score->teacher->full_name }}</td>
                                                 <td>{{ $score->student->first_name }} {{ $score->student->last_name }}</td>
                                                 <td>{{ $score->subject->subject_name }}</td>
                                                 <td>{{ $score->score }}</td>
-                                                <td class="text-end">
-                                                    <div class="actions">
-                                                        <a href="{{ route('scores.show', $score->id) }}"
-                                                            class="btn btn-sm bg-danger-light">
-                                                            <i class="far fa-edit me-2"></i></a>
-                                                        <a href="{{ route('scores.edit', $score->id) }}"
-                                                            class="btn btn-primary btn-sm bg-danger-light">Edit</a>
-                                                        <form action="{{ route('scores.destroy', $score->id) }}"
-                                                            method="POST" style="display: inline;">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit" class="btn btn-sm bg-danger-light">
-                                                                <i class="far fa-trash-alt me-2"></i>
-                                                            </button>
-                                                        </form>
+                                                <td class="text-center align-middle">
+                                                    <div class="actions d-flex justify-content-center align-items-center">
+                                                        <a href="{{ route('scores.show', $score->id) }}" class="btn btn-sm bg-danger-light me-2">
+                                                            <i class="far fa-eye me-2"></i>
+                                                        </a>
+                                                        <a href="{{ route('scores.edit', $score->id) }}" class="btn btn-primary btn-sm bg-danger-light me-2">
+                                                            <i class="far fa-edit me-2"></i>
+                                                        </a>
+                                                        <button type="button" class="btn btn-sm bg-danger-light student_delete" data-bs-toggle="modal" data-bs-target="#deleteModal" data-id="{{ $score->id }}">
+                                                            <i class="far fa-trash-alt me-2"></i>
+                                                        </button>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -111,6 +84,7 @@
                                     </tbody>
                                 </table>
                             </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -119,27 +93,25 @@
     </div>
 
     {{-- model hapus siswa --}}
-    <div class="modal custom-modal fade" id="studentUser" role="dialog">
+    <div class="modal custom-modal fade" id="deleteModal" role="dialog">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-body">
                     <div class="form-header">
-                        <h3>Hapus Siswa</h3>
+                        <h3>Hapus Nilai</h3>
                         <p>Apakah Anda yakin ingin menghapus?</p>
                     </div>
                     <div class="modal-btn delete-action">
-                        <form action="{{ route('student/delete') }}" method="POST">
+                        <form id="deleteForm" method="POST">
                             @csrf
+                            @method('DELETE')
+                            <input type="hidden" name="id" class="e_id" value="">
                             <div class="row">
-                                <input type="hidden" name="id" class="e_id" value="">
-                                <input type="hidden" name="avatar" class="e_avatar" value="">
                                 <div class="col-6">
-                                    <button type="submit" class="btn btn-primary continue-btn submit-btn"
-                                        style="border-radius: 5px !important;">Hapus</button>
+                                    <button type="submit" class="btn btn-primary continue-btn submit-btn" style="border-radius: 5px !important;">Hapus</button>
                                 </div>
                                 <div class="col-6">
-                                    <a href="#"
-                                        data-bs-dismiss="modal"class="btn btn-primary paid-cancel-btn">Batal</a>
+                                    <a href="#" data-bs-dismiss="modal" class="btn btn-primary paid-cancel-btn">Batal</a>
                                 </div>
                             </div>
                         </form>
@@ -148,15 +120,41 @@
             </div>
         </div>
     </div>
-@section('script')
-    {{-- js hapus --}}
+    
+    @section('script')
+    {{-- Include DataTables JS --}}
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
     <script>
-        $(document).on('click', '.student_delete', function() {
-            var _this = $(this).parents('tr');
-            $('.e_id').val(_this.find('.id').text());
-            $('.e_avatar').val(_this.find('.avatar').text());
+        $(document).ready(function() {
+            $('#studentTable').DataTable({
+                "paging": true,
+                "lengthChange": true, 
+                "searching": true, 
+                "ordering": true, 
+                "info": true, 
+                "autoWidth": false,
+                "responsive": true,
+                "lengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
+                "pageLength": 5
+                
+            });
+
+            $(document).on('click', '.student_delete', function() {
+                var scoreId = $(this).data('id');
+                var url = '{{ route("scores.destroy", ":id") }}';
+                url = url.replace(':id', scoreId);
+                $('#deleteForm').attr('action', url);
+            });
+
+            @if(session('success'))
+                toastr.success('{{ session('success') }}');
+            @endif
         });
     </script>
 @endsection
 
-@endsection
+
+
+
+
