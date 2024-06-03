@@ -34,28 +34,36 @@
                                     <div class="col-md-6">
                                         <div class="form-group local-forms">
                                             <label for="book_id">Judul Buku <span class="login-danger">*</span></label>
-                                            <select name="book_id" class="form-control" placeholder="Masukkan Nama Buku" required>
-                                                @foreach($books as $book)
+                                            <select name="book_id" class="form-control select" required>
+                                                <option selected disabled>Pilih Nama Buku</option>
+                                                @foreach ($books as $book)
                                                     <option value="{{ $book->id }}">{{ $book->judul }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
                                         <div class="form-group local-forms">
-                                            <label for="nama_peminjam">Nama Peminjam <span class="login-danger">*</span></label>
-                                            <input type="text" name="nama_peminjam" class="form-control" placeholder="Msukkan Nama Peminjaman" required>
+                                            <label for="nama_peminjam">Nama Peminjam <span
+                                                    class="login-danger">*</span></label>
+                                            <input type="text" name="nama_peminjam" class="form-control"
+                                                placeholder="Msukkan Nama Peminjaman" required>
                                         </div>
                                         <div class="form-group local-forms">
-                                            <label for="tanggal_pinjam">Tanggal Peminjaman <span class="login-danger">*</span></label>
+                                            <label for="tanggal_pinjam">Tanggal Peminjaman <span
+                                                    class="login-danger">*</span></label>
                                             <input type="date" name="tanggal_pinjam" class="form-control" required>
                                         </div>
+                                    </div>
+                                    <div class="col-md-6">
                                         <div class="form-group local-forms">
-                                            <label for="tanggal_kembali">Tanggal Pengembalian <span class="login-danger">*</span></label>
+                                            <label for="tanggal_kembali">Tanggal Pengembalian <span
+                                                    class="login-danger">*</span></label>
                                             <input type="date" name="tanggal_kembali" class="form-control" required>
                                         </div>
-                                        
+
                                         <div class="form-group local-forms">
                                             <label for="jumlah_buku">Jumlah Buku <span class="login-danger">*</span></label>
-                                            <input type="number" name="jumlah_buku" class="form-control" min="1" placeholder="Masukkan Jumlah Buku" required>
+                                            <input type="number" name="jumlah_buku" class="form-control" min="1"
+                                                placeholder="Masukkan Jumlah Buku" required>
                                         </div>
                                     </div>
                                 </div>

@@ -47,7 +47,8 @@
                             </div>
 
                             <div class="table-responsive">
-                                <table id="studentTable" class="table border-0 star-student table-hover table-center mb-0 table-striped">
+                                <table id="studentTable"
+                                    class="table border-0 star-student table-hover table-center mb-0 table-striped">
                                     <thead class="student-thread">
                                         <tr>
                                             <th>No</th>
@@ -65,17 +66,34 @@
                                                 <td>{{ $score->teacher->full_name }}</td>
                                                 <td>{{ $score->student->first_name }} {{ $score->student->last_name }}</td>
                                                 <td>{{ $score->subject->subject_name }}</td>
-                                                <td>{{ $score->score }}</td>
+                                                @if ($score->score >= 80 && $score->score <= 100)
+                                                    <td><span
+                                                            class="bg-success opacity-50 px-2 py-1 rounded-pill text-white fw-bold">{{ $score->score }}</span>
+                                                    </td>
+                                                @elseif($score->score >= 70 && $score->score <= 79)
+                                                    <td><span
+                                                            class="bg-warning opacity-50 px-2 py-1 rounded-pill text-white fw-bold">{{ $score->score }}</span>
+                                                    </td>
+                                                @elseif($score->score >= 1 && $score->score <= 69)
+                                                    <td><span
+                                                            class="bg-danger opacity-50 px-2 py-1 rounded-pill text-white fw-bold">{{ $score->score }}</span>
+                                                    </td>
+                                                @endif
                                                 <td class="text-center align-middle">
                                                     <div class="actions d-flex justify-content-center align-items-center">
-                                                        <a href="{{ route('scores.show', $score->id) }}" class="btn btn-sm bg-danger-light me-2">
+                                                        <a href="{{ route('scores.show', $score->id) }}"
+                                                            class="btn btn-sm bg-danger-light me-2">
                                                             <i class="far fa-eye me-2"></i>
                                                         </a>
-                                                        <a href="{{ route('scores.edit', $score->id) }}" class="btn btn-primary btn-sm bg-danger-light me-2">
+                                                        <a href="{{ route('scores.edit', $score->id) }}"
+                                                            class="btn btn-sm bg-danger-light me-2">
                                                             <i class="far fa-edit me-2"></i>
                                                         </a>
-                                                        <button type="button" class="btn btn-sm bg-danger-light student_delete" data-bs-toggle="modal" data-bs-target="#deleteModal" data-id="{{ $score->id }}">
-                                                            <i class="far fa-trash-alt me-2"></i>
+                                                        <button type="button"
+                                                            class="btn btn-sm bg-danger-light student_delete"
+                                                            data-bs-toggle="modal" data-bs-target="#deleteModal"
+                                                            data-id="{{ $score->id }}">
+                                                            <i class="far fa-trash-alt py-1"></i>
                                                         </button>
                                                     </div>
                                                 </td>
@@ -84,7 +102,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -108,10 +126,12 @@
                             <input type="hidden" name="id" class="e_id" value="">
                             <div class="row">
                                 <div class="col-6">
-                                    <button type="submit" class="btn btn-primary continue-btn submit-btn" style="border-radius: 5px !important;">Hapus</button>
+                                    <button type="submit" class="btn btn-primary continue-btn submit-btn"
+                                        style="border-radius: 5px !important;">Hapus</button>
                                 </div>
                                 <div class="col-6">
-                                    <a href="#" data-bs-dismiss="modal" class="btn btn-primary paid-cancel-btn">Batal</a>
+                                    <a href="#" data-bs-dismiss="modal"
+                                        class="btn btn-primary paid-cancel-btn">Batal</a>
                                 </div>
                             </div>
                         </form>
@@ -120,8 +140,8 @@
             </div>
         </div>
     </div>
-    
-    @section('script')
+
+@section('script')
     {{-- Include DataTables JS --}}
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 
@@ -129,32 +149,30 @@
         $(document).ready(function() {
             $('#studentTable').DataTable({
                 "paging": true,
-                "lengthChange": true, 
-                "searching": true, 
-                "ordering": true, 
-                "info": true, 
+                "lengthChange": true,
+                "searching": true,
+                "ordering": true,
+                "info": true,
                 "autoWidth": false,
                 "responsive": true,
-                "lengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
+                "lengthMenu": [
+                    [5, 10, 25, 50, -1],
+                    [5, 10, 25, 50, "All"]
+                ],
                 "pageLength": 5
-                
+
             });
 
             $(document).on('click', '.student_delete', function() {
                 var scoreId = $(this).data('id');
-                var url = '{{ route("scores.destroy", ":id") }}';
+                var url = '{{ route('scores.destroy', ':id') }}';
                 url = url.replace(':id', scoreId);
                 $('#deleteForm').attr('action', url);
             });
 
-            @if(session('success'))
+            @if (session('success'))
                 toastr.success('{{ session('success') }}');
             @endif
         });
     </script>
 @endsection
-
-
-
-
-
