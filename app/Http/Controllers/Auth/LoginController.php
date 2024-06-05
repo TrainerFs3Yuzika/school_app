@@ -84,6 +84,19 @@ class LoginController extends Controller
                 Session::put('avatar', $user->avatar);
                 Session::put('position', $user->position);
                 Session::put('department', $user->department);
+
+                // Periksa peran pengguna setelah login
+                $role = Auth::user()->role_name;
+
+                // Redirect berdasarkan peran pengguna
+                if ($role === 'Admin' || $role === 'Super Admin') {
+                    return redirect()->route('home');
+                } elseif ($role === 'Teachers') {
+                    return redirect()->route('teacher/dashboard');
+                } elseif ($role === 'Student') {
+                    return redirect()->route('student/dashboard');
+                }
+
                 Toastr::success('Login successfully :)', 'Success');
                 return redirect()->route('home');
             } else {

@@ -19,6 +19,7 @@ use App\Http\Controllers\FullCalenderController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\LessonsController;
 use App\Http\Controllers\UserManagementController;
+use App\Http\Controllers\landing_pageConntroller;
 
 /*
 |--------------------------------------------------------------------------
@@ -201,7 +202,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     Route::delete('/lessons/{id}', [LessonsController::class, 'destroy'])->name('lessons.destroy');
 
     // landing_page
-    Route::get('/landing_page', function () {
-        return view('landing_page.index');
-    });
+    Route::get('/landing_page', [landing_pageConntroller::class, 'index']);
+
+    // informasi contack
+    Route::resource('contact_information', 'ContactInformationController');
 });
