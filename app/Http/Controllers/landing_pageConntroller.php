@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Book;
 use App\Models\Score;
 use App\Models\Student;
 use App\Models\Teacher;
+use Illuminate\Http\Request;
+use App\Models\ContactInformation;
 
 class landing_pageConntroller extends Controller
 {
@@ -21,10 +22,12 @@ class landing_pageConntroller extends Controller
             ->take(3)
             ->get();
 
+        $contacts = ContactInformation::all();
+
         // Debugging: Pastikan data topStudents ada
         // dd($topStudents);
 
         // Kirim data buku dan top students ke view
-        return view('landing_page.index', compact('books', 'topStudents'));
+        return view('landing_page.index', compact('books', 'topStudents', 'contacts'));
     }
 }

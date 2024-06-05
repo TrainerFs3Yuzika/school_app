@@ -194,4 +194,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
 
     // landing_page
     Route::get('/landing_page', [landing_pageConntroller::class, 'index']);
+
+    // informasi contack
+    Route::resource('contact_information', 'ContactInformationController');
 });
