@@ -8,6 +8,7 @@ use App\Http\Controllers\FullCalenderController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\landing_pageConntroller;
+use App\Http\Controllers\LessonsController;
 use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\ScoreController;
 use App\Http\Controllers\SettingController;
@@ -200,4 +201,18 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
 
     // landing_page
     Route::get('/landing_page', [landing_pageConntroller::class, 'index']);
+
+    // lessons
+    Route::get('/lessons', [LessonsController::class, 'index'])->name('lessons.index');
+    Route::get('/lessons/create', [LessonsController::class, 'create'])->name('lessons.create');
+    Route::post('/lessons', [LessonsController::class, 'store'])->name('lessons.store');
+    Route::get('/lessons/{id}/edit', [LessonsController::class, 'edit'])->name('lessons.edit');
+    Route::put('/lessons/{id}', [LessonsController::class, 'update'])->name('lessons.update');
+    Route::delete('/lessons/{id}', [LessonsController::class, 'destroy'])->name('lessons.destroy');
+
+    // landing_page
+    Route::get('/landing_page', [landing_pageConntroller::class, 'index']);
+
+    // informasi contack
+    Route::resource('contact_information', 'ContactInformationController');
 });
