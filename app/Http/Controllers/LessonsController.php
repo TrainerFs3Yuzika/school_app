@@ -71,7 +71,7 @@ class LessonsController extends Controller
         $subjects = Subject::pluck('subject_name', 'id');
         return view('lessons.edit', compact('lessons', 'subjects'));
     }
-    
+
     /**
      * Update the specified resource in storage.
      */
