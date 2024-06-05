@@ -73,6 +73,19 @@
                                             <option value="">Pilih Mata Pelajaran</option>
                                             @foreach ($subjects as $subject)
                                                 <option value="{{ $subject->id }}" @if($subject->id == $class->subject_id) selected @endif>
+                                                    {{ $subject->subject_name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="subject_id">Kelas:</label>
+                                        <select id="subject_id" name="subject_id" class="form-control" required>
+                                            <option value="">Pilih Kelas</option>
+                                            @foreach ($subjects as $subject)
+                                                <option value="{{ $subject->id }}" @if($subject->id == $class->subject_id) selected @endif>
                                                     {{ $subject->class }}
                                                 </option>
                                             @endforeach
@@ -101,6 +114,7 @@
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
                                 <a href="{{ route('home') }}" class="btn btn-secondary">Batal</a>
+                                <button type="reset" class="btn btn-warning ms-2">Reset</button>
                             </div>
                         </form>
                     </div>

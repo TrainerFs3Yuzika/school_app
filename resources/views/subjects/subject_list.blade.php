@@ -9,10 +9,10 @@
             <div class="page-header">
                 <div class="row align-items-center">
                     <div class="col">
-                        <h3 class="page-title">Subjects</h3>
+                        <h3 class="page-title">Mata Pelajaran</h3>
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Subjects</li>
+                            <li class="breadcrumb-item active">Mata Pelajaran</li>
                         </ul>
                     </div>
                 </div>
@@ -22,22 +22,22 @@
                 <div class="row">
                     <div class="col-lg-3 col-md-6">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Search by ID ...">
+                            <input type="text" class="form-control" placeholder="Cari berdasarkan ID ...">
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Search by Name ...">
+                            <input type="text" class="form-control" placeholder="Cari berdasarkan Nama ...">
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Search by Class ...">
+                            <input type="text" class="form-control" placeholder="Cari berdasarkan Kelas ...">
                         </div>
                     </div>
                     <div class="col-lg-2">
                         <div class="search-student-btn">
-                            <button type="btn" class="btn btn-primary">Search</button>
+                            <button type="btn" class="btn btn-primary">Cari</button>
                         </div>
                     </div>
                 </div>
@@ -50,11 +50,11 @@
                             <div class="page-header">
                                 <div class="row align-items-center">
                                     <div class="col">
-                                        <h3 class="page-title">Subjects</h3>
+                                        <h3 class="page-title">Mata Pelajaran</h3>
                                     </div>
                                     <div class="col-auto text-end float-end ms-auto download-grp">
                                         <a href="#" class="btn btn-outline-primary me-2">
-                                            <i class="fas fa-download"></i> Download
+                                            <i class="fas fa-download"></i> Unduh
                                         </a>
                                         <a href="{{ route('subject/add/page') }}" class="btn btn-primary">
                                             <i class="fas fa-plus"></i>
@@ -73,9 +73,9 @@
                                                 </div>
                                             </th>
                                             <th>ID</th>
-                                            <th>Name</th>
-                                            <th>Class</th>
-                                            <th class="text-end">Action</th>
+                                            <th>Nama</th>
+                                            <th>Kelas</th>
+                                            <th class="text-end">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>

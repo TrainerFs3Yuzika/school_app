@@ -70,6 +70,7 @@
                                 </div>
                                 <div class="col-12">
                                     <button type="submit" class="btn btn-primary">Simpan</button>
+                                    <button type="reset" class="btn btn-warning ms-2">Reset</button>
                                 </div>
                             </form>
                         </div>

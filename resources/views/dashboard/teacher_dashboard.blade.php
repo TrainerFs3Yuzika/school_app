@@ -271,97 +271,40 @@
                         <div class="card-body">
                             <div id="calendar-doctor" class="calendar-container"></div>
                             <div class="calendar-info calendar-info1">
-                                <div class="up-come-header">
+                                <div class="up-come-header mb-3">
                                     <h2>Acara Mendatang</h2>
-                                    <span><a href="javascript:;"><i class="feather-plus"></i></a></span>
                                 </div>
-                                <div class="upcome-event-date">
-                                    <h3>10 Jan</h3>
-                                    <span><i class="fas fa-ellipsis-h"></i></span>
-                                </div>
-                                <div class="calendar-details">
-                                    <p>08:00 pagi</p>
-                                    <div class="calendar-box normal-bg">
-                                        <div class="calandar-event-name">
-                                            <h4>Botani</h4>
-                                            <h5>Lorem ipsum sit amet</h5>
-                                        </div>
-                                        <span>08:00 - 09:00 pagi</span>
-                                    </div>
-                                </div>
-                                <div class="calendar-details">
-                                    <p>09:00 pagi</p>
-                                    <div class="calendar-box normal-bg">
-                                        <div class="calandar-event-name">
-                                            <h4>Botani</h4>
-                                            <h5>Lorem ipsum sit amet</h5>
-                                        </div>
-                                        <span>09:00 - 10:00 pagi</span>
-                                    </div>
-                                </div>
-                                <div class="calendar-details">
-                                    <p>10:00 pagi</p>
-                                    <div class="calendar-box normal-bg">
-                                        <div class="calandar-event-name">
-                                            <h4>Botani</h4>
-                                            <h5>Lorem ipsum sit amet</h5>
-                                        </div>
-                                        <span>10:00 - 11:00 pagi</span>
-                                    </div>
-                                </div>
-                                <div class="upcome-event-date">
-                                    <h3>10 Jan</h3>
-                                    <span><i class="fas fa-ellipsis-h"></i></span>
-                                </div>
-                                <div class="calendar-details">
-                                    <p>08:00 pagi</p>
-                                    <div class="calendar-box normal-bg">
-                                        <div class="calandar-event-name">
-                                            <h4>Bahasa Inggris</h4>
-                                            <h5>Lorem ipsum sit amet</h5>
-                                        </div>
-                                        <span>08:00 - 09:00 pagi</span>
-                                    </div>
-                                </div>
-                                <div class="calendar-details">
-                                    <p>09:00 pagi</p>
-                                    <div class="calendar-box normal-bg">
-                                        <div class="calandar-event-name">
-                                            <h4>Matematika </h4>
-                                            <h5>Lorem ipsum sit amet</h5>
-                                        </div>
-                                        <span>09:00 - 10:00 pagi</span>
-                                    </div>
-                                </div>
-                                <div class="calendar-details">
-                                    <p>10:00 pagi</p>
-                                    <div class="calendar-box normal-bg">
-                                        <div class="calandar-event-name">
-                                            <h4>Sejarah</h4>
-                                            <h5>Lorem ipsum sit amet</h5>
-                                        </div>
-                                        <span>10:00 - 11:00 pagi</span>
-                                    </div>
-                                </div>
-                                <div class="calendar-details">
-                                    <p>11:00 pagi</p>
-                                    <div class="calendar-box break-bg">
-                                        <div class="calandar-event-name">
-                                            <h4>Istirahat</h4>
-                                            <h5>Lorem ipsum sit amet</h5>
-                                        </div>
-                                        <span>11:00 - 12:00 pagi</span>
-                                    </div>
-                                </div>
-                                <div class="calendar-details">
-                                    <p>11:30 pagi</p>
-                                    <div class="calendar-box normal-bg">
-                                        <div class="calandar-event-name">
-                                            <h4>Sejarah</h4>
-                                            <h5>Lorem ipsum sit amet</h5>
-                                        </div>
-                                        <span>11:30 - 12:00 pagi</span>
-                                    </div>
+                                <div class="table-responsive">
+                                    <table id="eventTable" class="table star-student table-hover table-center table-borderless table-striped">
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Judul Event</th>
+                                                <th>Waktu Mulai</th>
+                                                <th>Waktu Berakhir</th>
+                                                <th>Durasi</th>
+                                                <th>Aksi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (\App\Models\Event::all() as $event)
+                                                <tr>
+                                                    <td>{{ $event->id }}</td>
+                                                    <td>{{ $event->title }}</td>
+                                                    <td>{{ \Carbon\Carbon::parse($event->start)->format('d M Y H:i') }}</td>
+                                                    <td>{{ \Carbon\Carbon::parse($event->end)->format('d M Y H:i') }}</td>
+                                                    <td>{{ \Carbon\Carbon::parse($event->start)->diffInHours(\Carbon\Carbon::parse($event->end)) }} jam</td>
+                                                    <td>
+                                                        <div class="actions">
+                                                            <a href="{{ url('fullcalender') }}" class="btn btn-sm">
+                                                                <i class="fas fa-sign-in-alt me-2"></i>
+                                                            </a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>

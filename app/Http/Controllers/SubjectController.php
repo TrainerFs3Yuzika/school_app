@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use DB;
+// use DB;
 use App\Models\Subject;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 use Brian2694\Toastr\Facades\Toastr;
 
@@ -43,7 +45,7 @@ class SubjectController extends Controller
             return redirect()->back();
            
         } catch(\Exception $e) {
-            \Log::info($e);
+            Log::info($e);
             DB::rollback();
             Toastr::error('fail, Add new record:)','Error');
             return redirect()->back();
@@ -74,7 +76,7 @@ class SubjectController extends Controller
             return redirect()->back();
            
         } catch(\Exception $e) {
-            \Log::info($e);
+            Log::info($e);
             DB::rollback();
             Toastr::error('Fail, update record:)','Error');
             return redirect()->back();

@@ -55,7 +55,6 @@
                                             <option selected disabled>Pilih Jenis Kelamin</option>
                                             <option value="Female" {{ old('gender') == 'Female' ? "selected" :"Female"}}>Perempuan</option>
                                             <option value="Male" {{ old('gender') == 'Male' ? "selected" :""}}>Laki-laki</option>
-                                            <option value="Others" {{ old('gender') == 'Others' ? "selected" :""}}>Lainnya</option>
                                         </select>
                                         @error('gender')
                                             <span class="invalid-feedback" role="alert">
@@ -170,6 +169,7 @@
                                 <div class="col-12">
                                     <div class="student-submit">
                                         <button type="submit" class="btn btn-primary">Kirim</button>
+                                        <button type="reset" class="btn btn-warning ms-2">Reset</button>
                                     </div>
                                 </div>
                             </div>

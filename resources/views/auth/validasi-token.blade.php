@@ -4,12 +4,13 @@
 {!! Toastr::message() !!}
 <div class="login-right">
     <div class="login-right-wrap">
-        <h1>Masukan Email yang terdaftar</h1>
-        <form action="{{ route('forgot-password-act') }}" method="POST">
+        <h1>Masukan Password Baru</h1>
+        <form action="{{ route('validasi-forgot-password-act') }}" method="POST">
             @csrf
+            <input type="hidden" name="token" value="{{ $token }}">
             <div class="form-group">
-                <label>Email<span class="login-danger">*</span></label>
-                <input type="email" class="form-control @error('email') is-invalid @enderror" name="email">
+                <label>Password<span class="login-danger">*</span></label>
+                <input type="password" class="form-control @error('password') is-invalid @enderror" name="password">
                 <span class="profile-views"><i class="fas fa-envelope"></i></span>
             </div>
             <div class="form-group">

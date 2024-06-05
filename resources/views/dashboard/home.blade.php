@@ -211,8 +211,6 @@
                             </ul>
                         </div>
                         <div class="card-body">
-                            <a href="{{ route('classes.create') }}" class="btn btn-primary mb-3"><i
-                                class="fas fa-plus"></i> Tambah</a>
                             <div class="table-responsive">
                                 <table id="classTable"
                                     class="table star-student table-hover table-center table-borderless table-striped">
@@ -222,6 +220,7 @@
                                             <th>Nama Kelas</th>
                                             <th>Nama Guru</th>
                                             <th>Mata Pelajaran</th>
+                                            <th>Kelas</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -231,19 +230,21 @@
                                                 <td>{{ $class->id }}</td>
                                                 <td>{{ $class->class_name }}</td>
                                                 <td>{{ $class->teacher->full_name }}</td>
-                                                {{-- <td>{{ $class->student->first_name }} {{ $class->student->last_name }}</td> --}}
+                                                <td>{{ $class->subject->subject_name }}</td>
                                                 <td>{{ $class->subject->class }}</td>
                                                 <td>
-                                                    <a href="{{ route('classes.edit', $class->id) }}"
-                                                        class="btn btn-sm btn-warning edit-btn"><i class="fas fa-edit"></i>
-                                                        Edit</a>
-                                                    <form action="{{ route('classes.destroy', $class->id) }}"
-                                                        method="POST" class="d-inline delete-form">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class="btn btn-sm btn-danger delete-btn"><i
-                                                                class="fas fa-trash-alt"></i> Hapus</button>
-                                                    </form>
+                                                    <div class="actions">
+                                                        <a href="{{ route('classes.edit', $class->id) }}" class="btn btn-sm bg-danger-light">
+                                                            <i class="far fa-edit me-2"></i>
+                                                        </a>
+                                                        <form method="POST" action="{{ route('classes.destroy', $class->id) }}" style="display: inline;">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-sm bg-danger-light" onclick="return confirm('Apakah Anda yakin ingin menghapus kelas ini?')">
+                                                                <i class="far fa-trash-alt me-2"></i>
+                                                            </button>
+                                                        </form>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -286,8 +287,13 @@
                                                 <td>{{ \Carbon\Carbon::parse($event->end)->format('d M Y H:i') }}</td>
                                                 <td>{{ \Carbon\Carbon::parse($event->start)->diffInHours(\Carbon\Carbon::parse($event->end)) }}
                                                     jam</td>
-                                                <td><a href="{{ url('fullcalender') }}"
-                                                        class="btn btn-success">Kunjungi</a></td>
+                                                <td>
+                                                    <div class="actions">
+                                                        <a href="{{ url('fullcalender') }}" class="btn btn-sm">
+                                                            <i class="fas fa-sign-in-alt me-2"></i>
+                                                        </a>
+                                                    </div>
+                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -384,8 +390,6 @@
                         </div>
                         <div class="card-body">
                             <div>
-                                <a href="{{ route('books.create') }}" class="btn btn-primary mb-3"><i
-                                        class="fas fa-plus"></i>Tambah </a>
                                 <div class="table-responsive">
                                     <table id="bookTable" class="table">
                                         <thead class="thead-light">
@@ -409,15 +413,18 @@
                                                     <td>{{ $book->genre }}</td>
                                                     <td>{{ $book->stok }}</td>
                                                     <td>
-                                                        <a href="{{ route('books.edit', $book->id) }}"
-                                                            class="btn btn-sm btn-primary">Edit</a>
-                                                        <form action="{{ route('books.destroy', $book->id) }}"
-                                                            method="POST" style="display: inline;">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit"
-                                                                class="btn btn-sm btn-danger">Hapus</button>
-                                                        </form>
+                                                        <div class="actions">
+                                                            <a href="{{ route('books.edit', $book->id) }}" class="btn btn-sm bg-danger-light">
+                                                                <i class="far fa-edit me-2"></i>
+                                                            </a>
+                                                            <form method="POST" action="{{ route('books.destroy', $book->id) }}" style="display: inline;">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button type="submit" class="btn btn-sm bg-danger-light" onclick="return confirm('Apakah Anda yakin ingin menghapus buku ini?')">
+                                                                    <i class="far fa-trash-alt me-2"></i>
+                                                                </button>
+                                                            </form>
+                                                        </div>
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -447,8 +454,6 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <a href="{{ route('peminjaman.create') }}" class="btn btn-primary mb-3"><i
-                                        class="fas fa-plus"></i> Tambah</a>
                                 <table
                                     class="table border-0 star-book table-hover table-center mb-0 datatable table-striped">
                                     <thead class="thead-light">
@@ -476,15 +481,18 @@
                                                 <td>{{ $peminjaman->jumlah_buku }}</td>
                                                 <td>{{ $peminjaman->status }}</td>
                                                 <td>
-                                                    <a href="{{ route('peminjaman.edit', $peminjaman->id) }}"
-                                                        class="btn btn-sm btn-primary">Edit</a>
-                                                    <form action="{{ route('peminjaman.destroy', $peminjaman->id) }}"
-                                                        method="POST" style="display: inline;">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class="btn btn-sm btn-danger"
-                                                            onclick="return confirm('Apakah Anda yakin ingin menghapus?')">Hapus</button>
-                                                    </form>
+                                                    <div class="actions">
+                                                        <a href="{{ route('peminjaman.edit', $peminjaman->id) }}" class="btn btn-sm bg-danger-light">
+                                                            <i class="far fa-edit me-2"></i>
+                                                        </a>
+                                                        <form method="POST" action="{{ route('peminjaman.destroy', $peminjaman->id) }}" style="display: inline;">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-sm bg-danger-light" onclick="return confirm('Apakah Anda yakin ingin menghapus peminjaman ini?')">
+                                                                <i class="far fa-trash-alt me-2"></i>
+                                                            </button>
+                                                        </form>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         @endforeach
