@@ -17,6 +17,7 @@ use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\FullCalenderController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\LessonsController;
 use App\Http\Controllers\UserManagementController;
 
 /*
@@ -190,6 +191,14 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     Route::get('/scores/{id}/edit', [ScoreController::class, 'edit'])->name('scores.edit');
     Route::put('/scores/{id}', [ScoreController::class, 'update'])->name('scores.update');
     Route::delete('/scores/{id}', [ScoreController::class, 'destroy'])->name('scores.destroy');
+
+    // lessons
+    Route::get('/lessons', [LessonsController::class, 'index'])->name('lessons.index');
+    Route::get('/lessons/create', [LessonsController::class, 'create'])->name('lessons.create');
+    Route::post('/lessons', [LessonsController::class, 'store'])->name('lessons.store');
+    Route::get('/lessons/{id}/edit', [LessonsController::class, 'edit'])->name('lessons.edit');
+    Route::put('/lessons/{id}', [LessonsController::class, 'update'])->name('lessons.update');
+    Route::delete('/lessons/{id}', [LessonsController::class, 'destroy'])->name('lessons.destroy');
 
     // landing_page
     Route::get('/landing_page', function () {
