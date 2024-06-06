@@ -44,7 +44,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group local-forms">
                                             <label for="teacher_id">Guru:</label>
-                                            <select id="teacher_id" name="teacher_id" class="form-control" required>
+                                            <select id="teacher_id" name="teacher_id" class="form-control select" required>
                                                 <option value="">Pilih Guru</option>
                                                 @foreach ($teachers as $teacher)
                                                     <option value="{{ $teacher->id }}">{{ $teacher->full_name }}</option>
@@ -59,7 +59,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group local-forms">
                                             <label for="subject_id">Mata Pelajaran:</label>
-                                            <select id="subject_id" name="subject_id" class="form-control" required>
+                                            <select id="subject_id" name="subject_id" class="form-control select" required>
                                                 <option value="">Pilih Mata Pelajaran</option>
                                                 @foreach ($subjects as $subject)
                                                     <option value="{{ $subject->id }}">{{ $subject->subject_name }}</option>
@@ -70,7 +70,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group local-forms">
                                             <label for="class">Kelas:</label>
-                                            <select id="class" name="class" class="form-control" required>
+                                            <select id="class" name="class" class="form-control select" required>
                                                 <option value="">Pilih Kelas</option>
                                                 @foreach ($subjects as $subject)
                                                     <option value="{{ $subject->class }}">{{ $subject->class }}</option>
@@ -92,10 +92,6 @@
                                                 class="form-control" required>
                                         </div>
                                     </div>
-                                </div>
-
-                                {{-- Fourth Row --}}
-                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group local-forms">
                                             <label for="end_time">Waktu Berakhir:</label>
