@@ -51,7 +51,6 @@
                                 <thead class="thead-light">
                                     <tr>
                                         <th scope="col">No</th>
-                                        <th scope="col">ID</th>
                                         <th scope="col">Mata Pelajaran</th>
                                         <th scope="col">Kelas</th>
                                         <th scope="col">Hari</th>
@@ -64,7 +63,6 @@
                                     @foreach ($lessons as $key => $lesson)
                                     <tr>
                                         <td>{{ ++$key }}</td> <!-- Nomor urut -->
-                                        <td>{{ $lesson->id }}</td>
                                         <td>{{ $lesson->subject->subject_name }}</td> <!-- Judul -->
                                         <td>{{ $lesson->class }}</td> <!-- Penulis -->
                                         <td>{{ $lesson->days }}</td> <!-- Penerbit -->
