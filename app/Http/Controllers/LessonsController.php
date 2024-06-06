@@ -99,8 +99,9 @@ class LessonsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Lessons $lessons)
+    public function destroy($id)
     {
+        $lessons = Lessons::findOrFail($id);
         $lessons->delete();
         return redirect()->route('lessons.index')->with('success', 'Lesson deleted successfully!');
     }
