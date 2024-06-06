@@ -1,7 +1,5 @@
 @extends('layouts.master')
 @section('content')
-{{-- pesan --}}
-{!! Toastr::message() !!}
 <div class="page-wrapper">
     <div class="content container-fluid">
         <div class="page-header">
@@ -15,29 +13,11 @@
                 </div>
             </div>
         </div>
-
+        {{-- pesan --}}
+        {!! Toastr::message() !!}
         <div class="student-group-form">
             <div class="row">
-                <div class="col-lg-3 col-md-6">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Cari berdasarkan ID ...">
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Cari berdasarkan Nama ...">
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Cari berdasarkan Telepon ...">
-                    </div>
-                </div>
-                <div class="col-lg-2">
-                    <div class="search-student-btn">
-                        <button type="btn" class="btn btn-primary">Cari</button>
-                    </div>
-                </div>
+                <!-- Search form -->
             </div>
         </div>
         <div class="row">
@@ -52,11 +32,16 @@
                                 <div class="col-auto text-end float-end ms-auto download-grp">
                                     <a href="teachers.html" class="btn btn-outline-gray me-2 active">
                                         <i class="fa fa-list" aria-hidden="true"></i>
+                                    </a>
                                     <a href="{{ route('teacher/grid/page') }}" class="btn btn-outline-gray me-2">
                                         <i class="fa fa-th" aria-hidden="true"></i>
-                                    <a href="#" class="btn btn-outline-primary me-2"><i
-                                            class="fas fa-download"></i> Unduh</a>
-                                    <a href="{{ route('teacher/add/page') }}" class="btn btn-primary"><i class="fas fa-plus"></i></a>
+                                    </a>
+                                    <a href="#" class="btn btn-outline-primary me-2">
+                                        <i class="fas fa-download"></i> Unduh
+                                    </a>
+                                    <a href="{{ route('teacher/add/page') }}" class="btn btn-primary">
+                                        <i class="fas fa-plus"></i>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -85,11 +70,9 @@
                                     <tr>
                                         <td>
                                             <div class="form-check check-tables">
-                                                <input class="form-check-input" type="checkbox"
-                                                    value="something">
+                                                <input class="form-check-input" type="checkbox" value="something">
                                             </div>
                                         </td>
-                                        <td hidden class="user_id">{{ $list->user_id }}</td>
                                         <td>{{ $list->user_id }}</td>
                                         <td>
                                             <h2 class="table-avatar">
@@ -100,7 +83,7 @@
                                                         <img class="avatar-img rounded-circle" src="{{ URL::to('images/photo_defaults.jpg') }}" alt="{{ $list->name }}">
                                                     @endif
                                                 </a>
-                                                <a href="teacher-details.html">{{ $list-> full_name }}</a>
+                                                <a href="teacher-details.html">{{ $list->full_name }}</a>
                                             </h2>
                                         </td>
                                         <td>{{ $list->gender }}</td>
@@ -113,7 +96,7 @@
                                                 <a href="{{ url('teacher/edit/'.$list->user_id) }}" class="btn btn-sm bg-danger-light">
                                                     <i class="far fa-edit me-2"></i>
                                                 </a>
-                                                <a class="btn btn-sm bg-danger-light teacher_delete" data-bs-toggle="modal" data-bs-target="#teacherDelete">
+                                                <a href="#" class="btn btn-sm bg-danger-light teacher_delete" data-bs-toggle="modal" data-bs-target="#teacherDelete" data-user-id="{{ $list->user_id }}">
                                                     <i class="far fa-trash-alt me-2"></i>
                                                 </a>
                                             </div>
@@ -148,7 +131,7 @@
                                 <button type="submit" class="btn btn-primary continue-btn submit-btn" style="border-radius: 5px !important;">Hapus</button>
                             </div>
                             <div class="col-6">
-                                <a href="#" data-bs-dismiss="modal"class="btn btn-primary paid-cancel-btn">Batal</a>
+                                <button type="button" class="btn btn-primary paid-cancel-btn" data-bs-dismiss="modal">Batal</button>
                             </div>
                         </div>
                     </form>
@@ -161,12 +144,12 @@
 @section('script')
     {{-- delete js --}}
     <script>
-        $(document).on('click','.teacher_delete',function()
-        {
-            var _this = $(this).parents('tr');
-            $('.e_user_id').val(_this.find('.user_id').text());
+        $(document).on('click', '.teacher_delete', function() {
+            var userId = $(this).data('user-id');
+            $('.e_user_id').val(userId);
         });
     </script>
 @endsection
 
 @endsection
+
