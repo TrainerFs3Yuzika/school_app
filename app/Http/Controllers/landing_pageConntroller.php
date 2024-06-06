@@ -19,16 +19,10 @@ class landing_pageConntroller extends Controller
             ->take(3)
             ->get();
 
+        // Ambil informasi kontak
         $contacts = ContactInformation::all();
 
-        // Debugging: Pastikan data topStudents ada
-        // dd($topStudents);
-
-        // Kirim data buku dan top students ke view
-
-        return view('landing_page.index', compact('books', 'topStudents'));
-
+        // Kirim data buku, top students, dan kontak ke view
         return view('landing_page.index', compact('books', 'topStudents', 'contacts'));
-
     }
 }
