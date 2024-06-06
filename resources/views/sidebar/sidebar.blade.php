@@ -5,7 +5,7 @@
                 <li class="menu-title">
                     <span>Menu Utama</span>
                 </li>
-                @if (auth()->user()->role_name === 'Admin' || auth()->user()->role_name === 'Super Admin')
+                @if (auth()->user()->role_name === 'Super Admin')
                 <li class="{{set_active(['setting/page'])}}">
                     <a href="{{ route('setting/page') }}">
                         <i class="fas fa-cog"></i> 
