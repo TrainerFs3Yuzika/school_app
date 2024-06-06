@@ -55,7 +55,7 @@
                                             <th>Guru</th>
                                             <th>Murid</th>
                                             <th>Mata Pelajaran</th>
-                                            <th>Score</th>
+                                            <th>Nilai</th>
                                             <th class="text-center">Aksi</th>
                                         </tr>
                                     </thead>

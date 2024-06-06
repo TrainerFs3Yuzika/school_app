@@ -28,7 +28,7 @@
             <div class="header-left">
                 <a href="{{ route('home') }}" class="logo">
                     <img src="{{ URL::to('assets/img/logo1.png') }}" alt="Logo" width="200" height="200">
-                    <span>FourTune</span>
+                    <span>SchoolSync</span>
                 </a>
                 <a href="{{ route('home') }}" class="logo logo-small">
                     <img src="{{ URL::to('assets/img/logo1.png') }}" alt="Logo" width="30" height="30">

@@ -210,7 +210,7 @@ $teachers = Teacher::orderBy('id', 'desc')->take(3)->get();
 <section id="guru">
     <div class="tengah">
         <div class="kolom">
-            <h2>Guru Terbaik</h2>
+            <h2>Best Teacher</h2>
             <p>
                 Dapatkan bimbingan dari para ahli di bidangnya untuk meningkatkan hasil belajar Anda
             </p>
@@ -313,7 +313,7 @@ $teachers = Teacher::orderBy('id', 'desc')->take(3)->get();
 
       <!-- tambahan untuk Sistem Manajemen Sekolah -->
       <div class="container" id="nilai_siswa">
-        <h2 class="text-center">Top Students</h2>
+        <h2 class="text-center">Best Students</h2>
         <div class="card-container">
             @foreach($topStudents as $score)
                 <div class="card">

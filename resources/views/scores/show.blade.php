@@ -13,7 +13,7 @@
                             <p class="mb-2"><strong>Teacher:</strong> {{ $score->teacher->full_name }}</p>
                             <p class="mb-2"><strong>Student:</strong> {{ $score->student->first_name }} {{ $score->student->last_name }}</p>
                             <p class="mb-2"><strong>Subject:</strong> {{ $score->subject->subject_name }}</p>
-                            <p class="mb-0"><strong>Score:</strong> {{ $score->score }}</p>
+                            <p class="mb-0"><strong>Nilai:</strong> {{ $score->score }}</p>
                         </div>
                     </div>
                     <div class="card-footer text-muted text-center border-0">

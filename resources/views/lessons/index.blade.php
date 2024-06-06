@@ -101,13 +101,17 @@
 
 <!-- Initialize DataTable -->
 <script>
-    $(document).ready(function() {
-        $('#bookTable').DataTable({
-            "language": {
-                "url": "//cdn.datatables.net/plug-ins/1.10.21/i18n/Indonesian.json"
-            }
-        });
+    $(document).ready(function(){
+        var successMessage = '{{ Session::get('success') }}';
+        var errorMessage = '{{ Session::get('error') }}';
+        
+        if(successMessage){
+            toastr.success(successMessage, 'Sukses');
+        }
+        if(errorMessage){
+            toastr.error(errorMessage, 'Error');
+        }
     });
 </script>
+
 @endsection
-x`
