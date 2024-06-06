@@ -133,7 +133,9 @@
                     @endif
                     <ul>
                         <li><a href="{{ route('scores.index') }}">Daftar Nilai</a></li>
+                        @if (auth()->user()->role_name === 'Super Admin')
                         <li><a href="{{ route('scores.create') }}">Tambah Nilai</a></li>
+                        @endif
                     </ul>
                 </li>
                 
