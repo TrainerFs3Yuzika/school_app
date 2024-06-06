@@ -38,10 +38,10 @@
                                         <a href="{{ route('student/grid') }}" class="btn btn-outline-gray me-2">
                                             <i class="fa fa-th" aria-hidden="true"></i>
                                         </a>
-                                        <a href="#" class="btn btn-outline-primary me-2"><i
-                                                class="fas fa-download"></i> Unduh</a>
+                                        @if (auth()->user()->role_name === 'Super Admin')
                                         <a href="{{ route('student/add/page') }}" class="btn btn-primary"><i
                                                 class="fas fa-plus"></i></a>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -56,7 +56,9 @@
                                             <th>Murid</th>
                                             <th>Mata Pelajaran</th>
                                             <th>Nilai</th>
+                                            @if (auth()->user()->role_name === 'Super Admin')
                                             <th class="text-center">Aksi</th>
+                                            @endif
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -79,6 +81,7 @@
                                                             class="bg-danger opacity-50 px-2 py-1 rounded-pill text-white fw-bold">{{ $score->score }}</span>
                                                     </td>
                                                 @endif
+                                                @if (auth()->user()->role_name === 'Super Admin')
                                                 <td class="text-center align-middle">
                                                     <div class="actions d-flex justify-content-center align-items-center">
                                                         <a href="{{ route('scores.show', $score->id) }}"
@@ -97,6 +100,7 @@
                                                         </button>
                                                     </div>
                                                 </td>
+                                                @endif
                                             </tr>
                                         @endforeach
                                     </tbody>

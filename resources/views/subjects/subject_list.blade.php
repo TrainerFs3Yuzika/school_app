@@ -53,12 +53,11 @@
                                         <h3 class="page-title">Mata Pelajaran</h3>
                                     </div>
                                     <div class="col-auto text-end float-end ms-auto download-grp">
-                                        <a href="#" class="btn btn-outline-primary me-2">
-                                            <i class="fas fa-download"></i> Unduh
-                                        </a>
+                                    @if (auth()->user()->role_name === 'Super Admin')
                                         <a href="{{ route('subject/add/page') }}" class="btn btn-primary">
                                             <i class="fas fa-plus"></i>
                                         </a>
+                                    @endif
                                     </div>
                                 </div>
                             </div>
@@ -75,7 +74,9 @@
                                             <th>ID</th>
                                             <th>Nama</th>
                                             <th>Kelas</th>
+                                            @if (auth()->user()->role_name === 'Super Admin')
                                             <th class="text-end">Aksi</th>
+                                            @endif
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -94,6 +95,7 @@
                                                 </h2>
                                             </td>
                                             <td>{{ $value->class }}</td>
+                                            @if (auth()->user()->role_name === 'Super Admin')
                                             <td class="text-end">
                                                 <div class="actions">
                                                     <a href="{{ url('subject/edit/'.$value->subject_id) }}" class="btn btn-sm bg-danger-light">
@@ -104,6 +106,7 @@
                                                     </a>
                                                 </div>
                                             </td>
+                                            @endif
                                         </tr>
                                         @endforeach
                                     </tbody>

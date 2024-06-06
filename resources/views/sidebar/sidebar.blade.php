@@ -21,7 +21,7 @@
                     </a>
                     <ul>
                         @if (auth()->user()->role_name === 'Admin' || auth()->user()->role_name === 'Super Admin')
-                        <li><a href="{{ route('home') }}" class="{{set_active(['home'])}}"><i class="fas fa-home"></i> Super Admin</a></li>
+                        <li><a href="{{ route('home') }}" class="{{set_active(['home'])}}"><i class="fas fa-home"></i> {{ auth()->user()->role_name }}</a></li>
                         @endif
                         @if (auth()->user()->role_name === 'Teachers')
                         <li><a href="{{ route('teacher/dashboard') }}" class="{{set_active(['teacher/dashboard'])}}"><i class="fas fa-chalkboard-teacher"></i> Dasbor Guru</a></li>
@@ -53,7 +53,9 @@
                     </a>
                     <ul>
                         <li><a href="{{ route('student/list') }}"  class="{{set_active(['student/list','student/grid'])}}">Daftar Siswa</a></li>
+                        @if (auth()->user()->role_name === 'Super Admin')
                         <li><a href="{{ route('student/add/page') }}" class="{{set_active(['student/add/page'])}}">Tambah Siswa</a></li>
+                        @endif
                     </ul>
                 </li>
                 @endif
@@ -66,7 +68,10 @@
                     </a>
                     <ul>
                         <li><a href="{{ route('teacher/list/page') }}" class="{{set_active(['teacher/list/page','teacher/grid/page'])}}">Daftar Guru</a></li>
+                        <li><a href="{{ route('lessons.index') }}" class="{{ request()->is('lessons*') ? 'active' : '' }}">Daftar Jadwal</a></li>
+                        @if (auth()->user()->role_name === 'Super Admin')
                         <li><a href="{{ route('teacher/add/page') }}" class="{{set_active(['teacher/add/page'])}}">Tambah Data Guru</a></li>
+                        @endif
                     </ul>
                 </li>
                 @endif
@@ -78,8 +83,10 @@
                     </a>
                     <ul>
                         <li><a class="{{set_active(['subject/list/page'])}} {{ request()->is('subject/edit/*') ? 'active' : '' }}" href="{{ route('subject/list/page') }}">Daftar Mata Pelajaran</a></li>
+                        @if (auth()->user()->role_name === 'Super Admin')
                         <li><a class="{{set_active(['subject/add/page'])}}" href="{{ route('subject/add/page') }}">Tambah Mata Pelajaran</a></li>
                         <li><a href="{{ route('classes.create') }}">Tambah Kelas Baru</a></li>
+                        @endif
                     </ul>
                 </li>
                 @endif

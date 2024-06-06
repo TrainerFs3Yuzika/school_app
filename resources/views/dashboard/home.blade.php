@@ -221,7 +221,9 @@
                                             <th>Nama Guru</th>
                                             <th>Mata Pelajaran</th>
                                             <th>Kelas</th>
+                                            @if (auth()->user()->role_name === 'Super Admin')
                                             <th>Aksi</th>
+                                            @endif
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -232,6 +234,7 @@
                                                 <td>{{ $class->teacher->full_name }}</td>
                                                 <td>{{ $class->subject->subject_name }}</td>
                                                 <td>{{ $class->subject->class }}</td>
+                                                @if (auth()->user()->role_name === 'Super Admin')
                                                 <td>
                                                     <div class="actions">
                                                         <a href="{{ route('classes.edit', $class->id) }}" class="btn btn-sm bg-danger-light">
@@ -246,6 +249,7 @@
                                                         </form>
                                                     </div>
                                                 </td>
+                                                @endif
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -275,7 +279,9 @@
                                             <th>Waktu Mulai</th>
                                             <th>Waktu Berakhir</th>
                                             <th>Durasi</th>
+                                            @if (auth()->user()->role_name === 'Super Admin')
                                             <th>Aksi</th>
+                                            @endif
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -287,6 +293,7 @@
                                                 <td>{{ \Carbon\Carbon::parse($event->end)->format('d M Y H:i') }}</td>
                                                 <td>{{ \Carbon\Carbon::parse($event->start)->diffInHours(\Carbon\Carbon::parse($event->end)) }}
                                                     jam</td>
+                                                @if (auth()->user()->role_name === 'Super Admin')
                                                 <td>
                                                     <div class="actions">
                                                         <a href="{{ url('fullcalender') }}" class="btn btn-sm">
@@ -294,6 +301,7 @@
                                                         </a>
                                                     </div>
                                                 </td>
+                                                @endif
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -400,7 +408,9 @@
                                                 <th>Tahun Terbit</th>
                                                 <th>Genre</th>
                                                 <th>Stok</th>
+                                                @if (auth()->user()->role_name === 'Super Admin')
                                                 <th>Aksi</th>
+                                                @endif
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -412,6 +422,7 @@
                                                     <td>{{ $book->tahun_terbit }}</td>
                                                     <td>{{ $book->genre }}</td>
                                                     <td>{{ $book->stok }}</td>
+                                                    @if (auth()->user()->role_name === 'Super Admin')
                                                     <td>
                                                         <div class="actions">
                                                             <a href="{{ route('books.edit', $book->id) }}" class="btn btn-sm bg-danger-light">
@@ -426,6 +437,7 @@
                                                             </form>
                                                         </div>
                                                     </td>
+                                                    @endif
                                                 </tr>
                                             @endforeach
                                         </tbody>
@@ -466,7 +478,9 @@
                                             <th scope="col">Tanggal Kembali</th>
                                             <th scope="col">Jumlah Buku</th>
                                             <th scope="col">Status</th>
+                                            @if (auth()->user()->role_name === 'Super Admin')
                                             <th scope="col">Aksi</th>
+                                            @endif
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -480,6 +494,7 @@
                                                 <td>{{ $peminjaman->tanggal_kembali }}</td>
                                                 <td>{{ $peminjaman->jumlah_buku }}</td>
                                                 <td>{{ $peminjaman->status }}</td>
+                                                @if (auth()->user()->role_name === 'Super Admin')
                                                 <td>
                                                     <div class="actions">
                                                         <a href="{{ route('peminjaman.edit', $peminjaman->id) }}" class="btn btn-sm bg-danger-light">
@@ -494,6 +509,7 @@
                                                         </form>
                                                     </div>
                                                 </td>
+                                                @endif
                                             </tr>
                                         @endforeach
                                     </tbody>

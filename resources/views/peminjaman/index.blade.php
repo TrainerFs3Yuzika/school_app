@@ -32,8 +32,9 @@
                                     <a href="#" class="btn btn-outline-gray me-2">
                                         <i class="fa fa-th" aria-hidden="true"></i>
                                     </a>
-                                    <a href="#" class="btn btn-outline-primary me-2"><i class="fas fa-download"></i> Unduh</a>
+                                    @if (auth()->user()->role_name === 'Super Admin')
                                     <a href="{{ route('peminjaman.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah Peminjaman</a> <!-- Tambah Peminjaman -->
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -50,7 +51,9 @@
                                         <th scope="col">Tanggal Kembali</th>
                                         <th scope="col">Jumlah Buku</th>
                                         <th scope="col">Status</th>
+                                        @if (auth()->user()->role_name === 'Super Admin')
                                         <th scope="col">Aksi</th>
+                                        @endif
                                     </tr>
                                 </thead>
                                 <tbody class="">
@@ -64,6 +67,7 @@
                                         <td>{{ $peminjaman->tanggal_kembali }}</td> <!-- Tanggal Kembali -->
                                         <td>{{ $peminjaman->jumlah_buku }}</td> <!-- Jumlah Buku -->
                                         <td>{{ $peminjaman->status }}</td> <!-- Status -->
+                                        @if (auth()->user()->role_name === 'Super Admin')
                                         <td>
                                             <a href="{{ route('peminjaman.edit', $peminjaman->id) }}" class="btn btn-sm btn-primary">Edit</a>
                                             <form action="{{ route('peminjaman.destroy', $peminjaman->id) }}" method="POST" style="display: inline;">
@@ -72,6 +76,7 @@
                                                 <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus?')"><i class="bi bi-trash"></i> Hapus</button>
                                             </form>
                                         </td> <!-- Aksi -->
+                                        @endif
                                     </tr>
                                     @endforeach
                                 </tbody>

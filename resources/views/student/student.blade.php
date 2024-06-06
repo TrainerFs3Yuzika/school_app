@@ -38,8 +38,9 @@
                                     <a href="{{ route('student/grid') }}" class="btn btn-outline-gray me-2">
                                         <i class="fa fa-th" aria-hidden="true"></i>
                                     </a>
-                                    <a href="#" class="btn btn-outline-primary me-2"><i class="fas fa-download"></i> Unduh</a>
+                                    @if (auth()->user()->role_name === 'Super Admin')
                                     <a href="{{ route('student/add/page') }}" class="btn btn-primary"><i class="fas fa-plus"></i></a>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -60,7 +61,9 @@
                                         <th>Nama Orang Tua</th>
                                         <th>Nomor Ponsel</th>
                                         <th>Alamat</th>
+                                        @if (auth()->user()->role_name === 'Super Admin')
                                         <th class="text-end">Aksi</th>
+                                        @endif
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -85,6 +88,7 @@
                                         <td>{{ $list->parent_name }}</td>
                                         <td>{{ $list->phone_number }}</td>
                                         <td>{{ $list->address }}</td>
+                                        @if (auth()->user()->role_name === 'Super Admin')
                                         <td class="text-end">
                                             <div class="actions">
                                                 <a href="{{ url('student/edit/'.$list->id) }}" class="btn btn-sm bg-danger-light">
@@ -95,6 +99,7 @@
                                                 </a>
                                             </div>
                                         </td>
+                                        @endif
                                     </tr>
                                     @endforeach
                                 </tbody>

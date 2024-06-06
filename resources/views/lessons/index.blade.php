@@ -40,7 +40,6 @@
                                     <a href="#" class="btn btn-outline-gray me-2">
                                         <i class="fa fa-th" aria-hidden="true"></i>
                                     </a>
-                                    <a href="#" class="btn btn-outline-primary me-2"><i class="fas fa-download"></i> Unduh</a>
                                     <a href="{{ route('lessons.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i></a>
                                 </div>
                             </div>
@@ -56,7 +55,9 @@
                                         <th scope="col">Hari</th>
                                         <th scope="col">Jam Mulai</th>
                                         <th scope="col">Jam Berakhir</th>
+                                        @if (auth()->user()->role_name === 'Super Admin')
                                         <th scope="col">Aksi</th>
+                                        @endif
                                     </tr>
                                 </thead>
                                 <tbody class="">
