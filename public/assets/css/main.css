@@ -314,53 +314,74 @@ body {
 }
 
 /* nilai */
+/* Gaya untuk kontainer kartu */
 #nilai_siswa .card-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  display: flex; /* Menggunakan flexbox untuk penataan kartu */
+  flex-wrap: wrap; /* Mengatur agar kartu-kartu dapat melingkar jika tidak cukup ruang */
+  justify-content: space-around; /* Mengatur agar kartu-kartu berada di tengah secara horizontal dengan jarak yang merata */
 }
 
+/* Gaya untuk kartu */
 #nilai_siswa .card {
-  width: calc(30% - 20px);
+  position: relative; /* Mengatur posisi relatif untuk memungkinkan penempatan elemen tambahan */
+  width: calc(30% - 20px); /* Lebar kartu, dengan jarak antar kartu 20px */
   margin-bottom: 20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+  border: none; /* Hilangkan border agar tampilan lebih bersih */
+  border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
-  background-color: #f0f0f0; /* Tambahkan latar belakang warna di sini */
+  background-color: #fff;
 }
 
+/* Gaya hover untuk kartu */
 #nilai_siswa .card:hover {
-  transform: translateY(-5px);
-  color: #ddd;
+  transform: translateY(-5px); /* Mendorong kartu ke atas saat digulirkan */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
+/* Gaya untuk konten kartu */
 #nilai_siswa .card-content {
   padding: 20px;
 }
 
+/* Gaya untuk judul */
 #nilai_siswa .card h3 {
-  margin-top: 0;
-  margin-bottom: 10px;
+  margin: 0;
   font-size: 20px;
-  color: #333;
+  color: #333; /* Warna judul */
+  text-align: center; /* Pusatkan teks judul */
 }
 
+/* Gaya untuk teks */
 #nilai_siswa .card p {
   margin: 5px 0;
-  font-size: 16px;
-  color: #666;
+  color: #666; /* Warna teks */
 }
 
-#nilai_siswa .card .score {
-  font-weight: bold;
-  color: #007bff;
+/* Gaya untuk header */
+#nilai_siswa h2 {
+  margin-bottom: 30px; /* Jarak bawah header */
+  font-size: 24px;
+  color: #333; /* Warna teks header */
+  text-align: center; /* Pusatkan teks header */
+  text-transform: uppercase; /* Konversi teks header menjadi huruf besar */
+  letter-spacing: 2px; /* Spasi antar huruf */
+  font-weight: bold; /* Teks lebih tebal */
 }
 
-#nilai_siswa .card .subject {
-  font-style: italic;
-  color: #555;
+/* Ornamen untuk kartu */
+#nilai_siswa .card::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200%;
+  height: 200%;
+  background-image: radial-gradient(circle, #ff00ff, #cf00ff, #6600ff);
+  opacity: 0.4;
+  transform: translate(-50%, -50%);
+  z-index: -1; /* Mengatur ornamen berada di bawah konten kartu */
 }
 
 /* guru */

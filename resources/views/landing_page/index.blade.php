@@ -18,6 +18,7 @@
         <a class="navbar-brand d-flex align-items-center" href="#">
           <img src="{{ asset('images/logo1.png') }}" alt="Fortune Logo">
           <span class="ms-2" style="color: #cf00ff;">SchoolSync</span>
+
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -311,25 +312,24 @@ $teachers = Teacher::orderBy('id', 'desc')->take(3)->get();
         </div>
       </section>
 
-      <!-- tambahan untuk Sistem Manajemen Sekolah -->
-      <div class="container" id="nilai_siswa">
-        <h2 class="text-center">Best Students</h2>
-        <div class="card-container">
-            @foreach($topStudents as $score)
-                <div class="card">
-                    <div class="card-content">
-                        <h3> {{ $score->student->first_name }} {{ $score->student->last_name }}</h3>
-                        <p>Nilai: {{ $score->score }}</p>
-                        <p>Mata Pelajaran: {{ $score->subject->subject_name }}</p>
-                    </div>
-                </div>
-            @endforeach
-        </div>
+
+        <div class="container" id="nilai_siswa">
+          <h2 class="text-center">Best Students</h2>
+          <div class="card-container">
+              @foreach($topStudents as $score)
+                  <div class="card">
+                      <div class="card-content">
+                          <h3> {{ $score->student->first_name }} {{ $score->student->last_name }}</h3>
+                          <p>Nilai: {{ $score->score }}</p>
+                          <p>Mata Pelajaran: {{ $score->subject->subject_name }}</p>
+                      </div>
+                  </div>
+              @endforeach
+          </div>
+      </div>
     </div>
-    
-    
-    </div>
-    <section id="sistem-manajemen-sekolah">
+          <!-- tambahan untuk Sistem Manajemen Sekolah -->
+    {{-- <section id="sistem-manajemen-sekolah">
       <div class="tengah">
         <div class="kolom">
           <p class="deskripsi">Sistem Manajemen Sekolah</p>
@@ -364,7 +364,7 @@ $teachers = Teacher::orderBy('id', 'desc')->take(3)->get();
           </div>
         </div>
       </div>
-    </section>
+    </section> --}}
 <!-- resources/views/layouts/footer.blade.php -->
 <div id="contact">
   <div class="container">
