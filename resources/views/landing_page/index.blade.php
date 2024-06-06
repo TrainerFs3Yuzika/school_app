@@ -16,8 +16,8 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
       <div class="container-fluid">
         <a class="navbar-brand d-flex align-items-center" href="#">
-          <img src="{{ asset('images/logo.png') }}" alt="Fortune Logo">
-          <span class="ms-2">SchoolSync</span>
+          <img src="{{ asset('images/logo1.png') }}" alt="Fortune Logo">
+          <span class="ms-2" style="color: #cf00ff;">SchoolSync</span>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
