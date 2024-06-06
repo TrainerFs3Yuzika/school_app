@@ -40,7 +40,9 @@
                                     <a href="#" class="btn btn-outline-gray me-2">
                                         <i class="fa fa-th" aria-hidden="true"></i>
                                     </a>
+                                    @if (auth()->user()->role_name === 'Super Admin')
                                     <a href="{{ route('lessons.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i></a>
+                                    @endif
                                 </div>
                             </div>
                         </div>
