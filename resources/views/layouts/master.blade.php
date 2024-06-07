@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-    <title>{{ Auth::user()->role_name }} Dashboard</title>
+    
     <link rel="shortcut icon" href="{{ URL::to('assets/img/logo1.png') }}">
     <link rel="stylesheet" href="{{ URL::to('assets/plugins/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ URL::to('assets/plugins/feather/feather.css') }}">
@@ -182,7 +182,7 @@
 		{{-- content page --}}
         @yield('content')
         <footer>
-            <p>Copyright ©  <?php echo date('Y'); ?> FourTune</p>
+            <p>Copyright ©  <?php echo date('Y'); ?> SchoolSync</p>
         </footer>
     
     </div>
