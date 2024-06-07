@@ -12,7 +12,7 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="page-sub-header">
-                            <h3 class="page-title"><span style="color: blue;">Welcome</span> {{ Session::get('name') }}!</h3>
+                            <h3 class="page-title"><span style="color: blue;">Selamat Datang</span> {{ Session::get('name') }}!</h3>
                             <hr
                                 style="border: none; height: 2px; background-color: blue; animation: underline 2s infinite;">
                             <ul class="breadcrumb">
@@ -263,7 +263,7 @@
                 <div class="col-xl-6 d-flex">
                     <div class="card flex-fill student-space comman-shadow">
                         <div class="card-header d-flex align-items-center">
-                            <h5 class="card-title">Jadwal Event Mendatang</h5>
+                            <h5 class="card-title">Jadwal Acara Mendatang</h5>
                             <ul class="chart-list-out student-ellips">
                                 <li class="star-menus"><a href="javascript:;"><i class="fas fa-ellipsis-v"></i></a></li>
                             </ul>
@@ -275,7 +275,7 @@
                                     <thead class="thead-light">
                                         <tr>
                                             <th>ID</th>
-                                            <th>Judul Event</th>
+                                            <th>Judul Acara</th>
                                             <th>Waktu Mulai</th>
                                             <th>Waktu Berakhir</th>
                                             <th>Durasi</th>

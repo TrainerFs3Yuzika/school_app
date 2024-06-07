@@ -8,7 +8,7 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="page-sub-header">
-                            <h3 class="page-title">Selamat Datang {{ Auth::user()->name }}, {{ Auth::user()->role_name }}
+                            <h3 class="page-title">Selamat Datang {{ Auth::user()->name }}, {{ Auth::user()->role_name ? 'Guru' : '' }}
                             </h3>
                             <ul class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ route('home') }}">Beranda</a></li>
@@ -279,7 +279,7 @@
                                         <thead class="thead-light">
                                             <tr>
                                                 <th>ID</th>
-                                                <th>Judul Event</th>
+                                                <th>Judul Acara</th>
                                                 <th>Waktu Mulai</th>
                                                 <th>Waktu Berakhir</th>
                                                 <th>Durasi</th>
