@@ -6,12 +6,13 @@
                     <span>Menu Utama</span>
                 </li>
                 @if (auth()->user()->role_name === 'Super Admin')
-                <li class="{{set_active(['setting/page'])}}">
-                    <a href="{{ route('setting/page') }}">
+                <li class="{{ set_active(['contact_information.index']) }}">
+                    <a href="{{ route('contact_information.index') }}">
                         <i class="fas fa-cog"></i> 
                         <span>Pengaturan</span>
                     </a>
                 </li>
+                
                 @endif
                 <li class="submenu {{set_active(['home','teacher/dashboard','student/dashboard'])}}">
                     <a>
