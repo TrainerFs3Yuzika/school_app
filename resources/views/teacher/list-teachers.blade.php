@@ -32,19 +32,14 @@
                                 <div class="col-auto text-end float-end ms-auto download-grp">
                                     <a href="teachers.html" class="btn btn-outline-gray me-2 active">
                                         <i class="fa fa-list" aria-hidden="true"></i>
-                                    </a>
                                     <a href="{{ route('teacher/grid/page') }}" class="btn btn-outline-gray me-2">
                                         <i class="fa fa-th" aria-hidden="true"></i>
-                                    </a>
-                                    @if (auth()->user()->role_name === 'Super Admin')
-                                    <a href="{{ route('teacher/add/page') }}" class="btn btn-primary">
-                                        <i class="fas fa-plus"></i>
-                                    </a>
-                                    @endif
+                                    <a href="#" class="btn btn-outline-primary me-2"><i
+                                            class="fas fa-download"></i> Unduh</a>
+                                    <a href="{{ route('teacher/add/page') }}" class="btn btn-primary"><i class="fas fa-plus"></i></a>
                                 </div>
                             </div>
                         </div>
-
                         <div class="table-responsive">
                             <table id="DataList" class="table border-0 star-student table-hover table-center mb-0 datatable table-striped">
                                 <thead class="student-thread"> 
@@ -61,9 +56,7 @@
                                         <th>Pengalaman</th>
                                         <th>Nomor Ponsel</th>
                                         <th>Alamat</th>
-                                        @if (auth()->user()->role_name === 'Super Admin')
                                         <th class="text-end">Aksi</th>
-                                        @endif
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -71,9 +64,11 @@
                                     <tr>
                                         <td>
                                             <div class="form-check check-tables">
-                                                <input class="form-check-input" type="checkbox" value="something">
+                                                <input class="form-check-input" type="checkbox"
+                                                    value="something">
                                             </div>
                                         </td>
+                                        <td hidden class="user_id">{{ $list->user_id }}</td>
                                         <td>{{ $list->user_id }}</td>
                                         <td>
                                             <h2 class="table-avatar">
@@ -84,7 +79,7 @@
                                                         <img class="avatar-img rounded-circle" src="{{ URL::to('images/photo_defaults.jpg') }}" alt="{{ $list->name }}">
                                                     @endif
                                                 </a>
-                                                <a href="teacher-details.html">{{ $list->full_name }}</a>
+                                                <a href="teacher-details.html">{{ $list-> full_name }}</a>
                                             </h2>
                                         </td>
                                         <td>{{ $list->gender }}</td>
@@ -92,18 +87,16 @@
                                         <td>{{ $list->experience }}</td>
                                         <td>{{ $list->phone_number }}</td>
                                         <td>{{ $list->address }}</td>
-                                        @if (auth()->user()->role_name === 'Super Admin')
                                         <td class="text-end">
                                             <div class="actions">
                                                 <a href="{{ url('teacher/edit/'.$list->user_id) }}" class="btn btn-sm bg-danger-light">
                                                     <i class="far fa-edit me-2"></i>
                                                 </a>
-                                                <a href="#" class="btn btn-sm bg-danger-light teacher_delete" data-bs-toggle="modal" data-bs-target="#teacherDelete" data-user-id="{{ $list->user_id }}">
+                                                <a class="btn btn-sm bg-danger-light teacher_delete" data-bs-toggle="modal" data-bs-target="#teacherDelete">
                                                     <i class="far fa-trash-alt me-2"></i>
                                                 </a>
                                             </div>
                                         </td>
-                                        @endif
                                     </tr>
                                     @endforeach
                                 </tbody>
@@ -115,7 +108,6 @@
         </div>
     </div>
 </div>
-
 {{-- model teacher delete --}}
 <div class="modal custom-modal fade" id="teacherDelete" role="dialog">
     <div class="modal-dialog modal-dialog-centered">
@@ -134,7 +126,7 @@
                                 <button type="submit" class="btn btn-primary continue-btn submit-btn" style="border-radius: 5px !important;">Hapus</button>
                             </div>
                             <div class="col-6">
-                                <button type="button" class="btn btn-primary paid-cancel-btn" data-bs-dismiss="modal">Batal</button>
+                                <a href="#" data-bs-dismiss="modal"class="btn btn-primary paid-cancel-btn">Batal</a>
                             </div>
                         </div>
                     </form>
@@ -143,16 +135,15 @@
         </div>
     </div>
 </div>
-
 @section('script')
     {{-- delete js --}}
     <script>
-        $(document).on('click', '.teacher_delete', function() {
-            var userId = $(this).data('user-id');
-            $('.e_user_id').val(userId);
+        $(document).on('click','.teacher_delete',function()
+        {
+            var _this = $(this).parents('tr');
+            $('.e_user_id').val(_this.find('.user_id').text());
         });
     </script>
 @endsection
 
 @endsection
-
