@@ -38,7 +38,7 @@
                                         <a href="{{ route('student/grid') }}" class="btn btn-outline-gray me-2">
                                             <i class="fa fa-th" aria-hidden="true"></i>
                                         </a>
-                                        @if (auth()->user()->role_name === 'Super Admin')
+                                        @if (auth()->user()->role_name === 'Super Admin' || Session::get('role_name') === 'Teachers')
                                         <a href="{{ route('student/add/page') }}" class="btn btn-primary"><i
                                                 class="fas fa-plus"></i></a>
                                         @endif
@@ -56,7 +56,7 @@
                                             <th>Murid</th>
                                             <th>Mata Pelajaran</th>
                                             <th>Nilai</th>
-                                            @if (auth()->user()->role_name === 'Super Admin')
+                                            @if (auth()->user()->role_name === 'Super Admin' || Session::get('role_name') === 'Teachers')
                                             <th class="text-center">Aksi</th>
                                             @endif
                                         </tr>
@@ -81,7 +81,7 @@
                                                             class="bg-danger opacity-50 px-2 py-1 rounded-pill text-white fw-bold">{{ $score->score }}</span>
                                                     </td>
                                                 @endif
-                                                @if (auth()->user()->role_name === 'Super Admin')
+                                                @if (auth()->user()->role_name === 'Super Admin' || Session::get('role_name') === 'Teachers')
                                                 <td class="text-center align-middle">
                                                     <div class="actions d-flex justify-content-center align-items-center">
                                                         <a href="{{ route('scores.show', $score->id) }}"

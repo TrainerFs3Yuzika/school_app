@@ -117,9 +117,9 @@
 
                 </li>
                 <li class="submenu">
-                    
+                    @if (auth()->user()->role_name === 'Admin' || auth()->user()->role_name === 'Super Admin' || auth()->user()->role_name === 'Student')
                     <a href="#"><i class="fas fa-book"></i> <span>Perpustakaan</span> <span class="menu-arrow"></span></a>
-                    
+                    @endif
                     <ul>
                         <li><a href="{{ route('books.index') }}">Daftar Buku</a></li>
                         @if (auth()->user()->role_name === 'Admin' || auth()->user()->role_name === 'Super Admin')
@@ -128,12 +128,12 @@
                     </ul>
                 </li>
                 <li class="submenu">
-                    @if (Session::get('role_name') === 'Admin' || Session::get('role_name') === 'Super Admin')
+                    @if (Session::get('role_name') === 'Admin' || Session::get('role_name') === 'Super Admin' || Session::get('role_name') === 'Teachers')
                     <a href="#"><i class="fas fa-chart-line"></i> <span>Nilai</span> <span class="menu-arrow"></span></a>
                     @endif
                     <ul>
                         <li><a href="{{ route('scores.index') }}">Daftar Nilai</a></li>
-                        @if (auth()->user()->role_name === 'Super Admin')
+                        @if (auth()->user()->role_name === 'Super Admin' || Session::get('role_name') === 'Teachers')
                         <li><a href="{{ route('scores.create') }}">Tambah Nilai</a></li>
                         @endif
                     </ul>
