@@ -212,6 +212,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="row">
                         <div class="col-12 col-lg-12 col-xl-12 d-flex">
                             <div class="card flex-fill comman-shadow">
@@ -235,6 +236,7 @@
                                 </div>
                             </div>
                         </div>
+                        
                         <div class="col-12 col-lg-12 col-xl-12 d-flex">
                             <div class="card flex-fill comman-shadow">
                                 <div class="card-header d-flex align-items-center">
@@ -304,292 +306,178 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="col-12 col-lg-12 col-xl-4 d-flex">
                     <div class="card flex-fill comman-shadow">
                         <div class="card-body">
                             <div id="calendar-doctor" class="calendar-container"></div>
                             <div class="calendar-info calendar-info1">
-                                <div class="up-come-header">
+                                <div class="up-come-header mb-3">
                                     <h2>Acara Mendatang</h2>
-                                    <span><a href="javascript:;"><i class="feather-plus"></i></a></span>
                                 </div>
-                                <div class="upcome-event-date">
-                                    <h3>10 Jan</h3>
-                                    <span><i class="fas fa-ellipsis-h"></i></span>
-                                </div>
-                                <div class="calendar-details">
-                                    <p>08:00 pagi</p>
-                                    <div class="calendar-box normal-bg">
-                                        <div class="calandar-event-name">
-                                            <h4>Botani</h4>
-                                            <h5>Lorem ipsum sit amet</h5>
-                                        </div>
-                                        <span>08:00 - 09:00 pagi</span>
-                                    </div>
-                                </div>
-                                <div class="calendar-details">
-                                    <p>09:00 pagi</p>
-                                    <div class="calendar-box normal-bg">
-                                        <div class="calandar-event-name">
-                                            <h4>Botani</h4>
-                                            <h5>Lorem ipsum sit amet</h5>
-                                        </div>
-                                        <span>09:00 - 10:00 pagi</span>
-                                    </div>
-                                </div>
-                                <div class="calendar-details">
-                                    <p>10:00 pagi</p>
-                                    <div class="calendar-box normal-bg">
-                                        <div class="calandar-event-name">
-                                            <h4>Botani</h4>
-                                            <h5>Lorem ipsum sit amet</h5>
-                                        </div>
-                                        <span>10:00 - 11:00 pagi</span>
-                                    </div>
-                                </div>
-                                <div class="upcome-event-date">
-                                    <h3>10 Jan</h3>
-                                    <span><i class="fas fa-ellipsis-h"></i></span>
-                                </div>
-                                <div class="calendar-details">
-                                    <p>08:00 pagi</p>
-                                    <div class="calendar-box normal-bg">
-                                        <div class="calandar-event-name">
-                                            <h4>Bahasa Inggris</h4>
-                                            <h5>Lorem ipsum sit amet</h5>
-                                        </div>
-                                        <span>08:00 - 09:00 pagi</span>
-                                    </div>
-                                </div>
-                                <div class="calendar-details">
-                                    <p>09:00 pagi</p>
-                                    <div class="calendar-box normal-bg">
-                                        <div class="calandar-event-name">
-                                            <h4>Matematika </h4>
-                                            <h5>Lorem ipsum sit amet</h5>
-                                        </div>
-                                        <span>09:00 - 10:00 pagi</span>
-                                    </div>
-                                </div>
-                                <div class="calendar-details">
-                                    <p>10:00 pagi</p>
-                                    <div class="calendar-box normal-bg">
-                                        <div class="calandar-event-name">
-                                            <h4>Sejarah</h4>
-                                            <h5>Lorem ipsum sit amet</h5>
-                                        </div>
-                                        <span>10:00 - 11:00 pagi</span>
-                                    </div>
-                                </div>
-                                <div class="calendar-details">
-                                    <p>11:00 pagi</p>
-                                    <div class="calendar-box break-bg">
-                                        <div class="calandar-event-name">
-                                            <h4>Istirahat</h4>
-                                            <h5>Lorem ipsum sit amet</h5>
-                                        </div>
-                                        <span>11:00 - 12:00 pagi</span>
-                                    </div>
-                                </div>
-                                <div class="calendar-details">
-                                    <p>11:30 pagi</p>
-                                    <div class="calendar-box normal-bg">
-                                        <div class="calandar-event-name">
-                                            <h4>Sejarah</h4>
-                                            <h5>Lorem ipsum sit amet</h5>
-                                        </div>
-                                        <span>11:30 - 12:00 pagi</span>
-                                    </div>
+                                <div class="table-responsive">
+                                    <table id="eventTable" class="table star-student table-hover table-center table-borderless table-striped">
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Judul Acara</th>
+                                                <th>Waktu Mulai</th>
+                                                <th>Waktu Berakhir</th>
+                                                <th>Durasi</th>
+                                                <th>Aksi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (\App\Models\Event::all() as $event)
+                                                <tr>
+                                                    <td>{{ $event->id }}</td>
+                                                    <td>{{ $event->title }}</td>
+                                                    <td>{{ \Carbon\Carbon::parse($event->start)->format('d M Y H:i') }}</td>
+                                                    <td>{{ \Carbon\Carbon::parse($event->end)->format('d M Y H:i') }}</td>
+                                                    <td>{{ \Carbon\Carbon::parse($event->start)->diffInHours(\Carbon\Carbon::parse($event->end)) }} jam</td>
+                                                    <td>
+                                                        <div class="actions">
+                                                            <a href="{{ url('fullcalender') }}" class="btn btn-sm">
+                                                                <i class="fas fa-sign-in-alt me-2"></i>
+                                                            </a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                                {{-- Table Jadwal Event --}}
-                                <div class="container">
-                                <div class="col-xl-18 d-flex">
-                                    <div class="card flex-fill student-space comman-shadow">
-                                        <div class="card-header d-flex align-items-center">
-                                            <h5 class="card-title">Jadwal Event Mendatang</h5>
-                                            <ul class="chart-list-out student-ellips">
-                                                <li class="star-menus"><a href="javascript:;"><i class="fas fa-ellipsis-v"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="card-body">
-                                            <div class="table-responsive">
-                                                <table id="eventTable"
-                                                    class="table star-student table-hover table-center table-borderless table-striped">
-                                                    <thead class="thead-light">
-                                                        <tr>
-                                                            <th>ID</th>
-                                                            <th>Judul Event</th>
-                                                            <th>Waktu Mulai</th>
-                                                            <th>Waktu Berakhir</th>
-                                                            <th>Durasi</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        @foreach (\App\Models\Event::all() as $event)
-                                                            <tr>
-                                                                <td>{{ $event->id }}</td>
-                                                                <td>{{ $event->title }}</td>
-                                                                <td>{{ \Carbon\Carbon::parse($event->start)->format('d M Y H:i') }}</td>
-                                                                <td>{{ \Carbon\Carbon::parse($event->end)->format('d M Y H:i') }}</td>
-                                                                <td>{{ \Carbon\Carbon::parse($event->start)->diffInHours(\Carbon\Carbon::parse($event->end)) }}
-                                                                    jam</td>
-                                                                <td>
-                                                                    {{-- <div class="actions">
-                                                                        <a href="{{ url('fullcalender') }}" class="btn btn-sm">
-                                                                            <i class="fas fa-sign-in-alt me-2"></i>
-                                                                        </a>
-                                                                    </div> --}}
-                                                                </td>
-                                                            </tr>
-                                                        @endforeach
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
+                                
+                <div class="row">
+                    <div class="col-xl-6 d-flex">               
+                        <div class="card flex-fill student-space comman-shadow">
+                            <div class="card-header d-flex align-items-center justify-content-between mb-3">
+                                <h5 class="card-title">Daftar Buku</h5>
+                                <ul class="chart-list-out student-ellipsis">
+                                    <li class="star-menus"><a href="javascript:;"><i class="fas fa-ellipsis-v"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="card-body">
+                                <div>
+                                    <div class="table-responsive">
+                                        <table id="bookTable" class="table">
+                                            <thead class="thead-light">
+                                                <tr>
+                                                    <th>Judul</th>
+                                                    <th>Penulis</th>
+                                                    <th>Penerbit</th>
+                                                    <th>Tahun Terbit</th>
+                                                    <th>Genre</th>
+                                                    <th>Stok</th>
+                                                    {{-- <th>Aksi</th> --}}
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (\App\Models\Book::all() as $book)
+                                                    <tr>
+                                                        <td>{{ $book->judul }}</td>
+                                                        <td>{{ $book->penulis }}</td>
+                                                        <td>{{ $book->penerbit }}</td>
+                                                        <td>{{ $book->tahun_terbit }}</td>
+                                                        <td>{{ $book->genre }}</td>
+                                                        <td>{{ $book->stok }}</td>
+                                                        {{-- <td>
+                                                            <div class="actions">
+                                                                <a href="{{ route('books.edit', $book->id) }}" class="btn btn-sm bg-danger-light">
+                                                                    <i class="far fa-edit me-2"></i>
+                                                                </a>
+                                                                <form method="POST" action="{{ route('books.destroy', $book->id) }}" style="display: inline;">
+                                                                    @csrf
+                                                                    @method('DELETE')
+                                                                    <button type="submit" class="btn btn-sm bg-danger-light" onclick="return confirm('Apakah Anda yakin ingin menghapus buku ini?')">
+                                                                        <i class="far fa-trash-alt me-2"></i>
+                                                                    </button>
+                                                                </form>
+                                                            </div>
+                                                        </td> --}}
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <script>
+                            $(document).ready(function() {
+                                $('#bookTable').DataTable();
+                            });
+                        </script>
+                    </div>
+
+                    <div class="col-xl-6 d-flex">
+                        <div class="card flex-fill comman-shadow">
+                            <div class="card-header d-flex align-items-center">
+                                <h5 class="card-title">Daftar Peminjaman Buku</h5>
+                                <ul class="chart-list-out student-ellips">
+                                    <li class="star-menus"><a href="javascript:;"><i class="fas fa-ellipsis-v"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table border-0 star-book table-hover table-center mb-0 datatable table-striped">
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th scope="col">No</th>
+                                                <th scope="col">ID</th>
+                                                <th scope="col">Judul Buku</th>
+                                                <th scope="col">Nama Peminjam</th>
+                                                <th scope="col">Tanggal Pinjam</th>
+                                                <th scope="col">Tanggal Kembali</th>
+                                                <th scope="col">Jumlah Buku</th>
+                                                <th scope="col">Status</th>
+                                                {{-- <th scope="col">Aksi</th> --}}
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (\App\Models\Peminjaman::all() as $key => $peminjaman)
+                                                <tr>
+                                                    <td>{{ ++$key }}</td>
+                                                    <td>{{ $peminjaman->id }}</td>
+                                                    <td>{{ $peminjaman->book->judul }}</td>
+                                                    <td>{{ $peminjaman->nama_peminjam }}</td>
+                                                    <td>{{ $peminjaman->tanggal_pinjam }}</td>
+                                                    <td>{{ $peminjaman->tanggal_kembali }}</td>
+                                                    <td>{{ $peminjaman->jumlah_buku }}</td>
+                                                    <td>{{ $peminjaman->status }}</td>
+                                                    {{-- <td>
+                                                        <div class="actions">
+                                                            <a href="{{ route('peminjaman.edit', $peminjaman->id) }}" class="btn btn-sm bg-danger-light">
+                                                                <i class="far fa-edit me-2"></i>
+                                                            </a>
+                                                            <form method="POST" action="{{ route('peminjaman.destroy', $peminjaman->id) }}" style="display: inline;">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button type="submit" class="btn btn-sm bg-danger-light" onclick="return confirm('Apakah Anda yakin ingin menghapus peminjaman ini?')">
+                                                                    <i class="far fa-trash-alt me-2"></i>
+                                                                </button>
+                                                            </form>
+                                                        </div>
+                                                    </td> --}}
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
-                            <div class="row">
-                                <div class="col-xl-6 d-flex">               
-                                    <div class="card flex-fill student-space comman-shadow">
-                                        <div class="card-header d-flex align-items-center justify-content-between">
-                                            <h5 class="card-title">Daftar Buku</h5>
-                                            <ul class="chart-list-out student-ellipsis">
-                                                <li class="star-menus"><a href="javascript:;"><i class="fas fa-ellipsis-v"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="card-body">
-                                            <div>
-                                                <div class="py-2">
-                                                    <a href="{{ route('peminjaman.create') }}" class="btn btn-primary"><i
-                                                        class="fas fa-plus"> Pinjam Buku</i></a>
-                                                </div>
-                                                <div class="table-responsive">
-                                                    <table id="bookTable" class="table">
-                                                        <thead class="thead-light">
-                                                            <tr>
-                                                                <th>Judul</th>
-                                                                <th>Penulis</th>
-                                                                <th>Penerbit</th>
-                                                                <th>Tahun Terbit</th>
-                                                                <th>Genre</th>
-                                                                <th>Stok</th>
-                                                                {{-- <th>Aksi</th> --}}
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            @foreach (\App\Models\Book::all() as $book)
-                                                                <tr>
-                                                                    <td>{{ $book->judul }}</td>
-                                                                    <td>{{ $book->penulis }}</td>
-                                                                    <td>{{ $book->penerbit }}</td>
-                                                                    <td>{{ $book->tahun_terbit }}</td>
-                                                                    <td>{{ $book->genre }}</td>
-                                                                    <td>{{ $book->stok }}</td>
-                                                                    {{-- <td>
-                                                                        <div class="actions">
-                                                                            <a href="{{ route('books.edit', $book->id) }}" class="btn btn-sm bg-danger-light">
-                                                                                <i class="far fa-edit me-2"></i>
-                                                                            </a>
-                                                                            <form method="POST" action="{{ route('books.destroy', $book->id) }}" style="display: inline;">
-                                                                                @csrf
-                                                                                @method('DELETE')
-                                                                                <button type="submit" class="btn btn-sm bg-danger-light" onclick="return confirm('Apakah Anda yakin ingin menghapus buku ini?')">
-                                                                                    <i class="far fa-trash-alt me-2"></i>
-                                                                                </button>
-                                                                            </form>
-                                                                        </div>
-                                                                    </td> --}}
-                                                                </tr>
-                                                            @endforeach
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <script>
-                                        $(document).ready(function() {
-                                            $('#bookTable').DataTable();
-                                        });
-                                    </script>
-                
-                
-                
-                                </div>
-                                <div class="col-xl-6 d-flex">
-                                    {{-- menu peminjaman --}}
-                                    <div class="card flex-fill comman-shadow">
-                                        <div class="card-header d-flex align-items-center">
-                                            <h5 class="card-title">Daftar Peminjaman Buku</h5>
-                                            <ul class="chart-list-out student-ellips">
-                                                <li class="star-menus"><a href="javascript:;"><i class="fas fa-ellipsis-v"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="card-body">
-                                            <div class="table-responsive">
-                                                <table
-                                                    class="table border-0 star-book table-hover table-center mb-0 datatable table-striped">
-                                                    <thead class="thead-light">
-                                                        <tr>
-                                                            <th scope="col">No</th>
-                                                            <th scope="col">ID</th>
-                                                            <th scope="col">Judul Buku</th>
-                                                            <th scope="col">Nama Peminjam</th>
-                                                            <th scope="col">Tanggal Pinjam</th>
-                                                            <th scope="col">Tanggal Kembali</th>
-                                                            <th scope="col">Jumlah Buku</th>
-                                                            <th scope="col">Status</th>
-                                                            {{-- <th scope="col">Aksi</th> --}}
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        @foreach (\App\Models\Peminjaman::all() as $key => $peminjaman)
-                                                            <tr>
-                                                                <td>{{ ++$key }}</td>
-                                                                <td>{{ $peminjaman->id }}</td>
-                                                                <td>{{ $peminjaman->book->judul }}</td>
-                                                                <td>{{ $peminjaman->nama_peminjam }}</td>
-                                                                <td>{{ $peminjaman->tanggal_pinjam }}</td>
-                                                                <td>{{ $peminjaman->tanggal_kembali }}</td>
-                                                                <td>{{ $peminjaman->jumlah_buku }}</td>
-                                                                <td>{{ $peminjaman->status }}</td>
-                                                                {{-- <td>
-                                                                    <div class="actions">
-                                                                        <a href="{{ route('peminjaman.edit', $peminjaman->id) }}" class="btn btn-sm bg-danger-light">
-                                                                            <i class="far fa-edit me-2"></i>
-                                                                        </a>
-                                                                        <form method="POST" action="{{ route('peminjaman.destroy', $peminjaman->id) }}" style="display: inline;">
-                                                                            @csrf
-                                                                            @method('DELETE')
-                                                                            <button type="submit" class="btn btn-sm bg-danger-light" onclick="return confirm('Apakah Anda yakin ingin menghapus peminjaman ini?')">
-                                                                                <i class="far fa-trash-alt me-2"></i>
-                                                                            </button>
-                                                                        </form>
-                                                                    </div>
-                                                                </td> --}}
-                                                            </tr>
-                                                        @endforeach
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Initialize DataTables -->
-                                    <script>
-                                        $(document).ready(function() {
-                                            $('.datatable').DataTable();
-                                        });
-                                    </script>
-                
-                                </div>
-                            </div>  
+                        <!-- Initialize DataTables -->
+                        <script>
+                            $(document).ready(function() {
+                                $('.datatable').DataTable();
+                            });
+                        </script>
+                    </div>
+                </div>  
             </div>
         </div>
     </div>
