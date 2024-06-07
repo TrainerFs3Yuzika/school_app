@@ -71,21 +71,23 @@
                                         <td>{{ $lesson->days }}</td> <!-- Penerbit -->
                                         <td>{{ $lesson->time_start }}</td> <!-- Tahun Terbit -->
                                         <td>{{ $lesson->time_end }}</td> <!-- Genre -->
+                                        @if (auth()->user()->role_name === 'Super Admin')
                                         <td>
                                             <div class="actions">
                                                 <a href="{{ route('lessons.edit', $lesson->id) }}" class="btn btn-sm bg-danger-light">
-                                                    <i class="far fa-edit me-2"></i>
+                                                    <i class="far fa-edit "></i>
                                                 </a>
                                                 <form method="POST" action="{{ route('lessons.destroy', $lesson->id) }}" style="display: inline;">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-sm bg-danger-light"
                                                         onclick="return confirm('Apakah Anda yakin ingin menghapus buku ini?')">
-                                                        <i class="far fa-trash-alt me-2"></i>
+                                                        <i class="far fa-trash-alt "></i>
                                                     </button>
                                                 </form>
                                             </div>
-                                        </td> <!-- Aksi -->
+                                        </td>
+                                        @endif
                                     </tr>
                                     @endforeach
                                 </tbody>
@@ -98,6 +100,8 @@
     </div>
 </div>
 
+<!-- JQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- DataTables CSS and JS -->
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
@@ -105,6 +109,10 @@
 <!-- Initialize DataTable -->
 <script>
     $(document).ready(function(){
+        // Initialize DataTable
+        $('#bookTable').DataTable();
+
+        // Toastr notifications
         var successMessage = '{{ Session::get('success') }}';
         var errorMessage = '{{ Session::get('error') }}';
         

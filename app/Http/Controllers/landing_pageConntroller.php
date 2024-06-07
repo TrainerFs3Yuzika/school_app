@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
-use App\Models\ContactInformation;
 use App\Models\Score;
+use App\Models\Lessons;
+use App\Models\ContactInformation;
 
 class landing_pageConntroller extends Controller
 {
@@ -21,8 +22,9 @@ class landing_pageConntroller extends Controller
 
         // Ambil informasi kontak
         $contacts = ContactInformation::all();
+        $jadwalGuru = Lessons::all();
 
         // Kirim data buku, top students, dan kontak ke view
-        return view('landing_page.index', compact('books', 'topStudents', 'contacts'));
+        return view('landing_page.index', compact('books', 'topStudents', 'contacts', 'jadwalGuru'));
     }
 }

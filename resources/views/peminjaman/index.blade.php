@@ -33,14 +33,14 @@
                                         <i class="fa fa-th" aria-hidden="true"></i>
                                     </a>
                                     @if (auth()->user()->role_name === 'Super Admin')
-                                    <a href="{{ route('peminjaman.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah Peminjaman</a> <!-- Tambah Peminjaman -->
+                                    <a href="{{ route('peminjaman.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah Peminjaman</a>
                                     @endif
                                 </div>
                             </div>
                         </div>
 
                         <div class="table-responsive">
-                            <table class="table border-0 star-book table-hover table-center mb-0 datatable table-striped">
+                            <table id="peminjamanTable" class="table border-0 star-book table-hover table-center mb-0  table-striped">
                                 <thead class="thead-light">
                                     <tr>
                                         <th scope="col">No</th>
@@ -56,17 +56,17 @@
                                         @endif
                                     </tr>
                                 </thead>
-                                <tbody class="">
+                                <tbody>
                                     @foreach ($peminjamans as $key => $peminjaman)
                                     <tr>
-                                        <td>{{ ++$key }}</td> <!-- Nomor urut -->
-                                        <td>{{ $peminjaman->id }}</td> <!-- ID -->
-                                        <td>{{ $peminjaman->book->judul }}</td> <!-- Judul Buku -->
-                                        <td>{{ $peminjaman->nama_peminjam }}</td> <!-- Nama Peminjam -->
-                                        <td>{{ $peminjaman->tanggal_pinjam }}</td> <!-- Tanggal Pinjam -->
-                                        <td>{{ $peminjaman->tanggal_kembali }}</td> <!-- Tanggal Kembali -->
-                                        <td>{{ $peminjaman->jumlah_buku }}</td> <!-- Jumlah Buku -->
-                                        <td>{{ $peminjaman->status }}</td> <!-- Status -->
+                                        <td>{{ ++$key }}</td>
+                                        <td>{{ $peminjaman->id }}</td>
+                                        <td>{{ $peminjaman->book->judul }}</td>
+                                        <td>{{ $peminjaman->nama_peminjam }}</td>
+                                        <td>{{ $peminjaman->tanggal_pinjam }}</td>
+                                        <td>{{ $peminjaman->tanggal_kembali }}</td>
+                                        <td>{{ $peminjaman->jumlah_buku }}</td>
+                                        <td>{{ $peminjaman->status }}</td>
                                         @if (auth()->user()->role_name === 'Super Admin')
                                         <td>
                                             <a href="{{ route('peminjaman.edit', $peminjaman->id) }}" class="btn btn-sm btn-primary">Edit</a>
@@ -75,7 +75,7 @@
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus?')"><i class="bi bi-trash"></i> Hapus</button>
                                             </form>
-                                        </td> <!-- Aksi -->
+                                        </td>
                                         @endif
                                     </tr>
                                     @endforeach
@@ -88,4 +88,46 @@
         </div>
     </div>
 </div>
+
+<!-- JQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- DataTables CSS and JS -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+
+<!-- Initialize DataTable -->
+<script>
+    $(document).ready(function() {
+        // Initialize DataTable with pagination and search functionality
+        $('#peminjamanTable').DataTable({
+            "pageLength": 5, // Set number of rows per page
+            "language": {
+                "search": "Cari:",
+                "lengthMenu": "Tampilkan _MENU_ data per halaman",
+                "zeroRecords": "Tidak ada data yang ditemukan",
+                "info": "Menampilkan halaman _PAGE_ dari _PAGES_",
+                "infoEmpty": "Tidak ada data yang tersedia",
+                "infoFiltered": "(difilter dari total _MAX_ data)",
+                "paginate": {
+                    "first": "Pertama",
+                    "last": "Terakhir",
+                    "next": "Selanjutnya",
+                    "previous": "Sebelumnya"
+                }
+            }
+        });
+
+        // Toastr notifications
+        var successMessage = '{{ Session::get('success') }}';
+        var errorMessage = '{{ Session::get('error') }}';
+
+        if(successMessage){
+            toastr.success(successMessage, 'Sukses');
+        }
+        if(errorMessage){
+            toastr.error(errorMessage, 'Error');
+        }
+    });
+</script>
+
 @endsection

@@ -162,40 +162,52 @@
 
       <!-- untuk jadwal guru -->
       <section id="jadwal-guru">
-        <div class="tengah">
-          <div class="kolom">
-            <p class="deskripsi">Jadwal Guru</p>
-            <h2>Jadwal Guru</h2>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad,
-              optio!
-            </p>
-          </div>
-
-          <div class="jadwal-list">
-            <div class="kartu-jadwal">
-              <div class="card">
-                <p>Senin - Matematika</p>
-              </div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="tengah">
+                        <div class="kolom">
+                            <p class="deskripsi">Jadwal Guru</p>
+                            <h2>Jadwal Guru</h2>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, optio!</p>
+                        </div>
+                        <div class="jadwal-list">
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">No</th>
+                                            <th scope="col">Mata Pelajaran</th>
+                                            <th scope="col">Kelas</th>
+                                            <th scope="col">Hari</th>
+                                            <th scope="col">Waktu Mulai</th>
+                                            <th scope="col">Waktu Selesai</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                      @foreach($jadwalGuru as $key => $jadwal)
+                                      <tr>
+                                          <td>{{ ++$key }}</td> <!-- Nomor urut -->
+                                          <td>{{ $jadwal->subject->subject_name }}</td> <!-- Mata Pelajaran -->
+                                          <td>{{ $jadwal->class }}</td> <!-- Kelas -->
+                                          <td>{{ $jadwal->days }}</td> <!-- Hari -->
+                                          <td>{{ $jadwal->time_start }}</td> <!-- Waktu Mulai -->
+                                          <td>{{ $jadwal->time_end }}</td> <!-- Waktu Selesai -->
+                                      </tr>
+                                      @endforeach
+                                      
+                                      
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="kartu-jadwal">
-              <div class="card">
-                <p>Selasa - Bahasa Inggris</p>
-              </div>
-            </div>
-            <div class="kartu-jadwal">
-              <div class="card">
-                <p>Rabu - Fisika</p>
-              </div>
-            </div>
-            <div class="kartu-jadwal">
-              <div class="card">
-                <p>Kamis - Biologi</p>
-              </div>
-            </div>
-          </div>
         </div>
-      </section>
+    </section>
+    
+    
 
 
 
