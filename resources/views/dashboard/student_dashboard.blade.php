@@ -2,6 +2,7 @@
 @section('content')
     {{-- pesan --}}
     {!! Toastr::message() !!}
+    
     <div class="page-wrapper">
         <div class="content container-fluid">
             <div class="page-header">
@@ -64,21 +65,50 @@
                         </div>
                     </div>
                 </div>
+                <?php
+
+                use App\Models\ContactInformation;
+                
+                $contactInformation = ContactInformation::first(); // Mengambil satu data pertama
+                
+                ?>
+                
                 <div class="col-xl-3 col-sm-6 col-12 d-flex">
                     <div class="card bg-comman w-100">
                         <div class="card-body">
                             <div class="db-widgets d-flex justify-content-between align-items-center">
                                 <div class="db-info">
-                                    <h6>Ujian yang Lulus</h6>
-                                    <h3>15/20</h3>
-                                </div>
+                                    <h6>Narahubung</h6>
+                                    </div>
                                 <div class="db-icon">
-                                    <img src="{{URL::to('assets/img/icons/student-icon-02.svg')}}" alt="Ikon Dasbor">
+                                    <!-- WhatsApp Icon -->
+                                    <div class="db-icon">
+                                        <!-- WhatsApp Icon -->
+                                        <a href="https://wa.me/<?= $contactInformation->whatsapp ?>" target="_blank">
+                                            <i class="fab fa-whatsapp fa-lg"></i>
+                                        </a>
+                                        <!-- Email Icon -->
+                                        <a href="mailto:<?= $contactInformation->email ?>" target="_blank">
+                                            <i class="fas fa-envelope fa-lg"></i>
+                                        </a>                                        
+                                        <!-- Instagram Icon -->
+                                        <a href="<?= $contactInformation->instagram ?>" target="_blank">
+                                            <i class="fab fa-instagram fa-lg"></i>
+                                        </a>
+                                        <!-- Facebook Icon -->
+                                        <a href="<?= $contactInformation->facebook ?>" target="_blank">
+                                            <i class="fab fa-facebook fa-lg"></i>
+                                        </a>
+                                    </div>
+                                    
                                 </div>
+                                </div>
+                                
                             </div>
                         </div>
                     </div>
                 </div>
+                
             </div>
 
             <div class="row">

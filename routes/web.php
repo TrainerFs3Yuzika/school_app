@@ -1,24 +1,25 @@
 <?php
 
-use App\Http\Controllers\AccountsController;
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\RegisterController;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Request;
 use App\Http\Controllers\BookController;
-use App\Http\Controllers\FullCalenderController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\InvoiceController;
-use App\Http\Controllers\landing_pageConntroller;
-use App\Http\Controllers\LessonsController;
-use App\Http\Controllers\PeminjamanController;
+use App\Http\Controllers\EskulController;
 use App\Http\Controllers\ScoreController;
+use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\LessonsController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\AccountsController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\PeminjamanController;
+use App\Http\Controllers\FullCalenderController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\landing_pageConntroller;
 use App\Http\Controllers\UserManagementController;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Request;
-use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -215,4 +216,13 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
 
     // informasi contack
     Route::resource('contact_information', 'ContactInformationController');
+
+    // Routes untuk Eskul
+    Route::get('/eskuls', [EskulController::class, 'index'])->name('eskuls.index');
+    Route::get('/eskuls/create', [EskulController::class, 'create'])->name('eskuls.create');
+    Route::post('/eskuls', [EskulController::class, 'store'])->name('eskuls.store');
+    Route::get('/eskuls/{eskul}', [EskulController::class, 'show'])->name('eskuls.show');
+    Route::get('/eskuls/{eskul}/edit', [EskulController::class, 'edit'])->name('eskuls.edit');
+    Route::put('/eskuls/{eskul}', [EskulController::class, 'update'])->name('eskuls.update');
+    Route::delete('/eskuls/{eskul}', [EskulController::class, 'destroy'])->name('eskuls.destroy');
 });

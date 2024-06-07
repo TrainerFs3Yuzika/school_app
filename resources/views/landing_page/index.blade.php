@@ -285,44 +285,39 @@ $teachers = Teacher::orderBy('id', 'desc')->take(3)->get();
       
       {{-- untuk ekstrakulikuller --}}
 
-      <section id="partners">
-        <div class="tengah">
-          <div class="kolom">
-            <h2 class="deskripsi">Ekstrakulikuller Di sekolah Kami</h2>
-            <p>
-              "Ekskul di sekolah SchoolSync adalah wadah yang luar biasa bagi siswa untuk mengeksplorasi minat dan bakat mereka. Berbagai kegiatan yang menarik dan bermanfaat diselenggarakan di sana, memberikan kesempatan bagi siswa untuk tumbuh dan berkembang. Para siswa dapat menemukan diri mereka sendiri melalui partisipasi aktif dalam ekskul ini, yang juga merupakan bagian integral dari pengalaman belajar mereka di SchoolSync."
-            </p>
-          </div>
-
-          <div class="partner-list">
-            <div class="kartu-partner">
-              <img
-                src="https://img.freepik.com/premium-vector/university-campus-logo_1447-1793.jpg"
-              />
-            </div>
-            <div class="kartu-partner">
-              <img
-                src="https://image.freepik.com/free-vector/campus-collage-university-education-logo-design-template_7492-63.jpg"
-              />
-            </div>
-            <div class="kartu-partner">
-              <img
-                src="https://image.freepik.com/free-vector/campus-collage-university-education-logo-design-template_7492-62.jpg"
-              />
-            </div>
-            <div class="kartu-partner">
-              <img
-                src="https://img.freepik.com/premium-vector/university-campus-logo_1447-1790.jpg"
-              />
-            </div>
-            <div class="kartu-partner">
-              <img
-                src="https://image.freepik.com/free-vector/campus-collage-university-education-logo-design-template_7492-64.jpg"
-              />
-            </div>
+      <?php
+      // Panggil data dari model Eskul
+      use App\Models\Eskul;
+      
+      $eskuls = Eskul::all(); // Mengambil semua data eskul (Anda bisa menyesuaikan dengan cara pengambilan data yang sesuai)
+      
+      ?>
+<section id="Eskul">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="deskripsi">Ekstrakulikuller Di sekolah Kami</h2>
+        <p>
+          "Ekskul di sekolah SchoolSync adalah wadah yang luar biasa bagi siswa untuk mengeksplorasi minat dan bakat mereka. Berbagai kegiatan yang menarik dan bermanfaat diselenggarakan di sana, memberikan kesempatan bagi siswa untuk tumbuh dan berkembang. Para siswa dapat menemukan diri mereka sendiri melalui partisipasi aktif dalam ekskul ini, yang juga merupakan bagian integral dari pengalaman belajar mereka di SchoolSync."
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      @foreach($eskuls as $eskul)
+      <div class="col-md-4 mb-3">
+        <div class="custom-card" style="width: 18rem;">
+          <img src="{{ asset('images/' . $eskul->gambar) }}" class="custom-card-img-top" alt="{{ $eskul->nama_eskul }}">
+          <div class="custom-card-body">
+            <p class="custom-card-text">{{ $eskul->nama_eskul }}</p>
           </div>
         </div>
-      </section>
+      </div>
+      @endforeach
+    </div>
+  </div>
+</section>
+
+      
 
 
         <div class="container" id="nilai_siswa">

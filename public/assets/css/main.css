@@ -444,3 +444,14 @@ body {
 .kartu-tutor img {
   transition: transform 0.3s ease; /* Efek animasi */
 }
+
+/* bagian eskul */
+#Eskul img {
+  width: 100%; /* Mengatur lebar gambar menjadi 100% dari lebar parent */
+  height: auto; /* Mengatur tinggi gambar agar mengikuti proporsi aslinya */
+}
+#Eskul .card-img-top {
+  width: 100%; /* Mengatur lebar gambar menjadi 100% dari lebar parent */
+  height: 200px; /* Menentukan tinggi tetap gambar, sesuaikan dengan kebutuhan Anda */
+  object-fit: cover; /* Memastikan gambar terisi dan terpotong sesuai proporsi */
+}
