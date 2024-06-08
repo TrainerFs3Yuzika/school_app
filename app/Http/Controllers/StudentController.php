@@ -79,7 +79,7 @@ class StudentController extends Controller
                 DB::commit();
             }
 
-            return redirect()->back();
+            return redirect()->route('student/list')->with('success', 'Siswa berhasil ditambahkan!');
         } catch (\Exception $e) {
             DB::rollback();
             Toastr::error('fail, Add new student  :)', 'Error');
@@ -117,7 +117,7 @@ class StudentController extends Controller
 
             Toastr::success('Has been update successfully :)', 'Success');
             DB::commit();
-            return redirect()->back();
+            return redirect()->route('student/list')->with('success', 'Siswa berhasil diupdate!');
         } catch (\Exception $e) {
             DB::rollback();
             Toastr::error('fail, update student  :)', 'Error');
