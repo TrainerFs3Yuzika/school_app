@@ -58,6 +58,18 @@
                                             <option value="Rabu">Rabu</option>
                                             <option value="Kamis">Kamis</option>
                                             <option value="Jumat">Jumat</option>
+                                            <option value="Sabtu">Sabtu</option>
+                                            <option value="Minggu">Minggu</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group local-forms">
+                                        <label for="class">Tipe <span class="login-danger">*</span></label>
+                                        <select name="class_type" id="class_type" class="form-control select">
+                                            <option selected disabled>Masukkan Tipe Kelas</option>
+                                            <option value="A">A</option>
+                                            <option value="B">B</option>
+                                            <option value="C">C</option>
+                                            <option value="D">D</option>
                                         </select>
                                     </div>
                                 </div>

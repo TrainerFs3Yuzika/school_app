@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('subject_id');
             $table->string('class');
+            $table->string('class_type');
             $table->string('days');
             $table->time('time_start');
             $table->time('time_end');

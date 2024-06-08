@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Lessons;
 use App\Models\Subject;
 use App\Models\ClassModel;
+use Carbon\Carbon;
 
 class LessonsController extends Controller
 {
@@ -37,6 +38,7 @@ class LessonsController extends Controller
         $validatedData = $request->validate([
             'subject_id'    => 'required',
             'class'         => 'required',
+            'class_type'    => 'required',
             'days'          => 'required',
             'time_start'    => 'required',
             'time_end'      => 'required'
@@ -45,6 +47,7 @@ class LessonsController extends Controller
         $lessonsModel = new Lessons();
         $lessonsModel->subject_id = $validatedData['subject_id']; // Menggunakan validatedData untuk memastikan data yang valid
         $lessonsModel->class = $validatedData['class'];
+        $lessonsModel->class_type = $validatedData['class_type'];
         $lessonsModel->days = $validatedData['days'];
         $lessonsModel->time_start = $validatedData['time_start'];
         $lessonsModel->time_end = $validatedData['time_end'];
@@ -80,6 +83,7 @@ class LessonsController extends Controller
         $validatedData = $request->validate([
             'subject_id'    => 'required',
             'class'         => 'required',
+            'class_type'    => 'required',
             'days'          => 'required',
             'time_start'    => 'required',
             'time_end'      => 'required'
@@ -88,6 +92,7 @@ class LessonsController extends Controller
         $lessonsModel = Lessons::findOrFail($id);
         $lessonsModel->subject_id = $validatedData['subject_id'];
         $lessonsModel->class = $validatedData['class'];
+        $lessonsModel->class_type = $validatedData['class_type'];
         $lessonsModel->days = $validatedData['days'];
         $lessonsModel->time_start = $validatedData['time_start'];
         $lessonsModel->time_end = $validatedData['time_end'];

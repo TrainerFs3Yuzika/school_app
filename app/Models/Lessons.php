@@ -9,7 +9,7 @@ class Lessons extends Model
 {
     use HasFactory;
     protected $table = 'lessons';
-    protected $fillable = ['subject_id', 'class', 'days', 'time_start', 'time_end'];
+    protected $fillable = ['subject_id', 'class','class_type', 'days', 'time_start', 'time_end'];
 
     public function subject() {
         return $this->belongsTo(Subject::class);

@@ -8,7 +8,8 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="page-sub-header">
-                            <h3 class="page-title">Selamat Datang {{ Auth::user()->name }}, {{ Auth::user()->role_name ? 'Guru' : '' }}
+                            <h3 class="page-title">Selamat Datang {{ Auth::user()->name }},
+                                {{ Auth::user()->role_name ? 'Guru' : '' }}
                             </h3>
                             <ul class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ route('home') }}">Beranda</a></li>
@@ -92,63 +93,54 @@
                                 <div class="card-header">
                                     <div class="row align-items-center">
                                         <div class="col-6">
-                                            <h5 class="card-title">Pelajaran Mendatang</h5>
+                                            <h5 class="card-title">Pelajaran Hari ini</h5>
                                         </div>
                                         <div class="col-6">
-                                            <span class="float-end view-link"><a href="#">Lihat Semua
-                                                    Kursus</a></span>
+                                            <span class="float-end view-link"><a href="{{ route('lessons.index') }}">Lihat
+                                                    Semua
+                                                    Jadwal</a></span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="pt-3 pb-3">
-                                    <div class="table-responsive lesson">
-                                        <table class="table table-center">
-                                            <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <div class="date">
-                                                            <b>Pelajaran 30</b>
-                                                            <p>3.1 Ipsuum dolor</p>
-                                                            <ul class="teacher-date-list">
-                                                                <li><i class="fas fa-calendar-alt me-2"></i>5 Sep,
-                                                                    2022</li>
-                                                                <li>|</li>
-                                                                <li><i class="fas fa-clock me-2"></i>09:00 - 10:00
-                                                                    pagi</li>
-                                                            </ul>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="lesson-confirm">
-                                                            <a href="#">Dikonfirmasi</a>
-                                                        </div>
-                                                        <button type="submit" class="btn btn-info">Jadwal Ulang</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="date">
-                                                            <b>Pelajaran 30</b>
-                                                            <p>3.1 Ipsuum dolor</p>
-                                                            <ul class="teacher-date-list">
-                                                                <li><i class="fas fa-calendar-alt me-2"></i>5 Sep,
-                                                                    2022</li>
-                                                                <li>|</li>
-                                                                <li><i class="fas fa-clock me-2"></i>09:00 - 10:00
-                                                                    pagi</li>
-                                                            </ul>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="lesson-confirm">
-                                                            <a href="#">Dikonfirmasi</a>
-                                                        </div>
-                                                        <button type="submit" class="btn btn-info">Jadwal Ulang</button>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                    @if (\Carbon\Carbon::setLocale('id') && ($today = \Carbon\Carbon::now()->isoFormat('dddd')))
+                                        @if ($lessons = \App\Models\Lessons::where('days', $today)->with('subject')->get())
+                                            @foreach ($lessons as $lesson)
+                                                <div class="table-responsive lesson">
+                                                    <table class="table table-center">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="date">
+                                                                        <b>Kelas {{ $lesson->class }} {{ $lesson->class_type }}</b>
+                                                                        <p>{{ $lesson->subject->subject_name }}</p>
+                                                                        <ul class="teacher-date-list">
+                                                                            <li><i class="fas fa-calendar-alt me-2"></i>
+                                                                                {{ $lesson->days }}
+                                                                                {{\Carbon\Carbon::now()->format('j M, Y')}}</li>
+                                                                            <li>|</li>
+                                                                            <li><i
+                                                                                    class="fas fa-clock me-2"></i>{{ \Carbon\Carbon::parse($lesson->time_start)->format('H:i') }}
+                                                                                -
+                                                                                {{ \Carbon\Carbon::parse($lesson->time_end)->format('H:i') }}
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="lesson-confirm">
+                                                                        <a href="#">Dikonfirmasi</a>
+                                                                    </div>
+                                                                    <button type="submit" class="btn btn-info">Jadwal
+                                                                        Ulang</button>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            @endforeach
+                                        @endif
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -275,7 +267,8 @@
                                     <h2>Acara Mendatang</h2>
                                 </div>
                                 <div class="table-responsive">
-                                    <table id="eventTable" class="table star-student table-hover table-center table-borderless table-striped">
+                                    <table id="eventTable"
+                                        class="table star-student table-hover table-center table-borderless table-striped">
                                         <thead class="thead-light">
                                             <tr>
                                                 <th>ID</th>
@@ -291,9 +284,11 @@
                                                 <tr>
                                                     <td>{{ $event->id }}</td>
                                                     <td>{{ $event->title }}</td>
-                                                    <td>{{ \Carbon\Carbon::parse($event->start)->format('d M Y H:i') }}</td>
+                                                    <td>{{ \Carbon\Carbon::parse($event->start)->format('d M Y H:i') }}
+                                                    </td>
                                                     <td>{{ \Carbon\Carbon::parse($event->end)->format('d M Y H:i') }}</td>
-                                                    <td>{{ \Carbon\Carbon::parse($event->start)->diffInHours(\Carbon\Carbon::parse($event->end)) }} jam</td>
+                                                    <td>{{ \Carbon\Carbon::parse($event->start)->diffInHours(\Carbon\Carbon::parse($event->end)) }}
+                                                        jam</td>
                                                     <td>
                                                         <div class="actions">
                                                             <a href="{{ url('fullcalender') }}" class="btn btn-sm">
@@ -314,4 +309,3 @@
         </div>
     </div>
 @endsection
-

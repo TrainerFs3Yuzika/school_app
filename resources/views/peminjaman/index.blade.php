@@ -44,7 +44,7 @@
                                 <thead class="thead-light">
                                     <tr>
                                         <th scope="col">No</th>
-                                        <th scope="col">ID</th>
+                                        {{-- <th scope="col">ID</th> --}}
                                         <th scope="col">Judul Buku</th>
                                         <th scope="col">Nama Peminjam</th>
                                         <th scope="col">Tanggal Pinjam</th>
@@ -60,7 +60,7 @@
                                     @foreach ($peminjamans as $key => $peminjaman)
                                     <tr>
                                         <td>{{ ++$key }}</td>
-                                        <td>{{ $peminjaman->id }}</td>
+                                        {{-- <td>{{ $peminjaman->id }}</td> --}}
                                         <td>{{ $peminjaman->book->judul }}</td>
                                         <td>{{ $peminjaman->nama_peminjam }}</td>
                                         <td>{{ $peminjaman->tanggal_pinjam }}</td>

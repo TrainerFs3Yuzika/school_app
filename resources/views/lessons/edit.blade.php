@@ -53,6 +53,16 @@
                                         </select>
                                     </div>
                                     <div class="form-group local-forms">
+                                        <label for="class">Tipe <span class="login-danger">*</span></label>
+                                        <select name="class_type" id="class_type" class="form-control select">
+                                            <option>{{ $lessons->class_type }}</option>
+                                            <option value="A">A</option>
+                                            <option value="B">B</option>
+                                            <option value="C">C</option>
+                                            <option value="D">D</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group local-forms">
                                         <label for="days">Hari <span class="login-danger">*</span></label>
                                         <select name="days" class="form-control select" required>
                                             <option value="Senin" {{ $lessons->days == 'Senin' ? 'selected' : '' }}>Senin
@@ -64,6 +74,11 @@
                                             <option value="Kamis" {{ $lessons->days == 'Kamis' ? 'selected' : '' }}>Kamis
                                             </option>
                                             <option value="Jumat" {{ $lessons->days == 'Jumat' ? 'selected' : '' }}>Jumat
+                                            </option>
+                                            <option value="Sabtu" {{ $lessons->days == 'Sabtu' ? 'selected' : '' }}>Sabtu
+                                            </option>
+                                            <option value="Minggu" {{ $lessons->days == 'Minggu' ? 'selected' : '' }}>
+                                                Minggu
                                             </option>
                                         </select>
                                     </div>

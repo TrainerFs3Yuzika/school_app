@@ -70,11 +70,11 @@ Route::group(['namespace' => 'App\Http\Controllers\Auth'], function () {
 });
 
 // ----------------------------- Forgot Password -------------------------//
-Route::get('/forgot-password', [LoginController::Class, 'forgot_password'])->name('forgot-password');
-Route::post('/forgot-password-act', [LoginController::Class, 'forgot_password_act'])->name('forgot-password-act');
+Route::get('/forgot-password', [LoginController::class, 'forgot_password'])->name('forgot-password');
+Route::post('/forgot-password-act', [LoginController::class, 'forgot_password_act'])->name('forgot-password-act');
 
-Route::get('/validasi-forgot-password/{token}', [LoginController::Class, 'validasi_forgot_password'])->name('validasi-forgot-password');
-Route::post('/validasi-forgot-password-act', [LoginController::Class, 'validasi_forgot_password_act'])->name('validasi-forgot-password-act');
+Route::get('/validasi-forgot-password/{token}', [LoginController::class, 'validasi_forgot_password'])->name('validasi-forgot-password');
+Route::post('/validasi-forgot-password-act', [LoginController::class, 'validasi_forgot_password_act'])->name('validasi-forgot-password-act');
 
 Route::group(['namespace' => 'App\Http\Controllers'], function () {
     // -------------------------- main dashboard ----------------------//
