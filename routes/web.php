@@ -9,6 +9,7 @@ use App\Http\Controllers\EskulController;
 use App\Http\Controllers\ScoreController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\LessonsController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SubjectController;
@@ -225,4 +226,13 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     Route::get('/eskuls/{eskul}/edit', [EskulController::class, 'edit'])->name('eskuls.edit');
     Route::put('/eskuls/{eskul}', [EskulController::class, 'update'])->name('eskuls.update');
     Route::delete('/eskuls/{eskul}', [EskulController::class, 'destroy'])->name('eskuls.destroy');
+
+
+    Route::get('/payments', [PaymentController::class, 'index'])->name('payments.index');
+    Route::get('/payments/create', [PaymentController::class, 'create'])->name('payments.create');
+    Route::post('/payments', [PaymentController::class, 'store'])->name('payments.store');
+    Route::get('/payments/{payment}/edit', [PaymentController::class, 'edit'])->name('payments.edit');
+    Route::put('/payments/{payment}', [PaymentController::class, 'update'])->name('payments.update');
+    Route::delete('/payments/{payment}', [PaymentController::class, 'destroy'])->name('payments.destroy');
+    Route::get('/payments/{payment}', [PaymentController::class, 'show'])->name('payments.show');
 });

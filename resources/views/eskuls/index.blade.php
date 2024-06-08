@@ -56,19 +56,14 @@
 </div>
 @endsection
 
-@push('scripts')
-<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+@section('scripts')
+<script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
 <script>
     $(document).ready(function() {
         $('#eskulsTable').DataTable({
-            "language": {
-                "url": "//cdn.datatables.net/plug-ins/1.10.21/i18n/Indonesian.json"
-            },
-            "lengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "Semua"]],
-            "pageLength": 5,
-            "searching": true
+            "pageLength": 5, // Menampilkan hanya lima data per halaman
+            "searching": true // Mengaktifkan fungsi pencarian
         });
     });
 </script>
-@endpush
+@endsection
