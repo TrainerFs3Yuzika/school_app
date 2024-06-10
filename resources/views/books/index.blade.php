@@ -39,7 +39,7 @@
                                         <a href="#" class="btn btn-outline-gray me-2">
                                             <i class="fa fa-th" aria-hidden="true"></i>
                                         </a>
-                                        <a href="{{ route('books.create') }}" class="btn btn-primary"><i
+                                        <a href="{{ route('books.create') }}" class="btn btn-primary">Tambah Buku <i
                                                 class="fas fa-plus"></i></a>
                                     </div>
                                 </div>
