@@ -130,12 +130,12 @@
                 </li>                
                 <li class="submenu">
                     @if (auth()->user()->role_name === 'Admin' || auth()->user()->role_name === 'Super Admin' || auth()->user()->role_name === 'Student')
-                    <a href="#"><i class="fas fa-futbol"></i> <span>Eskul</span> <span class="menu-arrow"></span></a>
+                    <a href="#"><i class="fas fa-futbol"></i> <span>Ekstrakurikuler</span> <span class="menu-arrow"></span></a>
                     @endif
                     <ul>
-                        <li><a href="{{ route('eskuls.index') }}">Daftar Eskul</a></li>
+                        <li><a href="{{ route('eskuls.index') }}">Daftar Ekstrakurikuler</a></li>
                         @if (auth()->user()->role_name === 'Admin' || auth()->user()->role_name === 'Super Admin')
-                        <li><a href="{{ route('eskuls.create') }}">Tambah Eskul</a></li>
+                        <li><a href="{{ route('eskuls.create') }}">Tambah Ekstrakurikuler</a></li>
                         @endif
                     </ul>
                 </li>

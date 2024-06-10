@@ -7,7 +7,7 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="page-sub-header">
-                            <h3 class="page-title">Tambah Ekstrakurikulir</h3>
+                            <h3 class="page-title">Tambah Ekstrakurikuler</h3>
                         </div>
                     </div>
                 </div>
@@ -20,7 +20,7 @@
                             <form action="{{ route('eskuls.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
-                                    <h5 class="form-title student-info">Informasi Ekstrakurikulir
+                                    <h5 class="form-title student-info">Informasi Ekstrakurikuler
                                         <span>
                                             <a href="javascript:;"><i class="feather-more-vertical"></i></a>
                                         </span>
@@ -37,9 +37,9 @@
                                             </select>
                                         </div>
                                         <div class="form-group local-forms">
-                                            <label for="nama_eskul" class="form-label">Nama Ekstrakurikulir <span class="login-danger">*</span></label>
+                                            <label for="nama_eskul" class="form-label">Nama Ekstrakurikuler <span class="login-danger">*</span></label>
                                             <input type="text" name="nama_eskul" id="nama_eskul" class="form-control"
-                                                placeholder="Masukkan Nama Eskul" required>
+                                                placeholder="Masukkan Nama Ekstrakurikuler" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
