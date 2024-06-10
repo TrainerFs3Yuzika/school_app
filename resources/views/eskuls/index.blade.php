@@ -7,21 +7,44 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="page-sub-header">
-                        <h3 class="page-title">Daftar Eskul</h3>
+                        <h3 class="page-title">Daftar Ekstrakurikuler</h3>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item">Ekstrakurikuler</li>
+                            <li class="breadcrumb-item active">Semua Ekstrakurikuler</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-
+        {{-- pesan --}}
+        {!! Toastr::message() !!}
+        <div class="book-group-form">
+            <div class="row">
+                <!-- Search form -->
+            </div>
+        </div>
         <div class="row">
-            <div class="col-md-12">
-                <a href="{{ route('eskuls.create') }}" class="btn btn-primary mb-2">Tambah Eskul</a>
-                <div class="card">
+            <div class="col-sm-12">
+                <div class="card card-table comman-shadow">
                     <div class="card-body">
+                        <div class="page-header">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    <h3 class="page-title">Daftar Ekstrakurikuler</h3>
+                                </div>
+                                <div class="col-auto text-end float-end ms-auto download-grp">
+                                    @if (auth()->user()->role_name === 'Super Admin')
+                                    <a href="{{ route('eskuls.create') }}" class="btn btn-primary">Tambah <i class="fas fa-plus"></i></a>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="table-responsive">
                             <table class="table datatable" id="eskulsTable">
-                                <thead>
+                                <thead class="thead-light">
                                     <tr>
+                                        <th>No</th>
                                         <th>Nama Eskul</th>
                                         <th>Pembina</th>
                                         <th>Waktu Eskul</th>
@@ -29,8 +52,9 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($eskuls as $eskul)
+                                    @foreach ($eskuls as $key => $eskul)
                                     <tr>
+                                        <td>{{ ++$key }}</td>
                                         <td>{{ $eskul->nama_eskul }}</td>
                                         <td>{{ $eskul->pembina }}</td>
                                         <td>{{ $eskul->waktu_eskul }}</td>
@@ -56,6 +80,7 @@
 </div>
 @endsection
 
+
 @section('scripts')
 <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
 <script>
@@ -66,4 +91,5 @@
         });
     });
 </script>
+
 @endsection

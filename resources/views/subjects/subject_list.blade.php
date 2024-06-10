@@ -30,7 +30,7 @@
                                     <div class="col-auto text-end float-end ms-auto download-grp">
                                     @if (auth()->user()->role_name === 'Super Admin')
                                         <a href="{{ route('subject/add/page') }}" class="btn btn-primary">
-                                            <i class="fas fa-plus"></i>
+                                            Tambah <i class="fas fa-plus"></i>
                                         </a>
                                     @endif
                                     </div>
