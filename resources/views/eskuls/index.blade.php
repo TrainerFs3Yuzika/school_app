@@ -34,7 +34,7 @@
                                 </div>
                                 <div class="col-auto text-end float-end ms-auto download-grp">
                                     @if (auth()->user()->role_name === 'Super Admin')
-                                    <a href="{{ route('eskuls.create') }}" class="btn btn-primary">Tambah <i class="fas fa-plus"></i></a>
+                                    <a href="{{ route('eskuls.create') }}" class="btn btn-primary">Tambah Ekstrakurikuler <i class="fas fa-plus"></i></a>
                                     @endif
                                 </div>
                             </div>

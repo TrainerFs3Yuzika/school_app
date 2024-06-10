@@ -116,9 +116,9 @@
                     <a href="#"><i class="fas fa-futbol"></i> <span>Ekstrakurikuler</span> <span class="menu-arrow"></span></a>
                     @endif
                     <ul>
-                        <li><a href="{{ route('eskuls.index') }}">Daftar Ekstrakurikuler</a></li>
-                        @if (auth()->user()->role_name === 'Admin' || auth()->user()->role_name === 'Super Admin')
-                        <li><a href="{{ route('eskuls.create') }}">Tambah Ekstrakurikuler</a></li>
+                        <li><a href="{{ route('eskuls.index') }}" class="{{ request()->is('eskuls') ? 'active' : '' }}">Daftar Ekstrakurikuler</a></li>
+                        @if (auth()->user()->role_name === 'Super Admin')
+                        <li><a href="{{ route('eskuls.create') }}" class="{{ request()->is('eskuls/create') ? 'active' : '' }}">Tambah Ekstrakurikuler</a></li>
                         @endif
                     </ul>
                 </li>
