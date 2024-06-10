@@ -105,7 +105,7 @@
                     <a href="#"><i class="fas fa-book"></i> <span>Perpustakaan</span> <span class="menu-arrow"></span></a>
                     @endif
                     <ul>
-                        <li><a href="{{ route('books.index') }}">Daftar Buku</a></li>
+                        <li><a href="{{ route('books.index') }}" class="{{ request()->is('books*') ? 'active' : '' }}">Daftar Buku</a></li>
                         @if (auth()->user()->role_name === 'Admin' || auth()->user()->role_name === 'Super Admin')
                         <li><a href="{{ route('peminjaman.index') }}">Daftar Peminjam</a></li>
                         @endif
