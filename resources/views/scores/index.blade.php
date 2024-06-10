@@ -39,7 +39,7 @@
                                             <i class="fa fa-th" aria-hidden="true"></i>
                                         </a>
                                         @if (auth()->user()->role_name === 'Super Admin' || Session::get('role_name') === 'Teachers')
-                                        <a href="{{ route('student/add/page') }}" class="btn btn-primary"><i
+                                        <a href="{{ route('scores.create') }}" class="btn btn-primary"><i
                                                 class="fas fa-plus"></i></a>
                                         @endif
                                     </div>
