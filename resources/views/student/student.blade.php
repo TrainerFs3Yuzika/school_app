@@ -39,7 +39,7 @@
                                     <a href="{{ route('student/grid') }}" class="btn btn-outline-gray me-2">
                                         <i class="fa fa-th" aria-hidden="true"></i>
                                     </a>
-                                    <a href="{{ route('student/add/page') }}" class="btn btn-primary"><i class="fas fa-plus"></i></a>
+                                    <a href="{{ route('student/add/page') }}" class="btn btn-primary">Tambah Siswa <i class="fas fa-plus"></i></a>
                                 </div>
                             </div>
                         </div>
