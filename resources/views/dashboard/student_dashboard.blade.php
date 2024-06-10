@@ -87,18 +87,6 @@
                                         <a href="https://wa.me/<?= $contactInformation->whatsapp ?>" target="_blank">
                                             <i class="fab fa-whatsapp fa-lg"></i>
                                         </a>
-                                        <!-- Email Icon -->
-                                        <a href="mailto:<?= $contactInformation->email ?>" target="_blank">
-                                            <i class="fas fa-envelope fa-lg"></i>
-                                        </a>                                        
-                                        <!-- Instagram Icon -->
-                                        <a href="<?= $contactInformation->instagram ?>" target="_blank">
-                                            <i class="fab fa-instagram fa-lg"></i>
-                                        </a>
-                                        <!-- Facebook Icon -->
-                                        <a href="<?= $contactInformation->facebook ?>" target="_blank">
-                                            <i class="fab fa-facebook fa-lg"></i>
-                                        </a>
                                     </div>
                                     
                                 </div>
