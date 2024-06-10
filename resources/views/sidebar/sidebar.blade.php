@@ -96,23 +96,6 @@
                 <li class="menu-title">
                     <span>Manajemen</span>
                 </li>
-                @if (auth()->user()->role_name === 'Admin' || auth()->user()->role_name === 'Super Admin')
-                <li class="submenu {{set_active(['invoice/list/page','invoice/paid/page',
-                    'invoice/overdue/page','invoice/draft/page','invoice/recurring/page',
-                    'invoice/cancelled/page','invoice/grid/page','invoice/add/page',
-                    'invoice/view/page','invoice/settings/page',
-                    'invoice/settings/tax/page','invoice/settings/bank/page'])}}" {{ request()->is('invoice/edit/*') ? 'active' : '' }}>
-                    <a href="#"><i class="fas fa-clipboard"></i>
-                        <span> Faktur</span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <ul>
-                        <li><a class="{{set_active(['invoice/list/page','invoice/paid/page','invoice/overdue/page','invoice/draft/page','invoice/recurring/page','invoice/cancelled/page'])}}" href="{{ route('invoice/list/page') }}">Daftar Faktur</a></li>
-                        <li><a class="{{set_active(['invoice/grid/page'])}}" href="{{ route('invoice/grid/page') }}">Tampilan Grid Faktur</a></li>
-                        <li><a class="{{set_active(['invoice/add/page'])}}" href="{{ route('invoice/add/page') }}">Tambah Faktur</a></li>
-                    </ul>
-                </li>
-                @endif
                 <li>
                     <a href="{{ url('fullcalender') }}"><i class="fas fa-holly-berry"></i> <span>Acara</span></a>
 
