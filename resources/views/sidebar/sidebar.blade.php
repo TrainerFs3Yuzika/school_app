@@ -139,8 +139,8 @@
                     <a href="#"><i class="fas fa-money-bill-alt"></i> <span>Payments</span> <span class="menu-arrow"></span></a>
                     @endif
                     <ul>
-                        <li><a href="{{ route('payments.index') }}">Daftar Payments</a></li>
-                        @if (auth()->user()->role_name === 'Super Admin' || Session::get('role_name') === 'Teachers')
+                        <li><a href="{{ route('payments.index') }}"class="{{ request()->is('payments*') ? 'active' : '' }}">Daftar Payments</a></li>
+                        @if (auth()->user()->role_name === 'Super Admin')
                         {{-- <li><a href="{{ route('payments.create') }}">Tambah Payments</a></li> --}}
                         @endif
                     </ul>
