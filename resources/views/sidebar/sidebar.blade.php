@@ -107,7 +107,7 @@
                     <ul>
                         <li><a href="{{ route('books.index') }}" class="{{ request()->is('books*') ? 'active' : '' }}">Daftar Buku</a></li>
                         @if (auth()->user()->role_name === 'Admin' || auth()->user()->role_name === 'Super Admin')
-                        <li><a href="{{ route('peminjaman.index') }}">Daftar Peminjam</a></li>
+                        <li><a href="{{ route('peminjaman.index') }}" class="{{ request()->is('peminjaman*') ? 'active' : '' }}">Daftar Peminjam</a></li>
                         @endif
                     </ul>
                 </li>                
