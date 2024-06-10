@@ -158,7 +158,7 @@
                     <ul>
                         <li><a href="{{ route('payments.index') }}">Daftar Payments</a></li>
                         @if (auth()->user()->role_name === 'Super Admin' || Session::get('role_name') === 'Teachers')
-                        <li><a href="{{ route('payments.create') }}">Tambah Payments</a></li>
+                        {{-- <li><a href="{{ route('payments.create') }}">Tambah Payments</a></li> --}}
                         @endif
                     </ul>
                 </li>

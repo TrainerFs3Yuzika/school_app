@@ -21,6 +21,7 @@
                             <th>Status Pembayaran</th>
                             <th>Bukti Pembayaran</th>
                             <th>Waktu Pembayaran</th>
+                            <th>update_at Pembayaran</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -41,6 +42,7 @@
                                     @endif
                                 </td>
                                 <td>{{ $payment->created_at }}</td>
+                                <td>{{ $payment->updated_at }}</td>
                                 <td>
                                     <a href="{{ route('payments.edit', $payment->id) }}" class="btn btn-primary">Edit</a>
                                     <form action="{{ route('payments.destroy', $payment->id) }}" method="POST" style="display: inline">
