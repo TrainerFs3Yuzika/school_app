@@ -88,7 +88,7 @@
             <div class="row">
                 <div class="col-12 col-lg-12 col-xl-8">
                     <div class="row">
-                        <div class="col-12 col-lg-8 col-xl-8 d-flex">
+                        <div class="col-12 col-lg-12 col-xl-12 d-flex">
                             <div class="card flex-fill comman-shadow">
                                 <div class="card-header">
                                     <div class="row align-items-center">
@@ -144,51 +144,68 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 col-lg-4 col-xl-4 d-flex">
-                            <div class="card flex-fill comman-shadow">
-                                <div class="card-header">
-                                    <div class="row align-items-center">
-                                        <div class="col-12">
-                                            <h5 class="card-title">Progres Semester</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="dash-widget">
-                                    <div class="circle-bar circle-bar1">
-                                        <div class="circle-graph1" data-percent="50">
-                                            <div class="progress-less">
-                                                <b>55/60</b>
-                                                <p>Pelajaran Terlaksana</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
+                    
                     <div class="row">
                         <div class="col-12 col-lg-12 col-xl-12 d-flex">
                             <div class="card flex-fill comman-shadow">
                                 <div class="card-header">
                                     <div class="row align-items-center">
                                         <div class="col-6">
-                                            <h5 class="card-title">Aktivitas Mengajar</h5>
+                                            <h5 class="card-title">Daftar Siswa</h5>
                                         </div>
-                                        <div class="col-6">
-                                            <ul class="chart-list-out">
-                                                <li><span class="circle-blue"></span>Guru</li>
-                                                <li><span class="circle-green"></span>Siswa</li>
-                                                <li class="star-menus"><a href="javascript:;"><i
-                                                            class="fas fa-ellipsis-v"></i></a></li>
-                                            </ul>
-                                        </div>
+                                        <table id="studentList" class="table border-0 star-student table-hover table-center mb-0 datatable table-striped">
+                                <thead class="student-thread">
+                                    <tr>
+                                        <th>
+                                            <div class="form-check check-tables">
+                                                <input class="form-check-input" type="checkbox" value="something">
+                                            </div>
+                                        </th>
+                                        <th>ID</th>
+                                        <th>Nama</th>
+                                        <th>Kelas</th>
+                                        <th>Tanggal Lahir</th>
+                                        <th>Nama Orang Tua</th>
+                                        <th>Nomor Ponsel</th>
+                                        <th>Alamat</th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                @foreach (\App\Models\Student::all() as $key => $list)
+                                    <tr>
+                                        <td>
+                                            <div class="form-check check-tables">
+                                                <input class="form-check-input" type="checkbox" value="something">
+                                            </div>
+                                        </td>
+                                        <td>{{ ++$key }}</td>
+                                        <td hidden class="id">{{ $list->id }}</td>
+                                        <td hidden class="avatar">{{ $list->upload }}</td>
+                                        <td>
+                                            <h2 class="table-avatar">
+                                                <a href="student-details.html" class="avatar avatar-sm me-2">
+                                                    <img class="avatar-img rounded-circle" src="{{ Storage::url('student-photos/'.$list->upload) }}" alt="Gambar Pengguna">
+                                                </a>
+                                                <a href="student-details.html">{{ $list->first_name }} {{ $list->last_name }}</a>
+                                            </h2>
+                                        </td>
+                                        <td>{{ $list->class }} {{ $list->section }}</td>
+                                        <td>{{ $list->date_of_birth }}</td>
+                                        <td>{{ $list->parent_name }}</td>
+                                        <td>{{ $list->phone_number }}</td>
+                                        <td>{{ $list->address }}</td>
+                                        
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
                                     </div>
-                                </div>
-                                <div class="card-body">
-                                    <div id="school-area"></div>
                                 </div>
                             </div>
                         </div>
+                        
                         <div class="col-12 col-lg-12 col-xl-12 d-flex">
                             <div class="card flex-fill comman-shadow">
                                 <div class="card-header d-flex align-items-center">
