@@ -25,8 +25,8 @@
                         <div class="card-body">
                             <div class="db-widgets d-flex justify-content-between align-items-center">
                                 <div class="db-info">
-                                    <h6>Semua Mata Pelajaran</h6>
-                                    <h3>04/06</h3>
+                                    <h6>Mata Pelajaran</h6>
+                                    <h3>{{ \App\Models\Subject::count() }}</h3>
                                 </div>
                                 <div class="db-icon">
                                     <img src="{{ URL::to('assets/img/icons/teacher-icon-01.svg') }}" alt="Ikon Dasbor">
@@ -40,8 +40,8 @@
                         <div class="card-body">
                             <div class="db-widgets d-flex justify-content-between align-items-center">
                                 <div class="db-info">
-                                    <h6>Semua Proyek</h6>
-                                    <h3>40/60</h3>
+                                    <h6>Jadwal</h6>
+                                    <h3>{{ \App\Models\Lessons::count() }}</h3>
                                 </div>
                                 <div class="db-icon">
                                     <img src="{{URL::to('assets/img/icons/teacher-icon-02.svg')}}" alt="Ikon Dasbor">
@@ -56,7 +56,7 @@
                             <div class="db-widgets d-flex justify-content-between align-items-center">
                                 <div class="db-info">
                                     <h6>Ujian yang Diikuti</h6>
-                                    <h3>30/50</h3>
+                                    <h3>{{ \App\Models\Eskul::count() }}</h3>
                                 </div>
                                 <div class="db-icon">
                                     <img src="{{URL::to('assets/img/icons/student-icon-01.svg')}}" alt="Ikon Dasbor">
