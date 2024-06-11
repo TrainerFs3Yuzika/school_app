@@ -102,129 +102,67 @@
             <div class="row">
                 <div class="col-12 col-lg-12 col-xl-8">
                     <div class="card flex-fill comman-shadow">
-                        <div class="card-header">
-                            <div class="row align-items-center">
-                                <div class="col-6">
-                                    <h5 class="card-title">Pelajaran Hari Ini</h5>
-                                </div>
-                                <div class="col-6">
-                                    <ul class="chart-list-out">
-                                        <li>
-                                            <span class="circle-blue"></span>
-                                            <span class="circle-gray"></span>
-                                            <span class="circle-gray"></span>
-                                        </li>
-                                        <li class="lesson-view-all"><a href="#">Lihat Semua</a></li>
-                                        <li class="star-menus"><a href="javascript:;"><i class="fas fa-ellipsis-v"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="dash-circle">
-                            <div class="row">
-                                <div class="col-lg-3 col-md-3 dash-widget1">
-                                    <div class="circle-bar circle-bar2">
-                                        <div class="circle-graph2" data-percent="9">
-                                            <b>9%</b>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-md-3">
-                                    <div class="dash-details">
-                                        <div class="lesson-activity">
-                                            <div class="lesson-imgs">
-                                                <img src="{{URL::to('assets/img/icons/lesson-icon-01.svg')}}" alt="">
-                                            </div>
-                                            <div class="views-lesson">
-                                                <h5>Kelas</h5>
-                                                <h4>Teknik Elektro</h4>
-                                            </div>
-                                        </div>
-                                        <div class="lesson-activity">
-                                            <div class="lesson-imgs">
-                                                <img src="{{URL::to('assets/img/icons/lesson-icon-02.svg')}}" alt="">
-                                            </div>
-                                            <div class="views-lesson">
-                                                <h5>Pelajaran</h5>
-                                                <h4>5 Pelajaran</h4>
-                                            </div>
-                                        </div>
-                                        <div class="lesson-activity">
-                                            <div class="lesson-imgs">
-                                                <img src="{{URL::to('assets/img/icons/lesson-icon-03.svg')}}" alt="">
-                                            </div>
-                                            <div class="views-lesson">
-                                                <h5>Waktu</h5>
-                                                <h4>Pelajaran</h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-md-3">
-                                    <div class="dash-details">
-                                        <div class="lesson-activity">
-                                            <div class="lesson-imgs">
-                                                <img src="{{URL::to('assets/img/icons/lesson-icon-04.svg')}}" alt="">
-                                            </div>
-                                            <div class="views-lesson">
-                                                <h5>Tugas</h5>
-                                                <h4>5 Tugas</h4>
-                                            </div>
-                                        </div>
-                                        <div class="lesson-activity">
-                                            <div class="lesson-imgs">
-                                                <img src="{{URL::to('assets/img/icons/lesson-icon-05.svg')}}" alt="">
-                                            </div>
-                                            <div class="views-lesson">
-                                                <h5>Staf</h5>
-                                                <h4>John Doe</h4>
-                                            </div>
-                                        </div>
-                                        <div class="lesson-activity">
-                                            <div class="lesson-imgs">
-                                                <img src="{{URL::to('assets/img/icons/lesson-icon-06.svg')}}" alt="">
-                                            </div>
-                                            <div class="views-lesson">
-                                                <h5>Pelajaran yang Dipelajari</h5>
-                                                <h4>10/50</h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-md-3 d-flex align-items-center justify-content-center">
-                                    <div class="skip-group">
-                                        <button type="submit" class="btn btn-info skip-btn">lewat</button>
-                                        <button type="submit" class="btn btn-info continue-btn">Lanjutkan</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
+                        <div class="row">
                         <div class="col-12 col-lg-12 col-xl-12 d-flex">
                             <div class="card flex-fill comman-shadow">
                                 <div class="card-header">
                                     <div class="row align-items-center">
                                         <div class="col-6">
-                                            <h5 class="card-title">Aktivitas Pembelajaran</h5>
+                                            <h5 class="card-title">Pelajaran Hari ini</h5>
                                         </div>
                                         <div class="col-6">
-                                            <ul class="chart-list-out">
-                                                <li><span class="circle-blue"></span>Guru</li>
-                                                <li><span class="circle-green"></span>Siswa</li>
-                                                <li class="star-menus"><a href="javascript:;"><i
-                                                            class="fas fa-ellipsis-v"></i></a></li>
-                                            </ul>
+                                            <span class="float-end view-link"><a href="{{ route('lessons.index') }}">Lihat
+                                                    Semua
+                                                    Jadwal</a></span>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card-body">
-                                    <div id="apexcharts-area"></div>
+                                <div class="pt-3 pb-3">
+                                    @if (\Carbon\Carbon::setLocale('id') && ($today = \Carbon\Carbon::now()->isoFormat('dddd')))
+                                        @if ($lessons = \App\Models\Lessons::where('days', $today)->with('subject')->get())
+                                            @foreach ($lessons as $lesson)
+                                                <div class="table-responsive lesson">
+                                                    <table class="table table-center">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="date">
+                                                                        <b>Kelas {{ $lesson->class }} {{ $lesson->class_type }}</b>
+                                                                        <p>{{ $lesson->subject->subject_name }}</p>
+                                                                        <ul class="teacher-date-list">
+                                                                            <li><i class="fas fa-calendar-alt me-2"></i>
+                                                                                {{ $lesson->days }}
+                                                                                {{\Carbon\Carbon::now()->format('j M, Y')}}</li>
+                                                                            <li>|</li>
+                                                                            <li><i
+                                                                                    class="fas fa-clock me-2"></i>{{ \Carbon\Carbon::parse($lesson->time_start)->format('H:i') }}
+                                                                                -
+                                                                                {{ \Carbon\Carbon::parse($lesson->time_end)->format('H:i') }}
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="lesson-confirm">
+                                                                        <a href="#">Dikonfirmasi</a>
+                                                                    </div>
+                                                                    <button type="submit" class="btn btn-info">Jadwal
+                                                                        Ulang</button>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            @endforeach
+                                        @endif
+                                    @endif
                                 </div>
                             </div>
                         </div>
-                        
+                    </div>
+                </div>
+
+                    <div class="row">                       
                         <div class="col-12 col-lg-12 col-xl-12 d-flex">
                             <div class="card flex-fill comman-shadow">
                                 <div class="card-header d-flex align-items-center">
