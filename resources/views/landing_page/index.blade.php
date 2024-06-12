@@ -3,20 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Fortune</title>
+    <title>SchoolSync</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-
   </head>
   <body>
     <!-- navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
       <div class="container-fluid">
         <a class="navbar-brand d-flex align-items-center" href="#">
-          <img src="{{ asset('images/logo1.png') }}" alt="Fortune Logo">
+          <img src="{{ asset('images/logo1.png') }}" alt="SchoolSync Logo">
           <span class="ms-2" style="color: #cf00ff;">SchoolSync</span>
 
         </a>
@@ -50,13 +48,15 @@
     <div class="wrapper">
       <!-- untuk home -->
       <section id="home" style="padding-top: 70px;"> <!-- Sesuaikan nilai padding-top dengan tinggi navbar -->
-        <img src="https://img.freepik.com/free-vector/web-development-programmer-engineering-coding-website-augmented-reality-interface-screens-developer-project-engineer-programming-software-application-design-cartoon-illustration_107791-3863.jpg?size=626&ext=jpg&ga=GA1.2.1769275626.1605867161" />
         <div class="kolom">
-            <h2 class="deskripsi">Manajemen Class</h2>
+          <p class="deskripsi">Selamat Datang di</p>
+          <h2 class="text-center">SchoolSync</h2>
+          <!-- <img src="https://img.freepik.com/free-vector/web-development-programmer-engineering-coding-website-augmented-reality-interface-screens-developer-project-engineer-programming-software-application-design-cartoon-illustration_107791-3863.jpg?size=626&ext=jpg&ga=GA1.2.1769275626.1605867161" /> -->
+          <img src="https://img.freepik.com/free-vector/business-report-document-with-paper-digital-charts-graphs-paper-screen-accounting-analysis-research-planning-audit-report-management-vector-illustration_1150-56162.jpg?t=st=1718207322~exp=1718210922~hmac=b85e6a219c7c20d34df9cd8021bd938ca87fd7dc856caa9ec822b8357fb13185&w=900" />
+            <h2 class="deskripsi mt-4">Manajemen Kelas</h2>
             <h2>Tetap Sehat, Tetap Semangat</h2>
             <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nesciunt,
-                nobis.
+                Silahkan Silakan jelajahi kami lebih lanjut di halaman berikut untuk menemukan lebih banyak tentang kami dan bagaimana kami dapat membantu Anda.
             </p>
         </div>
     </section>
@@ -65,47 +65,51 @@
       <!-- untuk courses -->
       <section id="courses">
         <div class="kolom">
-          <p class="deskripsi">You Will Need This</p>
-          <h2>Online Courses</h2>
+          <p class="deskripsi">Fitur kami</p>
+          <h2>Kelas Online</h2>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed
-            deserunt voluptatibus possimus blanditiis reiciendis. Qui, facilis!
-            Delectus exercitationem dolores sapiente?
+          Di sini, kami menghadirkan pengalaman belajar yang fleksibel, 
+          interaktif, dan menyeluruh. Dengan teknologi mutakhir, para 
+          siswa dapat terhubung dengan pengajar dan rekan satu kelas dari 
+          mana saja, kapan saja.
           </p>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed
-            deserunt voluptatibus possimus blanditiis reiciendis. Qui, facilis!
-            Delectus exercitationem dolores sapiente?
+            Melalui platform kami, kami memastikan 
+            pengalaman belajar yang terintegrasi dan mendalam, dengan akses 
+            ke materi pembelajaran yang bervariasi, alat kolaborasi yang kuat, 
+            dan dukungan pengajar yang berdedikasi. 
           </p>
         </div>
-        <img
+        <!-- <img
           src="https://img.freepik.com/free-vector/online-learning-isometric-concept_1284-17947.jpg?size=626&ext=jpg&ga=GA1.2.1769275626.1605867161"
-        />
+        /> -->
+        <img src="https://img.freepik.com/free-vector/online-education-banner-collection-purple-color_1284-32943.jpg?t=st=1718208184~exp=1718211784~hmac=a7f13a4df9384bc0f0ac847223b4fdd0c8d586110bac18917fa1ab2c30ff7c98&w=740"/>
       </section>
 
       {{-- About --}}
       <section id="courses">
         <div class="kolom">
-          <h2>Abouts Us</h2>
+          <h2>Tentang Kami</h2>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed
-            deserunt voluptatibus possimus blanditiis reiciendis. Qui, facilis!
-            Delectus exercitationem dolores sapiente?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed
-            deserunt voluptatibus possimus blanditiis reiciendis. Qui, facilis!
-            Delectus exercitationem dolores sapiente?
+          Selamat datang di SchoolSync! Kami adalah platform manajemen sekolah yang inovatif, 
+          didedikasikan untuk menyederhanakan dan memperkaya pengalaman pendidikan. Dengan 
+          teknologi canggih dan pendekatan yang berbasis pada kebutuhan pengguna, SchoolSync 
+          memungkinkan sekolah untuk mengelola operasional mereka dengan lebih efisien, 
+          meningkatkan komunikasi antara stakeholder, dan menciptakan lingkungan belajar yang 
+          lebih inklusif dan interaktif. Bergabunglah dengan kami dalam menciptakan masa depan 
+          pendidikan yang lebih baik!
           </p>
         </div>
 
       </section>
       <!-- untuk courses -->
-      <h2>Perpustakaan </h2>
+      <h2 class="text-center">Perpustakaan </h2>
       <div class="row">
         <?php $topSixBooks = $books->sortByDesc('id')->take(6); ?>
         <?php foreach ($topSixBooks as $key => $book): ?>
             <div class="col-md-4 mb-3">
                 <div class="card">
-                    <img src="https://png.pngtree.com/background/20230604/original/pngtree-library-book-shelves-with-help-desk-education-background-illustration-picture-image_2873053.jpg" class="card-img-top" alt="Perpustakaan">
+                    <img src="https://img.freepik.com/free-vector/business-brochure-template-with-wavy-background_23-2147588481.jpg?t=st=1718208394~exp=1718211994~hmac=bf4ce4df86561d7b0f5167e0cca8f62ba5dddc77958127adc7a3ef16786e952a&w=740">
                     <div class="card-body">
                         <h5 class="card-title"><?= $book->judul ?></h5>
                         <h6 class="card-subtitle mb-2 text-muted">Penulis: <?= $book->penulis ?></h6>
@@ -127,8 +131,9 @@
             <p class="deskripsi">Event Calender</p>
             <h2>Event</h2>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad,
-              optio!
+              Meriahkan momen bersama kami! Bergabunglah dalam acara kami 
+              yang penuh semangat dan inspiratif untuk merayakan pencapaian 
+              dan menjalin hubungan kekeluargaan antar individu warga sekolah yang kuat.
             </p>
           </div>
         </div>
@@ -168,9 +173,11 @@ $teachers = Teacher::orderBy('id', 'desc')->take(3)->get();
 <section id="guru">
     <div class="tengah">
         <div class="kolom">
-            <h2>Best Teacher</h2>
+            <h2>Top Teacher</h2>
             <p>
-                Dapatkan bimbingan dari para ahli di bidangnya untuk meningkatkan hasil belajar Anda
+                Dapatkan bimbingan dari para ahli di bidangnya 
+                untuk meningkatkan hasil belajar dari setiap anak didik
+                dari mata pelajaran masing-masing
             </p>
         </div>
 
@@ -189,12 +196,11 @@ $teachers = Teacher::orderBy('id', 'desc')->take(3)->get();
       <section id="partners">
         <div class="tengah">
           <div class="kolom">
-            <p class="deskripsi">Our Top Partners</p>
-            <h2>Partners</h2>
+            <p class="deskripsi">Top Partner Kami</p>
+            <h2>Partner</h2>
             <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi
-              magni tempore expedita sequi. Similique rerum doloremque impedit
-              saepe atque maxime.
+              Temukan kekuatan dari kemitraan: Bergabunglah bersama kami 
+              sebagai mitra tepercaya dalam perjalanan bersama menuju kesuksesan.
             </p>
           </div>
 
@@ -240,10 +246,15 @@ $teachers = Teacher::orderBy('id', 'desc')->take(3)->get();
 <section id="Eskul">
   <div class="container">
     <div class="row">
-      <div class="col-md-12">
-        <h2 class="deskripsi">Ekstrakulikuller Di sekolah Kami</h2>
+      <div class="kolom col-md-12">
+        <h2 class="deskripsi">Ekstrakulikuler Kami</h2>
         <p>
-          "Ekskul di sekolah SchoolSync adalah wadah yang luar biasa bagi siswa untuk mengeksplorasi minat dan bakat mereka. Berbagai kegiatan yang menarik dan bermanfaat diselenggarakan di sana, memberikan kesempatan bagi siswa untuk tumbuh dan berkembang. Para siswa dapat menemukan diri mereka sendiri melalui partisipasi aktif dalam ekskul ini, yang juga merupakan bagian integral dari pengalaman belajar mereka di SchoolSync."
+          "Ekskul di sekolah SchoolSync adalah wadah yang luar biasa bagi siswa 
+          untuk mengeksplorasi minat dan bakat mereka. Berbagai kegiatan yang menarik 
+          dan bermanfaat diselenggarakan di sana, memberikan kesempatan bagi siswa 
+          untuk tumbuh dan berkembang. Para siswa dapat menemukan diri mereka sendiri 
+          melalui partisipasi aktif dalam ekskul ini, yang juga merupakan bagian integral 
+          dari pengalaman belajar mereka di SchoolSync."
         </p>
       </div>
     </div>
@@ -266,7 +277,7 @@ $teachers = Teacher::orderBy('id', 'desc')->take(3)->get();
 
 
         <div class="container" id="nilai_siswa">
-          <h2 class="text-center">Best Students</h2>
+          <h2 class="text-center">Top Students</h2>
           <div class="card-container">
               @foreach($topStudents as $score)
                   <div class="card">
@@ -325,7 +336,7 @@ $teachers = Teacher::orderBy('id', 'desc')->take(3)->get();
         <h3>Company</h3>
         @foreach ($contacts as $contact)
         <p>{{ $contact->name }}</p>
-        <p>Your company slogan or description here.</p>
+        <p>Tetap Sehat, Tetap Semangat</p>
         @endforeach
       </div>
       <div class="col-md-3 mb-4">
@@ -348,7 +359,7 @@ $teachers = Teacher::orderBy('id', 'desc')->take(3)->get();
       </div>
       <div class="col-md-3 mb-4">
         <h3>Follow Us</h3>
-        <p>Connect with us on social media for updates.</p>
+        <p>Tersambung dengan kami pada media sosial untuk informasi baru</p>
       </div>
     </div>
   </div>
@@ -358,7 +369,7 @@ $teachers = Teacher::orderBy('id', 'desc')->take(3)->get();
 
     <div id="copyright">
       <div class="wrapper">
-        &copy; 2024. <b>Fortune.</b> All Rights Reserved.
+        &copy; 2024. <b>SchoolSync.</b> All Rights Reserved.
       </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
