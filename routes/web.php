@@ -235,4 +235,9 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     Route::put('/payments/{payment}', [PaymentController::class, 'update'])->name('payments.update');
     Route::delete('/payments/{payment}', [PaymentController::class, 'destroy'])->name('payments.destroy');
     Route::get('/payments/{payment}', [PaymentController::class, 'show'])->name('payments.show');
+
+
+    Route::get('/test-total-pendapatan', function () {
+        return \App\Models\Payment::totalPendapatan();
+    });
 });

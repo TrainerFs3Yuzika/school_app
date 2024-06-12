@@ -9,7 +9,6 @@ class Payment extends Model
 {
     use HasFactory;
 
-
     protected $fillable = [
         'student_id',
         'payment_method',
@@ -20,10 +19,24 @@ class Payment extends Model
     ];
 
     /**
-     * Get the student that owns the payment.
+     * Calculate total income from payment instructions.
      */
-    public function student()
+    public static function totalPendapatan()
     {
-        return $this->belongsTo(Student::class);
+        // Mengambil semua data payment dengan status pembayaran 'Success'
+        $payments = self::where('payment_status', 'Success')->get();
+
+        // Inisialisasi variabel total
+        $total = 0;
+
+        // Menghitung total dari semua data dalam kolom payment_instructions
+        foreach ($payments as $payment) {
+            // Membersihkan nilai payment_instructions dari karakter non-angka dan mengonversi ke integer
+            $amount = (int) preg_replace('/[^\d]/', '', $payment->payment_instructions); // Mengambil angka dari nilai teks
+            $total += $amount;
+        }
+
+        // Mengembalikan total pendapatan
+        return $total;
     }
 }

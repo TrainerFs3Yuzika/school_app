@@ -78,7 +78,7 @@
                             <div class="db-widgets d-flex justify-content-between align-items-center">
                                 <div class="db-info">
                                     <h6><span style="color: rgb(0, 0, 0); font-weight: bold;">Pendapatan</span></h6>
-                                    <h3>Rp.</h3>
+                                    <h3>Rp. {{ \App\Models\Payment::totalPendapatan() }}</h3>
                                 </div>
                                 <div class="db-icon">
                                     <img src="{{ URL::to('assets/img/icons/dash-icon-04.svg') }}" alt="Dashboard Icon">
@@ -87,6 +87,7 @@
                         </div>
                     </div>
                 </div>
+                
             </div>
 
             <div class="row">
