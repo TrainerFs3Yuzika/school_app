@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
+<title>Daftar Peminjaman</title>
 <div class="page-wrapper">
     <div class="content container-fluid">
         <div class="page-header">
@@ -33,14 +34,16 @@
                                         <i class="fa fa-th" aria-hidden="true"></i>
                                     </a>
                                     @if (auth()->user()->role_name === 'Super Admin')
-                                    <a href="{{ route('peminjaman.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah Peminjaman</a>
+                                    <a href="{{ route('peminjaman.create') }}" class="btn btn-primary"><i
+                                            class="fas fa-plus"></i> Tambah Peminjaman</a>
                                     @endif
                                 </div>
                             </div>
                         </div>
 
                         <div class="table-responsive">
-                            <table id="peminjamanTable" class="table border-0 star-book table-hover table-center mb-0  table-striped">
+                            <table id="peminjamanTable"
+                                class="table border-0 star-book table-hover table-center mb-0  table-striped">
                                 <thead class="thead-light">
                                     <tr>
                                         <th scope="col">No</th>
@@ -69,11 +72,15 @@
                                         <td>{{ $peminjaman->status }}</td>
                                         @if (auth()->user()->role_name === 'Super Admin')
                                         <td>
-                                            <a href="{{ route('peminjaman.edit', $peminjaman->id) }}" class="btn btn-sm btn-primary">Edit</a>
-                                            <form action="{{ route('peminjaman.destroy', $peminjaman->id) }}" method="POST" style="display: inline;">
+                                            <a href="{{ route('peminjaman.edit', $peminjaman->id) }}"
+                                                class="btn btn-sm btn-primary">Edit</a>
+                                            <form action="{{ route('peminjaman.destroy', $peminjaman->id) }}"
+                                                method="POST" style="display: inline;">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus?')"><i class="bi bi-trash"></i> Hapus</button>
+                                                <button type="submit" class="btn btn-sm btn-danger"
+                                                    onclick="return confirm('Apakah Anda yakin ingin menghapus?')"><i
+                                                        class="bi bi-trash"></i> Hapus</button>
                                             </form>
                                         </td>
                                         @endif
@@ -97,37 +104,39 @@
 
 <!-- Initialize DataTable -->
 <script>
-    $(document).ready(function() {
-        // Initialize DataTable with pagination and search functionality
-        $('#peminjamanTable').DataTable({
-            "pageLength": 5, // Set number of rows per page
-            "language": {
-                "search": "Cari:",
-                "lengthMenu": "Tampilkan _MENU_ data per halaman",
-                "zeroRecords": "Tidak ada data yang ditemukan",
-                "info": "Menampilkan halaman _PAGE_ dari _PAGES_",
-                "infoEmpty": "Tidak ada data yang tersedia",
-                "infoFiltered": "(difilter dari total _MAX_ data)",
-                "paginate": {
-                    "first": "Pertama",
-                    "last": "Terakhir",
-                    "next": "Selanjutnya",
-                    "previous": "Sebelumnya"
-                }
+$(document).ready(function() {
+    // Initialize DataTable with pagination and search functionality
+    $('#peminjamanTable').DataTable({
+        "pageLength": 5, // Set number of rows per page
+        "language": {
+            "search": "Cari:",
+            "lengthMenu": "Tampilkan _MENU_ data per halaman",
+            "zeroRecords": "Tidak ada data yang ditemukan",
+            "info": "Menampilkan halaman _PAGE_ dari _PAGES_",
+            "infoEmpty": "Tidak ada data yang tersedia",
+            "infoFiltered": "(difilter dari total _MAX_ data)",
+            "paginate": {
+                "first": "Pertama",
+                "last": "Terakhir",
+                "next": "Selanjutnya",
+                "previous": "Sebelumnya"
             }
-        });
-
-        // Toastr notifications
-        var successMessage = '{{ Session::get('success') }}';
-        var errorMessage = '{{ Session::get('error') }}';
-
-        if(successMessage){
-            toastr.success(successMessage, 'Sukses');
-        }
-        if(errorMessage){
-            toastr.error(errorMessage, 'Error');
         }
     });
+
+    // Toastr notifications
+    var successMessage = '{{ Session::get('
+    success ') }}';
+    var errorMessage = '{{ Session::get('
+    error ') }}';
+
+    if (successMessage) {
+        toastr.success(successMessage, 'Sukses');
+    }
+    if (errorMessage) {
+        toastr.error(errorMessage, 'Error');
+    }
+});
 </script>
 
 @endsection

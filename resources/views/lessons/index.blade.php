@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
+<title>Daftar Jadwal</title>
 <div class="page-wrapper">
     <div class="content container-fluid">
         <div class="page-header">
@@ -34,14 +35,16 @@
                                 </div>
                                 <div class="col-auto text-end float-end ms-auto download-grp">
                                     @if (auth()->user()->role_name === 'Super Admin')
-                                    <a href="{{ route('lessons.create') }}" class="btn btn-primary">Tambah Jadwal <i class="fas fa-plus"></i></a>
+                                    <a href="{{ route('lessons.create') }}" class="btn btn-primary">Tambah Jadwal <i
+                                            class="fas fa-plus"></i></a>
                                     @endif
                                 </div>
                             </div>
                         </div>
 
                         <div class="table-responsive">
-                            <table id="bookTable" class="table border-0 star-book table-hover table-center mb-0 table-striped">
+                            <table id="bookTable"
+                                class="table border-0 star-book table-hover table-center mb-0 table-striped">
                                 <thead class="thead-light">
                                     <tr>
                                         <th scope="col">No</th>
@@ -63,15 +66,19 @@
                                         <td>{{ $lesson->class }} {{ $lesson->class_type }}</td> <!-- Penulis -->
                                         <td>{{ $lesson->days }}</td> <!-- Penerbit -->
                                         <td>
-                                            {{ \Carbon\Carbon::parse($lesson->time_start)->format('H:i')  }}</td> <!-- Tahun Terbit -->
-                                        <td>{{ \Carbon\Carbon::parse($lesson->time_end)->format('H:i')  }}</td> <!-- Genre -->
+                                            {{ \Carbon\Carbon::parse($lesson->time_start)->format('H:i')  }}</td>
+                                        <!-- Tahun Terbit -->
+                                        <td>{{ \Carbon\Carbon::parse($lesson->time_end)->format('H:i')  }}</td>
+                                        <!-- Genre -->
                                         @if (auth()->user()->role_name === 'Super Admin')
                                         <td>
                                             <div class="actions">
-                                                <a href="{{ route('lessons.edit', $lesson->id) }}" class="btn btn-sm bg-danger-light">
+                                                <a href="{{ route('lessons.edit', $lesson->id) }}"
+                                                    class="btn btn-sm bg-danger-light">
                                                     <i class="far fa-edit "></i>
                                                 </a>
-                                                <form method="POST" action="{{ route('lessons.destroy', $lesson->id) }}" style="display: inline;">
+                                                <form method="POST" action="{{ route('lessons.destroy', $lesson->id) }}"
+                                                    style="display: inline;">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-sm bg-danger-light"
@@ -102,21 +109,23 @@
 
 <!-- Initialize DataTable -->
 <script>
-    $(document).ready(function(){
-        // Initialize DataTable
-        $('#bookTable').DataTable();
+$(document).ready(function() {
+    // Initialize DataTable
+    $('#bookTable').DataTable();
 
-        // Toastr notifications
-        var successMessage = '{{ Session::get('success') }}';
-        var errorMessage = '{{ Session::get('error') }}';
-        
-        if(successMessage){
-            toastr.success(successMessage, 'Sukses');
-        }
-        if(errorMessage){
-            toastr.error(errorMessage, 'Error');
-        }
-    });
+    // Toastr notifications
+    var successMessage = '{{ Session::get('
+    success ') }}';
+    var errorMessage = '{{ Session::get('
+    error ') }}';
+
+    if (successMessage) {
+        toastr.success(successMessage, 'Sukses');
+    }
+    if (errorMessage) {
+        toastr.error(errorMessage, 'Error');
+    }
+});
 </script>
 
 @endsection

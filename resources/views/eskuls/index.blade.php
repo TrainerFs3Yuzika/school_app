@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
+<title>Daftar Ekstrakurikuler</title>
 <div class="page-wrapper">
     <div class="content container-fluid">
         <div class="page-header">
@@ -34,7 +35,8 @@
                                 </div>
                                 <div class="col-auto text-end float-end ms-auto download-grp">
                                     @if (auth()->user()->role_name === 'Super Admin')
-                                    <a href="{{ route('eskuls.create') }}" class="btn btn-primary">Tambah Ekstrakurikuler <i class="fas fa-plus"></i></a>
+                                    <a href="{{ route('eskuls.create') }}" class="btn btn-primary">Tambah
+                                        Ekstrakurikuler <i class="fas fa-plus"></i></a>
                                     @endif
                                 </div>
                             </div>
@@ -59,12 +61,16 @@
                                         <td>{{ $eskul->pembina }}</td>
                                         <td>{{ $eskul->waktu_eskul }}</td>
                                         <td>
-                                            <a href="{{ route('eskuls.show', $eskul->id) }}" class="btn btn-info">Detail</a>
-                                            <a href="{{ route('eskuls.edit', $eskul->id) }}" class="btn btn-primary">Edit</a>
-                                            <form action="{{ route('eskuls.destroy', $eskul->id) }}" method="POST" style="display: inline;">
+                                            <a href="{{ route('eskuls.show', $eskul->id) }}"
+                                                class="btn btn-info">Detail</a>
+                                            <a href="{{ route('eskuls.edit', $eskul->id) }}"
+                                                class="btn btn-primary">Edit</a>
+                                            <form action="{{ route('eskuls.destroy', $eskul->id) }}" method="POST"
+                                                style="display: inline;">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus eskul ini?')">Hapus</button>
+                                                <button type="submit" class="btn btn-danger"
+                                                    onclick="return confirm('Apakah Anda yakin ingin menghapus eskul ini?')">Hapus</button>
                                             </form>
                                         </td>
                                     </tr>
@@ -84,12 +90,12 @@
 @section('scripts')
 <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
 <script>
-    $(document).ready(function() {
-        $('#eskulsTable').DataTable({
-            "pageLength": 5, // Menampilkan hanya lima data per halaman
-            "searching": true // Mengaktifkan fungsi pencarian
-        });
+$(document).ready(function() {
+    $('#eskulsTable').DataTable({
+        "pageLength": 5, // Menampilkan hanya lima data per halaman
+        "searching": true // Mengaktifkan fungsi pencarian
     });
+});
 </script>
 
 @endsection
