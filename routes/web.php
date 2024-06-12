@@ -42,8 +42,10 @@ function set_active($route)
     return Request::path() == $route ? 'active' : '';
 }
 
+Route::get('/landing_page', [LandingPageController::class, 'index'])->name('landing_page.index');
+
 Route::get('/', function () {
-    return view('auth.login');
+    return redirect('/landing_page');
 });
 
 Route::group(['middleware' => 'auth'], function () {
