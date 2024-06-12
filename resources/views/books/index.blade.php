@@ -46,61 +46,57 @@
                             </div>
                         </div>
 
-                        <div class="table-responsive">
-                            <table id="bookTable"
-                                class="table border-0 star-book table-hover table-center mb-0  table-striped">
-                                <thead class="thead-light">
-                                    <tr>
-                                        <th scope="col">No</th>
-                                        {{-- <th scope="col">ID</th> --}}
-                                        <th scope="col">Judul Buku</th>
-                                        <th scope="col">Penulis</th>
-                                        <th scope="col">Penerbit</th>
-                                        <th scope="col">Tahun Terbit</th>
-                                        <th scope="col">Genre</th>
-                                        <th scope="col">Stok</th>
-                                        <th scope="col">Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="">
-                                    @foreach ($books as $key => $book)
-                                    <tr>
-                                        <td>{{ ++$key }}</td> <!-- Nomor urut -->
-                                        {{-- <td>{{ $book->id }}</td> <!-- ID --> --}}
-                                        <td>{{ $book->judul }}</td> <!-- Judul -->
-                                        <td>{{ $book->penulis }}</td> <!-- Penulis -->
-                                        <td>{{ $book->penerbit }}</td> <!-- Penerbit -->
-                                        <td>{{ $book->tahun_terbit }}</td> <!-- Tahun Terbit -->
-                                        <td>{{ $book->genre }}</td> <!-- Genre -->
-                                        <td>{{ $book->stok }}</td> <!-- Stok -->
-                                        <td>
-                                            <div class="actions">
-                                                <a href="{{ route('books.edit', $book->id) }}"
-                                                    class="btn btn-sm bg-danger-light">
-                                                    <i class="far fa-edit me-2"></i>
-                                                </a>
-                                                <form method="POST" action="{{ route('books.destroy', $book->id) }}"
-                                                    style="display: inline;">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm bg-danger-light"
-                                                        onclick="return confirm('Apakah Anda yakin ingin menghapus buku ini?')">
-                                                        <i class="far fa-trash-alt me-2"></i>
-                                                    </button>
-                                                </form>
-                                            </div>
-                                        </td> <!-- Aksi -->
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
+                            <div class="table-responsive">
+                                <table id="bookTable" class="table border-0 star-book table-hover table-center mb-0  table-striped">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th scope="col">No</th>
+                                            {{-- <th scope="col">ID</th> --}}
+                                            <th scope="col">Judul Buku</th>
+                                            <th scope="col">Penulis</th>
+                                            <th scope="col">Penerbit</th>
+                                            <th scope="col">Tahun Terbit</th>
+                                            <th scope="col">Genre</th>
+                                            <th scope="col">Stok</th>
+                                            <th scope="col">Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="">
+                                        @foreach ($books as $key => $book)
+                                            <tr>
+                                                <td>{{ ++$key }}</td> <!-- Nomor urut -->
+                                                {{-- <td>{{ $book->id }}</td> <!-- ID --> --}}
+                                                <td>{{ $book->judul }}</td> <!-- Judul -->
+                                                <td>{{ $book->penulis }}</td> <!-- Penulis -->
+                                                <td>{{ $book->penerbit }}</td> <!-- Penerbit -->
+                                                <td>{{ $book->tahun_terbit }}</td> <!-- Tahun Terbit -->
+                                                <td>{{ $book->genre }}</td> <!-- Genre -->
+                                                <td>{{ $book->stok }}</td> <!-- Stok -->
+                                                <td>
+                                                    <div class="actions">
+                                                        <a href="{{ route('books.edit', $book->id) }}" class="btn btn-sm bg-danger-light">
+                                                            <i class="far fa-edit me-2"></i>
+                                                        </a>
+                                                        <form method="POST" action="{{ route('books.destroy', $book->id) }}" style="display: inline;">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-sm bg-danger-light" onclick="return confirm('Apakah Anda yakin ingin menghapus buku ini?')">
+                                                                <i class="far fa-trash-alt me-2"></i>
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                </td> <!-- Aksi -->
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
 @endsection
 
