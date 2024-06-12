@@ -96,71 +96,73 @@
                 </div>
                 
             </div>
-
-            <div class="row">
-                <div class="col-12 col-lg-12 col-xl-8">
-                    <div class="card flex-fill comman-shadow">
-                        <div class="row">
-                        <div class="col-12 col-lg-12 col-xl-12 d-flex">
-                            <div class="card flex-fill comman-shadow">
-                                <div class="card-header">
-                                    <div class="row align-items-center">
-                                        <div class="col-6">
-                                            <h5 class="card-title">Pelajaran Hari ini</h5>
-                                        </div>
-                                        <div class="col-6">
-                                            <span class="float-end view-link"><a href="{{ route('lessons.index') }}">Lihat
-                                                    Semua
-                                                    Jadwal</a></span>
+            <div class="container px-2">
+                <div class="row">
+                    <div class="col-12 col-lg-12 col-xl-8">
+                        <div class="card flex-fill comman-shadow">
+                            <div class="row">
+                            <div class="col-12 col-lg-12 col-xl-12 d-flex">
+                                <div class="card flex-fill comman-shadow">
+                                    <div class="card-header">
+                                        <div class="row align-items-center">
+                                            <div class="col-6">
+                                                <h5 class="card-title">Pelajaran Hari ini</h5>
+                                            </div>
+                                            <div class="col-6">
+                                                <span class="float-end view-link"><a href="{{ route('lessons.index') }}">Lihat
+                                                        Semua
+                                                        Jadwal</a></span>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="pt-3 pb-3">
-                                    @if (\Carbon\Carbon::setLocale('id') && ($today = \Carbon\Carbon::now()->isoFormat('dddd')))
-                                        @if ($lessons = \App\Models\Lessons::where('days', $today)->with('subject')->get())
-                                            @foreach ($lessons as $lesson)
-                                                <div class="table-responsive lesson">
-                                                    <table class="table table-center">
-                                                        <tbody>
-                                                            <tr>
-                                                                <td>
-                                                                    <div class="date">
-                                                                        <b>Kelas {{ $lesson->class }} {{ $lesson->class_type }}</b>
-                                                                        <p>{{ $lesson->subject->subject_name }}</p>
-                                                                        <ul class="teacher-date-list">
-                                                                            <li><i class="fas fa-calendar-alt me-2"></i>
-                                                                                {{ $lesson->days }}
-                                                                                {{\Carbon\Carbon::now()->format('j M, Y')}}</li>
-                                                                            <li>|</li>
-                                                                            <li><i
-                                                                                    class="fas fa-clock me-2"></i>{{ \Carbon\Carbon::parse($lesson->time_start)->format('H:i') }}
-                                                                                -
-                                                                                {{ \Carbon\Carbon::parse($lesson->time_end)->format('H:i') }}
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="lesson-confirm">
-                                                                        <a href="#">Dikonfirmasi</a>
-                                                                    </div>
-                                                                    <button type="submit" class="btn btn-info">Jadwal
-                                                                        Ulang</button>
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            @endforeach
+                                    <div class="pt-3 pb-3">
+                                        @if (\Carbon\Carbon::setLocale('id') && ($today = \Carbon\Carbon::now()->isoFormat('dddd')))
+                                            @if ($lessons = \App\Models\Lessons::where('days', $today)->with('subject')->get())
+                                                @foreach ($lessons as $lesson)
+                                                    <div class="table-responsive lesson">
+                                                        <table class="table table-center">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <div class="date">
+                                                                            <b>Kelas {{ $lesson->class }} {{ $lesson->class_type }}</b>
+                                                                            <p>{{ $lesson->subject->subject_name }}</p>
+                                                                            <ul class="teacher-date-list">
+                                                                                <li><i class="fas fa-calendar-alt me-2"></i>
+                                                                                    {{ $lesson->days }}
+                                                                                    {{\Carbon\Carbon::now()->format('j M, Y')}}</li>
+                                                                                <li>|</li>
+                                                                                <li><i
+                                                                                        class="fas fa-clock me-2"></i>{{ \Carbon\Carbon::parse($lesson->time_start)->format('H:i') }}
+                                                                                    -
+                                                                                    {{ \Carbon\Carbon::parse($lesson->time_end)->format('H:i') }}
+                                                                                </li>
+                                                                            </ul>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="lesson-confirm">
+                                                                            <a href="#">Dikonfirmasi</a>
+                                                                        </div>
+                                                                        <button type="submit" class="btn btn-info">Jadwal
+                                                                            Ulang</button>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                @endforeach
+                                            @endif
                                         @endif
-                                    @endif
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                    <div class="row">                       
+
+            <div class="container ">
+                <div class="row">                       
                     <div class="col-12 col-lg-12 col-xl-12 d-flex">
                             <div class="card flex-fill comman-shadow">
                                 <div class="card-header d-flex align-items-center">
@@ -266,6 +268,8 @@
                         </div>
                     </div>
                 </div>
+</div>
+
 
                 <div class="col-12 col-lg-12 col-xl-4 d-flex">
                     <div class="card flex-fill comman-shadow">
