@@ -39,7 +39,7 @@
               <form class="d-flex">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                 <button type="button" class="btn btn-outline-secondary me-2" type="submit">Search</button>
-                <button type="button" class="btn btn-outline-primary" type="submit">Login</button>
+                <a href="{{ route('login') }}" class="btn btn-outline-primary">Login</a>
               </form>
             </li>
           </ul>

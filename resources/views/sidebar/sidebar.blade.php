@@ -140,9 +140,6 @@
                     @endif
                     <ul>
                         <li><a href="{{ route('payments.index') }}"class="{{ request()->is('payments') ? 'active' : '' }}">Daftar Payments</a></li>
-                        @if (auth()->user()->role_name === 'Super Admin')
-                        <li><a href="{{ route('payments.create') }}" class="{{ request()->is('payments/create') ? 'active' : '' }}">Tambah Payments</a></li>
-                        @endif
                     </ul>
                 </li>
                 
