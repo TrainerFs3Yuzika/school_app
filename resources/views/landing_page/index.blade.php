@@ -58,7 +58,6 @@
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nesciunt,
                 nobis.
             </p>
-            <p><a href="#" class="tbl-pink">Kunjungi</a></p>
         </div>
     </section>
     
@@ -78,7 +77,6 @@
             deserunt voluptatibus possimus blanditiis reiciendis. Qui, facilis!
             Delectus exercitationem dolores sapiente?
           </p>
-          <p><a href="" class="tbl-biru">Pelajari Lebih Lanjut</a></p>
         </div>
         <img
           src="https://img.freepik.com/free-vector/online-learning-isometric-concept_1284-17947.jpg?size=626&ext=jpg&ga=GA1.2.1769275626.1605867161"
@@ -97,7 +95,6 @@
             deserunt voluptatibus possimus blanditiis reiciendis. Qui, facilis!
             Delectus exercitationem dolores sapiente?
           </p>
-          <p><a href="" class="tbl-biru">Pelajari Lebih Lanjut</a></p>
         </div>
 
       </section>
@@ -133,7 +130,6 @@
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad,
               optio!
             </p>
-            <p><a href="" class="tbl-biru">Kunjungi</a></p>
           </div>
         </div>
       </section>
@@ -158,57 +154,6 @@
           </div>
         </div>
       </section>
-      
-
-      <!-- untuk jadwal guru -->
-      <section id="jadwal-guru">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-8">
-                    <div class="tengah">
-                        <div class="kolom">
-                            <p class="deskripsi">Jadwal Guru</p>
-                            <h2>Jadwal Guru</h2>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, optio!</p>
-                        </div>
-                        <div class="jadwal-list">
-                            <div class="table-responsive">
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">No</th>
-                                            <th scope="col">Mata Pelajaran</th>
-                                            <th scope="col">Kelas</th>
-                                            <th scope="col">Hari</th>
-                                            <th scope="col">Waktu Mulai</th>
-                                            <th scope="col">Waktu Selesai</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                      @foreach($jadwalGuru as $key => $jadwal)
-                                      <tr>
-                                          <td>{{ ++$key }}</td> <!-- Nomor urut -->
-                                          <td>{{ $jadwal->subject->subject_name }}</td> <!-- Mata Pelajaran -->
-                                          <td>{{ $jadwal->class }}</td> <!-- Kelas -->
-                                          <td>{{ $jadwal->days }}</td> <!-- Hari -->
-                                          <td>{{ $jadwal->time_start }}</td> <!-- Waktu Mulai -->
-                                          <td>{{ $jadwal->time_end }}</td> <!-- Waktu Selesai -->
-                                      </tr>
-                                      @endforeach
-                                      
-                                      
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    
-
 
 
       <?php
