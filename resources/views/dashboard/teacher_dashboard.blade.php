@@ -311,6 +311,26 @@
                         </div>
                     </div>
                 </div>
+                   <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <!-- Your existing JS files -->
+
+    <script>
+        $(document).ready(function() {
+            $('#studentTable').DataTable({
+                // Customize DataTables options here
+                "paging": true,
+                "lengthChange": true,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true
+            });
+        });
+    </script>
                 <div class="col-12 col-lg-12 col-xl-4 d-flex">
                     <div class="card flex-fill comman-shadow">
                         <div class="card-body">
