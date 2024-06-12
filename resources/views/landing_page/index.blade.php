@@ -52,11 +52,11 @@
           <p class="deskripsi">Selamat Datang di</p>
           <h2 class="text-center">SchoolSync</h2>
           <!-- <img src="https://img.freepik.com/free-vector/web-development-programmer-engineering-coding-website-augmented-reality-interface-screens-developer-project-engineer-programming-software-application-design-cartoon-illustration_107791-3863.jpg?size=626&ext=jpg&ga=GA1.2.1769275626.1605867161" /> -->
-          <img src="https://img.freepik.com/free-vector/business-report-document-with-paper-digital-charts-graphs-paper-screen-accounting-analysis-research-planning-audit-report-management-vector-illustration_1150-56162.jpg?t=st=1718207322~exp=1718210922~hmac=b85e6a219c7c20d34df9cd8021bd938ca87fd7dc856caa9ec822b8357fb13185&w=900" />
+          <img src="https://img.freepik.com/premium-vector/flat-business-bundle-design-illustration_169137-3611.jpg?w=1060" />
             <h2 class="deskripsi mt-4">Manajemen Kelas</h2>
             <h2>Tetap Sehat, Tetap Semangat</h2>
             <p>
-                Silahkan Silakan jelajahi kami lebih lanjut di halaman berikut untuk menemukan lebih banyak tentang kami dan bagaimana kami dapat membantu Anda.
+                Silahkan jelajahi kami lebih lanjut di halaman berikut untuk menemukan lebih banyak tentang kami.
             </p>
         </div>
     </section>
@@ -83,7 +83,7 @@
         <!-- <img
           src="https://img.freepik.com/free-vector/online-learning-isometric-concept_1284-17947.jpg?size=626&ext=jpg&ga=GA1.2.1769275626.1605867161"
         /> -->
-        <img src="https://img.freepik.com/free-vector/online-education-banner-collection-purple-color_1284-32943.jpg?t=st=1718208184~exp=1718211784~hmac=a7f13a4df9384bc0f0ac847223b4fdd0c8d586110bac18917fa1ab2c30ff7c98&w=740"/>
+        <img src="https://img.freepik.com/free-vector/unified-communication-abstract-concept-vector-illustration-enterprise-communications-platform-consistent-unified-user-interface-framework-real-time-audio-video-integration-abstract-metaphor_335657-2910.jpg?t=st=1718208965~exp=1718212565~hmac=55ffb42905c248eafa707d467beb93af5e5d3b9a12872ccf89b42f6a51397d19&w=500"/>
       </section>
 
       {{-- About --}}
