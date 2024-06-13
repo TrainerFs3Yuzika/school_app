@@ -159,35 +159,30 @@
                 <div class="col-md-6">
                     <div class="card card-chart">
                         <div class="card-header">
-                            <h5 class="card-title mb-0">Detail Invoice</h5>
+                            <h5 class="card-title mb-0">Detail Pendapatan</h5>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-striped table-bordered table-hover table-center">
+                                <table id="pendapatanTable" class="table table-striped table-bordered table-hover table-center">
                                     <thead class="thead-light">
                                         <tr>
-                                            <th>Nama Pelanggan</th>
-                                            <th>Biaya Tambahan</th>
-                                            <th>Detail</th>
-                                            <th>Diskon</th>
-                                            <th>Detail Pembayaran</th>
-                                            <th>Total Jumlah</th>
+                                            <th>ID Siswa</th>
+                                            <th>Metode Pembayaran</th>
+                                            <th>Jenis Pembayaran</th>
+                                            <th>Status Pembayaran</th>
+                                            <th>Bukti Pembayaran</th>
+                                            <th>Instruksi Pembayaran</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach (\App\Models\InvoiceCustomerName::all() as $invoice)
+                                        @foreach (\App\Models\Payment::where('payment_status', 'Success')->get() as $payment)
                                             <tr>
-                                                <td>{{ $invoice->customer_name }}</td>
-                                                <td>{{ \App\Models\InvoiceAdditionalCharges::where('invoice_id', $invoice->id)->sum('amount') }}
-                                                </td>
-                                                <td>{{ \App\Models\InvoiceDetails::where('invoice_id', $invoice->id)->pluck('description')->implode(', ') }}
-                                                </td>
-                                                <td>{{ \App\Models\InvoiceDiscount::where('invoice_id', $invoice->id)->sum('discount_amount') }}
-                                                </td>
-                                                <td>{{ \App\Models\InvoicePaymentDetails::where('invoice_id', $invoice->id)->pluck('payment_method')->implode(', ') }}
-                                                </td>
-                                                <td>{{ \App\Models\InvoiceTotalAmount::where('invoice_id', $invoice->id)->sum('total_amount') }}
-                                                </td>
+                                                <td>{{ $payment->student_id }}</td>
+                                                <td>{{ $payment->payment_method }}</td>
+                                                <td>{{ $payment->payment_type }}</td>
+                                                <td>{{ $payment->payment_status }}</td>
+                                                <td>{{ $payment->proof_of_payment }}</td>
+                                                <td>{{ $payment->payment_instructions ?: 'No data' }}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -196,6 +191,13 @@
                         </div>
                     </div>
                 </div>
+            
+                <script>
+                    $(document).ready(function() {
+                        $('#pendapatanTable').DataTable();
+                    });
+                </script>
+                
             </div>
 
 
