@@ -67,21 +67,34 @@
                         </div>
                     </div>
                 </div>
+                <?php
+                use App\Models\ContactInformation;
+                
+                $contactInformation = ContactInformation::first(); // Mengambil satu data pertama
+                ?>
+                
                 <div class="col-xl-3 col-sm-6 col-12 d-flex">
                     <div class="card bg-comman w-100">
                         <div class="card-body">
                             <div class="db-widgets d-flex justify-content-between align-items-center">
                                 <div class="db-info">
-                                    <h6>Total Jam</h6>
-                                    <h3>15/20</h3>
+                                    <h6>Narahubung</h6>
                                 </div>
                                 <div class="db-icon">
-                                    <img src="{{ URL::to('assets/img/icons/teacher-icon-03.svg') }}" alt="Ikon Dasbor">
+                                    <!-- WhatsApp Icon -->
+                                    <?php if ($contactInformation): ?>
+                                        <a href="https://wa.me/<?= $contactInformation->whatsapp ?>" target="_blank">
+                                            <i class="fab fa-whatsapp fa-lg"></i>
+                                        </a>
+                                    <?php else: ?>
+                                        <p>Kontak tidak tersedia</p>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                
             </div>
 
 
