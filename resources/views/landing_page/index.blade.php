@@ -24,10 +24,10 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="#courses">Courses</a></li>
-            <li class="nav-item"><a class="nav-link" href="#tutors">Tutors</a></li>
-            <li class="nav-item"><a class="nav-link" href="#partners">Partners</a></li>
-            <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+            <li class="nav-item"><a class="nav-link" href="#courses">Kelas</a></li>
+            <li class="nav-item"><a class="nav-link" href="#about-us">Tentang Kami</a></li>
+            <li class="nav-item"><a class="nav-link" href="#partners">Partner</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contact">Kontak</a></li>
           </ul>
         </div>
         <!-- Search Menu -->
@@ -87,7 +87,7 @@
       </section>
 
       {{-- About --}}
-      <section id="courses">
+      <section id="about-us">
         <div class="kolom">
           <h2>Tentang Kami</h2>
           <p>
@@ -125,11 +125,11 @@
     </div>
     
       <!-- untuk Event -->
-      <section id="evet">
+      <section id="event">
         <div class="tengah">
           <div class="kolom">
-            <p class="deskripsi">Event Calender</p>
-            <h2>Event</h2>
+            <p class="deskripsi">Kalender Acara</p>
+            <h2>Acara</h2>
             <p>
               Meriahkan momen bersama kami! Bergabunglah dalam acara kami 
               yang penuh semangat dan inspiratif untuk merayakan pencapaian 
@@ -173,7 +173,7 @@ $teachers = Teacher::orderBy('id', 'desc')->take(3)->get();
 <section id="guru">
     <div class="tengah">
         <div class="kolom">
-            <h2>Top Teacher</h2>
+            <h2>Guru Terbaik</h2>
             <p>
                 Dapatkan bimbingan dari para ahli di bidangnya 
                 untuk meningkatkan hasil belajar dari setiap anak didik
@@ -277,7 +277,7 @@ $teachers = Teacher::orderBy('id', 'desc')->take(3)->get();
 
 
         <div class="container" id="nilai_siswa">
-          <h2 class="text-center">Top Students</h2>
+          <h2 class="text-center">Siswa Terbaik</h2>
           <div class="card-container">
               @foreach($topStudents as $score)
                   <div class="card">
@@ -333,14 +333,14 @@ $teachers = Teacher::orderBy('id', 'desc')->take(3)->get();
   <div class="container">
     <div class="row">
       <div class="col-md-3 mb-4">
-        <h3>Company</h3>
+        <h3>SchoolSync</h3>
         @foreach ($contacts as $contact)
         <p>{{ $contact->name }}</p>
         <p>Tetap Sehat, Tetap Semangat</p>
         @endforeach
       </div>
       <div class="col-md-3 mb-4">
-        <h3>Contact Information</h3>
+        <h3>Informasi Kontak</h3>
         @foreach ($contacts as $contact)
         <p><i class="fas fa-envelope"></i> {{ $contact->email }}</p>
         <p><i class="fas fa-phone"></i> {{ $contact->phone_number }}</p>
@@ -349,7 +349,7 @@ $teachers = Teacher::orderBy('id', 'desc')->take(3)->get();
         @endforeach
       </div>
       <div class="col-md-3 mb-4">
-        <h3>Social Media</h3>
+        <h3>Sosial Media</h3>
         @foreach ($contacts as $contact)
         <p><i class="fab fa-twitter"></i> <a href="{{ $contact->twitter }}" target="_blank" style="text-decoration: none;">Twitter</a></p>
         <p><i class="fab fa-facebook"></i> <a href="{{ $contact->facebook }}" target="_blank" style="text-decoration: none;">Facebook</a></p>
@@ -358,7 +358,7 @@ $teachers = Teacher::orderBy('id', 'desc')->take(3)->get();
         @endforeach
       </div>
       <div class="col-md-3 mb-4">
-        <h3>Follow Us</h3>
+        <h3>Ikuti Kami</h3>
         <p>Tersambung dengan kami pada media sosial untuk informasi baru</p>
       </div>
     </div>
