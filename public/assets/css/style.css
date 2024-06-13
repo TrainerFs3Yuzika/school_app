@@ -972,6 +972,12 @@ button.bg-danger:hover {
   background-color: #9967CE;
   border: 1px solid #9967CE;
 }
+
+.bg-purple {
+  background-color: #9967CE;
+  border: 1px solid #9967CE;
+}
+
 .btn-primary-save-bg {
   background-color: #18aefa;
 }

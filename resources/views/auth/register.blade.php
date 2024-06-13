@@ -42,9 +42,9 @@
                 <input type="password" class="form-control pass-confirm @error('password_confirmation') is-invalid @enderror" name="password_confirmation" placeholder="Confirm your password">
                 <span class="profile-views feather-eye reg-toggle-password"></span>
             </div>
-            <div class="dont-have">Already Registered? <a href="{{ route('login') }}">Login</a></div>
+            <div class="dont-have">Already Registered? <a href="{{ route('login') }}" class="text-purple">Login</a></div>
             <div class="form-group mb-0">
-                <button class="btn btn-primary btn-block" type="submit">Register</button>
+                <button class="btn bg-purple btn-block text-white" type="submit">Register</button>
             </div>
         </form>
         <div class="login-or">
@@ -52,10 +52,10 @@
             <span class="span-or">or</span>
         </div>
         <div class="social-login">
-            <a href="#"><i class="fab fa-google-plus-g"></i></a>
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="bg-purple text-white"><i class="fab fa-google-plus-g"></i></a>
+            <a href="#" class="bg-purple text-white"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="bg-purple"><i class="fab fa-twitter text-white"></i></a>
+            <a href="#" class="bg-purple"><i class="fab fa-linkedin-in text-white"></i></a>
         </div>
     </div>
 </div>

@@ -5,7 +5,7 @@
 <div class="login-right">
     <div class="login-right-wrap">
         <h1 >Halaman Login</h1>
-        <p class="account-subtitle">Perlu Akun? <a href="{{ route('register') }}">Sign Up</a></p>
+        <p class="account-subtitle">Perlu Akun? <a href="{{ route('register') }}" class="text-purple">Sign Up</a></p>
         <h2>Sign in</h2>
         <form action="{{ route('login') }}" method="POST">
             @csrf
@@ -26,10 +26,10 @@
                         <span class="checkmark"></span>
                     </label>
                 </div>
-                <a href="{{ route('forgot-password') }}">Lupa Passwoard?</a>
+                <a href="{{ route('forgot-password') }}" class="text-purple">Lupa Passwoard?</a>
             </div>
             <div class="form-group">
-                <button class="btn btn-primary btn-block" type="submit">Login</button>
+                <button class="btn bg-purple btn-block text-white" type="submit">Login</button>
             </div>
         </form>
         <div class="login-or">
@@ -37,10 +37,10 @@
             <span class="span-or">or</span>
         </div>
         <div class="social-login">
-            <a href="#"><i class="fab fa-google-plus-g"></i></a>
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="bg-purple text-white"><i class="fab fa-google-plus-g"></i></a>
+            <a href="#" class="bg-purple text-white"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="bg-purple"><i class="fab fa-twitter text-white"></i></a>
+            <a href="#" class="bg-purple"><i class="fab fa-linkedin-in text-white"></i></a>
         </div>
     </div>
 </div>
