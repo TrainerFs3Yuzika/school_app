@@ -17,6 +17,22 @@ class StudentController extends Controller
         return view('student.student', compact('studentList'));
     }
 
+   public function studentlist(Request $request)
+    {
+        $query = $request->input('search');
+        $studentList = Student::where(function ($q) use ($query) {
+                $q->where('first_name', 'like', '%' . $query . '%')
+                ->orWhere('last_name', 'like', '%' . $query . '%')
+                ->orWhere('phone_number', 'like', '%' . $query . '%')
+                ->orWhere('date_of_birth', 'like', '%' . $query . '%');
+            })
+            ->get();
+
+        return view('student.student', compact('studentList'));
+    }
+
+    
+    
     /** index page student grid */
     public function studentGrid()
     {

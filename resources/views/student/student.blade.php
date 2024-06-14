@@ -21,6 +21,17 @@
         <div class="student-group-form">
             <div class="row">
                 <!-- Search form -->
+                <div class="col-md-4">
+                    <form action="{{ route('studentlist') }}" method="GET">
+                        <div class="input-group">
+                            <input type="text" name="search" class="form-control" placeholder="Cari Siswa..." value="{{ request()->get('search') }}">
+                            <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button>
+                        </div>
+                    </form>
+                </div>
+                <h1>
+                    
+                </h1>
             </div>
         </div>
         <div class="row">

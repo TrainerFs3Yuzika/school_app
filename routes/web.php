@@ -113,6 +113,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Route::post('student/update', 'studentUpdate')->name('student/update'); // update record student
         Route::post('student/delete', 'studentDelete')->name('student/delete'); // delete record student
         Route::get('student/profile/{id}', 'studentProfile')->middleware('auth'); // profile student
+        Route::get('/studentlist', [StudentController::class, 'studentlist'])->name('studentlist');
+
     });
 
     // ------------------------ teacher -------------------------------//
