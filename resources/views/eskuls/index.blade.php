@@ -64,30 +64,40 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($eskuls as $key => $eskul)
-                                    <tr>
-                                        <td>{{ ++$key }}</td>
-                                        <td>{{ $eskul->nama_eskul }}</td>
-                                        <td>{{ $eskul->pembina }}</td>
-                                        <td>{{ $eskul->waktu_eskul }}</td>
-                                        @if (auth()->user()->role_name === 'Super Admin')
-                                        <td>
-                                            <a href="{{ route('eskuls.show', $eskul->id) }}"
-                                                class="btn btn-info">Detail</a>
-                                            <a href="{{ route('eskuls.edit', $eskul->id) }}"
-                                                class="btn btn-primary">Edit</a>
-                                            <form action="{{ route('eskuls.destroy', $eskul->id) }}" method="POST"
-                                                style="display: inline;">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger"
-                                                    onclick="return confirm('Apakah Anda yakin ingin menghapus eskul ini?')">Hapus</button>
-                                            </form>
-                                        </td>
-                                        @endif
-                                    </tr>
-                                    @endforeach
-                                </tbody>
+    @foreach ($eskuls as $key => $eskul)
+    <tr>
+        <td>{{ ++$key }}</td>
+        <td>{{ $eskul->nama_eskul }}</td>
+        <td>{{ $eskul->pembina }}</td>
+        <td>{{ $eskul->waktu_eskul }}</td>
+        @if (auth()->user()->role_name === 'Super Admin')
+        <td class="text-center align-middle">
+            <div class="actions d-flex justify-content-center align-items-center">
+                <!-- Tombol untuk menampilkan detail -->
+                <a href="{{ route('eskuls.show', $eskul->id) }}" class="btn btn-sm me-2">
+                    <i class="far fa-eye me-1"></i>
+                </a>
+                
+                <!-- Tombol untuk mengedit -->
+                <a href="{{ route('eskuls.edit', $eskul->id) }}" class="btn btn-sm me-2">
+                    <i class="far fa-edit me-1"></i>
+                </a>
+                
+                <!-- Form untuk menghapus dengan konfirmasi -->
+                <form action="{{ route('eskuls.destroy', $eskul->id) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus eskul ini?')">
+                        <i class="far fa-trash-alt me-1"></i>
+                    </button>
+                </form>
+            </div>
+        </td>
+        @endif
+    </tr>
+    @endforeach
+</tbody>
+
                             </table>
                            
                         </div>

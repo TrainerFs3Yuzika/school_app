@@ -94,15 +94,23 @@
                                                 <td>{{ $payment->created_at }}</td>
                                                 <td>{{ $payment->updated_at }}</td>
                                                 <td>
-                                                    <a href="{{ route('payments.edit', $payment->id) }}"
-                                                        class="btn btn-primary">Edit</a>
-                                                    <form action="{{ route('payments.destroy', $payment->id) }}"
-                                                        method="POST" style="display: inline">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class="btn btn-danger">Delete</button>
-                                                    </form>
+                                                    <div class="actions d-flex justify-content-start">
+                                                        <!-- Tombol Edit -->
+                                                        <a href="{{ route('payments.edit', $payment->id) }}" class="btn btn-sm me-2">
+                                                            <i class="far fa-edit me-1"></i>
+                                                        </a>
+
+                                                        <!-- Form untuk menghapus -->
+                                                        <form action="{{ route('payments.destroy', $payment->id) }}" method="POST" style="display: inline">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus pembayaran ini?')">
+                                                                <i class="far fa-trash-alt me-1"></i>
+                                                            </button>
+                                                        </form>
+                                                    </div>
                                                 </td>
+
                                             </tr>
                                         @endforeach
                                     </tbody>
