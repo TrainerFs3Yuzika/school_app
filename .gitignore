@@ -1,0 +1,11 @@
+# Ignore log files
+/storage/logs/*.log
+
+# Ignore session, cache, views
+/storage/framework/cache/
+/storage/framework/sessions/
+/storage/framework/views/
+
+# Ignore database files
+/database/*.sqlite
+
