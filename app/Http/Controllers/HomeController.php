@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ContactInformation;
+
+
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -36,12 +39,14 @@ class HomeController extends Controller
     /** teacher dashboard */
     public function teacherDashboardIndex()
     {
-        return view('dashboard.teacher_dashboard');
+        $contactInformation = ContactInformation::first(); // Mengambil satu data pertama
+        return view('dashboard.teacher_dashboard', compact('contactInformation'));
     }
 
     /** student dashboard */
     public function studentDashboardIndex()
     {
-        return view('dashboard.student_dashboard');
+        $contactInformation = ContactInformation::first(); // Mengambil satu data pertama
+        return view('dashboard.student_dashboard', compact('contactInformation'));
     }
 }

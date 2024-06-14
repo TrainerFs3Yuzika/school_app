@@ -63,38 +63,31 @@
                         </div>
                     </div>
                 </div>
-                <?php
-
-                use App\Models\ContactInformation;
-                
-                $contactInformation = ContactInformation::first(); // Mengambil satu data pertama
-                
-                ?>
-                
-                <div class="col-xl-3 col-sm-6 col-12 d-flex">
-                    <div class="card bg-comman w-100">
-                        <div class="card-body">
-                            <div class="db-widgets d-flex justify-content-between align-items-center">
-                                <div class="db-info">
-                                    <h6>Narahubung</h6>
-                                    </div>
-                                <div class="db-icon">
-                                    <!-- WhatsApp Icon -->
-                                    <div class="db-icon">
-                                        <!-- WhatsApp Icon -->
-                                        <a href="https://wa.me/<?= $contactInformation->whatsapp ?>" target="_blank">
-                                            <i class="fab fa-whatsapp fa-lg"></i>
-                                        </a>
-                                    </div>
-                                    
-                                </div>
-                                </div>
-                                
-                            </div>
-                        </div>
+<div class="col-xl-3 col-sm-6 col-12 d-flex">
+    <div class="card bg-comman w-100">
+        <div class="card-body">
+            <div class="db-widgets d-flex justify-content-between align-items-center">
+                <div class="db-info">
+                    <h6>Narahubung</h6>
+                </div>
+                <div class="db-icon">
+                    <!-- WhatsApp Icon -->
+                    <div class="db-icon">
+                        <?php if (!is_null($contactInformation) && !is_null($contactInformation->whatsapp)): ?>
+                            <a href="https://wa.me/<?= $contactInformation->whatsapp ?>" target="_blank">
+                                <i class="fab fa-whatsapp fa-lg"></i>
+                            </a>
+                        <?php else: ?>
+                            <i class="fab fa-whatsapp fa-lg" style="color: grey;"></i> <!-- Placeholder jika tidak ada nomor WhatsApp -->
+                        <?php endif; ?>
                     </div>
                 </div>
-                
+            </div>
+        </div>
+    </div>
+</div>
+
+ 
             </div>
             <div class="container px-2">
                 <div class="row">
