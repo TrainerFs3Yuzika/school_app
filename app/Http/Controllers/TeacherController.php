@@ -15,7 +15,7 @@ class TeacherController extends Controller
     /** add teacher page */
     public function teacherAdd()
     {
-        $users = User::where('role_name','Teachers')->get();
+        $users = User::where('role_name', 'Teachers')->get();
         return view('teacher.add-teacher', compact('users'));
     }
 
@@ -23,17 +23,26 @@ class TeacherController extends Controller
     public function teacherList(Request $request)
     {
         $query = $request->input('search');
+
         $listTeacher = Teacher::join('users', 'teachers.user_id', 'users.user_id')
-                    ->select('users.date_of_birth', 'users.join_date', 'users.phone_number', 'teachers.*')
-                    ->when($query, function ($queryBuilder) use ($query) {
-                        return $queryBuilder->where('teachers.full_name', 'like', '%' . $query . '%')
-                            ->orWhere('users.phone_number', 'like', '%' . $query . '%')
-                            ->orWhere('users.date_of_birth', 'like', '%' . $query . '%')
-                            ->orWhere('users.join_date', 'like', '%' . $query . '%');
-                    })
-                    ->get();
+            ->select('users.date_of_birth', 'users.join_date', 'users.phone_number', 'teachers.*')
+            ->where(function ($queryBuilder) use ($query) {
+                $queryBuilder->where('teachers.full_name', 'like', '%' . $query . '%')
+                    ->orWhere('users.phone_number', 'like', '%' . $query . '%')
+                    ->orWhere('users.date_of_birth', 'like', '%' . $query . '%')
+                    ->orWhere('users.join_date', 'like', '%' . $query . '%')
+                    ->orWhere('teachers.gender', 'like', '%' . $query . '%')
+                    ->orWhere('teachers.qualification', 'like', '%' . $query . '%')
+                    ->orWhere('teachers.experience', 'like', '%' . $query . '%')
+                    ->orWhere('teachers.phone_number', 'like', '%' . $query . '%')
+                    ->orWhere('teachers.address', 'like', '%' . $query . '%');
+            })
+            ->get();
+
         return view('teacher.list-teachers', compact('listTeacher'));
     }
+
+
 
     /** teacher Grid */
     public function teacherGrid()
@@ -74,7 +83,7 @@ class TeacherController extends Controller
             $saveRecord->zip_code      = $request->zip_code;
             $saveRecord->country       = $request->country;
             $saveRecord->save();
-   
+
             Toastr::success('Has been add successfully :)', 'Success');
             return redirect()->back();
         } catch (\Exception $e) {
@@ -89,8 +98,8 @@ class TeacherController extends Controller
     public function editRecord($user_id)
     {
         $teacher = Teacher::join('users', 'teachers.user_id', 'users.user_id')
-                    ->select('users.date_of_birth', 'users.join_date', 'users.phone_number', 'teachers.*')
-                    ->where('users.user_id', $user_id)->first();
+            ->select('users.date_of_birth', 'users.join_date', 'users.phone_number', 'teachers.*')
+            ->where('users.user_id', $user_id)->first();
         return view('teacher.edit-teacher', compact('teacher'));
     }
 
@@ -113,7 +122,7 @@ class TeacherController extends Controller
                 'country'       => $request->country,
             ];
             Teacher::where('id', $request->id)->update($updateRecord);
-            
+
             Toastr::success('Has been update successfully :)', 'Success');
             DB::commit();
             return redirect()->back();
