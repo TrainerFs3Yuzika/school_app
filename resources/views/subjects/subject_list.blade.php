@@ -1,4 +1,5 @@
 @extends('layouts.master')
+
 @section('content')
 {{-- message --}}
 {!! Toastr::message() !!}
@@ -37,7 +38,7 @@
                             </div>
                         </div>
                         <div class="table-responsive">
-                            <table
+                            <table id="subject-table"
                                 class="table border-0 star-student table-hover table-center mb-0 datatable table-striped">
                                 <thead class="student-thread">
                                     <tr>
@@ -95,7 +96,7 @@
     </div>
 </div>
 
-{{-- model elete --}}
+{{-- modal delete --}}
 <div class="modal custom-modal fade" id="delete" role="dialog">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -127,14 +128,29 @@
     </div>
 </div>
 
-@section('script')
-{{-- delete js --}}
-<script>
-$(document).on('click', '.delete', function() {
-    var _this = $(this).parents('tr');
-    $('.e_subject_id').val(_this.find('.subject_id').text());
-});
-</script>
 @endsection
 
+@section('script')
+{{-- DataTables --}}
+<script src="{{ URL::to('assets/plugins/datatables/datatables.min.js') }}"></script>
+<script>
+    $(document).ready(function () {
+        $('#subject-table').DataTable({
+            "paging": false,
+            "info": false,
+            responsive: true,
+            language: {
+                search: "_INPUT_",
+                searchPlaceholder: "Cari",
+            }
+        });
+    });
+</script>
+{{-- Delete subject --}}
+<script>
+    $(document).on('click', '.delete', function () {
+        var _this = $(this).parents('tr');
+        $('.e_subject_id').val(_this.find('.subject_id').text());
+    });
+</script>
 @endsection
