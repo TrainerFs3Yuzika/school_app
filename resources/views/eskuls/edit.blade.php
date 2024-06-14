@@ -1,4 +1,3 @@
-<!-- resources/views/eskuls/edit.blade.php -->
 @extends('layouts.master')
 
 @section('content')
@@ -19,8 +18,9 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <form action="{{ route('eskuls.store') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('eskuls.update', $eskul->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
+                            @method('PUT')
                             <div class="row">
                                 <h5 class="form-title student-info">Informasi Ekstrakurikuler
                                     <span>
