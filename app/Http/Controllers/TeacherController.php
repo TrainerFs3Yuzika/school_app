@@ -16,22 +16,30 @@ class TeacherController extends Controller
     public function teacherAdd()
     {
         $users = User::where('role_name','Teachers')->get();
-        return view('teacher.add-teacher',compact('users'));
+        return view('teacher.add-teacher', compact('users'));
     }
 
     /** teacher list */
-    public function teacherList()
+    public function teacherList(Request $request)
     {
-        $listTeacher = Teacher::join('users', 'teachers.user_id','users.user_id')
-                    ->select('users.date_of_birth','users.join_date','users.phone_number','teachers.*')->get();
-        return view('teacher.list-teachers',compact('listTeacher'));
+        $query = $request->input('search');
+        $listTeacher = Teacher::join('users', 'teachers.user_id', 'users.user_id')
+                    ->select('users.date_of_birth', 'users.join_date', 'users.phone_number', 'teachers.*')
+                    ->when($query, function ($queryBuilder) use ($query) {
+                        return $queryBuilder->where('teachers.full_name', 'like', '%' . $query . '%')
+                            ->orWhere('users.phone_number', 'like', '%' . $query . '%')
+                            ->orWhere('users.date_of_birth', 'like', '%' . $query . '%')
+                            ->orWhere('users.join_date', 'like', '%' . $query . '%');
+                    })
+                    ->get();
+        return view('teacher.list-teachers', compact('listTeacher'));
     }
 
     /** teacher Grid */
     public function teacherGrid()
     {
         $teacherGrid = Teacher::all();
-        return view('teacher.teachers-grid',compact('teacherGrid'));
+        return view('teacher.teachers-grid', compact('teacherGrid'));
     }
 
     /** save record */
@@ -52,7 +60,6 @@ class TeacherController extends Controller
         ]);
 
         try {
-
             $saveRecord = new Teacher;
             $saveRecord->full_name     = $request->full_name;
             $saveRecord->user_id       = $request->teacher_id;
@@ -68,12 +75,12 @@ class TeacherController extends Controller
             $saveRecord->country       = $request->country;
             $saveRecord->save();
    
-            Toastr::success('Has been add successfully :)','Success');
+            Toastr::success('Has been add successfully :)', 'Success');
             return redirect()->back();
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             \Log::info($e);
             DB::rollback();
-            Toastr::error('fail, Add new record  :)','Error');
+            Toastr::error('fail, Add new record :)', 'Error');
             return redirect()->back();
         }
     }
@@ -81,10 +88,10 @@ class TeacherController extends Controller
     /** edit record */
     public function editRecord($user_id)
     {
-        $teacher = Teacher::join('users', 'teachers.user_id','users.user_id')
-                    ->select('users.date_of_birth','users.join_date','users.phone_number','teachers.*')
+        $teacher = Teacher::join('users', 'teachers.user_id', 'users.user_id')
+                    ->select('users.date_of_birth', 'users.join_date', 'users.phone_number', 'teachers.*')
                     ->where('users.user_id', $user_id)->first();
-        return view('teacher.edit-teacher',compact('teacher'));
+        return view('teacher.edit-teacher', compact('teacher'));
     }
 
     /** update record teacher */
@@ -92,7 +99,6 @@ class TeacherController extends Controller
     {
         DB::beginTransaction();
         try {
-
             $updateRecord = [
                 'full_name'     => $request->full_name,
                 'gender'        => $request->gender,
@@ -104,18 +110,17 @@ class TeacherController extends Controller
                 'city'          => $request->city,
                 'state'         => $request->state,
                 'zip_code'      => $request->zip_code,
-                'country'      => $request->country,
+                'country'       => $request->country,
             ];
-            Teacher::where('id',$request->id)->update($updateRecord);
+            Teacher::where('id', $request->id)->update($updateRecord);
             
-            Toastr::success('Has been update successfully :)','Success');
+            Toastr::success('Has been update successfully :)', 'Success');
             DB::commit();
             return redirect()->back();
-           
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             DB::rollback();
             \Log::info($e);
-            Toastr::error('fail, update record  :)','Error');
+            Toastr::error('fail, update record :)', 'Error');
             return redirect()->back();
         }
     }
@@ -125,15 +130,14 @@ class TeacherController extends Controller
     {
         DB::beginTransaction();
         try {
-
             Teacher::destroy($request->id);
             DB::commit();
-            Toastr::success('Deleted record successfully :)','Success');
+            Toastr::success('Deleted record successfully :)', 'Success');
             return redirect()->back();
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             DB::rollback();
             \Log::info($e);
-            Toastr::error('Deleted record fail :)','Error');
+            Toastr::error('Deleted record fail :)', 'Error');
             return redirect()->back();
         }
     }

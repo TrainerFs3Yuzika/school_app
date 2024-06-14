@@ -124,7 +124,9 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Route::get('teacher/edit/{user_id}', 'editRecord'); // view teacher record
         Route::post('teacher/update', 'updateRecordTeacher')->middleware('auth')->name('teacher/update'); // update record
         Route::post('teacher/delete', 'teacherDelete')->name('teacher/delete'); // delete record teacher
+        Route::get('/teacher-list', 'teacherList')->name('teacher.list'); // teacher list with search
     });
+    
 
     // ----------------------- subject -----------------------------//
     Route::controller(SubjectController::class)->group(function () {
