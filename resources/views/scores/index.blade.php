@@ -32,12 +32,7 @@
                                         <h3 class="page-title">Nilai Siswa</h3>
                                     </div>
                                     <div class="col-auto text-end float-end ms-auto download-grp">
-                                        <a href="{{ route('student/list') }}" class="btn btn-outline-gray me-2 active">
-                                            <i class="fa fa-list" aria-hidden="true"></i>
-                                        </a>
-                                        <a href="{{ route('student/grid') }}" class="btn btn-outline-gray me-2">
-                                            <i class="fa fa-th" aria-hidden="true"></i>
-                                        </a>
+                                       
                                         @if (auth()->user()->role_name === 'Super Admin' || Session::get('role_name') === 'Teachers')
                                         <a href="{{ route('scores.create') }}" class="btn btn-primary"><i
                                                 class="fas fa-plus"></i></a>

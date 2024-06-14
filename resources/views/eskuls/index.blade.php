@@ -50,7 +50,9 @@
                                         <th>Nama Eskul</th>
                                         <th>Pembina</th>
                                         <th>Waktu Eskul</th>
+                                        @if (auth()->user()->role_name === 'Super Admin')
                                         <th>Aksi</th>
+                                        @endif
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -60,6 +62,7 @@
                                         <td>{{ $eskul->nama_eskul }}</td>
                                         <td>{{ $eskul->pembina }}</td>
                                         <td>{{ $eskul->waktu_eskul }}</td>
+                                        @if (auth()->user()->role_name === 'Super Admin')
                                         <td>
                                             <a href="{{ route('eskuls.show', $eskul->id) }}"
                                                 class="btn btn-info">Detail</a>
@@ -73,6 +76,7 @@
                                                     onclick="return confirm('Apakah Anda yakin ingin menghapus eskul ini?')">Hapus</button>
                                             </form>
                                         </td>
+                                        @endif
                                     </tr>
                                     @endforeach
                                 </tbody>

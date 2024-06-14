@@ -27,12 +27,7 @@
                                     <h3 class="page-title">Daftar Peminjaman Buku</h3>
                                 </div>
                                 <div class="col-auto text-end float-end ms-auto download-grp">
-                                    <a href="#" class="btn btn-outline-gray me-2 active">
-                                        <i class="fa fa-list" aria-hidden="true"></i>
-                                    </a>
-                                    <a href="#" class="btn btn-outline-gray me-2">
-                                        <i class="fa fa-th" aria-hidden="true"></i>
-                                    </a>
+                                    
                                     @if (auth()->user()->role_name === 'Super Admin')
                                     <a href="{{ route('peminjaman.create') }}" class="btn btn-primary"><i
                                             class="fas fa-plus"></i> Tambah Peminjaman</a>

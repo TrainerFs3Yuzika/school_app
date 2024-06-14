@@ -33,15 +33,10 @@
                                     <h3 class="page-title">Daftar Buku</h3>
                                 </div>
                                 <div class="col-auto text-end float-end ms-auto download-grp">
-                                    <!-- Buttons -->
-                                    <a href="#" class="btn btn-outline-gray me-2 active">
-                                        <i class="fa fa-list" aria-hidden="true"></i>
-                                    </a>
-                                    <a href="#" class="btn btn-outline-gray me-2">
-                                        <i class="fa fa-th" aria-hidden="true"></i>
-                                    </a>
+                                    @if (auth()->user()->role_name === 'Super Admin')
                                     <a href="{{ route('books.create') }}" class="btn btn-primary">Tambah Buku <i
                                             class="fas fa-plus"></i></a>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -58,7 +53,9 @@
                                             <th scope="col">Tahun Terbit</th>
                                             <th scope="col">Genre</th>
                                             <th scope="col">Stok</th>
+                                            @if (auth()->user()->role_name === 'Super Admin')
                                             <th scope="col">Aksi</th>
+                                            @endif
                                         </tr>
                                     </thead>
                                     <tbody class="">
@@ -72,6 +69,7 @@
                                                 <td>{{ $book->tahun_terbit }}</td> <!-- Tahun Terbit -->
                                                 <td>{{ $book->genre }}</td> <!-- Genre -->
                                                 <td>{{ $book->stok }}</td> <!-- Stok -->
+                                                @if (auth()->user()->role_name === 'Super Admin')
                                                 <td>
                                                     <div class="actions">
                                                         <a href="{{ route('books.edit', $book->id) }}" class="btn btn-sm bg-danger-light">
@@ -86,6 +84,7 @@
                                                         </form>
                                                     </div>
                                                 </td> <!-- Aksi -->
+                                                @endif
                                             </tr>
                                         @endforeach
                                     </tbody>
