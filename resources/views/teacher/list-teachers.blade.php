@@ -31,8 +31,10 @@
                                     <h3 class="page-title">Daftar Guru</h3>
                                 </div>
                                 <div class="col-auto text-end float-end ms-auto download-grp">
+                                @if (auth()->user()->role_name === 'Super Admin')
                                     <a href="{{ route('teacher/add/page') }}" class="btn btn-primary">Tambah Guru <i
                                             class="fas fa-plus"></i></a>
+                                @endif
                                 </div>
                             </div>
                         </div>
@@ -53,7 +55,9 @@
                                         <th>Pengalaman</th>
                                         <th>Nomor Ponsel</th>
                                         <th>Alamat</th>
+                                        @if (auth()->user()->role_name === 'Super Admin')
                                         <th class="text-end">Aksi</th>
+                                        @endif
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -87,6 +91,7 @@
                                         <td>{{ $list->experience }}</td>
                                         <td>{{ $list->phone_number }}</td>
                                         <td>{{ $list->address }}</td>
+                                        @if (auth()->user()->role_name === 'Super Admin')
                                         <td class="text-end">
                                             <div class="actions">
                                                 <a href="{{ url('teacher/edit/'.$list->user_id) }}"
@@ -99,6 +104,7 @@
                                                 </a>
                                             </div>
                                         </td>
+                                        @endif
                                     </tr>
                                     @endforeach
                                 </tbody>

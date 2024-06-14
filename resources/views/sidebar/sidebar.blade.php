@@ -135,7 +135,7 @@
                     </ul>
                 </li>                
                 <li class="submenu">
-                    @if (Session::get('role_name') === 'Admin' || Session::get('role_name') === 'Super Admin' || Session::get('role_name') === 'Teachers')
+                @if (auth()->user()->role_name === 'Super Admin')
                     <a href="#"><i class="fas fa-money-bill-alt"></i> <span>Payments</span> <span class="menu-arrow"></span></a>
                     @endif
                     <ul>
