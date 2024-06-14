@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
     <div class="page-wrapper">
@@ -70,7 +70,19 @@
                                                 <td>{{ $payment->payment_method }}</td>
                                                 <td>{{ $payment->payment_type }}</td>
                                                 <td>{{ $payment->payment_instructions }}</td>
-                                                <td>{{ $payment->payment_status }}</td>
+                                                @if ($payment->payment_status == 'Success')
+                                                    <td><span
+                                                            class="bg-success opacity-50 px-2 py-1 rounded-pill text-white fw-bold">{{ $payment->payment_status }}</span>
+                                                    </td>
+                                                @elseif($payment->payment_status == 'Pending')
+                                                    <td><span
+                                                            class="bg-info opacity-50 px-2 py-1 rounded-pill text-white fw-bold">{{ $payment->payment_status }}</span>
+                                                    </td>
+                                                @elseif($payment->payment_status == 'Ditolak')
+                                                    <td><span
+                                                            class="bg-danger opacity-50 px-2 py-1 rounded-pill text-white fw-bold">{{ $payment->payment_status }}</span>
+                                                    </td>
+                                                @endif
                                                 <td>
                                                     @if ($payment->proof_of_payment)
                                                         <img src="{{ asset('storage/' . $payment->proof_of_payment) }}"
@@ -183,60 +195,59 @@
         </div>
     </div>
     <!-- Alert Modal -->
-<div class="modal fade" id="alertModal" tabindex="-1" aria-labelledby="alertModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="alertModalLabel">Notification</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body" id="alertModalBody">
-                <!-- Message will be inserted here dynamically -->
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    <div class="modal fade" id="alertModal" tabindex="-1" aria-labelledby="alertModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="alertModalLabel">Notification</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="alertModalBody">
+                    <!-- Message will be inserted here dynamically -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<script>
-    // Function to toggle proof of payment visibility
-    function toggleProofOfPayment() {
-        var paymentMethod = document.getElementById('payment_method').value;
-        var proofOfPaymentDiv = document.getElementById('proof_of_payment_div');
+    <script>
+        // Function to toggle proof of payment visibility
+        function toggleProofOfPayment() {
+            var paymentMethod = document.getElementById('payment_method').value;
+            var proofOfPaymentDiv = document.getElementById('proof_of_payment_div');
 
-        if (paymentMethod === 'Pembayaran Tunai') {
-            proofOfPaymentDiv.style.display = 'none';
-        } else {
-            proofOfPaymentDiv.style.display = 'block';
+            if (paymentMethod === 'Pembayaran Tunai') {
+                proofOfPaymentDiv.style.display = 'none';
+            } else {
+                proofOfPaymentDiv.style.display = 'block';
+            }
         }
-    }
 
-    // Initialize the form with the correct visibility for the proof of payment field
-    document.addEventListener('DOMContentLoaded', function() {
-        toggleProofOfPayment();
+        // Initialize the form with the correct visibility for the proof of payment field
+        document.addEventListener('DOMContentLoaded', function() {
+            toggleProofOfPayment();
 
-        // Initialize DataTable for paymentTable
-        $('#paymentTable').DataTable({
-            "pageLength": 5 // Display only five records per page
+            // Initialize DataTable for paymentTable
+            $('#paymentTable').DataTable({
+                "pageLength": 5 // Display only five records per page
+            });
+
+            // Check for flash messages in the session and show the alert modal if they exist
+            @if (session('success'))
+                showAlertModal('{{ session('success') }}');
+            @endif
+
+            @if (session('error'))
+                showAlertModal('{{ session('error') }}');
+            @endif
         });
 
-        // Check for flash messages in the session and show the alert modal if they exist
-        @if (session('success'))
-            showAlertModal('{{ session('success') }}');
-        @endif
-
-        @if (session('error'))
-            showAlertModal('{{ session('error') }}');
-        @endif
-    });
-
-    // Function to show alert modal
-    function showAlertModal(message) {
-        document.getElementById('alertModalBody').innerText = message;
-        var alertModal = new bootstrap.Modal(document.getElementById('alertModal'));
-        alertModal.show();
-    }
-</script>
-    
+        // Function to show alert modal
+        function showAlertModal(message) {
+            document.getElementById('alertModalBody').innerText = message;
+            var alertModal = new bootstrap.Modal(document.getElementById('alertModal'));
+            alertModal.show();
+        }
+    </script>
 @endsection
