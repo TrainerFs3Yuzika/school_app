@@ -10,9 +10,15 @@ use App\Models\Student;
 class EskulController extends Controller
 {
     // Menampilkan semua eskul
-    public function index()
+    public function index(Request $request)
     {
-        $eskuls = Eskul::all();
+        $query = $request->input('search');
+        $eskuls = Eskul::when($query, function ($queryBuilder) use ($query) {
+            return $queryBuilder->where('nama_eskul', 'like', '%' . $query . '%')
+                ->orWhere('pembina', 'like', '%' . $query . '%')
+                ->orWhere('waktu_eskul', 'like', '%' . $query . '%');
+        })->get(); // Use get() if you don't want pagination, otherwise use paginate()
+
         return view('eskuls.index', compact('eskuls'));
     }
 

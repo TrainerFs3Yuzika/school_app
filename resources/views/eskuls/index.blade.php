@@ -19,9 +19,17 @@
         </div>
         {{-- pesan --}}
         {!! Toastr::message() !!}
-        <div class="book-group-form">
+        <div class="book-group-form py-3">
             <div class="row">
                 <!-- Search form -->
+                <div class="col-md-4">
+                    <form action="{{ route('eskuls.index') }}" method="GET">
+                        <div class="input-group">
+                            <input type="text" name="search" class="form-control" placeholder="Cari Ekstrakurikuler..." value="{{ request()->get('search') }}">
+                            <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -81,6 +89,7 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                           
                         </div>
                     </div>
                 </div>
@@ -90,16 +99,14 @@
 </div>
 @endsection
 
-
 @section('scripts')
 <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
 <script>
 $(document).ready(function() {
     $('#eskulsTable').DataTable({
         "pageLength": 5, // Menampilkan hanya lima data per halaman
-        "searching": true // Mengaktifkan fungsi pencarian
+        "searching": false // Menonaktifkan fungsi pencarian datatable karena kita menggunakan search form sendiri
     });
 });
 </script>
-
 @endsection
