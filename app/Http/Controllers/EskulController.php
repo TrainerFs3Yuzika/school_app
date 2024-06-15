@@ -1,11 +1,11 @@
 <?php
-// app/Http/Controllers/EskulController.php
 
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Eskul;
 use App\Models\Student;
+use Toastr;
 
 class EskulController extends Controller
 {
@@ -17,7 +17,7 @@ class EskulController extends Controller
             return $queryBuilder->where('nama_eskul', 'like', '%' . $query . '%')
                 ->orWhere('pembina', 'like', '%' . $query . '%')
                 ->orWhere('waktu_eskul', 'like', '%' . $query . '%');
-        })->get(); // Use get() if you don't want pagination, otherwise use paginate()
+        })->get(); // Gunakan get() jika tidak ingin menggunakan pagination, jika ingin menggunakan pagination, gunakan paginate()
 
         return view('eskuls.index', compact('eskuls'));
     }
@@ -52,7 +52,9 @@ class EskulController extends Controller
             'gambar' => $imageName,
         ]);
 
-        return redirect()->route('eskuls.index')->with('success', 'Eskul berhasil ditambahkan.');
+        Toastr::success('Ekstrakurikuler berhasil ditambahkan.', 'Sukses');
+
+        return redirect()->route('eskuls.index');
     }
 
     // Menampilkan detail eskul
@@ -80,7 +82,9 @@ class EskulController extends Controller
 
         $eskul->update($request->all());
 
-        return redirect()->route('eskuls.index')->with('success', 'Eskul berhasil diperbarui.');
+        Toastr::success('Ekstrakurikuler berhasil diperbarui.', 'Sukses');
+
+        return redirect()->route('eskuls.index');
     }
 
     // Menghapus eskul
@@ -88,6 +92,8 @@ class EskulController extends Controller
     {
         $eskul->delete();
 
-        return redirect()->route('eskuls.index')->with('success', 'Eskul berhasil dihapus.');
+        Toastr::success('Ekstrakurikuler berhasil dihapus.', 'Sukses');
+
+        return redirect()->route('eskuls.index');
     }
 }

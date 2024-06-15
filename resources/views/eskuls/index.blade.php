@@ -64,42 +64,40 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-    @foreach ($eskuls as $key => $eskul)
-    <tr>
-        <td>{{ ++$key }}</td>
-        <td>{{ $eskul->nama_eskul }}</td>
-        <td>{{ $eskul->pembina }}</td>
-        <td>{{ $eskul->waktu_eskul }}</td>
-        @if (auth()->user()->role_name === 'Super Admin')
-        <td class="text-center align-middle">
-            <div class="actions d-flex justify-content-center align-items-center">
-                <!-- Tombol untuk menampilkan detail -->
-                <a href="{{ route('eskuls.show', $eskul->id) }}" class="btn btn-sm me-2">
-                    <i class="far fa-eye me-1"></i>
-                </a>
-                
-                <!-- Tombol untuk mengedit -->
-                <a href="{{ route('eskuls.edit', $eskul->id) }}" class="btn btn-sm me-2">
-                    <i class="far fa-edit me-1"></i>
-                </a>
-                
-                <!-- Form untuk menghapus dengan konfirmasi -->
-                <form action="{{ route('eskuls.destroy', $eskul->id) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus eskul ini?')">
-                        <i class="far fa-trash-alt me-1"></i>
-                    </button>
-                </form>
-            </div>
-        </td>
-        @endif
-    </tr>
-    @endforeach
-</tbody>
-
+                                    @foreach ($eskuls as $key => $eskul)
+                                    <tr>
+                                        <td>{{ ++$key }}</td>
+                                        <td>{{ $eskul->nama_eskul }}</td>
+                                        <td>{{ $eskul->pembina }}</td>
+                                        <td>{{ $eskul->waktu_eskul }}</td>
+                                        @if (auth()->user()->role_name === 'Super Admin')
+                                        <td class="text-center align-middle">
+                                            <div class="actions d-flex justify-content-center align-items-center">
+                                                <!-- Tombol untuk menampilkan detail -->
+                                                <a href="{{ route('eskuls.show', $eskul->id) }}" class="btn btn-sm me-2">
+                                                    <i class="far fa-eye me-1"></i>
+                                                </a>
+                                                
+                                                <!-- Tombol untuk mengedit -->
+                                                <a href="{{ route('eskuls.edit', $eskul->id) }}" class="btn btn-sm me-2">
+                                                    <i class="far fa-edit me-1"></i>
+                                                </a>
+                                                
+                                                <!-- Form untuk menghapus dengan konfirmasi -->
+                                                <form action="{{ route('eskuls.destroy', $eskul->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus eskul ini?')">
+                                                        <i class="far fa-trash-alt me-1"></i>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </td>
+                                        @endif
+                                    </tr>
+                                    @endforeach
+                                </tbody>
                             </table>
-                           
                         </div>
                     </div>
                 </div>
@@ -111,12 +109,25 @@
 
 @section('scripts')
 <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
 <script>
 $(document).ready(function() {
     $('#eskulsTable').DataTable({
-        "pageLength": 5, // Menampilkan hanya lima data per halaman
-        "searching": false // Menonaktifkan fungsi pencarian datatable karena kita menggunakan search form sendiri
-    });
+        "pageLength": 5, // Menampilkan lima data per halaman
+        "searching": false // Menonaktifkan fungsi pencarian datatable karena sudah ada form pencarian sendiri
+});
+
+var successMessage = '{{ Session::get('success') }}';
+var errorMessage = '{{ Session::get('error') }}';
+
+if (successMessage) {
+    toastr.success(successMessage, 'Sukses');
+}
+if (errorMessage) {
+    toastr.error(errorMessage, 'Error');
+}
 });
 </script>
 @endsection
