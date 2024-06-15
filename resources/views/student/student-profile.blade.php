@@ -46,7 +46,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-4 col-md-4 d-flex align-items-center">
+                                    {{-- <div class="col-lg-4 col-md-4 d-flex align-items-center">
                                         <div class="follow-group">
                                             <div class="students-follows">
                                                 <h5>Followers</h5>
@@ -61,11 +61,11 @@
                                                 <h4>2850</h4>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <div class="col-lg-4 col-md-4 d-flex align-items-center">
                                         <div class="follow-btn-group">
-                                            <button type="submit" class="btn btn-info follow-btns">Follow</button>
-                                            <button type="submit" class="btn btn-info message-btns">Message</button>
+                                            {{-- <button type="submit" class="btn btn-info follow-btns">Follow</button>
+                                            <button type="submit" class="btn btn-info message-btns">Message</button> --}}
                                         </div>
                                     </div>
                                 </div>
@@ -135,7 +135,7 @@
                                                 <h5>{{ $studentProfile->date_of_birth }}</h5>
                                             </div>
                                         </div>
-                                        <div class="personal-activity">
+                                        {{-- <div class="personal-activity">
                                             <div class="personal-icons">
                                                 <i class="feather-italic"></i>
                                             </div>
@@ -152,11 +152,11 @@
                                                 <h4>Address</h4>
                                                 <h5>480, Estern Avenue, New York</h5>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                             </div>
-                            <div class="student-personals-grp">
+                            {{-- <div class="student-personals-grp">
                                 <div class="card mb-0">
                                     <div class="card-body">
                                         <div class="heading-detail">
@@ -193,9 +193,11 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
-                        <div class="col-lg-8">
+                        </div>
+                        </div>
+                        {{-- <div class="col-lg-8">
                             <div class="student-personals-grp">
                                 <div class="card mb-0">
                                     <div class="card-body">
@@ -237,7 +239,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
