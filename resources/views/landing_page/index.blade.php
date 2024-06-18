@@ -15,7 +15,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
-<body>
+<body class="bg-body-primary">
     <!-- navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <div class="container-fluid">
@@ -58,7 +58,7 @@
                 <h2 class="text-center">SchoolSync</h2>
                 <!-- <img src="https://img.freepik.com/free-vector/web-development-programmer-engineering-coding-website-augmented-reality-interface-screens-developer-project-engineer-programming-software-application-design-cartoon-illustration_107791-3863.jpg?size=626&ext=jpg&ga=GA1.2.1769275626.1605867161" /> -->
                 <img
-                    src="https://img.freepik.com/premium-vector/flat-business-bundle-design-illustration_169137-3611.jpg?w=1060" />
+                    src="https://img.freepik.com/premium-vector/flat-business-bundle-design-illustration_169137-3611.jpg?w=1060"  class="rounded"/>
                 <h2 class="deskripsi mt-4">Manajemen Kelas</h2>
                 <h2>Tetap Sehat, Tetap Semangat</h2>
                 <p>
@@ -91,7 +91,7 @@
           src="https://img.freepik.com/free-vector/online-learning-isometric-concept_1284-17947.jpg?size=626&ext=jpg&ga=GA1.2.1769275626.1605867161"
         /> -->
             <img
-                src="https://img.freepik.com/free-vector/unified-communication-abstract-concept-vector-illustration-enterprise-communications-platform-consistent-unified-user-interface-framework-real-time-audio-video-integration-abstract-metaphor_335657-2910.jpg?t=st=1718208965~exp=1718212565~hmac=55ffb42905c248eafa707d467beb93af5e5d3b9a12872ccf89b42f6a51397d19&w=500" />
+                src="https://img.freepik.com/free-vector/unified-communication-abstract-concept-vector-illustration-enterprise-communications-platform-consistent-unified-user-interface-framework-real-time-audio-video-integration-abstract-metaphor_335657-2910.jpg?t=st=1718208965~exp=1718212565~hmac=55ffb42905c248eafa707d467beb93af5e5d3b9a12872ccf89b42f6a51397d19&w=500" class="rounded"/>
         </section>
 
         {{-- About --}}
