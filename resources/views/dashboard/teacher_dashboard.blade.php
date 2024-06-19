@@ -1,5 +1,6 @@
 @extends('layouts.master')
 @section('content')
+<title>Dashboard {{ auth()->user()->role_name }}</title>
     {{-- pesan --}}
     {!! Toastr::message() !!}
     <div class="page-wrapper">
