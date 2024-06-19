@@ -98,6 +98,26 @@
                                     </div>
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group local-forms">
+                                            <label>Password <span class="login-danger">*</span></label>
+                                            <input type="password" class="form-control" name="password" id="password" placeholder="Enter new password">
+                                            <input type="checkbox" id="showPassword" onclick="togglePassword()"> Show Password
+                                        </div>
+                                    </div>
+                                    
+                                    <script>
+                                        function togglePassword() {
+                                            var passwordField = document.getElementById("password");
+                                            var showPasswordCheckbox = document.getElementById("showPassword");
+                                            if (showPasswordCheckbox.checked) {
+                                                passwordField.type = "text";
+                                            } else {
+                                                passwordField.type = "password";
+                                            }
+                                        }
+                                    </script>
+                                    
+                                    <div class="col-12 col-sm-4">
+                                        <div class="form-group local-forms">
                                             <label>Updated Date <span class="login-danger">*</span></label>
                                             <input type="text" class="form-control" name="updated_at" value="{{ $users->updated_at }}" readonly>
                                         </div>

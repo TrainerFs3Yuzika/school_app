@@ -27,9 +27,9 @@ class UserManagementController extends Controller
     /** user view */
     public function userView($id)
     {
-        $users = User::where('user_id',$id)->first();
+        $users = User::where('user_id', $id)->first();
         $role  = DB::table('role_type_users')->get();
-        return view('usermanagement.user_update',compact('users','role'));
+        return view('usermanagement.user_update', compact('users', 'role'));
     }
 
     /** user Update */
@@ -37,8 +37,7 @@ class UserManagementController extends Controller
     {
         DB::beginTransaction();
         try {
-            if (Session::get('role_name') === 'Admin' || Session::get('role_name') === 'Super Admin')
-            {
+            if (Session::get('role_name') === 'Admin' || Session::get('role_name') === 'Super Admin') {
                 $user_id       = $request->user_id;
                 $name          = $request->name;
                 $email         = $request->email;
@@ -48,24 +47,24 @@ class UserManagementController extends Controller
                 $date_of_birth = $request->date_of_birth;
                 $department    = $request->department;
                 $status        = $request->status;
+                $password      = $request->password;
 
                 $image_name = $request->hidden_avatar;
                 $image = $request->file('avatar');
 
-                if($image_name =='photo_defaults.jpg') {
+                if ($image_name == 'photo_defaults.jpg') {
                     if ($image != '') {
                         $image_name = rand() . '.' . $image->getClientOriginalExtension();
                         $image->move(public_path('/images/'), $image_name);
                     }
                 } else {
-                    
-                    if($image != '') {
-                        unlink('images/'.$image_name);
+                    if ($image != '') {
+                        unlink('images/' . $image_name);
                         $image_name = rand() . '.' . $image->getClientOriginalExtension();
                         $image->move(public_path('/images/'), $image_name);
                     }
                 }
-            
+
                 $update = [
                     'user_id'       => $user_id,
                     'name'          => $name,
@@ -79,47 +78,48 @@ class UserManagementController extends Controller
                     'avatar'        => $image_name,
                 ];
 
-                User::where('user_id',$request->user_id)->update($update);
+                if (!empty($password)) {
+                    $update['password'] = bcrypt($password);
+                }
+
+                User::where('user_id', $request->user_id)->update($update);
             } else {
-                Toastr::error('User update fail :)','Error');
+                Toastr::error('User update failed :)', 'Error');
             }
             DB::commit();
-            Toastr::success('User updated successfully :)','Success');
+            Toastr::success('User updated successfully :)', 'Success');
             return redirect()->back();
-
-        } catch(\Exception $e){
+        } catch (\Exception $e) {
             DB::rollback();
-            Toastr::error('User update fail :)','Error');
+            Toastr::error('User update failed :)', 'Error');
             return redirect()->back();
         }
     }
+
 
     /** user delete */
     public function userDelete(Request $request)
     {
         DB::beginTransaction();
         try {
-            if (Session::get('role_name') === 'Super Admin' || Session::get('role_name') === 'Admin')
-            {
-                if ($request->avatar == 'photo_defaults.jpg')
-                {
+            if (Session::get('role_name') === 'Super Admin' || Session::get('role_name') === 'Admin') {
+                if ($request->avatar == 'photo_defaults.jpg') {
                     User::destroy($request->user_id);
                 } else {
                     User::destroy($request->user_id);
-                    unlink('images/'.$request->avatar);
+                    unlink('images/' . $request->avatar);
                 }
             } else {
-                Toastr::error('User deleted fail :)','Error');
+                Toastr::error('User deleted fail :)', 'Error');
             }
 
             DB::commit();
-            Toastr::success('User deleted successfully :)','Success');
+            Toastr::success('User deleted successfully :)', 'Success');
             return redirect()->back();
-    
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             Log::info($e);
             DB::rollback();
-            Toastr::error('User deleted fail :)','Error');
+            Toastr::error('User deleted fail :)', 'Error');
             return redirect()->back();
         }
     }
@@ -133,9 +133,9 @@ class UserManagementController extends Controller
             'new_confirm_password' => ['same:new_password'],
         ]);
 
-        User::find(auth()->user()->id)->update(['password'=> Hash::make($request->new_password)]);
+        User::find(auth()->user()->id)->update(['password' => Hash::make($request->new_password)]);
         DB::commit();
-        Toastr::success('User change successfully :)','Success');
+        Toastr::success('User change successfully :)', 'Success');
         return redirect()->intended('home');
     }
 
@@ -181,7 +181,7 @@ class UserManagementController extends Controller
             ->take($rowPerPage)
             ->get();
         $data_arr = [];
-        
+
         foreach ($records as $key => $record) {
             $modify = '
                 <td class="text-right">
@@ -190,10 +190,10 @@ class UserManagementController extends Controller
                             <i class="fas fa-ellipsis-v ellipse_color"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="'.url('users/add/edit/'.$record->user_id).'">
+                            <a class="dropdown-item" href="' . url('users/add/edit/' . $record->user_id) . '">
                                 <i class="far fa-edit me-2"></i> Edit
                             </a>
-                            <a class="dropdown-item" href="'.url('users/delete/'.$record->id).'">
+                            <a class="dropdown-item" href="' . url('users/delete/' . $record->id) . '">
                             <i class="fas fa-trash-alt m-r-5"></i> Delete
                         </a>
                         </div>
@@ -204,35 +204,35 @@ class UserManagementController extends Controller
                 <td>
                     <h2 class="table-avatar">
                         <a class="avatar-sm me-2">
-                            <img class="avatar-img rounded-circle avatar" data-avatar='.$record->avatar.' src="/images/'.$record->avatar.'"alt="'.$record->name.'">
+                            <img class="avatar-img rounded-circle avatar" data-avatar=' . $record->avatar . ' src="/images/' . $record->avatar . '"alt="' . $record->name . '">
                         </a>
                     </h2>
                 </td>
             ';
             if ($record->status === 'Active') {
-                $status = '<td><span class="badge bg-success-dark">'.$record->status.'</span></td>';
+                $status = '<td><span class="badge bg-success-dark">' . $record->status . '</span></td>';
             } elseif ($record->status === 'Disable') {
-                $status = '<td><span class="badge bg-danger-dark">'.$record->status.'</span></td>';
-            }  elseif ($record->status === 'Inactive') {
-                $status = '<td><span class="badge badge-warning">'.$record->status.'</span></td>';
+                $status = '<td><span class="badge bg-danger-dark">' . $record->status . '</span></td>';
+            } elseif ($record->status === 'Inactive') {
+                $status = '<td><span class="badge badge-warning">' . $record->status . '</span></td>';
             } else {
-                $status = '<td><span class="badge badge-secondary">'.$record->status.'</span></td>';
+                $status = '<td><span class="badge badge-secondary">' . $record->status . '</span></td>';
             }
 
             $modify = '
                 <td class="text-end"> 
                     <div class="actions">
-                        <a href="'.url('view/user/edit/'.$record->user_id).'" class="btn btn-sm bg-danger-light">
+                        <a href="' . url('view/user/edit/' . $record->user_id) . '" class="btn btn-sm bg-danger-light">
                             <i class="far fa-edit me-2"></i>
                         </a>
-                        <a class="btn btn-sm bg-danger-light delete user_id" data-bs-toggle="modal" data-user_id="'.$record->user_id.'" data-bs-target="#delete">
+                        <a class="btn btn-sm bg-danger-light delete user_id" data-bs-toggle="modal" data-user_id="' . $record->user_id . '" data-bs-target="#delete">
                         <i class="fe fe-trash-2"></i>
                         </a>
                     </div>
                 </td>
             ';
-           
-            $data_arr [] = [
+
+            $data_arr[] = [
                 "user_id"      => $record->user_id,
                 "avatar"       => $avatar,
                 "name"         => $record->name,
@@ -240,8 +240,8 @@ class UserManagementController extends Controller
                 "position"     => $record->position,
                 "phone_number" => $record->phone_number,
                 "join_date"    => $record->join_date,
-                "status"       => $status, 
-                "modify"       => $modify, 
+                "status"       => $status,
+                "modify"       => $modify,
             ];
         }
 

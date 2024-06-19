@@ -23,9 +23,7 @@
                 <select class="form-control select @error('role_name') is-invalid @enderror" name="role_name" id="role_name" placeholder="Select role type">
                     <option selected disabled>Select Role Type</option>
                     @foreach ($role as $name)
-                        @if ($name->role_type === 'Student')
-                            <option value="{{ $name->role_type }}">{{ $name->role_type }}</option>
-                        @endif
+                    <option value="{{ $name->role_type }}">{{ $name->role_type }}</option>
                     @endforeach
                 </select>
                 @error('role_name')
@@ -34,7 +32,6 @@
                 </span>
                 @enderror
             </div>
-            
             <div class="form-group">
                 <label>Password <span class="login-danger">*</span></label>
                 <input type="password" class="form-control pass-input  @error('password') is-invalid @enderror" name="password" placeholder="Enter your password">
