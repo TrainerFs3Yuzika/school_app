@@ -128,15 +128,17 @@
                                 <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms">
                                         <label>Agama <span class="login-danger">*</span></label>
-                                        <select class="form-control select @error('religion') is-invalid @enderror"
-                                            name="religion">
+                                        <select class="form-control select @error('religion') is-invalid @enderror" name="religion">
                                             <option selected disabled>Silakan Pilih Agama</option>
-                                            <option value="Hindu" {{ old('religion') == 'Hindu' ? "selected" :""}}>Hindu
-                                            </option>
-                                            <option value="Kristen" {{ old('religion') == 'Kristen' ? "selected" :""}}>
-                                                Kristen</option>
-                                            <option value="Lainnya" {{ old('religion') == 'Lainnya' ? "selected" :""}}>
-                                                Lainnya</option>
+                                            <option value="Hindu" {{ old('religion') == 'Hindu' ? 'selected' : '' }}>Hindu</option>
+                                            <option value="Kristen" {{ old('religion') == 'Kristen' ? 'selected' : '' }}>Kristen</option>
+                                            <option value="Islam" {{ old('religion') == 'Islam' ? 'selected' : '' }}>Islam</option>
+                                            <option value="Buddha" {{ old('religion') == 'Buddha' ? 'selected' : '' }}>Buddha</option>
+                                            <option value="Konghucu" {{ old('religion') == 'Konghucu' ? 'selected' : '' }}>Konghucu</option>
+                                            <option value="Katolik" {{ old('religion') == 'Katolik' ? 'selected' : '' }}>Katolik</option>
+                                            <option value="Sikh" {{ old('religion') == 'Sikh' ? 'selected' : '' }}>Sikh</option>
+                                            <option value="Yahudi" {{ old('religion') == 'Yahudi' ? 'selected' : '' }}>Yahudi</option>
+                                            <option value="Lainnya" {{ old('religion') == 'Lainnya' ? 'selected' : '' }}>Lainnya</option>
                                         </select>
                                         @error('religion')
                                         <span class="invalid-feedback" role="alert">
@@ -145,6 +147,7 @@
                                         @enderror
                                     </div>
                                 </div>
+                                
                                 <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms">
                                         <label>E-Mail <span class="login-danger">*</span></label>
