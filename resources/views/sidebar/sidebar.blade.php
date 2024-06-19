@@ -125,15 +125,27 @@
                 
                 <li class="submenu">
                     @if (Session::get('role_name') === 'Admin' || Session::get('role_name') === 'Super Admin' || Session::get('role_name') === 'Teachers')
-                    <a href="#"><i class="fas fa-chart-line"></i> <span>Nilai</span> <span class="menu-arrow"></span></a>
+                    <a href="#" class="{{ request()->is('scores*') ? 'active' : '' }}">
+                        <i class="fas fa-chart-line"></i> 
+                        <span>Nilai</span> 
+                        <span class="menu-arrow"></span>
+                    </a>
                     @endif
                     <ul>
-                        <li><a href="{{ route('scores.index') }}">Daftar Nilai</a></li>
-                        @if (auth()->user()->role_name === 'Super Admin' || Session::get('role_name') === 'Teachers')
-                        <li><a href="{{ route('scores.create') }}">Tambah Nilai</a></li>
-                        @endif
-                    </ul>
-                </li>                
+                        <li>
+                            <a href="{{ route('scores.index') }}" class="{{ request()->is('scores') ? 'active' : '' }}">
+                                Daftar Nilai
+                            </a>
+                </li>
+        @if (auth()->user()->role_name === 'Super Admin' || Session::get('role_name') === 'Teachers')
+        <li>
+            <a href="{{ route('scores.create') }}" class="{{ request()->is('scores/create') ? 'active' : '' }}">
+                Tambah Nilai
+            </a>
+        </li>
+        @endif
+    </ul>
+</li>
                 <li class="submenu">
                 @if (auth()->user()->role_name === 'Super Admin')
                     <a href="#"><i class="fas fa-money-bill-alt"></i> <span>Payments</span> <span class="menu-arrow"></span></a>

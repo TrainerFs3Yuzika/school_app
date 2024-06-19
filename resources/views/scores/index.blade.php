@@ -1,5 +1,6 @@
 @extends('layouts.master')
 @section('content')
+<title>Daftar Nilai Siswa</title>
     <div class="page-wrapper">
         <div class="content container-fluid">
             <div class="page-header">
