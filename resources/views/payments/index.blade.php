@@ -37,10 +37,12 @@
                                             <a href="#" class="btn btn-outline-gray me-2">
                                                 <i class="fa fa-th" aria-hidden="true"></i>
                                             </a>
-                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                                data-bs-target="#paymentModal">
+                                            @if (auth()->user()->role_name === 'Admin')
+                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#paymentModal">
                                                 Pembayaran <i class="fas fa-plus"></i>
                                             </button>
+                                        @endif
+                                        
                                         </div>
                                     </div>
                                 </div>
@@ -60,7 +62,10 @@
                                             <th>Bukti Pembayaran</th>
                                             <th>Waktu Pembayaran</th>
                                             <th>update_at Pembayaran</th>
+                                            @if (auth()->user()->role_name === 'Admin')
                                             <th>Action</th>
+                                        @endif
+                                        
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -96,21 +101,24 @@
                                                 <td>{{ $payment->updated_at }}</td>
                                                 <td>
                                                     <div class="actions d-flex justify-content-start">
-                                                        <!-- Tombol Edit -->
-                                                        <a href="{{ route('payments.edit', $payment->id) }}" class="btn btn-sm me-2">
-                                                            <i class="far fa-edit me-1"></i>
-                                                        </a>
-
-                                                        <!-- Form untuk menghapus -->
-                                                        <form action="{{ route('payments.destroy', $payment->id) }}" method="POST" style="display: inline">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit" class="btn btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus pembayaran ini?')">
-                                                                <i class="far fa-trash-alt me-1"></i>
-                                                            </button>
-                                                        </form>
+                                                        @if (auth()->user()->role_name === 'Admin')
+                                                            <!-- Tombol Edit -->
+                                                            <a href="{{ route('payments.edit', $payment->id) }}" class="btn btn-sm me-2">
+                                                                <i class="far fa-edit me-1"></i>
+                                                            </a>
+                                                
+                                                            <!-- Form untuk menghapus -->
+                                                            <form action="{{ route('payments.destroy', $payment->id) }}" method="POST" style="display: inline">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button type="submit" class="btn btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus pembayaran ini?')">
+                                                                    <i class="far fa-trash-alt me-1"></i>
+                                                                </button>
+                                                            </form>
+                                                        @endif
                                                     </div>
                                                 </td>
+                                                
 
                                             </tr>
                                         @endforeach

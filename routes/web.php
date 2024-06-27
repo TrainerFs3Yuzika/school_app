@@ -114,8 +114,10 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Route::post('student/delete', 'studentDelete')->name('student/delete'); // delete record student
         Route::get('student/profile/{id}', 'studentProfile')->middleware('auth'); // profile student
         Route::get('/studentlist', [StudentController::class, 'studentlist'])->name('studentlist');
-
     });
+
+    // ekport pdf
+    route::get('export-pdf', [StudentController::class, 'exportPdf']);
 
     // ------------------------ teacher -------------------------------//
     Route::controller(TeacherController::class)->group(function () {
@@ -128,7 +130,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Route::post('teacher/delete', 'teacherDelete')->name('teacher/delete'); // delete record teacher
         Route::get('/teacher-list', 'teacherList')->name('teacher.list'); // teacher list with search
     });
-    
+
 
     // ----------------------- subject -----------------------------//
     Route::controller(SubjectController::class)->group(function () {
@@ -187,6 +189,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     Route::get('/books/{book}/edit', [BookController::class, 'edit'])->name('books.edit');
     Route::put('/books/{book}', [BookController::class, 'update'])->name('books.update');
     Route::delete('/books/{book}', [BookController::class, 'destroy'])->name('books.destroy');
+    route::get('export-pdf', [BookController::class, 'exportPdf']);
 
     // Peminjaman
 
@@ -206,6 +209,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     Route::get('/scores/{id}/edit', [ScoreController::class, 'edit'])->name('scores.edit');
     Route::put('/scores/{id}', [ScoreController::class, 'update'])->name('scores.update');
     Route::delete('/scores/{id}', [ScoreController::class, 'destroy'])->name('scores.destroy');
+    Route::get('scores/{id}/export/pdf', [ScoreController::class, 'exportPdf'])->name('scores.export.pdf');
+
 
     // landing_page
     Route::get('/landing_page', [landing_pageConntroller::class, 'index']);

@@ -26,11 +26,7 @@
                         <div class="col ms-md-n2 profile-user-info">
                             <h4 class="user-name mb-0">{{ Session::get('name') }}</h4>
                             <h6 class="text-muted">{{ Session::get('position') }}</h6>
-                            <div class="user-Location"><i class="fas fa-map-marker-alt"></i> Combodai Phnom Penh</div>
-                            <div class="about-text">Khmer 009</div>
-                        </div>
-                        <div class="col-auto profile-btn">
-                            <a href="" class="btn btn-primary">Edit</a>
+                        
                         </div>
                     </div>
                 </div>
@@ -76,10 +72,6 @@
                                             <p class="col-sm-3 text-muted text-sm-end mb-0 mb-sm-3">Nomor Telepon</p>
                                             <p class="col-sm-9">{{ Session::get('phone_number') }}</p>
                                         </div>
-                                        <div class="row">
-                                            <p class="col-sm-3 text-muted text-sm-end mb-0">Alamat</p>
-                                            <p class="col-sm-9 mb-0">Phnome Phenh</p>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -95,24 +87,6 @@
                                     </div>
                                 </div>
 
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h5 class="card-title d-flex justify-content-between">
-                                            <span>Kemampuan </span>
-                                            <a class="edit-link" href="#"><i class="far fa-edit me-1"></i>Edit</a>
-                                        </h5>
-                                        <div class="skill-tags">
-                                            <span>Html5</span>
-                                            <span>CSS3</span>
-                                            <span>WordPress</span>
-                                            <span>Javascript</span>
-                                            <span>Android</span>
-                                            <span>iOS</span>
-                                            <span>Angular</span>
-                                            <span>PHP</span>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -127,17 +101,30 @@
                                             @csrf
                                             <div class="form-group">
                                                 <label>Kata Sandi Lama</label>
-                                                <input type="password" class="form-control @error('current_password') is-invalid @enderror" name="current_password" value="{{ old('current_password') }}">
+                                                <div class="input-group">
+                                                    <input type="password" class="form-control @error('current_password') is-invalid @enderror" name="current_password" value="{{ old('current_password') }}">
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text">
+                                                            <input type="checkbox" id="show_current_password"> Show
+                                                        </span>
+                                                    </div>
+                                                </div>
                                                 @error('current_password')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
                                                 @enderror
                                             </div>
-                                           
                                             <div class="form-group">
                                                 <label>Kata Sandi Baru</label>
-                                                <input type="password" class="form-control @error('new_password') is-invalid @enderror" name="new_password" value="{{ old('new_password') }}">
+                                                <div class="input-group">
+                                                    <input type="password" class="form-control @error('new_password') is-invalid @enderror" name="new_password" value="{{ old('new_password') }}">
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text">
+                                                            <input type="checkbox" id="show_new_password"> Show
+                                                        </span>
+                                                    </div>
+                                                </div>
                                                 @error('new_password')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -146,7 +133,14 @@
                                             </div>
                                             <div class="form-group">
                                                 <label>Konfirmasi Kata Sandi</label>
-                                                <input type="password" class="form-control @error('new_confirm_password') is-invalid @enderror" name="new_confirm_password" value="{{ old('new_confirm_password') }}">
+                                                <div class="input-group">
+                                                    <input type="password" class="form-control @error('new_confirm_password') is-invalid @enderror" name="new_confirm_password" value="{{ old('new_confirm_password') }}">
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text">
+                                                            <input type="checkbox" id="show_confirm_password"> Show
+                                                        </span>
+                                                    </div>
+                                                </div>
                                                 @error('new_confirm_password')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -160,6 +154,31 @@
                             </div>
                         </div>
                     </div>
+                    
+                    <script>
+                        // JavaScript untuk toggle show/hide password
+                        document.getElementById('show_current_password').addEventListener('change', function() {
+                            togglePasswordVisibility('current_password');
+                        });
+                    
+                        document.getElementById('show_new_password').addEventListener('change', function() {
+                            togglePasswordVisibility('new_password');
+                        });
+                    
+                        document.getElementById('show_confirm_password').addEventListener('change', function() {
+                            togglePasswordVisibility('new_confirm_password');
+                        });
+                    
+                        function togglePasswordVisibility(inputId) {
+                            const passwordInput = document.getElementsByName(inputId)[0];
+                            if (passwordInput.type === 'password') {
+                                passwordInput.type = 'text';
+                            } else {
+                                passwordInput.type = 'password';
+                            }
+                        }
+                    </script>
+                    
 
                 </div>
             </div>

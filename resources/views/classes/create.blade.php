@@ -37,10 +37,17 @@
                                 </h5>
                                 <div class="col-md-6">
                                     <div class="form-group local-forms">
-                                        <label for="class_name">Nama Kelas:</label>
-                                        <input type="text" id="class_name" name="class_name" class="form-control"
-                                            placeholder="Masukan Nama Kelas" required>
+                                        <label for="class_name">Nama Jurusan:</label>
+                                        <select id="class_name" name="class_name" class="form-control" required>
+                                            <option value="" disabled selected>Pilih Nama Jurusan</option>
+                                            <option value="ipa">IPA</option>
+                                            <option value="ips">IPS</option>
+                                            <option value="bahasa">Bahasa</option>
+                                            <option value="agama">Agama</option>
+                                            <option value="kejuruan">Kejuruan</option>
+                                        </select>
                                     </div>
+                                    
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group local-forms">

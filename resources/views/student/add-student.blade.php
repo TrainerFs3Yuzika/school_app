@@ -36,10 +36,13 @@
                                 <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms">
                                         <label>Nama Depan <span class="login-danger">*</span></label>
-                                        <input type="text"
-                                            class="form-control @error('first_name') is-invalid @enderror"
-                                            name="first_name" placeholder="Masukkan Nama Depan"
-                                            value="{{ old('first_name') }}">
+                                        <input type="text" id="first-name-search" class="form-control" placeholder="Search Nama Depan">
+                                        <select name="first_name" id="first-name-select" class="form-control @error('first_name') is-invalid @enderror">
+                                            <option value="">Pilih Nama Depan</option>
+                                            @foreach ($users as $user)
+                                                <option value="{{ $user->name }}" @if (old('first_name') == $user->name) selected @endif>{{ $user->name }}</option>
+                                            @endforeach
+                                        </select>
                                         @error('first_name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -47,12 +50,31 @@
                                         @enderror
                                     </div>
                                 </div>
+                                <script>
+                                    document.getElementById('first-name-search').addEventListener('input', function() {
+                                        var searchValue = this.value.toLowerCase();
+                                        var firstNameSelect = document.getElementById('first-name-select');
+                                        var options = firstNameSelect.getElementsByTagName('option');
+                                
+                                        for (var i = 1; i < options.length; i++) { // start from 1 to skip the default option
+                                            var optionText = options[i].text.toLowerCase();
+                                            if (optionText.includes(searchValue)) {
+                                                options[i].style.display = '';
+                                            } else {
+                                                options[i].style.display = 'none';
+                                            }
+                                        }
+                                    });
+                                </script>
                                 <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms">
                                         <label>Nama Belakang <span class="login-danger">*</span></label>
-                                        <input type="text" class="form-control @error('last_name') is-invalid @enderror"
-                                            name="last_name" placeholder="Masukkan Nama Belakang"
-                                            value="{{ old('last_name') }}">
+                                        <select name="last_name" class="form-control @error('last_name') is-invalid @enderror">
+                                            <option value="">Pilih Nama Belakang</option>
+                                            @foreach ($users as $user)
+                                                <option value="{{ $user->name }}" @if (old('last_name') == $user->name) selected @endif>{{ $user->name }}</option>
+                                            @endforeach
+                                        </select>
                                         @error('last_name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -60,6 +82,8 @@
                                         @enderror
                                     </div>
                                 </div>
+                                
+                                
                                 <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms">
                                         <label>Jenis Kelamin <span class="login-danger">*</span></label>
@@ -151,15 +175,36 @@
                                 <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms">
                                         <label>E-Mail <span class="login-danger">*</span></label>
-                                        <input class="form-control @error('email') is-invalid @enderror" type="text"
-                                            name="email" placeholder="Masukkan Alamat Email" value="{{ old('email') }}">
+                                        <input type="text" id="email-search" class="form-control" placeholder="Search E-Mail">
+                                        <select name="email" id="email-select" class="form-control @error('email') is-invalid @enderror">
+                                            <option value="">Pilih E-Mail</option>
+                                            @foreach ($users as $user)
+                                                <option value="{{ $user->email }}" @if (old('email') == $user->email) selected @endif>{{ $user->email }}</option>
+                                            @endforeach
+                                        </select>
                                         @error('email')
-                                        <span the="invalid-feedback" role="alert">
+                                        <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                         @enderror
                                     </div>
                                 </div>
+                                <script>
+                                    document.getElementById('email-search').addEventListener('input', function() {
+                                        var searchValue = this.value.toLowerCase();
+                                        var emailSelect = document.getElementById('email-select');
+                                        var options = emailSelect.getElementsByTagName('option');
+                                
+                                        for (var i = 1; i < options.length; i++) { // start from 1 to skip the default option
+                                            var optionText = options[i].text.toLowerCase();
+                                            if (optionText.includes(searchValue)) {
+                                                options[i].style.display = '';
+                                            } else {
+                                                options[i].style.display = 'none';
+                                            }
+                                        }
+                                    });
+                                </script>
                                 <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms">
                                         <label>Kelas <span class="login-danger">*</span></label>

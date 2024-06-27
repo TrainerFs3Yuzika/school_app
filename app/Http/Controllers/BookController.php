@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Carbon\Carbon;
 use App\Models\Book;
+use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class BookController extends Controller
 {
@@ -101,5 +103,11 @@ class BookController extends Controller
         $book->delete();
 
         return redirect()->route('books.index')->with('success', 'Buku berhasil dihapus!');
+    }
+    public function exportPdf()
+    {
+        $books = Book::all();
+        $pdf = Pdf::loadView('pdf.export-books', compact('books'));
+        return $pdf->download('export-book-' . Carbon::now()->timestamp . '.pdf');
     }
 }

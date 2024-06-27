@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Carbon\Carbon;
 use App\Models\Score;
-use App\Models\Teacher;
 use App\Models\Student;
 use App\Models\Subject;
+use App\Models\Teacher;
+use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class ScoreController extends Controller
 {
@@ -82,5 +84,11 @@ class ScoreController extends Controller
         $score->delete();
 
         return redirect()->route('scores.index')->with('success', 'Nilai siswa berhasil dihapus');
+    }
+    public function exportPdf($id)
+    {
+        $score = Score::with(['teacher', 'student', 'subject'])->findOrFail($id);
+        $pdf = Pdf::loadView('pdf.export-scores', compact('score'));
+        return $pdf->download('export-score-' . $score->id . '.pdf');
     }
 }

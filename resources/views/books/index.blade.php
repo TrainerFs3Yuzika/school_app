@@ -36,6 +36,10 @@
                                     @if (auth()->user()->role_name === 'Super Admin')
                                     <a href="{{ route('books.create') }}" class="btn btn-primary">Tambah Buku <i
                                             class="fas fa-plus"></i></a>
+                                    @endif                                   
+                                     @if (auth()->user()->role_name === 'Super Admin')
+                                     <a href="/export-pdf" class="btn btn-primary">Export PDF <i class="fas fa-file-pdf"></i></a>
+
                                     @endif
                                 </div>
                             </div>

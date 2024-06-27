@@ -94,8 +94,13 @@
                                                             data-id="{{ $score->id }}">
                                                             <i class="far fa-trash-alt py-1"></i>
                                                         </button>
+                                                        <a href="{{ route('scores.export.pdf', ['id' => $score->id]) }}"
+                                                            class="btn btn-sm bg-danger-light me-2">
+                                                            <i class="far fa-file-pdf me-2"></i>
+                                                        </a>
                                                     </div>
                                                 </td>
+                                                
                                                 @endif
                                             </tr>
                                         @endforeach
