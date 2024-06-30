@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
-use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\Payment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -29,7 +27,6 @@ class PaymentController extends Controller
         return view('payments.index', compact('payments', 'students'));
     }
 
-
     /**
      * Show the form for creating a new resource.
      *
@@ -51,26 +48,55 @@ class PaymentController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'student_id' => 'required',
-            'payment_method' => 'required',
-            'payment_type' => 'required',
-            'payment_instructions' => 'required',
-            'payment_status' => 'nullable',
+            'student_id' => 'required|exists:students,id',
+            'payment_method' => 'required|string',
+            'payment_type' => 'required|string',
+            'payment_instructions' => 'required|string',
+            'payment_status' => 'nullable|string',
             'proof_of_payment' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-
         ]);
+
+        $student = Student::findOrFail($request->student_id);
+
+        // Set your Merchant Server Key
+        \Midtrans\Config::$serverKey = config('midtrans.server_key');
+        // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+        \Midtrans\Config::$isProduction = false;
+        // Set sanitization on (default)
+        \Midtrans\Config::$isSanitized = true;
+        // Set 3DS transaction for credit card to true
+        \Midtrans\Config::$is3ds = true;
+
+        $params = [
+            'transaction_details' => [
+                'order_id' => uniqid(),
+                'gross_amount' => $request->gross_amount, // Ensure you have a gross_amount field in your form
+            ],
+            'customer_details' => [
+                'first_name' => $student->first_name,
+                'last_name' => $student->last_name,
+                'email' => $student->email, // Make sure the email is available in the Student model
+                'phone' => $student->phone, // Make sure the phone is available in the Student model
+            ],
+        ];
+
+        $snapToken = \Midtrans\Snap::getSnapToken($params);
 
         $data = $request->all();
 
         if ($request->hasFile('proof_of_payment')) {
-            $data['proof_of_payment'] = $request->file('proof_of_payment')->store('proof_of_payments', 'public');
+            $fileName = 'proof_of_payment_' . time() . '.' . $request->proof_of_payment->extension();
+            $data['proof_of_payment'] = $request->file('proof_of_payment')->storeAs('proof_of_payments', $fileName, 'public');
         }
+
+        $data['snap_token'] = $snapToken;
 
         Payment::create($data);
 
         return redirect()->route('payments.index')
             ->with('success', 'Payment created successfully.');
     }
+
     /**
      * Display the specified resource.
      *
@@ -113,8 +139,6 @@ class PaymentController extends Controller
         return view('payments.edit', compact('payment', 'payment_types', 'payment_statuses', 'students'));
     }
 
-
-
     /**
      * Update the specified resource in storage.
      *
@@ -125,13 +149,12 @@ class PaymentController extends Controller
     public function update(Request $request, Payment $payment)
     {
         $request->validate([
-            'student_id' => 'required',
-            'payment_method' => 'required',
-            'payment_type' => 'required',
-            'payment_instructions' => 'required',
-            'payment_status' => 'nullable',
+            'student_id' => 'required|exists:students,id',
+            'payment_method' => 'required|string',
+            'payment_type' => 'required|string',
+            'payment_instructions' => 'required|string',
+            'payment_status' => 'nullable|string',
             'proof_of_payment' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-
         ]);
 
         $data = $request->all();
@@ -142,7 +165,8 @@ class PaymentController extends Controller
                 Storage::disk('public')->delete($payment->proof_of_payment);
             }
 
-            $data['proof_of_payment'] = $request->file('proof_of_payment')->store('proof_of_payments', 'public');
+            $fileName = 'proof_of_payment_' . time() . '.' . $request->proof_of_payment->extension();
+            $data['proof_of_payment'] = $request->file('proof_of_payment')->storeAs('proof_of_payments', $fileName, 'public');
         }
 
         $payment->update($data);
@@ -168,19 +192,5 @@ class PaymentController extends Controller
 
         return redirect()->route('payments.index')
             ->with('success', 'Payment deleted successfully.');
-    }
-    public function exportPDF($id)
-    {
-        // Get the specific payment by ID and join with students table
-        $payment = Payment::join('students', 'payments.student_id', '=', 'students.id')
-            ->select('payments.*', 'students.first_name', 'students.last_name')
-            ->where('payments.id', $id)
-            ->firstOrFail();
-
-        // Load the view for PDF
-        $pdf = Pdf::loadView('pdf.export-payment', compact('payment'));
-
-        // Download the PDF with a timestamped filename
-        return $pdf->download('payment_' . $id . '_' . Carbon::now()->timestamp . '.pdf');
     }
 }
