@@ -35,20 +35,9 @@
                                 </div>
                                 <div class="col-md-6 mt-3">
                                     <div class="form-group local-forms">
-                                        <label for="teacher_id" class="form-label">Nama Guru <span
-                                                class="login-danger">*</span></label>
-                                        <select name="teacher_id" id="teacher_id"
-                                            class="form-control select  @error('teacher_id') is-invalid @enderror">
-                                            <option selected disabled>Pilih Nama Guru</option>
-                                            @foreach ($teachers as $id => $name)
-                                            <option value="{{ $id }}">{{ $name }}</option>
-                                            @endforeach
-                                        </select>
-                                        @error('teacher_id')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
+                                        <label for="teacher_name" class="form-label">Nama Guru</label>
+                                        <input type="text" id="teacher_name" class="form-control" value="{{ Auth::user()->name }}" readonly>
+                                        <input type="hidden" name="teacher_id" value="{{ Auth::id() }}">
                                     </div>
                                     <div class="form-group local-forms">
                                         <label for="student_id" class="form-label">Nama Siswa <span
@@ -110,6 +99,22 @@
         </div>
     </div>
 </div>
+<script>
+    document.getElementById('createScoreForm').addEventListener('submit', function(event) {
+        const scoreInput = document.getElementById('score');
+        const maxScore = 100; // Ganti dengan nilai maksimum yang sesuai
+    
+        if (parseInt(scoreInput.value) > maxScore) {
+            event.preventDefault();
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Nilai terlalu besar! Maksimal nilai adalah ' + maxScore + '.',
+            });
+        }
+    });
+    </script>
+    
 
 <script>
 // Validasi di sisi klien menggunakan HTML5

@@ -80,7 +80,7 @@
                                         <label for="class">Kelas:</label>
                                         <select id="class" name="class" class="form-control select" required>
                                             <option value="">Pilih Kelas</option>
-                                            @foreach ($subjects as $subject)
+                                            @foreach ($subjects->unique('class') as $subject)
                                             <option value="{{ $subject->class }}">{{ $subject->class }}</option>
                                             @endforeach
                                         </select>
@@ -89,7 +89,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                            </div>
+                                
 
                             {{-- Third Row --}}
                             <div class="row">

@@ -1,10 +1,10 @@
-<!-- resources/views/peminjaman/create.blade.php -->
 @extends('layouts.master')
+
+@section('title', 'Tambah Peminjaman')
+
 @section('content')
-<title>Tambah Peminjaman</title>
 <div class="page-wrapper">
     <div class="content container-fluid">
-
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col-sm-12">
@@ -18,58 +18,73 @@
                 </div>
             </div>
         </div>
+
         {{-- pesan --}}
         {!! Toastr::message() !!}
+
         <div class="row">
             <div class="col-sm-12">
                 <div class="card comman-shadow">
                     <div class="card-body">
-                        <form action="{{ route('peminjaman.store') }}" method="POST">
+                        <form id="peminjamanForm" action="{{ route('peminjaman.store') }}" method="POST">
                             @csrf
                             <div class="row">
-                                <h5 class="form-title student-info">Informasi Peminjaman
-                                    <span>
-                                        <a href="javascript:;"><i class="feather-more-vertical"></i></a>
-                                    </span>
-                                </h5>
                                 <div class="col-md-6">
-                                    <div class="form-group local-forms">
-                                        <label for="book_id">Judul Buku <span class="login-danger">*</span></label>
-                                        <select name="book_id" class="form-control select" required>
-                                            <option selected disabled>Pilih Nama Buku</option>
+                                    <h5 class="form-title student-info">Informasi Peminjaman</h5>
+                                    <div class="form-group">
+                                        <label for="book_id">Judul Buku <span class="text-danger">*</span></label>
+                                        <select id="book_id" name="book_id" class="form-control select2" required>
                                             @foreach ($books as $book)
-                                            <option value="{{ $book->id }}">{{ $book->judul }}</option>
+                                                <option value="{{ $book->id }}" data-stok="{{ $book->stok }}">{{ $book->judul }}</option>
                                             @endforeach
                                         </select>
                                     </div>
-                                    <div class="form-group local-forms">
-                                        <label for="nama_peminjam">Nama Peminjam <span
-                                                class="login-danger">*</span></label>
-                                        <input type="text" name="nama_peminjam" class="form-control"
-                                            placeholder="Msukkan Nama Peminjaman" required>
+                                    <div class="form-group">
+                                        <label for="user_id">Peminjam</label>
+                                        <select name="user_id" id="user_id" class="form-control">
+                                            @foreach ($users as $user)
+                                                <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
-                                    <div class="form-group local-forms">
-                                        <label for="tanggal_pinjam">Tanggal Peminjaman <span
-                                                class="login-danger">*</span></label>
-                                        <input type="date" name="tanggal_pinjam" class="form-control" required>
+                                    <div class="form-group">
+                                        <label for="tanggal_pinjam">Tanggal Peminjaman <span class="text-danger">*</span></label>
+                                        <input type="date" name="tanggal_pinjam" class="form-control @error('tanggal_pinjam') is-invalid @enderror" value="{{ old('tanggal_pinjam') }}" required>
+                                        @error('tanggal_pinjam')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                 </div>
+                                <br>
                                 <div class="col-md-6">
-                                    <div class="form-group local-forms">
-                                        <label for="tanggal_kembali">Tanggal Pengembalian <span
-                                                class="login-danger">*</span></label>
-                                        <input type="date" name="tanggal_kembali" class="form-control" required>
+                                    <div class="form-group">
+                                        <label for="tanggal_kembali">Tanggal Pengembalian <span class="text-danger">*</span></label>
+                                        <input type="date" name="tanggal_kembali" class="form-control @error('tanggal_kembali') is-invalid @enderror" value="{{ old('tanggal_kembali') }}" required>
+                                        @error('tanggal_kembali')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
-
-                                    <div class="form-group local-forms">
-                                        <label for="jumlah_buku">Jumlah Buku <span class="login-danger">*</span></label>
-                                        <input type="number" name="jumlah_buku" class="form-control" min="1"
-                                            placeholder="Masukkan Jumlah Buku" required>
+                                    <div class="form-group">
+                                        <label for="jumlah_buku">Jumlah Buku <span class="text-danger">*</span></label>
+                                        <input type="number" id="jumlah_buku" name="jumlah_buku" class="form-control @error('jumlah_buku') is-invalid @enderror" min="1" value="{{ old('jumlah_buku') }}" required>
+                                        @error('jumlah_buku')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary">Simpan</button>
-                            <button type="reset" class="btn btn-warning ms-2">Reset</button>
+                            <div class="row">
+                                <div class="col-md-12 text-right">
+                                    <button type="submit" class="btn btn-primary">Simpan</button>
+                                    <button type="reset" class="btn btn-warning ms-2">Reset</button>
+                                </div>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -77,4 +92,28 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('script')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelector('form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                Swal.fire({
+                    title: 'Konfirmasi',
+                    text: 'Apakah Anda yakin ingin mengunggah tugas ini?',
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonText: 'Ya, Unggah',
+                    cancelButtonText: 'Tidak',
+                    reverseButtons: true
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        this.submit();
+                    }
+                });
+            });
+        });
+    </script>
 @endsection

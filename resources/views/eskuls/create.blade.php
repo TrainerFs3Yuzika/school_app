@@ -28,17 +28,6 @@
                                 </h5>
                                 <div class="col-md-6">
                                     <div class="form-group local-forms">
-                                        <label for="student_id" class="form-label">Nama Siswa <span
-                                                class="login-danger">*</span></label>
-                                        <select name="student_id" id="student_id" class="form-control select" required>
-                                            <option value="" selected disabled>Pilih Siswa</option>
-                                            @foreach ($students as $student)
-                                            <option value="{{ $student->id }}">{{ $student->first_name }}
-                                                {{ $student->last_name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    <div class="form-group local-forms">
                                         <label for="nama_eskul" class="form-label">Nama Ekstrakurikuler <span
                                                 class="login-danger">*</span></label>
                                         <input type="text" name="nama_eskul" id="nama_eskul" class="form-control"
@@ -74,3 +63,25 @@
     </div>
 </div>
 @endsection
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            Swal.fire({
+                title: 'Konfirmasi',
+                text: 'Apakah Anda yakin?',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonText: 'Ya, Unggah',
+                cancelButtonText: 'Tidak',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.submit();
+                }
+            });
+        });
+    });
+</script>

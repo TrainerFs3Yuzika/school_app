@@ -46,11 +46,20 @@
                                         </select>
                                     </div>
                                     <div class="form-group local-forms">
-                                        <label for="nama_peminjam">Nama Peminjam <span
-                                                class="login-danger">*</span></label>
-                                        <input type="text" name="nama_peminjam" class="form-control"
-                                            value="{{ $peminjaman->nama_peminjam }}" required>
+                                        <label>Nama Peminjam <span class="login-danger">*</span></label>
+                                        <select name="nama_peminjam" id="nama-peminjam-select" class="form-control @error('nama_peminjam') is-invalid @enderror">
+                                            <option value="">Pilih Nama Peminjam</option>
+                                            @foreach ($users as $user)
+                                                <option value="{{ $user->name }}" @if ($peminjaman->nama_peminjam == $user->name) selected @endif>{{ $user->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('nama_peminjam')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
+                                    
                                     <div class="form-group local-forms">
                                         <label for="tanggal_pinjam">Tanggal Peminjaman <span
                                                 class="login-danger">*</span></label>
@@ -104,81 +113,24 @@
 </div>
 @endsection
 
-
-{{-- @extends('layouts.master')
-
-@section('content')
-    <div class="page-wrapper">
-        <div class="content container-fluid">
-            <div class="page-header">
-                <div class="row align-items-center">
-                    <div class="col-sm-12">
-                        <div class="page-sub-header">
-                            <h3 class="page-title">Edit Peminjaman Buku</h3>
-                            <ul class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{ route('peminjaman.index') }}">Peminjaman</a>
-</li>
-<li class="breadcrumb-item active">Edit Peminjaman</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<form action="{{ route('peminjaman.update', $peminjaman->id) }}" method="POST">
-    @csrf
-    @method('PUT')
-    <div class="row">
-        <div class="col-md-6">
-            <div class="form-group local-forms">
-                <label for="book_id">Judul Buku:</label>
-                <select name="book_id" class="form-control" required>
-                    @foreach ($books as $book)
-                    <option value="{{ $book->id }}" {{ $book->id == $peminjaman->book_id ? 'selected' : '' }}>
-                        {{ $book->judul }}
-                    </option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="form-group local-forms">
-                <label for="nama_peminjam">Nama Peminjam:</label>
-                <input type="text" name="nama_peminjam" class="form-control" value="{{ $peminjaman->nama_peminjam }}"
-                    required>
-            </div>
-            <div class="form-group local-forms">
-                <label for="tanggal_pinjam">Tanggal Pinjam:</label>
-                <input type="date" name="tanggal_pinjam" class="form-control" value="{{ $peminjaman->tanggal_pinjam }}"
-                    required>
-            </div>
-            <div class="form-group local-forms">
-                <label for="tanggal_kembali">Tanggal Kembali:</label>
-                <input type="date" name="tanggal_kembali" class="form-control"
-                    value="{{ $peminjaman->tanggal_kembali }}" required>
-            </div>
-            <div class="form-group local-forms">
-                <label for="jumlah_buku">Jumlah Buku:</label>
-                <input type="number" name="jumlah_buku" class="form-control" value="{{ $peminjaman->jumlah_buku }}"
-                    min="1" required>
-            </div>
-            <div class="form-group local-forms">
-                <label for="status">Status:</label>
-                <select name="status" class="form-control" required>
-                    <option value="belum_dikembalikan"
-                        {{ $peminjaman->status == 'belum_dikembalikan' ? 'selected' : '' }}>Belum Dikembalikan
-                    </option>
-                    <option value="sudah_dikembalikan"
-                        {{ $peminjaman->status == 'sudah_dikembalikan' ? 'selected' : '' }}>Sudah Dikembalikan
-                    </option>
-                    <option value="diterima" {{ $peminjaman->status == 'diterima' ? 'selected' : '' }}>
-                        Diterima</option>
-                    <option value="ditolak" {{ $peminjaman->status == 'ditolak' ? 'selected' : '' }}>Ditolak
-                    </option>
-                </select>
-            </div>
-        </div>
-    </div>
-    <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
-    <button type="reset" class="btn btn-warning ms-2">Reset</button>
-</form>
-</div>
-</div>
-@endsection --}}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            Swal.fire({
+                title: 'Konfirmasi',
+                text: 'Apakah Anda yakin ingin mengunggah tugas ini?',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonText: 'Ya, Unggah',
+                cancelButtonText: 'Tidak',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.submit();
+                }
+            });
+        });
+    });
+</script>

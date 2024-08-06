@@ -31,7 +31,7 @@
                 <div class="col-sm-12">
                     <div class="card">
                         <div class="card-body">
-                            <form action="{{ route('contact_information.store') }}" method="POST">
+                            <form action="{{ route('contact_information.store') }}" method="POST" onsubmit="return confirmAdd()">
                                 @csrf
                                 <div class="row">
                                     <h5 class="form-title student-info">Informasi Kontak
@@ -98,8 +98,8 @@
                                 </div>
 
                                 <button type="submit" class="btn btn-primary mt-3">Simpan</button>
-                                <a href="{{ route('contact_information.index') }}"
-                                    class="btn btn-secondary mt-3">Kembali</a>
+                                <a href="{{ route('contact_information.index') }}" class="btn btn-secondary mt-3">Kembali</a>
+                                <button type="reset" class="btn btn-warning mt-3">Reset</button>
                             </form>
                         </div>
                     </div>
@@ -107,4 +107,27 @@
             </div>
         </div>
     </div>
+</div>
 @endsection
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            Swal.fire({
+                title: 'Konfirmasi',
+                text: 'Apakah Anda yakin ingin menambahkan kontak ini?',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonText: 'Ya, Tambahkan',
+                cancelButtonText: 'Tidak',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.submit();
+                }
+            });
+        });
+    });
+</script>

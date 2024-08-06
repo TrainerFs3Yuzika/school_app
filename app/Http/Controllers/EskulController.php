@@ -33,7 +33,6 @@ class EskulController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'student_id' => 'required',
             'nama_eskul' => 'required',
             'pembina' => 'required',
             'waktu_eskul' => 'required',
@@ -45,7 +44,6 @@ class EskulController extends Controller
         $request->gambar->move(public_path('images'), $imageName);
 
         Eskul::create([
-            'student_id' => $request->student_id,
             'nama_eskul' => $request->nama_eskul,
             'pembina' => $request->pembina,
             'waktu_eskul' => $request->waktu_eskul,
@@ -74,7 +72,6 @@ class EskulController extends Controller
     public function update(Request $request, Eskul $eskul)
     {
         $request->validate([
-            'student_id' => 'required',
             'nama_eskul' => 'required',
             'pembina' => 'required',
             'waktu_eskul' => 'required',

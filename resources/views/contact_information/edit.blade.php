@@ -32,7 +32,7 @@
                     <div class="card">
                         <div class="card-body">
                             <form action="{{ route('contact_information.update', $contact_information->id) }}"
-                                method="POST">
+                                method="POST" onsubmit="return confirmEdit()">
                                 @csrf
                                 @method('PUT')
 
@@ -115,3 +115,25 @@
         </div>
     </div>
 @endsection
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            Swal.fire({
+                title: 'Konfirmasi',
+                text: 'Apakah Anda yakin ingin mengubah kontak ini?',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonText: 'Ya, Ubah',
+                cancelButtonText: 'Tidak',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.submit();
+                }
+            });
+        });
+    });
+</script>

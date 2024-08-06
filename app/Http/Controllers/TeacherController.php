@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use DB;
 use Hash;
 use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Teacher;
+use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Brian2694\Toastr\Facades\Toastr;
 
 class TeacherController extends Controller
@@ -149,5 +150,14 @@ class TeacherController extends Controller
             Toastr::error('Deleted record fail :)', 'Error');
             return redirect()->back();
         }
+    }
+    public function exportPdf()
+    {
+        $teachers = Teacher::join('users', 'teachers.user_id', 'users.user_id')
+            ->select('users.date_of_birth', 'users.join_date', 'users.phone_number', 'teachers.*')
+            ->get();
+
+        $pdf = Pdf::loadView('pdf.export-teachers', compact('teachers'));
+        return $pdf->download('export-teachers-' . Carbon::now()->timestamp . '.pdf');
     }
 }

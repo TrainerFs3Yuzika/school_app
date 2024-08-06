@@ -29,31 +29,26 @@
                                 <a href="javascript:;"><i class="feather-more-vertical"></i></a>
                             </span>
                         </h5>
-                        <form action="{{ route('books.store') }}" method="POST" class="row">
+                        <form action="{{ route('books.store') }}" method="POST" class="row" enctype="multipart/form-data" onsubmit="return confirmAdd()">
                             @csrf
                             <div class="col-md-6">
                                 <div class="form-group local-forms">
                                     <label for="judul">Judul Buku <span class="login-danger">*</span></label>
-                                    <input type="text" name="judul" class="form-control"
-                                        placeholder="Masukkan Judul Buku" required>
+                                    <input type="text" name="judul" class="form-control" placeholder="Masukkan Judul Buku" required>
                                 </div>
                                 <div class="form-group local-forms">
                                     <label for="penulis">Penulis Buku <span class="login-danger">*</span></label>
-                                    <input type="text" name="penulis" class="form-control"
-                                        placeholder="Masukkan Penulis Buku" required>
+                                    <input type="text" name="penulis" class="form-control" placeholder="Masukkan Penulis Buku" required>
                                 </div>
                                 <div class="form-group local-forms">
                                     <label for="penerbit">Penerbit Buku <span class="login-danger">*</span></label>
-                                    <input type="text" name="penerbit" class="form-control"
-                                        placeholder="Masukkan Penerbit Buku" required>
+                                    <input type="text" name="penerbit" class="form-control" placeholder="Masukkan Penerbit Buku" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group local-forms">
-                                    <label for="tahun_terbit">Tahun Terbit Buku <span
-                                            class="login-danger">*</span></label>
-                                    <input type="number" name="tahun_terbit" class="form-control"
-                                        placeholder="Masukkan Tahun Terbit Buku" required>
+                                    <label for="tahun_terbit">Tahun Terbit Buku <span class="login-danger">*</span></label>
+                                    <input type="number" name="tahun_terbit" class="form-control" placeholder="Masukkan Tahun Terbit Buku" required>
                                 </div>
                                 <div class="form-group local-forms">
                                     <label for="genre">Genre Buku <span class="login-danger">*</span></label>
@@ -65,8 +60,11 @@
                                 </div>
                                 <div class="form-group local-forms">
                                     <label for="stok">Stok Buku <span class="login-danger">*</span></label>
-                                    <input type="number" name="stok" class="form-control"
-                                        placeholder="Masukkan Stok Buku" required>
+                                    <input type="number" name="stok" class="form-control" placeholder="Masukkan Stok Buku" required>
+                                </div>
+                                <div class="form-group local-forms">
+                                    <label for="gambar">Gambar Buku</label>
+                                    <input type="file" name="gambar" class="form-control">
                                 </div>
                             </div>
                             <div class="col-12">
@@ -78,6 +76,29 @@
                 </div>
             </div>
         </div>
+        
     </div>
 </div>
 @endsection
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            Swal.fire({
+                title: 'Konfirmasi',
+                text: 'Apakah Anda yakin ingin mengunggah tugas ini?',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonText: 'Ya, Unggah',
+                cancelButtonText: 'Tidak',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.submit();
+                }
+            });
+        });
+    });
+</script>

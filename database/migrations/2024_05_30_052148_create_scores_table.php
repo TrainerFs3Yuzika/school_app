@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+     * Jalankan migrasi.
      *
      * @return void
      */
@@ -21,14 +21,15 @@ return new class extends Migration
             $table->decimal('score', 5, 2)->nullable();
             $table->timestamps();
 
-            $table->foreign('teacher_id')->references('id')->on('teachers')->onDelete('set null');
+            // Menambahkan foreign key constraints
+            $table->foreign('teacher_id')->references('id')->on('users')->onDelete('set null');
             $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
             $table->foreign('subject_id')->references('id')->on('subjects')->onDelete('cascade');
         });
     }
 
     /**
-     * Reverse the migrations.
+     * Balikkan migrasi.
      *
      * @return void
      */

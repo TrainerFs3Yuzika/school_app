@@ -5,7 +5,7 @@
 <div class="login-right">
     <div class="login-right-wrap">
         <h1 >Halaman Login</h1>
-        <p class="account-subtitle">Perlu Akun? <a href="{{ route('register') }}" class="text-purple">Sign Up</a></p>
+        {{-- <p class="account-subtitle">Perlu Akun? <a href="{{ route('register') }}" class="text-purple">Sign Up</a></p> --}}
         <h2>Sign in</h2>
         <form action="{{ route('login') }}" method="POST">
             @csrf

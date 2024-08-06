@@ -186,8 +186,15 @@
                                 <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms">
                                         <label>Negara <span class="login-danger">*</span></label>
-                                        <input type="text" class="form-control @error('country') is-invalid @enderror"
-                                            name="country" placeholder="Masukkan Negara" value="{{ old('country') }}">
+                                        <select class="form-control @error('country') is-invalid @enderror" name="country">
+                                            <option selected disabled>Pilih Negara</option>
+                                            <option value="Indonesia">Indonesia</option>
+                                            <option value="Malaysia">Malaysia</option>
+                                            <option value="Singapura">Singapura</option>
+                                            <option value="Thailand">Thailand</option>
+                                            <option value="Vietnam">Vietnam</option>
+                                            <!-- Tambahkan opsi negara lainnya sesuai kebutuhan -->
+                                        </select>
                                         @error('country')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -195,6 +202,7 @@
                                         @enderror
                                     </div>
                                 </div>
+                                
                                 <div class="col-12">
                                     <div class="student-submit">
                                         <button type="submit" class="btn btn-primary">Kirim</button>

@@ -10,7 +10,6 @@ class Eskul extends Model
     protected $table = 'eskuls'; // Nama tabel yang sesuai dengan nama tabel yang Anda buat
 
     protected $fillable = [
-        'student_id', // Menambahkan 'student_id' ke dalam $fillable
         'nama_eskul',
         'pembina',
         'waktu_eskul',
@@ -18,8 +17,8 @@ class Eskul extends Model
     ];
 
     // Relasi dengan model Student
-    public function student()
+    public function users()
     {
-        return $this->belongsTo(Student::class, 'student_id');
+        return $this->belongsToMany(User::class, 'eskul_user', 'eskul_id', 'user_id');
     }
 }

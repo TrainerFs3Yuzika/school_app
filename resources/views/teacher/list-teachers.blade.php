@@ -46,7 +46,9 @@
                                 @if (auth()->user()->role_name === 'Super Admin')
                                     <a href="{{ route('teacher/add/page') }}" class="btn btn-primary">Tambah Guru <i
                                             class="fas fa-plus"></i></a>
+                                            <a href="{{ route('teacher.exportPdf') }}" class="btn btn-primary">Export PDF</a>
                                 @endif
+                                
                                 </div>
                             </div>
                         </div>

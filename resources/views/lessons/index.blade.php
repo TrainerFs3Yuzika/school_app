@@ -33,99 +33,117 @@
                                 <div class="col">
                                     <h3 class="page-title">Daftar Jadwal</h3>
                                 </div>
+                                @if(auth()->user()->role_name === 'Super Admin')
                                 <div class="col-auto text-end float-end ms-auto download-grp">
-                                    @if (auth()->user()->role_name === 'Super Admin')
-                                    <a href="{{ route('lessons.create') }}" class="btn btn-primary">Tambah Jadwal <i
-                                            class="fas fa-plus"></i></a>
-                                    @endif
+                                    <a href="{{ route('lessons.create') }}" class="btn btn-primary">Tambah Jadwal <i class="fas fa-plus"></i></a>
                                 </div>
+                                @endif
                             </div>
                         </div>
-
                         <div class="table-responsive">
-                            <table id="bookTable"
-                                class="table border-0 star-book table-hover table-center mb-0 table-striped">
+                            <table id="lessonsTable" class="table border-0 star-book table-hover table-center mb-0 table-striped">
                                 <thead class="thead-light">
                                     <tr>
                                         <th scope="col">No</th>
-                                        <th scope="col">Mata Pelajaran</th>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Pelajaran</th>
                                         <th scope="col">Kelas</th>
+                                        <th scope="col">Jurusan</th>
                                         <th scope="col">Hari</th>
-                                        <th scope="col">Jam Mulai</th>
-                                        <th scope="col">Jam Berakhir</th>
-                                        @if (auth()->user()->role_name === 'Super Admin')
+                                        <th scope="col">Waktu</th>
+                                        <th scope="col">Guru</th>
+                                        <th scope="col">Siswa</th>
+                                        @if(auth()->user()->role_name === 'Super Admin')
                                         <th scope="col">Aksi</th>
                                         @endif
                                     </tr>
                                 </thead>
-                                <tbody class="">
-                                    @foreach ($lessons as $key => $lesson)
-                                    <tr>
-                                        <td>{{ ++$key }}</td> <!-- Nomor urut -->
-                                        <td>{{ $lesson->subject->subject_name }}</td> <!-- Judul -->
-                                        <td>{{ $lesson->class }} {{ $lesson->class_type }}</td> <!-- Penulis -->
-                                        <td>{{ $lesson->days }}</td> <!-- Penerbit -->
-                                        <td>
-                                            {{ \Carbon\Carbon::parse($lesson->time_start)->format('H:i')  }}</td>
-                                        <!-- Tahun Terbit -->
-                                        <td>{{ \Carbon\Carbon::parse($lesson->time_end)->format('H:i')  }}</td>
-                                        <!-- Genre -->
-                                        @if (auth()->user()->role_name === 'Super Admin')
-                                        <td>
-                                            <div class="actions">
-                                                <a href="{{ route('lessons.edit', $lesson->id) }}"
-                                                    class="btn btn-sm bg-danger-light">
-                                                    <i class="far fa-edit "></i>
-                                                </a>
-                                                <form method="POST" action="{{ route('lessons.destroy', $lesson->id) }}"
-                                                    style="display: inline;">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm bg-danger-light"
-                                                        onclick="return confirm('Apakah Anda yakin ingin menghapus buku ini?')">
-                                                        <i class="far fa-trash-alt "></i>
-                                                    </button>
-                                                </form>
-                                            </div>
-                                        </td>
-                                        @endif
-                                    </tr>
+                                <tbody>
+                                    @foreach($lessons as $key => $lesson)
+                                        <tr>
+                                            <td>{{ ++$key }}</td> <!-- Nomor urut -->
+                                            <td>{{ $lesson->id }}</td>
+                                            <td>{{ $lesson->subject->subject_name }}</td>
+                                            <td>{{ $lesson->class }}</td>
+                                            <td>{{ $lesson->class_type }}</td>
+                                            <td>{{ $lesson->days }}</td>
+                                            <td>{{ $lesson->time_start }} - {{ $lesson->time_end }}</td>
+                                            <td>{{ $lesson->teacher->full_name }}</td>
+                                            <td>
+                                                @foreach ($lesson->students as $student)
+                                                    {{ $student->first_name }}@if (!$loop->last), @endif
+                                                @endforeach
+                                            </td>
+                                            @if(auth()->user()->role_name === 'Super Admin')
+                                            <td>
+                                                <div class="actions">
+                                                    <a href="{{ route('lessons.edit', $lesson->id) }}" class="btn btn-sm bg-warning-light">
+                                                        <i class="far fa-edit me-2"></i>
+                                                    </a>
+                                                    <form action="{{ route('lessons.destroy', $lesson->id) }}" method="POST" style="display: inline;">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-sm bg-danger-light" onclick="return confirm('Apakah Anda yakin ingin menghapus jadwal ini?')">
+                                                            <i class="far fa-trash-alt me-2"></i>
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </td>
+                                            @endif
+                                        </tr>
                                     @endforeach
                                 </tbody>
                             </table>
                         </div>
+                        
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+@endsection
 
-<!-- JQuery -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<!-- DataTables CSS and JS -->
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+@section('script')
+{{-- DataTables JS --}}
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
-<!-- Initialize DataTable -->
 <script>
-$(document).ready(function() {
-    // Initialize DataTable
-    $('#bookTable').DataTable();
+    $(document).ready(function() {
+        $('#lessonsTable').DataTable({
+            "pageLength": 5,
+            "lengthMenu": [
+                [5, 10, 25, 50, -1],
+                ["5", "10", "25", "50", "All"]
+            ],
+            "language": {
+                "lengthMenu": "Tampilkan _MENU_ halaman",
+                "zeroRecords": "Data tidak ditemukan",
+                "info": "Halaman _PAGE_ dari _PAGES_",
+                "infoEmpty": "Tidak ada data yang tersedia",
+                "infoFiltered": "(disaring dari _MAX_ total entri)",
+                "search": "Cari:",
+                "paginate": {
+                    "first": "Awal",
+                    "last": "Akhir",
+                    "next": "Selanjutnya",
+                    "previous": "Sebelumnya"
+                }
+            }
+        });
 
-    // Toastr notifications
-    var successMessage = '{{ Session::get('
-    success ') }}';
-    var errorMessage = '{{ Session::get('
-    error ') }}';
+        var successMessage = '{{ Session::get('success') }}';
+        var errorMessage = '{{ Session::get('error') }}';
 
-    if (successMessage) {
-        toastr.success(successMessage, 'Sukses');
-    }
-    if (errorMessage) {
-        toastr.error(errorMessage, 'Error');
-    }
-});
+        if (successMessage) {
+            toastr.success(successMessage, 'Sukses');
+        }
+        if (errorMessage) {
+            toastr.error(errorMessage, 'Error');
+        }
+    });
 </script>
 
 @endsection

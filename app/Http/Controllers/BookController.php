@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Models\Book;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Storage;
 
 class BookController extends Controller
 {
@@ -14,9 +15,17 @@ class BookController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $books = Book::all();
+        $query = Book::query();
+
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $query->where('judul', 'like', '%' . $search . '%')
+                ->orWhere('genre', 'like', '%' . $search . '%');
+        }
+
+        $books = $query->get();
         return view('books.index', compact('books'));
     }
 
@@ -43,20 +52,21 @@ class BookController extends Controller
             'penulis' => 'required|string|max:255',
             'penerbit' => 'required|string|max:255',
             'tahun_terbit' => 'required|integer|min:1900|max:' . date('Y'),
-            'genre' => 'required|string',
+            'genre' => 'required|string|in:fiksi,non-fiksi,pelajaran',
             'stok' => 'required|integer|min:0',
+            'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        // Log data untuk debugging
-        \Log::info($request->all());
+        $data = $request->all();
 
-        // Simpan data buku
-        Book::create($request->all());
+        if ($request->hasFile('gambar')) {
+            $data['gambar'] = $request->file('gambar')->store('images', 'public');
+        }
 
-        // Redirect dengan pesan sukses
+        Book::create($data);
+
         return redirect()->route('books.index')->with('success', 'Buku berhasil ditambahkan.');
     }
-
 
     /**
      * Menampilkan formulir untuk mengedit buku.
@@ -76,16 +86,26 @@ class BookController extends Controller
      * @param  \App\Models\Book  $book
      * @return \Illuminate\Http\Response
      */
+
     public function update(Request $request, Book $book)
     {
         $validatedData = $request->validate([
-            'judul' => 'required|string',
-            'penulis' => 'required|string',
-            'penerbit' => 'required|string',
-            'tahun_terbit' => 'required|integer',
-            'genre' => 'required|in:fiksi,non-fiksi,pelajaran',
+            'judul' => 'required|string|max:255',
+            'penulis' => 'required|string|max:255',
+            'penerbit' => 'required|string|max:255',
+            'tahun_terbit' => 'required|integer|min:1900|max:' . date('Y'),
+            'genre' => 'required|string|in:fiksi,non-fiksi,pelajaran',
             'stok' => 'required|integer|min:0',
+            'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
+
+        if ($request->hasFile('gambar')) {
+            if ($book->gambar) {
+                Storage::disk('public')->delete($book->gambar);
+            }
+
+            $validatedData['gambar'] = $request->file('gambar')->store('images', 'public');
+        }
 
         $book->update($validatedData);
 
@@ -100,10 +120,21 @@ class BookController extends Controller
      */
     public function destroy(Book $book)
     {
+        // Hapus gambar jika ada
+        if ($book->gambar) {
+            Storage::disk('public')->delete($book->gambar);
+        }
+
         $book->delete();
 
         return redirect()->route('books.index')->with('success', 'Buku berhasil dihapus!');
     }
+
+    /**
+     * Mengekspor daftar buku ke dalam PDF.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function exportPdf()
     {
         $books = Book::all();

@@ -1,4 +1,5 @@
 @extends('layouts.master')
+
 @section('content')
     <div class="page-wrapper">
         <div class="content container-fluid">
@@ -7,17 +8,19 @@
                 <div class="row align-items-center">
                     <div class="col-sm-12">
                         <div class="page-sub-header">
-                            <h3 class="page-title">Tambah Jadwal</h3>
+                            <h3 class="page-title">Edit Jadwal</h3>
                             <ul class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="">Jadwal</a></li>
-                                <li class="breadcrumb-item active">Tambah Jadwal</li>
+                                <li class="breadcrumb-item active">Edit Jadwal</li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
+
             {{-- pesan --}}
             {!! Toastr::message() !!}
+
             <div class="row">
                 <div class="col-sm-12">
                     <div class="card comman-shadow">
@@ -27,7 +30,7 @@
                                     <a href="javascript:;"><i class="feather-more-vertical"></i></a>
                                 </span>
                             </h5>
-                            <form action="{{ route('lessons.update', $lessons->id) }}" method="POST" class="row">
+                            <form action="{{ route('lessons.update', $lesson->id) }}" method="POST" class="row">
                                 @csrf
                                 @method('PUT')
                                 <div class="col-md-6">
@@ -35,69 +38,74 @@
                                         <label for="subject_id">Pelajaran <span class="login-danger">*</span></label>
                                         <select name="subject_id" id="subject_id"
                                             class="form-control select @error('subject_id') is-invalid @enderror" required>
+                                            <option selected disabled>Masukkan Pelajaran</option>
                                             @foreach ($subjects as $id => $name)
-                                                <option value="{{ $id }}"
-                                                    @if (old('subject_id', $name) == $id) selected @endif>{{ $name }}
-                                                </option>
+                                                <option value="{{ $id }}" {{ $lesson->subject_id == $id ? 'selected' : '' }}>{{ $name }}</option>
                                             @endforeach
                                         </select>
-
                                     </div>
                                     <div class="form-group local-forms">
                                         <label for="class">Kelas <span class="login-danger">*</span></label>
-                                        <select name="class" id="class" class="form-control select">
-                                            <option>{{ $lessons->class }}</option>
-                                            <option value="12">12</option>
-                                            <option value="11">11</option>
-                                            <option value="10">10</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group local-forms">
-                                        <label for="class">Tipe <span class="login-danger">*</span></label>
-                                        <select name="class_type" id="class_type" class="form-control select">
-                                            <option>{{ $lessons->class_type }}</option>
-                                            <option value="A">A</option>
-                                            <option value="B">B</option>
-                                            <option value="C">C</option>
-                                            <option value="D">D</option>
+                                        <select name="class" id="class" class="form-control select" required>
+                                            <option selected disabled>Masukkan Kelas</option>
+                                            <option value="12" {{ $lesson->class == '12' ? 'selected' : '' }}>12</option>
+                                            <option value="11" {{ $lesson->class == '11' ? 'selected' : '' }}>11</option>
+                                            <option value="10" {{ $lesson->class == '10' ? 'selected' : '' }}>10</option>
                                         </select>
                                     </div>
                                     <div class="form-group local-forms">
                                         <label for="days">Hari <span class="login-danger">*</span></label>
                                         <select name="days" class="form-control select" required>
-                                            <option value="Senin" {{ $lessons->days == 'Senin' ? 'selected' : '' }}>Senin
-                                            </option>
-                                            <option value="Selasa" {{ $lessons->days == 'Selasa' ? 'selected' : '' }}>Selasa
-                                            </option>
-                                            <option value="Rabu" {{ $lessons->days == 'Rabu' ? 'selected' : '' }}>Rabu
-                                            </option>
-                                            <option value="Kamis" {{ $lessons->days == 'Kamis' ? 'selected' : '' }}>Kamis
-                                            </option>
-                                            <option value="Jumat" {{ $lessons->days == 'Jumat' ? 'selected' : '' }}>Jumat
-                                            </option>
-                                            <option value="Sabtu" {{ $lessons->days == 'Sabtu' ? 'selected' : '' }}>Sabtu
-                                            </option>
-                                            <option value="Minggu" {{ $lessons->days == 'Minggu' ? 'selected' : '' }}>
-                                                Minggu
-                                            </option>
+                                            <option selected disabled>Masukkan Hari</option>
+                                            @foreach(['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'] as $day)
+                                                <option value="{{ $day }}" {{ $lesson->days == $day ? 'selected' : '' }}>{{ $day }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group local-forms">
+                                        <label for="class_type">Jurusan <span class="login-danger">*</span></label>
+                                        <select name="class_type" id="class_type" class="form-control select" required>
+                                            <option selected disabled>Pilih Jurusan</option>
+                                            @foreach(['IPA', 'IPS', 'Bahasa', 'Agama', 'Kejuruan', 'Olahraga'] as $type)
+                                                <option value="{{ $type }}" {{ $lesson->class_type == $type ? 'selected' : '' }}>{{ $type }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group local-forms">
+                                        <label for="teacher_id">Guru <span class="login-danger">*</span></label>
+                                        <select name="teacher_id" id="teacher_id" class="form-control select" required>
+                                            <option selected disabled>Pilih Guru</option>
+                                            @foreach ($teachers as $id => $name)
+                                                <option value="{{ $id }}" {{ $lesson->teacher_id == $id ? 'selected' : '' }}>{{ $name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group local-forms">
+                                        <label for="student_ids">Siswa <span class="login-danger">*</span></label>
+                                        <select name="student_ids[]" id="student_ids" class="form-control select" multiple required>
+                                            @foreach ($students as $id => $name)
+                                                <option value="{{ $id }}" {{ in_array($id, $lesson->students->pluck('id')->toArray()) ? 'selected' : '' }}>{{ $name }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
+                                
                                 <div class="col-md-6">
                                     <div class="form-group local-forms">
                                         <label for="time_start">Waktu Mulai <span class="login-danger">*</span></label>
                                         <input type="time" name="time_start" class="form-control"
-                                            value="{{ $lessons->time_start }}" required>
+                                            placeholder="Masukkan Waktu Mulai" value="{{ $lesson->time_start }}" required>
                                     </div>
                                     <div class="form-group local-forms">
                                         <label for="time_end">Waktu Berakhir <span class="login-danger">*</span></label>
                                         <input type="time" name="time_end" class="form-control"
-                                            value="{{ $lessons->time_end }}" required>
+                                            placeholder="Masukkan Waktu Berakhir" value="{{ $lesson->time_end }}" required>
                                     </div>
                                 </div>
+                                
                                 <div class="col-12">
                                     <button type="submit" class="btn btn-primary">Simpan</button>
-                                    <button type="reset" class="btn btn-warning ms-2">Reset</button>
+                                    <a href="{{ route('lessons.index') }}" class="btn btn-secondary ms-2">Batal</a>
                                 </div>
                             </form>
                         </div>

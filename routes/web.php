@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FaqController;
 use Illuminate\Support\Facades\Request;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\HomeController;
@@ -13,14 +14,20 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SubjectController;
+use App\Http\Controllers\TagihanController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\AccountsController;
+use App\Http\Controllers\AssignmentController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\PeminjamanController;
+use App\Http\Controllers\DaftarEskulController;
 use App\Http\Controllers\FullCalenderController;
+use App\Http\Controllers\PengembalianController;
+use App\Http\Controllers\TagihanSiswaController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\landing_pageConntroller;
 use App\Http\Controllers\UserManagementController;
+use App\Http\Controllers\DokumentasiKegiatanSiswaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -114,10 +121,13 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Route::post('student/delete', 'studentDelete')->name('student/delete'); // delete record student
         Route::get('student/profile/{id}', 'studentProfile')->middleware('auth'); // profile student
         Route::get('/studentlist', [StudentController::class, 'studentlist'])->name('studentlist');
+        Route::get('export-pdf', [StudentController::class, 'exportPdf'])->name('export-pdf');
     });
 
+
+
     // ekport pdf
-    route::get('export-pdf', [StudentController::class, 'exportPdf']);
+
 
     // ------------------------ teacher -------------------------------//
     Route::controller(TeacherController::class)->group(function () {
@@ -129,8 +139,9 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Route::post('teacher/update', 'updateRecordTeacher')->middleware('auth')->name('teacher/update'); // update record
         Route::post('teacher/delete', 'teacherDelete')->name('teacher/delete'); // delete record teacher
         Route::get('/teacher-list', 'teacherList')->name('teacher.list'); // teacher list with search
-    });
 
+    });
+    Route::get('teacher/export-pdf', [TeacherController::class, 'exportPdf'])->name('teacher.exportPdf');
 
     // ----------------------- subject -----------------------------//
     Route::controller(SubjectController::class)->group(function () {
@@ -212,8 +223,15 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     Route::get('scores/{id}/export/pdf', [ScoreController::class, 'exportPdf'])->name('scores.export.pdf');
 
 
+
+
     // landing_page
     Route::get('/landing_page', [landing_pageConntroller::class, 'index']);
+    Route::get('/blog-details', [landing_pageConntroller::class, 'blogDetails']);
+    Route::get('/blog', [landing_pageConntroller::class, 'blog'])->name('blog');
+    Route::get('/portfolio-details', [landing_pageConntroller::class, 'portfolioDetails'])->name('portfolio-details');
+    Route::get('/services-details', [landing_pageConntroller::class, 'servicesDetails']);
+
 
     // lessons
     Route::get('/lessons', [LessonsController::class, 'index'])->name('lessons.index');
@@ -223,8 +241,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     Route::put('/lessons/{id}', [LessonsController::class, 'update'])->name('lessons.update');
     Route::delete('/lessons/{id}', [LessonsController::class, 'destroy'])->name('lessons.destroy');
 
-    // landing_page
-    Route::get('/landing_page', [landing_pageConntroller::class, 'index']);
+
 
     // informasi contack
     Route::resource('contact_information', 'ContactInformationController');
@@ -238,7 +255,15 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     Route::put('/eskuls/{eskul}', [EskulController::class, 'update'])->name('eskuls.update');
     Route::delete('/eskuls/{eskul}', [EskulController::class, 'destroy'])->name('eskuls.destroy');
 
+    // daftar eskul
 
+    Route::get('/daftar-eskul', [DaftarEskulController::class, 'index'])->name('daftar-eskul.index');
+    Route::get('/daftar-eskul/create', [DaftarEskulController::class, 'create'])->name('daftar-eskul.create');
+    Route::post('/daftar-eskul', [DaftarEskulController::class, 'store'])->name('daftar-eskul.store');
+    Route::get('/daftar-eskul/{id}', [DaftarEskulController::class, 'show'])->name('daftar-eskul.show');
+    Route::get('/daftar-eskul/rekap', [DaftarEskulController::class, 'rekap'])->name('daftar-eskul.rekap');
+
+    // payment
     Route::get('/payments', [PaymentController::class, 'index'])->name('payments.index');
     Route::get('/payments/create', [PaymentController::class, 'create'])->name('payments.create');
     Route::post('/payments', [PaymentController::class, 'store'])->name('payments.store');
@@ -250,8 +275,53 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     Route::get('/payments/export-pdf/{id}', [PaymentController::class, 'exportPDF'])->name('payments.exportPDF');
 
 
+    // pemgembalian
+
+    Route::get('/pengembalian/create', [PengembalianController::class, 'create'])->name('pengembalian.create');
+    Route::post('/pengembalian/store', [PengembalianController::class, 'store'])->name('pengembalian.store');
+    Route::get('/pengembalian', [PengembalianController::class, 'index'])->name('pengembalian.index');
+
 
     Route::get('/test-total-pendapatan', function () {
         return \App\Models\Payment::totalPendapatan();
     });
+
+    // faq
+
+    Route::resource('faq', FaqController::class);
+
+    // upload tugas
+    Route::middleware(['auth'])->group(function () {
+        Route::get('assignments', [AssignmentController::class, 'index'])->name('assignments.index');
+        Route::get('assignments/create', [AssignmentController::class, 'create'])->name('assignments.create');
+        Route::post('assignments', [AssignmentController::class, 'store'])->name('assignments.store');
+        Route::get('assignments/{assignment}', [AssignmentController::class, 'show'])->name('assignments.show');
+        Route::get('assignments/{assignment}/edit', [AssignmentController::class, 'edit'])->name('assignments.edit');
+        Route::put('assignments/{assignment}', [AssignmentController::class, 'update'])->name('assignments.update');
+        Route::delete('assignments/{assignment}', [AssignmentController::class, 'destroy'])->name('assignments.destroy');
+        Route::get('assignments/{id}/download', [AssignmentController::class, 'download'])->name('assignments.download');
+    });
+    // tagihan buku
+    Route::resource('tagihan', TagihanController::class);
+
+    // tagihan siswa
+    Route::middleware('auth')->group(function () {
+        Route::get('/tagihan-siswa', [TagihanSiswaController::class, 'index'])->name('tagihan_siswa.index');
+        Route::get('/tagihan-siswa/create', [TagihanSiswaController::class, 'create'])->name('tagihan_siswa.create');
+        Route::post('/tagihan-siswa', [TagihanSiswaController::class, 'store'])->name('tagihan_siswa.store');
+        Route::get('/tagihan-siswa/{id}', [TagihanSiswaController::class, 'show'])->name('tagihan_siswa.show');
+        Route::get('/tagihan-siswa/{id}/edit', [TagihanSiswaController::class, 'edit'])->name('tagihan_siswa.edit');
+        Route::put('/tagihan-siswa/{id}', [TagihanSiswaController::class, 'update'])->name('tagihan_siswa.update');
+        Route::delete('/tagihan-siswa/{id}', [TagihanSiswaController::class, 'destroy'])->name('tagihan_siswa.destroy');
+    });
+
+    // dokumentasi kegiatan siswa
+
+    Route::get('dokumentasi_kegiatan', [DokumentasiKegiatanSiswaController::class, 'index'])->name('dokumentasi_kegiatan.index');
+    Route::get('dokumentasi_kegiatan/create', [DokumentasiKegiatanSiswaController::class, 'create'])->name('dokumentasi_kegiatan.create');
+    Route::post('dokumentasi_kegiatan', [DokumentasiKegiatanSiswaController::class, 'store'])->name('dokumentasi_kegiatan.store');
+    Route::get('dokumentasi_kegiatan/{dokumentasiKegiatanSiswa}', [DokumentasiKegiatanSiswaController::class, 'show'])->name('dokumentasi_kegiatan.show');
+    Route::get('dokumentasi_kegiatan/{dokumentasiKegiatanSiswa}/edit', [DokumentasiKegiatanSiswaController::class, 'edit'])->name('dokumentasi_kegiatan.edit');
+    Route::put('dokumentasi_kegiatan/{dokumentasiKegiatanSiswa}', [DokumentasiKegiatanSiswaController::class, 'update'])->name('dokumentasi_kegiatan.update');
+    Route::delete('dokumentasi_kegiatan/{dokumentasiKegiatanSiswa}', [DokumentasiKegiatanSiswaController::class, 'destroy'])->name('dokumentasi_kegiatan.destroy');
 });

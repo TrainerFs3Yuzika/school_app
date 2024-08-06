@@ -36,22 +36,6 @@
                                     </div>
                                     <div class="col-md-6 mt-3">
                                         <div class="form-group local-forms">
-                                            <label for="teacher_id" class="form-label">Nama Guru <span
-                                                    class="login-danger">*</span></label>
-                                            <select name="teacher_id" id="teacher_id" class="form-control select">
-                                                @foreach ($teachers as $id => $name)
-                                                    <option value="{{ $id }}"
-                                                        @if ($score->teacher_id == $id) selected @endif>
-                                                        {{ $name }}</option>
-                                                @endforeach
-                                            </select>
-                                            @error('teacher_id')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                        <div class="form-group local-forms">
                                             <label for="student_id" class="form-label">Nama Siswa <span
                                                     class="login-danger">*</span></label>
                                             <select name="student_id" id="student_id" class="form-control select">
@@ -67,8 +51,7 @@
                                                 </span>
                                             @enderror
                                         </div>
-                                    </div>
-                                    <div class="col-md-6 mt-3">
+                                        
                                         <div class="form-group local-forms">
                                             <label for="subject_id" class="form-label">Mata Pelajaran <span
                                                     class="login-danger">*</span></label>
@@ -85,6 +68,8 @@
                                                 </span>
                                             @enderror
                                         </div>
+                                    </div>
+                                    <div class="col-md-6 mt-3">
                                         <div class="form-group local-forms">
                                             <label for="score" class="form-label">Nilai Siswa <span
                                                     class="login-danger">*</span></label>
@@ -103,11 +88,25 @@
                                     <button type="reset" class="btn btn-secondary ms-2">Reset</button>
                                 </div>
                             </form>
-
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        document.getElementById('editScoreForm').addEventListener('submit', function(event) {
+            const scoreInput = document.getElementById('score');
+            const maxScore = 100; // Ganti dengan nilai maksimum yang sesuai
+        
+            if (parseInt(scoreInput.value) > maxScore) {
+                event.preventDefault();
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Nilai terlalu besar! Maksimal nilai adalah ' + maxScore + '.',
+                });
+            }
+        });
+    </script>
 @endsection

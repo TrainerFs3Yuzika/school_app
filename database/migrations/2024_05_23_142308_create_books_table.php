@@ -21,7 +21,7 @@ class CreateBooksTable extends Migration
             $table->integer('tahun_terbit');
             $table->enum('genre', ['fiksi', 'non-fiksi', 'pelajaran']);
             $table->integer('stok')->unsigned()->default(0);
-            // $table->string('gambar')->nullable(); // Tambah kolom untuk menyimpan path gambar
+            $table->string('gambar')->nullable(); // Tambah kolom untuk menyimpan path gambar
             $table->timestamps();
         });
     }

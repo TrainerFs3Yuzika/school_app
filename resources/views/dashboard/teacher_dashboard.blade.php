@@ -252,7 +252,7 @@
                                             @foreach (\App\Models\Score::all() as $key => $score)
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
-                                                    <td>{{ $score->teacher->full_name }}</td>
+                                                    <td>{{ $score->teacher->name }}</td>
                                                     <td>{{ $score->student->first_name }} {{ $score->student->last_name }}
                                                     </td>
                                                     <td>{{ $score->subject->subject_name }}</td>

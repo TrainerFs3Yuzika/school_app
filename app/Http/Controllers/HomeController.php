@@ -46,7 +46,14 @@ class HomeController extends Controller
     /** student dashboard */
     public function studentDashboardIndex()
     {
+        $today = \Carbon\Carbon::now()->isoFormat('dddd'); // Mengambil nama hari ini
+
+        // Hitung jumlah pelajaran berdasarkan hari
+        $totalLessons = \App\Models\Lessons::where('days', $today)
+            ->count();
+
         $contactInformation = ContactInformation::first(); // Mengambil satu data pertama
-        return view('dashboard.student_dashboard', compact('contactInformation'));
+
+        return view('dashboard.student_dashboard', compact('totalLessons', 'contactInformation'));
     }
 }

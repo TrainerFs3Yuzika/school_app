@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Lessons;
+use App\Models\Student;
 use App\Models\Subject;
+use App\Models\Teacher;
 use App\Models\ClassModel;
-use Carbon\Carbon;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class LessonsController extends Controller
 {
@@ -16,10 +17,9 @@ class LessonsController extends Controller
      */
     public function index()
     {
-        $lessons = Lessons::with('subject')->get();
-        return view('lessons.index', compact('lessons'));
+        $lessons = Lessons::with(['subject', 'teacher', 'students'])->get();
+        return view('lessons.index', compact('lessons'))->with('success', 'Data berhasil ditampilkan.');
     }
-
     /**
      * Show the form for creating a new resource.
      */
@@ -27,7 +27,9 @@ class LessonsController extends Controller
     {
         $subjects = Subject::pluck('subject_name', 'id');
         $classes = ClassModel::pluck('class_name', 'id');
-        return view('lessons.create', compact('subjects', 'classes'));
+        $teachers = Teacher::pluck('full_name', 'id');
+        $students = Student::pluck('first_name', 'id');
+        return view('lessons.create', compact('subjects', 'classes', 'teachers', 'students'))->with('success', 'Data berhasil ditambah.');
     }
 
     /**
@@ -36,33 +38,37 @@ class LessonsController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'subject_id'    => 'required',
+            'subject_id'    => 'required|exists:subjects,id',
             'class'         => 'required',
             'class_type'    => 'required',
             'days'          => 'required',
             'time_start'    => 'required',
-            'time_end'      => 'required'
+            'time_end'      => 'required',
+            'teacher_id'    => 'required|exists:teachers,id',
+            'student_ids'   => 'required|array|exists:students,id'
         ]);
 
         $lessonsModel = new Lessons();
-        $lessonsModel->subject_id = $validatedData['subject_id']; // Menggunakan validatedData untuk memastikan data yang valid
+        $lessonsModel->subject_id = $validatedData['subject_id'];
         $lessonsModel->class = $validatedData['class'];
         $lessonsModel->class_type = $validatedData['class_type'];
         $lessonsModel->days = $validatedData['days'];
         $lessonsModel->time_start = $validatedData['time_start'];
         $lessonsModel->time_end = $validatedData['time_end'];
+        $lessonsModel->teacher_id = $validatedData['teacher_id'];
         $lessonsModel->save();
+
+        $lessonsModel->students()->sync($validatedData['student_ids']);
 
         return redirect()->route('lessons.index')->with('success', 'Lesson created successfully.');
     }
-
 
     /**
      * Display the specified resource.
      */
     public function show(string $id)
     {
-        //
+        // Implementation if needed
     }
 
     /**
@@ -70,9 +76,12 @@ class LessonsController extends Controller
      */
     public function edit($id)
     {
-        $lessons = Lessons::findOrFail($id);
+        $lesson = Lessons::findOrFail($id);
         $subjects = Subject::pluck('subject_name', 'id');
-        return view('lessons.edit', compact('lessons', 'subjects'));
+        $teachers = Teacher::pluck('full_name', 'id');
+        $students = Student::pluck('first_name', 'id');
+        $classes = ClassModel::pluck('class_name', 'id');
+        return view('lessons.edit', compact('lesson', 'subjects', 'teachers', 'students', 'classes'));
     }
 
     /**
@@ -81,22 +90,27 @@ class LessonsController extends Controller
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'subject_id'    => 'required',
+            'subject_id'    => 'required|exists:subjects,id',
             'class'         => 'required',
             'class_type'    => 'required',
             'days'          => 'required',
             'time_start'    => 'required',
-            'time_end'      => 'required'
+            'time_end'      => 'required',
+            'teacher_id'    => 'required|exists:teachers,id',
+            'student_ids'   => 'required|array|exists:students,id'
         ]);
 
-        $lessonsModel = Lessons::findOrFail($id);
-        $lessonsModel->subject_id = $validatedData['subject_id'];
-        $lessonsModel->class = $validatedData['class'];
-        $lessonsModel->class_type = $validatedData['class_type'];
-        $lessonsModel->days = $validatedData['days'];
-        $lessonsModel->time_start = $validatedData['time_start'];
-        $lessonsModel->time_end = $validatedData['time_end'];
-        $lessonsModel->save();
+        $lesson = Lessons::findOrFail($id);
+        $lesson->subject_id = $validatedData['subject_id'];
+        $lesson->class = $validatedData['class'];
+        $lesson->class_type = $validatedData['class_type'];
+        $lesson->days = $validatedData['days'];
+        $lesson->time_start = $validatedData['time_start'];
+        $lesson->time_end = $validatedData['time_end'];
+        $lesson->teacher_id = $validatedData['teacher_id'];
+        $lesson->save();
+
+        $lesson->students()->sync($validatedData['student_ids']);
 
         return redirect()->route('lessons.index')->with('success', 'Lesson updated successfully!');
     }
@@ -107,6 +121,7 @@ class LessonsController extends Controller
     public function destroy($id)
     {
         $lessons = Lessons::findOrFail($id);
+        $lessons->students()->detach(); // Detach students before deleting the lesson
         $lessons->delete();
         return redirect()->route('lessons.index')->with('success', 'Lesson deleted successfully!');
     }

@@ -17,7 +17,6 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Nama Siswa: {{ $eskul->student->first_name }} {{ $eskul->student->last_name }}</h5>
                         <p class="card-text fw-bold">Pembina: {{ $eskul->pembina }}</p>
                         <p class="card-text">Ekstrakurikuler: {{ $eskul->nama_eskul }}</p>
                         <p class="card-text">Waktu : <b>{{ $eskul->waktu_eskul }}</b></p>

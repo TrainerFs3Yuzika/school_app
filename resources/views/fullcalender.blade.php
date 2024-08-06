@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -14,8 +12,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.js"></script>
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
     
     <style>
         body {
@@ -88,7 +85,7 @@ $(document).ready(function () {
                     },
                     type: "POST",
                     success: function (data) {
-                        displayMessage("Event berhasil dibuat");
+                        displayMessage("Event berhasil dibuat", "success");
   
                         calendar.fullCalendar('renderEvent',
                             {
@@ -103,7 +100,7 @@ $(document).ready(function () {
                     },
                     error: function (response) {
                         if (response.status === 403) {
-                            displayMessage("Akses ditolak: Anda bukan admin");
+                            displayMessage("Akses ditolak", "error");
                         }
                     }
                 });
@@ -124,11 +121,11 @@ $(document).ready(function () {
                 },
                 type: "POST",
                 success: function (response) {
-                    displayMessage("Event berhasil diperbarui");
+                    displayMessage("Event berhasil diperbarui", "success");
                 },
                 error: function (response) {
                     if (response.status === 403) {
-                        displayMessage("Akses ditolak: Anda bukan admin");
+                        displayMessage("Akses ditolak", "error");
                     }
                 }
             });
@@ -145,11 +142,11 @@ $(document).ready(function () {
                     },
                     success: function (response) {
                         calendar.fullCalendar('removeEvents', event.id);
-                        displayMessage("Event berhasil dihapus");
+                        displayMessage("Event berhasil dihapus", "success");
                     },
                     error: function (response) {
                         if (response.status === 403) {
-                            displayMessage("Akses ditolak: Anda bukan admin");
+                            displayMessage("Akses ditolak", "error");
                         }
                     }
                 });
@@ -157,8 +154,13 @@ $(document).ready(function () {
         }
     });
  
-    function displayMessage(message) {
-        toastr.success(message, 'Event');
+    function displayMessage(message, type) {
+        swal({
+            title: "Pemberitahuan",
+            text: message,
+            icon: type,
+            button: "Tutup",
+        });
     } 
 });
   

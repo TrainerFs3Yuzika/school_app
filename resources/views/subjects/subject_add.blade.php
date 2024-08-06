@@ -37,10 +37,15 @@
                                 <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms">
                                         <label>Kelas <span class="login-danger">*</span></label>
-                                        <input type="text" class="form-control" name="class"
-                                            placeholder="Masukkan Kelas">
+                                        <select class="form-control" name="class">
+                                            <option value="">Pilih Kelas</option>
+                                            <option value="10">10</option>
+                                            <option value="11">11</option>
+                                            <option value="12">12</option>
+                                        </select>
                                     </div>
                                 </div>
+                                
                                 <div class="col-12">
                                     <div class="student-submit">
                                         <button type="submit" class="btn btn-primary">Kirim</button>

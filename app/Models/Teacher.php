@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Teacher extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'teacher_id',
         'full_name',
@@ -24,4 +25,10 @@ class Teacher extends Model
         'zip_code',
         'country',
     ];
+
+    // Relasi dengan Lesson
+    public function lessons()
+    {
+        return $this->hasMany(Lessons::class, 'teacher_id');
+    }
 }

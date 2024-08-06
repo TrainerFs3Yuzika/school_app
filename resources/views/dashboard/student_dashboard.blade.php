@@ -53,11 +53,11 @@
                         <div class="card-body">
                             <div class="db-widgets d-flex justify-content-between align-items-center">
                                 <div class="db-info">
-                                    <h6>Ujian yang Diikuti</h6>
+                                    <h6>Ekstrakurikuler</h6>
                                     <h3>{{ \App\Models\Eskul::count() }}</h3>
                                 </div>
                                 <div class="db-icon">
-                                    <img src="{{URL::to('assets/img/icons/student-icon-01.svg')}}" alt="Ikon Dasbor">
+                                    <i class="fas fa-running fa-2x"></i>
                                 </div>
                             </div>
                         </div>
@@ -109,43 +109,66 @@
                                         </div>
                                     </div>
                                     <div class="pt-3 pb-3">
-                                        @if (\Carbon\Carbon::setLocale('id') && ($today = \Carbon\Carbon::now()->isoFormat('dddd')))
-                                            @if ($lessons = \App\Models\Lessons::where('days', $today)->with('subject')->get())
-                                                @foreach ($lessons as $lesson)
-                                                    <div class="table-responsive lesson">
-                                                        <table class="table table-center">
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td>
-                                                                        <div class="date">
-                                                                            <b>Kelas {{ $lesson->class }} {{ $lesson->class_type }}</b>
-                                                                            <p>{{ $lesson->subject->subject_name }}</p>
-                                                                            <ul class="teacher-date-list">
-                                                                                <li><i class="fas fa-calendar-alt me-2"></i>
-                                                                                    {{ $lesson->days }}
-                                                                                    {{\Carbon\Carbon::now()->format('j M, Y')}}</li>
-                                                                                <li>|</li>
-                                                                                <li><i
-                                                                                        class="fas fa-clock me-2"></i>{{ \Carbon\Carbon::parse($lesson->time_start)->format('H:i') }}
-                                                                                    -
-                                                                                    {{ \Carbon\Carbon::parse($lesson->time_end)->format('H:i') }}
-                                                                                </li>
-                                                                            </ul>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="lesson-confirm">
-                                                                            <a href="#">Dikonfirmasi</a>
-                                                                        </div>
-                                                                        <button type="submit" class="btn btn-info">Jadwal
-                                                                            Ulang</button>
-                                                                    </td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                @endforeach
-                                            @endif
+                                        @php
+                                            \Carbon\Carbon::setLocale('id');
+                                            $today = \Carbon\Carbon::now()->isoFormat('dddd');
+                                            $tomorrow = \Carbon\Carbon::tomorrow()->isoFormat('dddd');
+                                            $lessons = \App\Models\Lessons::where('days', $tomorrow)->with('subject')->get();
+                                        @endphp
+                                        @if ($lessons->isNotEmpty())
+                                            @foreach ($lessons as $lesson)
+                                                <div class="table-responsive lesson">
+                                                    <table class="table table-center">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="date">
+                                                                        <b>Kelas {{ $lesson->class }} {{ $lesson->class_type }}</b>
+                                                                        <p>{{ $lesson->subject->subject_name }}</p>
+                                                                        <ul class="teacher-date-list">
+                                                                            <li><i class="fas fa-calendar-alt me-2"></i>
+                                                                                {{ $lesson->days }}
+                                                                                {{ \Carbon\Carbon::tomorrow()->format('j M, Y') }}</li>
+                                                                            <li>|</li>
+                                                                            <li><i
+                                                                                    class="fas fa-clock me-2"></i>{{ \Carbon\Carbon::parse($lesson->time_start)->format('H:i') }}
+                                                                                -
+                                                                                {{ \Carbon\Carbon::parse($lesson->time_end)->format('H:i') }}
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="lesson-confirm">
+                                                                        <a href="#" onclick="confirmLesson(event)">Dikonfirmasi</a>
+                                                                    </div>
+                                                                    <script>
+                                                                    function confirmLesson(event) {
+                                                                        event.preventDefault(); // Mencegah aksi default link
+                                                                        
+                                                                        Swal.fire({
+                                                                            title: 'Terima Kasih!',
+                                                                            text: 'Jadwal telah dikonfirmasi.',
+                                                                            icon: 'success',
+                                                                            showCancelButton: false,
+                                                                            confirmButtonText: 'OK'
+                                                                        }).then((result) => {
+                                                                            if (result.isConfirmed) {
+                                                                                window.history.back(); // Mengarahkan pengguna ke halaman sebelumnya
+                                                                            }
+                                                                        });
+                                                                    }
+                                                                    </script>
+                                                                    <button type="submit" class="btn btn-info">Jadwal
+                                                                        Ulang</button>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            @endforeach
+                                        @else
+                                            <p>Tidak ada pelajaran untuk hari {{ $tomorrow }}.</p>
                                         @endif
                                     </div>
                                 </div>
@@ -186,7 +209,7 @@
                                     @foreach (\App\Models\Score::all() as $key => $score)
                                             <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $score->teacher->full_name }}</td>
+                                            <td>{{ $score->teacher->name }}</td>
                                                 <td>{{ $score->student->first_name }} {{ $score->student->last_name }}</td>
                                                 <td>{{ $score->subject->subject_name }}</td>
                                                 @if ($score->score >= 80 && $score->score <= 100)
@@ -227,6 +250,8 @@
                                     </tbody>
                                 </table>
                             </div>
+
+                            
                             {{-- model hapus siswa --}}
                                 <div class="modal custom-modal fade" id="deleteModal" role="dialog">
                                     <div class="modal-dialog modal-dialog-centered">
@@ -263,6 +288,9 @@
                 </div>
 </div>
    <!-- jQuery -->
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
    <!-- DataTables JS -->
    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>

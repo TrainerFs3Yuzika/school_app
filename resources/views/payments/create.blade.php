@@ -58,6 +58,7 @@
                                         <option value="Biaya Acara dan Perjalanan">Biaya Acara dan Perjalanan</option>
                                         <option value="Biaya Teknologi">Biaya Teknologi</option>
                                         <option value="Biaya Tambahan">Biaya Tambahan</option>
+                                        <option value="denda buku">denda buku</option>
                                         <option value="Donasi dan Sumbangan">Donasi dan Sumbangan</option>
                                     </select>
                                 </div>

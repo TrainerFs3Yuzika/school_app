@@ -101,6 +101,7 @@ class PaymentController extends Controller
             'Biaya Acara dan Perjalanan',
             'Biaya Teknologi',
             'Biaya Tambahan',
+            'denda buku',
             'Donasi dan Sumbangan'
         ];
 

@@ -3,6 +3,9 @@
 {{-- message --}}
 {!! Toastr::message() !!}
 <title>Dafar Pengguna</title>
+<!-- DataTables CSS -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+
 <div class="page-wrapper">
     <div class="content container-fluid">
 
@@ -92,6 +95,10 @@ $(document).on('click', '.delete', function() {
     $('.e_avatar').val(_this.find('.avatar').data('avatar'));
 });
 </script>
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- DataTables JS -->
+<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
 
 {{-- get user all js --}}
 <script type="text/javascript">

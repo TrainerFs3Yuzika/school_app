@@ -36,7 +36,7 @@ class FullCalenderController extends controller
     public function ajax(Request $request): JsonResponse
     {
 
-        if ($request->user()->role_name === 'Admin') {
+        if ($request->user()->role_name === 'Super Admin') {
             switch ($request->type) {
                 case 'add':
                     $event = Event::create([

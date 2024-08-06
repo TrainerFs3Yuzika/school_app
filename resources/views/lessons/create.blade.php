@@ -1,4 +1,5 @@
 @extends('layouts.master')
+
 @section('content')
     <div class="page-wrapper">
         <div class="content container-fluid">
@@ -16,8 +17,10 @@
                     </div>
                 </div>
             </div>
+
             {{-- pesan --}}
             {!! Toastr::message() !!}
+
             <div class="row">
                 <div class="col-sm-12">
                     <div class="card comman-shadow">
@@ -33,7 +36,7 @@
                                     <div class="form-group local-forms">
                                         <label for="subject_id">Pelajaran <span class="login-danger">*</span></label>
                                         <select name="subject_id" id="subject_id"
-                                            class="form-control select  @error('subject_id') is-invalid @enderror" required>
+                                            class="form-control select @error('subject_id') is-invalid @enderror" required>
                                             <option selected disabled>Masukkan Pelajaran</option>
                                             @foreach ($subjects as $id => $name)
                                                 <option value="{{ $id }}">{{ $name }}</option>
@@ -63,16 +66,36 @@
                                         </select>
                                     </div>
                                     <div class="form-group local-forms">
-                                        <label for="class">Tipe <span class="login-danger">*</span></label>
+                                        <label for="class_type">Jurusan <span class="login-danger">*</span></label>
                                         <select name="class_type" id="class_type" class="form-control select">
-                                            <option selected disabled>Masukkan Tipe Kelas</option>
-                                            <option value="A">A</option>
-                                            <option value="B">B</option>
-                                            <option value="C">C</option>
-                                            <option value="D">D</option>
+                                            <option selected disabled>Pilih Jurusan</option>
+                                            <option value="IPA">IPA</option>
+                                            <option value="IPS">IPS</option>
+                                            <option value="Bahasa">Bahasa</option>
+                                            <option value="Agama">Agama</option>
+                                            <option value="Kejuruan">Kejuruan</option>
+                                            <option value="Olahraga">Olahraga</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group local-forms">
+                                        <label for="teacher_id">Guru <span class="login-danger">*</span></label>
+                                        <select name="teacher_id" id="teacher_id" class="form-control select">
+                                            <option selected disabled>Pilih Guru</option>
+                                            @foreach ($teachers as $id => $name)
+                                                <option value="{{ $id }}">{{ $name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group local-forms">
+                                        <label for="student_ids">Siswa <span class="login-danger">*</span></label>
+                                        <select name="student_ids[]" id="student_ids" class="form-control select" multiple required>
+                                            @foreach ($students as $id => $name)
+                                                <option value="{{ $id }}">{{ $name }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
+                                
                                 <div class="col-md-6">
                                     <div class="form-group local-forms">
                                         <label for="time_start">Waktu Mulai <span class="login-danger">*</span></label>
@@ -85,6 +108,7 @@
                                             placeholder="Masukkan Waktu Berakhir" required>
                                     </div>
                                 </div>
+                                
                                 <div class="col-12">
                                     <button type="submit" class="btn btn-primary">Simpan</button>
                                     <button type="reset" class="btn btn-warning ms-2">Reset</button>

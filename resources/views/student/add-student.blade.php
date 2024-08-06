@@ -27,7 +27,7 @@
                             @csrf
                             <div class="row">
                                 <div class="col-12">
-                                    <h5 class="form-title student-info">Informasi Siswa
+                                    <h5 class="form-title student-info">From Siswa
                                         <span>
                                             <a href="javascript:;"><i class="feather-more-vertical"></i></a>
                                         </span>
@@ -35,10 +35,10 @@
                                 </div>
                                 <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms">
-                                        <label>Nama Depan <span class="login-danger">*</span></label>
+                                        <label>Nama siswa <span class="login-danger">*</span></label>
                                         <input type="text" id="first-name-search" class="form-control" placeholder="Search Nama Depan">
                                         <select name="first_name" id="first-name-select" class="form-control @error('first_name') is-invalid @enderror">
-                                            <option value="">Pilih Nama Depan</option>
+                                            <option value="">Nama Siswa</option>
                                             @foreach ($users as $user)
                                                 <option value="{{ $user->name }}" @if (old('first_name') == $user->name) selected @endif>{{ $user->name }}</option>
                                             @endforeach
@@ -68,9 +68,9 @@
                                 </script>
                                 <div class="col-12 col-sm-4">
                                     <div class="form-group local-forms">
-                                        <label>Nama Belakang <span class="login-danger">*</span></label>
+                                        <label>Konfirmasi nama siswa <span class="login-danger">*</span></label>
                                         <select name="last_name" class="form-control @error('last_name') is-invalid @enderror">
-                                            <option value="">Pilih Nama Belakang</option>
+                                            <option value="">Konfirmasi nama siswa</option>
                                             @foreach ($users as $user)
                                                 <option value="{{ $user->name }}" @if (old('last_name') == $user->name) selected @endif>{{ $user->name }}</option>
                                             @endforeach

@@ -54,34 +54,31 @@
                                             @endif
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        @foreach ($peminjamans as $key => $peminjaman)
-                                            <tr>
-                                                <td>{{ ++$key }}</td>
-                                                {{-- <td>{{ $peminjaman->id }}</td> --}}
-                                                <td>{{ $peminjaman->book->judul }}</td>
-                                                <td>{{ $peminjaman->nama_peminjam }}</td>
-                                                <td>{{ $peminjaman->tanggal_pinjam }}</td>
-                                                <td>{{ $peminjaman->tanggal_kembali }}</td>
-                                                <td>{{ $peminjaman->jumlah_buku }}</td>
-                                                <td>{{ $peminjaman->status }}</td>
-                                                @if (auth()->user()->role_name === 'Super Admin')
-                                                    <td>
-                                                        <a href="{{ route('peminjaman.edit', $peminjaman->id) }}"
-                                                            class="btn btn-sm btn-light rounded"><i class="far fa-edit"></i></a>
-                                                        <form action="{{ route('peminjaman.destroy', $peminjaman->id) }}"
-                                                            method="POST" style="display: inline;">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit" class="btn btn-sm btn-light rounded"
-                                                                onclick="return confirm('Apakah Anda yakin ingin menghapus?')"><i
-                                                                    class="far fa-trash-alt"></i></button>
-                                                        </form>
-                                                    </td>
-                                                @endif
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
+<!-- resources/views/peminjaman/index.blade.php -->
+<tbody>
+    @foreach ($peminjamans as $key => $peminjaman)
+        <tr>
+            <td>{{ ++$key }}</td>
+            <td>{{ $peminjaman->book->judul }}</td>
+            <td>{{ $peminjaman->user ? $peminjaman->user->name : 'Unknown' }}</td> <!-- Menampilkan nama peminjam -->
+            <td>{{ $peminjaman->tanggal_pinjam }}</td>
+            <td>{{ $peminjaman->tanggal_kembali }}</td>
+            <td>{{ $peminjaman->jumlah_buku }}</td>
+            <td>{{ $peminjaman->status }}</td>
+            @if (auth()->user()->role_name === 'Super Admin')
+                <td>
+                    <a href="{{ route('peminjaman.edit', $peminjaman->id) }}" class="btn btn-sm btn-light rounded"><i class="far fa-edit"></i></a>
+                    <form action="{{ route('peminjaman.destroy', $peminjaman->id) }}" method="POST" style="display: inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-sm btn-light rounded" onclick="return confirm('Apakah Anda yakin ingin menghapus?')"><i class="far fa-trash-alt"></i></button>
+                    </form>
+                </td>
+            @endif
+        </tr>
+    @endforeach
+</tbody>
+
                                 </table>
                             </div>
                         </div>
@@ -96,6 +93,12 @@
     <!-- DataTables CSS and JS -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+    <!-- Toastr CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
+<!-- Toastr JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
 
     <!-- Initialize DataTable -->
     <script>
@@ -118,13 +121,14 @@
                     }
                 }
             });
-
+    
             // Toastr notifications
-            var successMessage = '{{ Session::get('
-                success ') }}';
-            var errorMessage = '{{ Session::get('
-                error ') }}';
-
+            var successMessage = '{{ Session::get('success') }}';
+            var errorMessage = '{{ Session::get('error') }}';
+    
+            console.log("Success Message: ", successMessage); // Debugging
+            console.log("Error Message: ", errorMessage); // Debugging
+    
             if (successMessage) {
                 toastr.success(successMessage, 'Sukses');
             }
@@ -133,4 +137,5 @@
             }
         });
     </script>
+    
 @endsection

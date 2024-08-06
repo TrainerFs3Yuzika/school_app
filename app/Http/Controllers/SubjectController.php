@@ -16,7 +16,7 @@ class SubjectController extends Controller
     public function subjectList()
     {
         $subjectList = Subject::all();
-        return view('subjects.subject_list',compact('subjectList'));
+        return view('subjects.subject_list', compact('subjectList'));
     }
 
     /** subject add */
@@ -32,22 +32,21 @@ class SubjectController extends Controller
             'subject_name' => 'required|string',
             'class'        => 'required|string',
         ]);
-        
+
         DB::beginTransaction();
         try {
-                $saveRecord = new Subject;
-                $saveRecord->subject_name   = $request->subject_name;
-                $saveRecord->class          = $request->class;
-                $saveRecord->save();
+            $saveRecord = new Subject;
+            $saveRecord->subject_name   = $request->subject_name;
+            $saveRecord->class          = $request->class;
+            $saveRecord->save();
 
-                Toastr::success('Has been add successfully :)','Success');
-                DB::commit();
+            Toastr::success('Has been add successfully :)', 'Success');
+            DB::commit();
             return redirect()->back();
-           
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             Log::info($e);
             DB::rollback();
-            Toastr::error('fail, Add new record:)','Error');
+            Toastr::error('fail, Add new record:)', 'Error');
             return redirect()->back();
         }
     }
@@ -55,8 +54,8 @@ class SubjectController extends Controller
     /** subject edit view */
     public function subjectEdit($subject_id)
     {
-        $subjectEdit = Subject::where('subject_id',$subject_id)->first();
-        return view('subjects.subject_edit',compact('subjectEdit'));
+        $subjectEdit = Subject::where('subject_id', $subject_id)->first();
+        return view('subjects.subject_edit', compact('subjectEdit'));
     }
 
     /** update record */
@@ -64,21 +63,20 @@ class SubjectController extends Controller
     {
         DB::beginTransaction();
         try {
-            
+
             $updateRecord = [
                 'subject_name' => $request->subject_name,
                 'class'        => $request->class,
             ];
 
-            Subject::where('subject_id',$request->subject_id)->update($updateRecord);
-            Toastr::success('Has been update successfully :)','Success');
+            Subject::where('subject_id', $request->subject_id)->update($updateRecord);
+            Toastr::success('Has been update successfully :)', 'Success');
             DB::commit();
             return redirect()->back();
-           
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             Log::info($e);
             DB::rollback();
-            Toastr::error('Fail, update record:)','Error');
+            Toastr::error('Fail, update record:)', 'Error');
             return redirect()->back();
         }
     }
@@ -89,15 +87,14 @@ class SubjectController extends Controller
         DB::beginTransaction();
         try {
 
-            Subject::where('subject_id',$request->subject_id)->delete();
+            Subject::where('subject_id', $request->subject_id)->delete();
             DB::commit();
-            Toastr::success('Deleted record successfully :)','Success');
+            Toastr::success('Deleted record successfully :)', 'Success');
             return redirect()->back();
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             DB::rollback();
-            Toastr::error('Deleted record fail :)','Error');
+            Toastr::error('Deleted record fail :)', 'Error');
             return redirect()->back();
         }
     }
-
 }

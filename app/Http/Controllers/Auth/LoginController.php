@@ -86,7 +86,8 @@ class LoginController extends Controller
                 'email' => $request->email,
                 'token' => $token,
                 'created_at' => now(),
-            ]);
+            ]
+        );
 
         Mail::to($request->email)->send(new ResetPasswordMail($token));
 
