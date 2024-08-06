@@ -27,6 +27,7 @@ use App\Http\Controllers\TagihanSiswaController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\landing_pageConntroller;
 use App\Http\Controllers\UserManagementController;
+use App\Http\Controllers\PembelajaranSiswaController;
 use App\Http\Controllers\DokumentasiKegiatanSiswaController;
 
 /*
@@ -324,4 +325,15 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     Route::get('dokumentasi_kegiatan/{dokumentasiKegiatanSiswa}/edit', [DokumentasiKegiatanSiswaController::class, 'edit'])->name('dokumentasi_kegiatan.edit');
     Route::put('dokumentasi_kegiatan/{dokumentasiKegiatanSiswa}', [DokumentasiKegiatanSiswaController::class, 'update'])->name('dokumentasi_kegiatan.update');
     Route::delete('dokumentasi_kegiatan/{dokumentasiKegiatanSiswa}', [DokumentasiKegiatanSiswaController::class, 'destroy'])->name('dokumentasi_kegiatan.destroy');
+});
+
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('pembelajaran_siswa', [PembelajaranSiswaController::class, 'index'])->name('pembelajaran_siswa.index');
+    Route::get('pembelajaran_siswa/create', [PembelajaranSiswaController::class, 'create'])->name('pembelajaran_siswa.create');
+    Route::post('pembelajaran_siswa', [PembelajaranSiswaController::class, 'store'])->name('pembelajaran_siswa.store');
+    Route::get('pembelajaran_siswa/{pembelajaranSiswa}/edit', [PembelajaranSiswaController::class, 'edit'])->name('pembelajaran_siswa.edit');
+    Route::put('pembelajaran_siswa/{pembelajaranSiswa}', [PembelajaranSiswaController::class, 'update'])->name('pembelajaran_siswa.update');
+    Route::delete('pembelajaran_siswa/{pembelajaranSiswa}', [PembelajaranSiswaController::class, 'destroy'])->name('pembelajaran_siswa.destroy');
+    Route::get('pembelajaran_siswa/getClassBySubject/{subjectId}', [PembelajaranSiswaController::class, 'getClassBySubject']);
 });

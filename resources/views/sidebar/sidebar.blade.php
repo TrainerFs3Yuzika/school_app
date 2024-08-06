@@ -212,17 +212,29 @@
                 </li>
                 
                 
-                    @if (in_array(auth()->user()->role_name, ['Student', 'Teachers', 'Super Admin']))
-                        <li class="submenu">
-                            <a href="#"><i class="fas fa-file-upload"></i> <span>Tugas</span> <span class="menu-arrow"></span></a>
-                            <ul>
-                                @if (in_array(auth()->user()->role_name, ['Student', 'Super Admin', 'Teachers']))
-                                    <li><a href="{{ route('assignments.create') }}" class="{{ request()->is('assignments/create') ? 'active' : '' }}"><i class="fas fa-upload"></i> Upload Tugas</a></li>
-                                @endif
-                                <li><a href="{{ route('assignments.index') }}" class="{{ request()->is('assignments') ? 'active' : '' }}"><i class="fas fa-list"></i> Daftar Tugas</a></li>
-                            </ul>
-                        </li>
-                    @endif
+                @if (in_array(auth()->user()->role_name, ['Student', 'Teachers', 'Super Admin']))
+                <li class="submenu">
+                    <a href="#"><i class="fas fa-file-upload"></i> <span>Tugas</span> <span class="menu-arrow"></span></a>
+                    <ul>
+                        @if (in_array(auth()->user()->role_name, ['Student', 'Super Admin', 'Teachers']))
+                            <li><a href="{{ route('assignments.create') }}" class="{{ request()->is('assignments/create') ? 'active' : '' }}"><i class="fas fa-upload"></i> Upload Tugas</a></li>
+                        @endif
+                        <li><a href="{{ route('assignments.index') }}" class="{{ request()->is('assignments') ? 'active' : '' }}"><i class="fas fa-list"></i> Daftar Tugas</a></li>
+                    </ul>
+                </li>
+            
+                <!-- Menu Pembelajaran Siswa -->
+                <li class="submenu">
+                    <a href="#"><i class="fas fa-chalkboard-teacher"></i> <span>Pembelajaran Siswa</span> <span class="menu-arrow"></span></a>
+                    <ul>
+                        @if (in_array(auth()->user()->role_name, ['Student', 'Super Admin', 'Teachers']))
+                            <li><a href="{{ route('pembelajaran_siswa.create') }}" class="{{ request()->is('pembelajaran_siswa/create') ? 'active' : '' }}"><i class="fas fa-plus"></i> Tambah Pembelajaran Siswa</a></li>
+                        @endif
+                        <li><a href="{{ route('pembelajaran_siswa.index') }}" class="{{ request()->is('pembelajaran_siswa') ? 'active' : '' }}"><i class="fas fa-list"></i> Daftar Pembelajaran Siswa</a></li>
+                    </ul>
+                </li>
+            @endif
+            
                 
                     @if (auth()->user()->role_name === 'Super Admin')
                     <li class="submenu">

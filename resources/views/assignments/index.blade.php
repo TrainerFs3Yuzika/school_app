@@ -67,7 +67,7 @@
                                             <td>{{ $assignment->subject->subject_name }}</td>
                                             <td>
                                                 <a href="{{ route('assignments.show', $assignment->id) }}" class="btn btn-info btn-sm">View</a>
-                                                @if(auth()->user()->role_name === 'teacher' || auth()->user()->role_name === 'super admin')
+                                                @if(auth()->user()->role_name === 'teachers' || auth()->user()->role_name === 'Super Admin')
                                                 <a href="{{ route('assignments.edit', $assignment->id) }}" class="btn btn-warning btn-sm">Edit</a>
                                                 <form action="{{ route('assignments.destroy', $assignment->id) }}" method="POST" style="display:inline;">
                                                     @csrf

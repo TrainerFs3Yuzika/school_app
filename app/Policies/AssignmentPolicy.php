@@ -31,7 +31,8 @@ class AssignmentPolicy
      */
     public function update(User $user, Assignment $assignment)
     {
-        return $user->id === $assignment->user_id;
+        // Cek apakah user adalah Super Admin atau teacher
+        return $user->role_name === 'Super Admin' || $user->role_name === 'teacher' || $user->id === $assignment->user_id;
     }
 
     /**
@@ -43,6 +44,7 @@ class AssignmentPolicy
      */
     public function delete(User $user, Assignment $assignment)
     {
-        return $user->id === $assignment->user_id;
+        // Cek apakah user adalah Super Admin atau teacher
+        return $user->role_name === 'Super Admin' || $user->role_name === 'teacher' || $user->id === $assignment->user_id;
     }
 }

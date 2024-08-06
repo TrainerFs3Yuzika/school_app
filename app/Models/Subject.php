@@ -34,4 +34,8 @@ class Subject extends Model
             }
         });
     }
+    public function pembelajaranSiswa()
+    {
+        return $this->hasMany(PembelajaranSiswa::class, 'subject_id');
+    }
 }
