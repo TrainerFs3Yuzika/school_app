@@ -41,7 +41,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="user_id">Peminjam</label>
-                                        <select name="user_id" id="user_id" class="form-control">
+                                        <select name="user_id" id="user_id" class="form-control select2">
                                             @foreach ($users as $user)
                                                 <option value="{{ $user->id }}">{{ $user->name }}</option>
                                             @endforeach
@@ -57,7 +57,6 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <br>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="tanggal_kembali">Tanggal Pengembalian <span class="text-danger">*</span></label>
@@ -95,17 +94,27 @@
 @endsection
 
 @section('script')
+    <!-- Include Select2 CSS and JS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0/js/select2.min.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            document.querySelector('form').addEventListener('submit', function(e) {
+            // Initialize Select2 for book and user selection
+            $('.select2').select2({
+                width: '100%' // Adjust width to match container
+            });
+
+            // Confirm before submitting form
+            document.querySelector('#peminjamanForm').addEventListener('submit', function(e) {
                 e.preventDefault();
                 Swal.fire({
                     title: 'Konfirmasi',
-                    text: 'Apakah Anda yakin ingin mengunggah tugas ini?',
+                    text: 'Apakah Anda yakin ingin menyimpan peminjaman ini?',
                     icon: 'question',
                     showCancelButton: true,
-                    confirmButtonText: 'Ya, Unggah',
+                    confirmButtonText: 'Ya, Simpan',
                     cancelButtonText: 'Tidak',
                     reverseButtons: true
                 }).then((result) => {

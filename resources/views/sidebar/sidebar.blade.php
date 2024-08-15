@@ -11,9 +11,18 @@
                         <i class="fas fa-cog"></i> 
                         <span>contact information</span>
                     </a>
+                </li>  
+                @endif              
+                @if (auth()->user()->role_name === 'Super Admin')
+                <li class="{{ set_active(['dokumentasi_kegiatan.index']) }}">
+                    <a href="{{ route('dokumentasi_kegiatan.index') }}">
+                        <i class="fas fa-file-alt"></i>
+                        <span>dokumentasi kegiatan</span>
+                        
+                    </a>
                 </li>
                 
-                @endif
+                @endif               
                 <li class="submenu {{set_active(['home','teacher/dashboard','student/dashboard'])}}">
                     <a>
                         <i class="fas fa-tachometer-alt"></i>
@@ -227,7 +236,7 @@
                 <li class="submenu">
                     <a href="#"><i class="fas fa-chalkboard-teacher"></i> <span>Pembelajaran Siswa</span> <span class="menu-arrow"></span></a>
                     <ul>
-                        @if (in_array(auth()->user()->role_name, ['Student', 'Super Admin', 'Teachers']))
+                        @if (in_array(auth()->user()->role_name, ['Super Admin', 'Teachers']))
                             <li><a href="{{ route('pembelajaran_siswa.create') }}" class="{{ request()->is('pembelajaran_siswa/create') ? 'active' : '' }}"><i class="fas fa-plus"></i> Tambah Pembelajaran Siswa</a></li>
                         @endif
                         <li><a href="{{ route('pembelajaran_siswa.index') }}" class="{{ request()->is('pembelajaran_siswa') ? 'active' : '' }}"><i class="fas fa-list"></i> Daftar Pembelajaran Siswa</a></li>

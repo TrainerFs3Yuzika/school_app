@@ -38,7 +38,7 @@
                                 <!-- Select Subject -->
                                 <div class="form-group mt-3">
                                     <label for="subject_id">Pilih Mata Pelajaran:</label>
-                                    <select name="subject_id" id="subject_id" class="form-control" required>
+                                    <select name="subject_id" id="subject_id" class="form-control select2" required>
                                         @foreach ($subjects as $subject)
                                             <option value="{{ $subject->id }}">{{ $subject->subject_name }}</option>
                                         @endforeach
@@ -67,11 +67,20 @@
         </div>
     </div>
 </div>
-@endsection
+
+<!-- Include Select2 CSS and JS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0/js/select2.min.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
+        // Initialize Select2 for subject selection
+        $('#subject_id').select2({
+            width: '100%' // Adjust width to match container
+        });
+
+        // Confirm before submitting form
         document.querySelector('form').addEventListener('submit', function(e) {
             e.preventDefault();
             Swal.fire({
@@ -90,3 +99,4 @@
         });
     });
 </script>
+@endsection

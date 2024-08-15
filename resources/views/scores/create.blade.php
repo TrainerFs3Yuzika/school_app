@@ -1,4 +1,3 @@
-<!-- resources/views/scores/create.blade.php -->
 @extends('layouts.master')
 @section('content')
 <title>Tambah Nilai Siswa</title>
@@ -40,13 +39,11 @@
                                         <input type="hidden" name="teacher_id" value="{{ Auth::id() }}">
                                     </div>
                                     <div class="form-group local-forms">
-                                        <label for="student_id" class="form-label">Nama Siswa <span
-                                                class="login-danger">*</span></label>
-                                        <select name="student_id" id="student_id"
-                                            class="form-control select  @error('student_id') is-invalid @enderror">
+                                        <label for="student_id" class="form-label">Nama Siswa <span class="login-danger">*</span></label>
+                                        <select name="student_id" id="student_id" class="form-control select @error('student_id') is-invalid @enderror">
                                             <option selected disabled>Pilih Nama Siswa</option>
                                             @foreach ($students as $id => $name)
-                                            <option value="{{ $id }}">{{ $name }}</option>
+                                                <option value="{{ $id }}">{{ $name }}</option>
                                             @endforeach
                                         </select>
                                         @error('student_id')
@@ -58,13 +55,11 @@
                                 </div>
                                 <div class="col-md-6 mt-3">
                                     <div class="form-group local-forms">
-                                        <label for="subject_id" class="form-label">Mata Pelajaran <span
-                                                class="login-danger">*</span></label>
-                                        <select name="subject_id" id="subject_id"
-                                            class="form-control select @error('subject_id') is-invalid @enderror">
+                                        <label for="subject_id" class="form-label">Mata Pelajaran <span class="login-danger">*</span></label>
+                                        <select name="subject_id" id="subject_id" class="form-control select @error('subject_id') is-invalid @enderror">
                                             <option selected disabled>Pilih Mata Pelajaran</option>
                                             @foreach ($subjects as $id => $name)
-                                            <option value="{{ $id }}">{{ $name }}</option>
+                                                <option value="{{ $id }}">{{ $name }}</option>
                                             @endforeach
                                         </select>
                                         @error('subject_id')
@@ -74,11 +69,8 @@
                                         @enderror
                                     </div>
                                     <div class="form-group local-forms">
-                                        <label for="score" class="form-label">Nilai Siswa <span
-                                                class="login-danger">*</span></label>
-                                        <input type="number" name="score" id="score"
-                                            class="form-control @error('score') is-invalid @enderror" min="0"
-                                            placeholder="Masukkan Nilai" required>
+                                        <label for="score" class="form-label">Nilai Siswa <span class="login-danger">*</span></label>
+                                        <input type="number" name="score" id="score" class="form-control @error('score') is-invalid @enderror" min="0" placeholder="Masukkan Nilai" required>
                                         @error('score')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -92,18 +84,30 @@
                                 <button type="reset" class="btn btn-secondary ms-2">Reset</button>
                             </div>
                         </form>
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<!-- Include Select2 CSS and JS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0/js/select2.min.js"></script>
+
 <script>
+    // Initialize Select2
+    $(document).ready(function() {
+        $('.select').select2({
+            width: '100%' // Adjust width to match container
+        });
+    });
+
+    // Validation script
     document.getElementById('createScoreForm').addEventListener('submit', function(event) {
         const scoreInput = document.getElementById('score');
-        const maxScore = 100; // Ganti dengan nilai maksimum yang sesuai
-    
+        const maxScore = 100; // Adjust according to your maximum score
+        
         if (parseInt(scoreInput.value) > maxScore) {
             event.preventDefault();
             Swal.fire({
@@ -113,17 +117,5 @@
             });
         }
     });
-    </script>
-    
-
-<script>
-// Validasi di sisi klien menggunakan HTML5
-document.getElementById('createScoreForm').addEventListener('submit', function(event) {
-    const scoreInput = document.getElementById('score');
-    if (scoreInput.validity.rangeUnderflow) {
-        alert('Score must be greater than or equal to 0.');
-        event.preventDefault();
-    }
-});
 </script>
 @endsection

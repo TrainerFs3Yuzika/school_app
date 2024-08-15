@@ -21,11 +21,11 @@
             <div class="col-sm-12">
                 <div class="card card-form comman-shadow">
                     <div class="card-body">
-                        <form action="{{ route('daftar-eskul.store') }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin mendaftar eskul ini?')">
+                        <form action="{{ route('daftar-eskul.store') }}" method="POST">
                             @csrf
                             <div class="form-group">
                                 <label for="eskul_id">Pilih Eskul:</label>
-                                <select id="eskul_id" name="eskul_id" class="form-control" required>
+                                <select id="eskul_id" name="eskul_id" class="form-control select2" required>
                                     @foreach ($eskuls as $eskul)
                                         <option value="{{ $eskul->id }}">{{ $eskul->nama_eskul }}</option>
                                     @endforeach
@@ -46,19 +46,28 @@
         </div>
     </div>
 </div>
-@endsection
+
+<!-- Include Select2 CSS and JS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0/js/select2.min.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
+        // Initialize Select2 for eskul selection
+        $('#eskul_id').select2({
+            width: '100%' // Adjust width to match container
+        });
+
+        // Confirm before submitting form
         document.querySelector('form').addEventListener('submit', function(e) {
             e.preventDefault();
             Swal.fire({
                 title: 'Konfirmasi',
-                text: 'Apakah Anda yakin ingin mengunggah tugas ini?',
+                text: 'Apakah Anda yakin ingin mendaftar eskul ini?',
                 icon: 'question',
                 showCancelButton: true,
-                confirmButtonText: 'Ya, Unggah',
+                confirmButtonText: 'Ya, Daftar',
                 cancelButtonText: 'Tidak',
                 reverseButtons: true
             }).then((result) => {
@@ -69,3 +78,4 @@
         });
     });
 </script>
+@endsection

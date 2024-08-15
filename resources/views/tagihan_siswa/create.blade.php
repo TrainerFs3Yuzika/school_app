@@ -20,18 +20,25 @@
 
         {{-- Pesan Sukses atau Error --}}
         @if (session('success'))
-            <div class="alert alert-success">
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
                 {{ session('success') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
         @endif
 
         @if ($errors->any())
-            <div class="alert alert-danger">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>There were some problems with your input:</strong>
                 <ul>
                     @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
                     @endforeach
                 </ul>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
         @endif
 
@@ -42,7 +49,7 @@
 
                     <div class="form-group">
                         <label for="user_id">Nama Siswa</label>
-                        <select class="form-control" id="user_id" name="user_id" required>
+                        <select class="form-control select2" id="user_id" name="user_id" required>
                             <option value="" disabled selected>Pilih Siswa</option>
                             @foreach ($users as $user)
                                 <option value="{{ $user->id }}">{{ $user->name }}</option>
@@ -75,18 +82,22 @@
                         <input type="number" step="0.01" class="form-control" id="amount" name="amount" placeholder="Masukkan jumlah tagihan" required>
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Simpan</button>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                        <a href="{{ route('tagihan_siswa.index') }}" class="btn btn-secondary">Kembali</a>
+                    </div>
                 </form>
-                
-                <a href="{{ route('tagihan_siswa.index') }}" class="btn btn-secondary mt-3">Kembali</a>
             </div>
         </div>
     </div>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0/js/select2.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0/css/select2.min.css" rel="stylesheet" />
+
 <script>
     $(document).ready(function() {
-        $('#user_id').select2({
+        $('.select2').select2({
             placeholder: "Pilih Siswa",
             allowClear: true
         });
