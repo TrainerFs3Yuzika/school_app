@@ -10,11 +10,31 @@ use Illuminate\Support\Facades\Storage;
 
 class PembelajaranSiswaController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $pembelajaranSiswa = PembelajaranSiswa::with(['subject', 'student', 'teacher'])->get();
+        $search = $request->input('search');
+
+        // Query PembelajaranSiswa dengan relasi subject, student, teacher
+        $pembelajaranSiswaQuery = PembelajaranSiswa::with(['subject', 'student', 'teacher']);
+
+        // Tambahkan filter pencarian jika ada input pencarian
+        if ($search) {
+            $pembelajaranSiswaQuery->where(function ($query) use ($search) {
+                $query->whereHas('subject', function ($q) use ($search) {
+                    $q->where('subject_name', 'like', "%{$search}%");
+                })
+                    ->orWhereHas('teacher', function ($q) use ($search) {
+                        $q->where('name', 'like', "%{$search}%");
+                    });
+            });
+        }
+
+        // Ambil hasil pencarian
+        $pembelajaranSiswa = $pembelajaranSiswaQuery->get();
+
         return view('pembelajaran_siswa.index', compact('pembelajaranSiswa'));
     }
+
 
     public function create()
     {

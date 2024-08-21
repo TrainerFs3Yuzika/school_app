@@ -37,7 +37,7 @@
                                         <th>Profile</th>
                                         <th>Name</th>
                                         <th>Email</th>
-                                        <th>Phone Number</th>
+                                        {{-- <th>Phone Number</th> --}}
                                         <th>Date Join</th>
                                         <th>Position</th>
                                         <th>Status</th>
@@ -127,10 +127,10 @@ $(document).ready(function() {
                 data: 'email',
                 name: 'email'
             },
-            {
-                data: 'phone_number',
-                name: 'phone_number'
-            },
+            // {
+            //     data: 'phone_number',
+            //     name: 'phone_number'
+            // },
             {
                 data: 'join_date',
                 name: 'join_date'

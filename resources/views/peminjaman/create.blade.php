@@ -47,6 +47,7 @@
                                             @endforeach
                                         </select>
                                     </div>
+                                    
                                     <div class="form-group">
                                         <label for="tanggal_pinjam">Tanggal Peminjaman <span class="text-danger">*</span></label>
                                         <input type="date" name="tanggal_pinjam" class="form-control @error('tanggal_pinjam') is-invalid @enderror" value="{{ old('tanggal_pinjam') }}" required>

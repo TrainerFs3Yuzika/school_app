@@ -31,22 +31,43 @@
                         <div class="page-header">
                             <div class="row align-items-center">
                                 <div class="col">
-                                    <h3 class="page-title">Daftar Tagihan</h3>
+                                    <h3 class="page-title">Daftar Tagihan Denda Buku</h3>
                                 </div>
                                 <div class="col-auto text-end float-end ms-auto download-grp">
                                     @if (auth()->user()->role_name === 'Admin' || auth()->user()->role_name === 'Staff_perpus')
                                         <a href="{{ route('tagihan.create') }}" class="btn btn-primary">Buat Tagihan Baru <i class="fas fa-plus"></i></a>
                                     @endif
+                                    <!-- Button to trigger the modal -->
+                                    <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#paymentModal">
+                                        <i class="fas fa-info-circle"></i> Informasi Pembayaran
+                                    </button>
                                 </div>
-                                
                             </div>
+                            
+                            <!-- Payment Information Modal -->
+                            <div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="paymentModalLabel">Informasi Pembayaran</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Harap lakukan pembayaran segera dan hubungi pihak admin keuangan untuk melakukan pembayaran.</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
                         </div>
                         <div class="table-responsive">
                             <table id="tagihanTable" class="table border-0 star-book table-hover table-center mb-0 table-striped">
                                 <thead class="thead-light">
                                     <tr>
                                         <th scope="col">No</th>
-                                        <th scope="col">ID</th>
                                         <th scope="col">Nama Peminjam</th>
                                         <th scope="col">Jumlah Denda</th>
                                         <th scope="col">Status Lunas</th>
@@ -59,7 +80,6 @@
                                     @foreach ($tagihan as $key => $item)
                                         <tr>
                                             <td>{{ ++$key }}</td> <!-- Nomor urut -->
-                                            <td>{{ $item->id }}</td>
                                             <td>{{ $item->peminjaman->user->name ?? 'Unknown' }}</td><!-- Nama Peminjam -->
                                             <td>{{ $item->jumlah_denda }}</td> <!-- Jumlah Denda -->
                                             <td>{{ $item->lunas ? 'Lunas' : 'Belum Lunas' }}</td> <!-- Status Lunas -->

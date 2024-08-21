@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Tagihan;
 use App\Models\Peminjaman;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TagihanController extends Controller
 {
@@ -15,9 +16,22 @@ class TagihanController extends Controller
      */
     public function index()
     {
-        $tagihan = Tagihan::with('peminjaman')->get();
+        $user = Auth::user();
+
+        if ($user->role_name === 'Super Admin' || $user->role_name === 'Staff_perpus') {
+            // Jika pengguna adalah Super Admin atau Staff_perpus, tampilkan semua data
+            $tagihan = Tagihan::with('peminjaman')->get();
+        } else {
+            // Jika bukan Super Admin atau Staff_perpus, tampilkan data yang bersangkutan
+            // Misalnya, hanya tagihan yang terkait dengan pengguna tertentu
+            $tagihan = Tagihan::whereHas('peminjaman', function ($query) use ($user) {
+                $query->where('user_id', $user->id);
+            })->with('peminjaman')->get();
+        }
+
         return view('tagihan.index', compact('tagihan'));
     }
+
 
     /**
      * Show the form for creating a new resource.

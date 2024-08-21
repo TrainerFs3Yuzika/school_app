@@ -12,7 +12,18 @@ class DaftarEskulController extends Controller
 {
     public function index()
     {
-        $daftarEskuls = DaftarEskul::with('eskul', 'user')->get();
+        $user = Auth::user();
+
+        if ($user->role_name === 'Super Admin') {
+            // Jika pengguna adalah Super Admin, tampilkan semua data
+            $daftarEskuls = DaftarEskul::with('eskul', 'user')->get();
+        } else {
+            // Jika bukan Super Admin, tampilkan hanya data yang bersangkutan
+            $daftarEskuls = DaftarEskul::where('user_id', $user->id)
+                ->with('eskul', 'user')
+                ->get();
+        }
+
         return view('daftar_eskul.index', compact('daftarEskuls'));
     }
 

@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Peminjaman;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Auth;
 
 class PeminjamanController extends Controller
 {
@@ -20,9 +21,21 @@ class PeminjamanController extends Controller
     // app/Http/Controllers/PeminjamanController.php
     public function index()
     {
-        $peminjamans = Peminjaman::with('book', 'user')->get(); // Memuat relasi book dan user
+        $user = Auth::user();
+
+        if ($user->role_name === 'Super Admin' || $user->role_name === 'Staff_perpus') {
+            // Jika pengguna adalah Super Admin atau Staff_perpus, tampilkan semua data
+            $peminjamans = Peminjaman::with('book', 'user')->get();
+        } else {
+            // Jika bukan Super Admin atau Staff_perpus, tampilkan hanya data yang bersangkutan
+            $peminjamans = Peminjaman::where('user_id', $user->id)
+                ->with('book', 'user')
+                ->get();
+        }
+
         return view('peminjaman.index', compact('peminjamans'));
     }
+
 
 
 
@@ -35,12 +48,20 @@ class PeminjamanController extends Controller
      */
     public function create(Request $request)
     {
+        $user = Auth::user();
+
+        if ($user->role_name === 'Super Admin' || $user->role_name === 'Staff_perpus') {
+            // Ambil semua buku dan pengguna
+            $books = Book::all();
+            $users = User::all();
+        } else {
+            // Ambil hanya pengguna yang bersangkutan
+            $books = Book::all();
+            $users = User::where('id', $user->id)->get();
+        }
+
         // Ambil book_id dari request jika tersedia
         $book_id = $request->input('book_id');
-
-        // Ambil semua buku dan pengguna
-        $books = Book::all();
-        $users = User::all();
 
         return view('peminjaman.create', compact('books', 'users', 'book_id'));
     }

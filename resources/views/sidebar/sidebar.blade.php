@@ -150,10 +150,10 @@
                     <ul>
                         <li><a href="{{ route('books.index') }}" class="{{ request()->is('books*') ? 'active' : '' }}"><i class="fas fa-book"></i> Daftar Buku</a></li>
                         @if (in_array(auth()->user()->role_name, ['Admin', 'Super Admin', 'Staff_perpus']))
-                            <li><a href="{{ route('peminjaman.index') }}" class="{{ request()->is('peminjaman*') ? 'active' : '' }}"><i class="fas fa-user"></i> Daftar Peminjam</a></li>
                             <li><a href="{{ route('pengembalian.index') }}" class="{{ request()->is('pengembalian*') ? 'active' : '' }}"><i class="fas fa-undo"></i> Daftar Pengembalian</a></li>
-                            <li><a href="{{ route('tagihan.index') }}" class="{{ request()->is('tagihan') ? 'active' : '' }}"><i class="fas fa-money-bill-wave"></i> Tagihan Buku</a></li>
                         @endif
+                        <li><a href="{{ route('tagihan.index') }}" class="{{ request()->is('tagihan') ? 'active' : '' }}"><i class="fas fa-money-bill-wave"></i> Tagihan Buku</a></li>
+                        <li><a href="{{ route('peminjaman.index') }}" class="{{ request()->is('peminjaman*') ? 'active' : '' }}"><i class="fas fa-user"></i> Daftar Peminjam</a></li>
                     </ul>
                 </li>
                 <li class="submenu">
